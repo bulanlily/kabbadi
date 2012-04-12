@@ -18,7 +18,7 @@ public class HomeController {
 		this.userService = userService;
 	}
 
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView homepage(@RequestParam(value = "username", defaultValue = "") String username) {
 		ModelAndView modelAndView = new ModelAndView("home");
         if (!username.isEmpty()) {
