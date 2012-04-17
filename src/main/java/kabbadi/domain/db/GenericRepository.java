@@ -27,8 +27,8 @@ public class GenericRepository<T> {
 
     public T get(int id) {
         return (T) getSession().get(type, id);
-    } 
-	
+    }
+
 	public List<T> list() {
         return (List<T>) getSession().createCriteria(type).list();
     }
