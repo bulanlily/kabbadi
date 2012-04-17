@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
+
+//TODO change urls to relative to server root (ie http://localhost:8080/kabbadi)
 
 @Controller
 public class InvoiceController {
@@ -24,9 +27,10 @@ public class InvoiceController {
 
         if (!invoiceNumber.isEmpty()) {
             invoiceService.addAndSave(new Invoice(invoiceNumber));
+            return new ModelAndView(new RedirectView("/invoice/list"));
         }
 
-        return new ModelAndView("invoice/add");
+        return new ModelAndView(new RedirectView("/invoice/create"));
     }
 
     @RequestMapping(value = "invoice/create", method = RequestMethod.GET)

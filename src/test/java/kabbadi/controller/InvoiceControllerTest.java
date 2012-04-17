@@ -28,7 +28,6 @@ import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 public class InvoiceControllerTest extends IntegrationTest {
 
     @Autowired
