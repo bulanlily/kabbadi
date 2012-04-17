@@ -24,7 +24,7 @@ public class InvoiceController {
     public ModelAndView add(@RequestParam(value = "invoiceNumber", defaultValue = "") String invoiceNumber) {
 
         if (!invoiceNumber.isEmpty()) {
-            invoiceService.addAndSave(new Invoice(invoiceNumber));
+            invoiceService.addAndSave(new Invoice.Builder().withInvoiceNumber(invoiceNumber).buildInvoice());
             return new ModelAndView(new RedirectView("/invoice/list", true));
         }
 
