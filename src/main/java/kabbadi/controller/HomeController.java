@@ -11,21 +11,21 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
-	private UserService userService;
+    private UserService userService;
 
-	@Autowired
-	public HomeController(UserService userService) {
-		this.userService = userService;
-	}
+    @Autowired
+    public HomeController(UserService userService) {
+        this.userService = userService;
+    }
 
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView homepage(@RequestParam(value = "username", defaultValue = "") String username) {
-		ModelAndView modelAndView = new ModelAndView("home");
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public ModelAndView homepage(@RequestParam(value = "username", defaultValue = "") String username) {
+        ModelAndView modelAndView = new ModelAndView("home");
         if (!username.isEmpty()) {
             User user = userService.getUser(username);
             modelAndView.addObject("user", user)
-                        .addObject("username", username);
+                    .addObject("username", username);
         }
         return modelAndView;
-	}
+    }
 }
