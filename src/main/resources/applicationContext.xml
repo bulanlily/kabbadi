@@ -15,6 +15,31 @@
     <mvc:annotation-driven/>
     <context:component-scan base-package="kabbadi"/>
 
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="authenticationFilter" class="org.jasig.cas.client.authentication.AuthenticationFilter">
+        <property name="casServerLoginUrl" value="${casServerLoginUrl}"/>
+        <property name="renew" value="false"/>
+        <property name="gateway" value="false"/>
+        <property name="service" value="${applicationUrl}"/>
+    </bean>
+
+    <bean id="ticketValidationFilter"
+          class="org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter">
+        <property name="serverName" value="${serverUrl}"/>
+        <property name="ticketValidator">
+            <bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
+                <constructor-arg index="0" value="${casServerUrlPrefix}"/>
+            </bean>
+        </property>
+    </bean>
+
     <bean id="myDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="org.h2.Driver"/>
         <property name="url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1;MVCC=TRUE"/>
