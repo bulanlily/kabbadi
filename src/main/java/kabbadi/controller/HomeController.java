@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.ArrayList;
 
 @Controller
 public class HomeController {
@@ -26,11 +27,26 @@ public class HomeController {
 	public ModelAndView homepage(Principal principal) {
 		ModelAndView modelAndView = new ModelAndView("home");
         String username = principal.getName();
+    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    public ModelAndView homepage(@RequestParam(value = "username", defaultValue = "") String username) {
+        ModelAndView modelAndView = new ModelAndView("home");
+        Object[] total = new Object[20];
+        String[] invoice = new String[100];
+        
+        for(int i=0; i<100; i++){
+           for(int j=0; j<10; j++){
+               invoice[i] += " " + Integer.toString(i);
+           }
+        }
         if (!username.isEmpty()) {
             User user = userService.getUser(username);
+
+
             modelAndView.addObject("user", user)
                     .addObject("username", username);
         }
+        modelAndView.addObject("total",total);
+        modelAndView.addObject("invoices",invoice);
         return modelAndView;
     }
 }
