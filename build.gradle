@@ -26,7 +26,8 @@ dependencies {
            'org.springframework.security:spring-security-core:3.1.0.RELEASE',
            'org.springframework.security:spring-security-cas:3.1.0.RELEASE',
            'org.springframework.security:spring-security-config:3.1.0.RELEASE',
-           'org.springframework.security:spring-security-web:3.1.0.RELEASE'
+           'org.springframework.security:spring-security-web:3.1.0.RELEASE',
+           'joda-time:joda-time:2.1'
            
     testCompile 'junit:junit:4.8.1',
                 'org.springframework:spring-test:3.1.1.RELEASE',

@@ -15,12 +15,12 @@ import java.security.Principal;
 
 @Controller
 public class HomeController {
-	private UserService userService;
+    private UserService userService;
 
-	@Autowired
-	public HomeController(UserService userService) {
-		this.userService = userService;
-	}
+    @Autowired
+    public HomeController(UserService userService) {
+        this.userService = userService;
+    }
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView homepage(Principal principal) {
@@ -29,8 +29,8 @@ public class HomeController {
         if (!username.isEmpty()) {
             User user = userService.getUser(username);
             modelAndView.addObject("user", user)
-                        .addObject("username", username);
+                    .addObject("username", username);
         }
         return modelAndView;
-	}
+    }
 }

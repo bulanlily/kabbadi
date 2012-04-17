@@ -22,6 +22,7 @@
         <property name="hibernate.id.new_generator_mappings">true</property>
 
         <mapping class="kabbadi.domain.User"/>
+        <mapping class="kabbadi.domain.Invoice"/>
 
     </session-factory>
 
