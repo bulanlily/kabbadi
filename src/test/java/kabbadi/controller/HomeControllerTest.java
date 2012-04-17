@@ -5,6 +5,10 @@ import kabbadi.service.UserService;
 import org.junit.Test;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
+import java.security.Principal;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.core.Is.is;
@@ -40,8 +44,10 @@ public class HomeControllerTest {
         UserService mockUserService = mock(UserService.class);
         User user = (validUser) ? new User(username) : null;
         when(mockUserService.getUser(username)).thenReturn(user);
+        Principal mockPrincipal = mock(Principal.class);
+        when(mockPrincipal.getName()).thenReturn(username);
         HomeController homeController = new HomeController(mockUserService);
-        return homeController.homepage(username);
+        return homeController.homepage(mockPrincipal);
     }
 
 }
