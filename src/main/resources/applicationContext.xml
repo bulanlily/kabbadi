@@ -25,14 +25,13 @@
 
     <bean id="authenticationFilter" class="org.jasig.cas.client.authentication.AuthenticationFilter">
         <property name="casServerLoginUrl" value="${casServerLoginUrl}"/>
-        <property name="renew" value="false"/>
-        <property name="gateway" value="false"/>
-        <property name="service" value="${applicationUrl}"/>
+        <property name="serverName" value="${serverUrl}"/>
     </bean>
 
     <bean id="ticketValidationFilter"
           class="org.jasig.cas.client.validation.Cas20ProxyReceivingTicketValidationFilter">
         <property name="serverName" value="${serverUrl}"/>
+        <property name="redirectAfterValidation" value="true"></property>
         <property name="ticketValidator">
             <bean class="org.jasig.cas.client.validation.Cas20ServiceTicketValidator">
                 <constructor-arg index="0" value="${casServerUrlPrefix}"/>

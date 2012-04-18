@@ -1,34 +1,20 @@
 package test;
 
 
-import entity.As;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import pages.LoginPage;
-import providers.SeleniumProvider;
 
-public class LoginTest {
-    SeleniumProvider browser;
-    
-    @Before
-    public void setUp() {
-        browser = new SeleniumProvider();
-    }
-
+public class LoginTest extends BaseTest{
 	@Test
 	public void testLoginWithValidUserCredentials() {
-		With(browser)
-        .launchKabaddi()
-        .enterValidUserCredentials();
+		launchKabbadi()
+        .loginWithValidCredentials();
 		}
-
-    private As With(SeleniumProvider browser) {
-        return new As(browser);
-    }
-
-    @After
-    public void tearDown() {
-        browser.close();
+    
+    @Test
+    public void testReturningToKabbadiDoesNotNeedLogin() {
+        launchKabbadi()
+        .loginWithValidCredentials()
+        .goToGoogle()
+        .returnToKabbadi();
     }
 }
