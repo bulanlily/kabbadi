@@ -32,7 +32,7 @@ public class InvoiceControllerTest extends IntegrationTest {
 
         String invoiceNumber = "Invoice27";
 
-        controller.add(invoiceNumber);
+        controller.add(new Invoice.Builder().withInvoiceNumber(invoiceNumber).build());
 
         assertThat(invoiceService.findBy(invoiceNumber).getInvoiceNumber(), equalTo(invoiceNumber));
 
@@ -43,7 +43,7 @@ public class InvoiceControllerTest extends IntegrationTest {
 
         String invoiceNumber = "";
 
-        controller.add(invoiceNumber);
+        controller.add(new Invoice.Builder().withInvoiceNumber(invoiceNumber).build());
 
         assertThat(invoiceService.findBy(invoiceNumber), nullValue());
 

@@ -28,6 +28,7 @@ public class Invoice {
     private BigDecimal amountSTPIApproval;
     private BigDecimal CIFValueInINR;
     private String bondNumber;
+
     private Date bondDate;
     private String billOfEntryNumber;
     private Date billOfEntryDate;
@@ -181,7 +182,7 @@ public class Invoice {
             return this;
         }
 
-        public Invoice buildInvoice() {
+        public Invoice build() {
             return invoice;
         }
     }
