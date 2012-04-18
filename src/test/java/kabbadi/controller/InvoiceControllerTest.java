@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
 
 public class InvoiceControllerTest extends IntegrationTest {
 
@@ -55,6 +54,15 @@ public class InvoiceControllerTest extends IntegrationTest {
 
         ModelAndView createView = controller.create();
         assertThat(createView.getViewName(), equalTo("invoice/create"));
+
+    }
+
+    @Test
+    public void should_have_a_list() {
+
+        ModelAndView listView = controller.adminView();
+
+        assertThat(listView.getViewName(), equalTo("invoice/list"));
 
     }
 

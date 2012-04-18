@@ -2,7 +2,6 @@ package kabbadi.domain.db;
 
 import kabbadi.IntegrationTest;
 import kabbadi.domain.Invoice;
-import kabbadi.domain.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
@@ -36,6 +35,18 @@ public class InvoiceRepositoryIntegrationTest extends IntegrationTest {
         Session currentSession = sessionFactory.getCurrentSession();
         String sql = "insert into Invoice (id, invoiceNumber) values (27, '" + invoiceNumber + "');";
         currentSession.createSQLQuery(sql).executeUpdate();
+
+    }
+
+    @Test
+    public void should_get_an_invoice_list() {
+
+        GenericRepository<Invoice> repository = new GenericRepository<Invoice>(sessionFactory, Invoice.class);
+        repository.save(new Invoice());
+        repository.save(new Invoice());
+
+        assertThat(repository.list().size(), equalTo(2));
+
 
     }
 }
