@@ -3,13 +3,14 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class LoginPage extends BasePage{
 	public LoginPage(WebDriver driver) {
 		super(driver);
-        assertTrue(driver.getCurrentUrl().contains("cas"));
+        assertThat(driver.getTitle(), equalTo("CAS – Central Authentication Service"));
 	}
 
     public HomePage loginWithValidCredentials() {

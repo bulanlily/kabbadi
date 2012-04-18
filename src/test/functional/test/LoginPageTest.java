@@ -9,7 +9,7 @@ public class LoginPageTest extends BaseTest{
 		launchKabbadi()
         .loginWithValidCredentials();
 		}
-    
+
     @Test
     public void should_not_require_credential_when_returning_to_kabbadi() {
         launchKabbadi()
