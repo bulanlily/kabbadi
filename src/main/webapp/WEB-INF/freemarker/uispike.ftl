@@ -18,7 +18,7 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="home.html"> KABBADI</a>
+            <a class="brand" href="uispike.html"> KABBADI</a>
 
         </div>
     </div>
