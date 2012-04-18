@@ -2,7 +2,6 @@
 <html>
 <head>
     <title>kabaddi</title>
-    <link rel="javascript" href="static/js/bootstrap.tab.js">
     <link href="static/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
         body {
@@ -10,6 +9,8 @@
         }
     </style>
     <link href="static/css/bootstrap-responsive.css" rel="stylesheet">
+    <script src="static/js/jquery.js" type="text/javascript"></script>
+    <script src="static/js/bootstrap-tab.js" type="text/javascript"></script>
 </head>
 
 
@@ -17,36 +18,31 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="home.html"> </a>
+            <a class="brand" href="home.html"> KABBADI</a>
 
         </div>
     </div>
 </div>
+
+
 <ul class="nav nav-tabs" id="tab" align="right">
-    <li class="active"><a data-toggle="tab" href="home.html">Admin</a></li>
-    <li class=""><a data-toggle="tab" href="home.html">Finance</a></li>
-    <li class=""><a data-toggle="tab" href="home.html">IS</a></li>
+    <li class="active"><a data-toggle="tab" href="#admin">Admin</a></li>
+    <li class=""><a data-toggle="tab" href="#finance">Finance</a></li>
+    <li class=""><a data-toggle="tab" href="#is">IS</a></li>
 
 </ul>
 
 
-<div class="container" position="relative">
-    <section id="gridCustomization">
+<div id="myTabContent" class="tab-content">
+
+    <div id="admin" class="tab-pane fade in active">
         <div class="page-header" align="right">
             <button href="#" class="btn btn-inverse">Add New</button>
             <button href="#" class="btn btn-inverse">Generate Report</button>
         </div>
-
         <table class="table table-bordered table-striped">
             <thead>
             <tr>
-
                 <th></th>
                 <th>First</th>
                 <th>First</th>
@@ -60,14 +56,14 @@
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
             <#list invoices as invoice>
-
                 <tr>
-                    <td style="width: 130px"><span class="label" style="background-color:white"><a
+                    <td class="span2"><span class="label" style="background-color:white"><a
                             href="#">EDIT</a></span> <span
                             class="label" style="background-color:white"> <a
                             href="#">VIEW DETAILS</a></span></td>
                     <td style="width: 130px">${invoice}</td>
-                    <td>Provides</td>
+                    <td>Provides
+                    </td>
                     <td>Provides</td>
                     <td>Provides</td>
                     <td>Provides</td>
@@ -76,43 +72,19 @@
                     <td>Provides</td>
                 </tr>
             </#list>
-
-
             </tbody>
         </table>
-        <!--<div class="page-header">-->
-        <!--<#if user??>-->
-        <!--<h1>Hahguujguygullo ${user.name}</h1>-->
-        <!--<#else>-->
-        <!--<#if username??>-->
-        <!--<h1>Sorry, didn't find a user called "${username}"</h1>-->
-        <!--</#if>-->
+    </div>
 
-        <!--<p><a href="?username=bill">Try me!!!!!</a></p>-->
-
-
-        <!--</#if>-->
-        <!--</div>-->
-    </section>
+    <div id="finance" class="tab-pane fade">
+        <p>you can put your finance details here!!!</p>
+    </div>
+    <div id="is" class="tab-pane fade">
+        <p>you can put your IS details here!!!</p>
+    </div>
 
 </div>
 
-<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
-<script src="assets/js/jquery.js"></script>
-<script src="assets/js/google-code-prettify/prettify.js"></script>
-<script src="assets/js/bootstrap-transition.js"/>
-<script src="assets/js/bootstrap-alert.js"/>
-<script src="assets/js/bootstrap-modal.js"/>
-<script src="assets/js/bootstrap-dropdown.js"/>
-<script src="assets/js/bootstrap-scrollspy.js"/>
-<script src="assets/js/bootstrap-tab.js"/>
-<script src="assets/js/bootstrap-tooltip.js"/>
-<script src="assets/js/bootstrap-popover.js"/>
-<script src="assets/js/bootstrap-button.js"/>
-<script src="assets/js/bootstrap-collapse.js"/>
-<script src="assets/js/bootstrap-carousel.js"/>
-<script src="assets/js/bootstrap-typeahead.js"/>
-<script src="assets/js/application.js"/>
 
 </body>
 </html>
