@@ -17,4 +17,10 @@ public class LoginPageTest extends BaseTest{
         .goToGoogle()
         .returnToKabbadi();
     }
+    
+    @Test
+    public void should_not_allow_user_entering_system_with_invalid_credential(){
+        launchKabbadi()
+         .loginWithInvalidCredentials();
+    }
 }
