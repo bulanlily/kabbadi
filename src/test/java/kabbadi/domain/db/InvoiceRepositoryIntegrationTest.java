@@ -42,11 +42,13 @@ public class InvoiceRepositoryIntegrationTest extends IntegrationTest {
     public void should_get_an_invoice_list() {
 
         GenericRepository<Invoice> repository = new GenericRepository<Invoice>(sessionFactory, Invoice.class);
+        int currentSize = repository.list().size();
+
         repository.save(new Invoice());
         repository.save(new Invoice());
         repository.save(new Invoice());
 
-        assertThat(repository.list().size(), equalTo(3));
+        assertThat(repository.list().size(), equalTo(currentSize + 3));
 
 
     }
