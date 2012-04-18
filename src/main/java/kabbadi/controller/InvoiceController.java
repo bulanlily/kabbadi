@@ -34,12 +34,10 @@ public class InvoiceController {
 
     @RequestMapping(value = "invoice/create", method = RequestMethod.POST)
     public ModelAndView add(@ModelAttribute Invoice invoice) {
-
-        if (!invoice.getInvoiceNumber().isEmpty()) {
+        if (invoice.valid()) {
             invoiceService.save(invoice);
             return new ModelAndView(new RedirectView("/invoice/list", true));
         }
-
         return new ModelAndView(new RedirectView("/invoice/create", true));
     }
 

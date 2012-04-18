@@ -22,8 +22,8 @@ public class InvoiceService {
     }
 
     @Transactional
-    public Invoice findBy(String invoiceNumber) {
-        return invoiceRepository.findBy(Invoice.INVOICE_NUMBER_PROPERTY, invoiceNumber);
+    public Invoice findBy(String purchaseOrderNumber) {
+        return invoiceRepository.findBy(Invoice.PURCHASE_ORDER_NUMBER, purchaseOrderNumber);
     }
 
     @Transactional

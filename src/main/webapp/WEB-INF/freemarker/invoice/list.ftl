@@ -66,8 +66,8 @@
                             href="#">EDIT</a></span> <span
                             class="label" style="background-color:white"> <a
                             href="#">VIEW DETAILS</a></span></td>
-                    <td style="width: 130px">${invoice.invoiceNumber!}</td>
-                    <td>${invoice.invoiceNumber}</td>
+                    <td style="width: 130px">${invoice.purchaseOrderNumber}</td>
+                    <td>${invoice.invoiceNumber!}</td>
                     <td>${invoice.STPIApprovalNumberAndDate!}</td>
                     <td>${invoice.bondNumber!}</td>
                     <td>${invoice.bondDate!}</td>
