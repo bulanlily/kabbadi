@@ -48,12 +48,19 @@ public class InvoiceController {
         return new ModelAndView("invoice/create", "invoice", new Invoice());
     }
 
-    @RequestMapping(value = "invoice/list", method = RequestMethod.GET)
-    public ModelAndView list() {
-        ModelAndView modelAndView = new ModelAndView("invoice/list");
+    @RequestMapping(value = "invoice/listAdmin", method = RequestMethod.GET)
+    public ModelAndView listAdmin() {
+        ModelAndView modelAndView = new ModelAndView("invoice/listAdmin");
         List<Invoice> invoices = invoiceService.list();
         modelAndView.addObject("invoices", invoices);
         return modelAndView;
     }
 
+    @RequestMapping(value = "invoice/listFinance", method = RequestMethod.GET)
+    public ModelAndView listFinance() {
+        ModelAndView modelAndView = new ModelAndView("invoice/listFinance");
+        List<Invoice> invoices = invoiceService.list();
+        modelAndView.addObject("invoices", invoices);
+        return modelAndView;
+    }
 }

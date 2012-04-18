@@ -58,11 +58,11 @@ public class InvoiceControllerTest extends IntegrationTest {
     }
 
     @Test
-    public void should_have_a_list() {
+    public void should_have_a_list_for_admin_member() {
 
-        ModelAndView listView = controller.list();
+        ModelAndView listView = controller.listAdmin();
 
-        assertThat(listView.getViewName(), equalTo("invoice/list"));
+        assertThat(listView.getViewName(), equalTo("invoice/listAdmin"));
 
     }
 
@@ -72,6 +72,14 @@ public class InvoiceControllerTest extends IntegrationTest {
 
     private InvoiceService buildInvoiceService() {
         return new InvoiceService(new GenericRepository<Invoice>(sessionFactory, Invoice.class));
+
+    }
+
+    @Test
+    public void should_have_a_list_for_finance_member(){
+         ModelAndView listView = controller.listFinance();
+
+        assertThat(listView.getViewName(), equalTo("invoice/listFinance"));
 
     }
 }
