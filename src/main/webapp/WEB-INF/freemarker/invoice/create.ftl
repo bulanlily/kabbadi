@@ -36,10 +36,10 @@
             <div class="row">
                 <div class="span3">
             <label for="purchaseOrderNumber">Purchase Order Number</label>
-            <input name="purchaseOrderNumber" required="true" />
+            <input name="purchaseOrderNumber"  />
 
-            <label for="invoiceNumber">Invoice number</label>
-            <input name="invoiceNumber" />
+            <label for="invoiceNumber">Invoice number *</label>
+            <input name="invoiceNumber" required="true"/>
 
             <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
             <input name="STPIApprovalNumberAndDate" />

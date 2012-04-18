@@ -22,10 +22,10 @@ public class InvoiceServiceTest {
     }
 
     @Test
-    public void findBy_finds_the_invoice_from_repository_by_purchase_order() {
-        String poNumber = "PO-123456";
-        invoiceService.findBy(poNumber);
-        verify(repository).findBy("purchaseOrderNumber",poNumber);
+    public void findBy_finds_the_invoice_from_repository_by_invoice_number() {
+        String invoiceNumber = "PO-123456";
+        invoiceService.findBy(invoiceNumber);
+        verify(repository).findBy("invoiceNumber",invoiceNumber);
     }
 
 }

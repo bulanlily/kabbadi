@@ -30,20 +30,20 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
 
     @Test
     public void should_add_a_new_invoice_in_the_database() throws Exception {
-        String purchaseOrderNumber = "PO-123456";
-        controller.add(invoiceWith(purchaseOrderNumber));
-        assertThat(invoiceService.findBy(purchaseOrderNumber).getPurchaseOrderNumber(), equalTo(purchaseOrderNumber));
+        String invoiceNumber = "123456";
+        controller.add(invoiceWith(invoiceNumber));
+        assertThat(invoiceService.findBy(invoiceNumber).getInvoiceNumber(), equalTo(invoiceNumber));
     }
 
     @Test
     public void should_not_add_an_invoice_without_mandatory_fields() throws Exception {
-        String purchaseOrderNumber = "";
-        controller.add(invoiceWith(purchaseOrderNumber));
-        assertThat(invoiceService.findBy(purchaseOrderNumber), nullValue());
+        String invoiceNumber = "";
+        controller.add(invoiceWith(invoiceNumber));
+        assertThat(invoiceService.findBy(invoiceNumber), nullValue());
     }
 
-    private Invoice invoiceWith(String purchaseOrderNumber) {
-        return new InvoiceTestBuilder().withPurchaseOrderNumber(purchaseOrderNumber).build();
+    private Invoice invoiceWith(String invoiceNumber) {
+        return new InvoiceTestBuilder().withInvoiceNumber(invoiceNumber).build();
     }
 
     @Test

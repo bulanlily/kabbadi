@@ -17,7 +17,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Invoice {
 
-    public static final String PURCHASE_ORDER_NUMBER = "purchaseOrderNumber";
+    public static final String INVOICE_NUMBER = "invoiceNumber";
 
     private String invoiceNumber;
 
@@ -52,6 +52,6 @@ public class Invoice {
     private int id;
 
     public boolean valid() {
-        return purchaseOrderNumber!=null && !purchaseOrderNumber.isEmpty();
+        return invoiceNumber!=null && !invoiceNumber.isEmpty();
     }
 }
