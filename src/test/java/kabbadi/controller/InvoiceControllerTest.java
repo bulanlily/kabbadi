@@ -2,6 +2,7 @@ package kabbadi.controller;
 
 import kabbadi.IntegrationTest;
 import kabbadi.domain.Invoice;
+import kabbadi.domain.builder.InvoiceTestBuilder;
 import kabbadi.domain.db.GenericRepository;
 import kabbadi.service.InvoiceService;
 import org.hibernate.SessionFactory;
@@ -32,7 +33,7 @@ public class InvoiceControllerTest extends IntegrationTest {
 
         String invoiceNumber = "Invoice27";
 
-        controller.add(new Invoice.Builder().withInvoiceNumber(invoiceNumber).build());
+        controller.add(invoiceWith(invoiceNumber));
 
         assertThat(invoiceService.findBy(invoiceNumber).getInvoiceNumber(), equalTo(invoiceNumber));
 
@@ -43,10 +44,14 @@ public class InvoiceControllerTest extends IntegrationTest {
 
         String invoiceNumber = "";
 
-        controller.add(new Invoice.Builder().withInvoiceNumber(invoiceNumber).build());
+        controller.add(invoiceWith(invoiceNumber));
 
         assertThat(invoiceService.findBy(invoiceNumber), nullValue());
 
+    }
+
+    private Invoice invoiceWith(String invoiceNumber) {
+        return new InvoiceTestBuilder().withInvoiceNumber(invoiceNumber).build();
     }
 
     @Test

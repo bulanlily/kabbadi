@@ -32,8 +32,14 @@
 <div class="container" position="relative">
 <h1>New Invoice</h1>
         <form action="create" method="POST">
+
+            <div class="row">
+                <div class="span3">
+            <label for="purchaseOrderNumber">Purchase Order Number</label>
+            <input name="purchaseOrderNumber" required="true" />
+
             <label for="invoiceNumber">Invoice number</label>
-            <input name="invoiceNumber" required="true" />
+            <input name="invoiceNumber" />
 
             <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
             <input name="STPIApprovalNumberAndDate" />
@@ -49,9 +55,13 @@
             
             <label for="amountSTPIApproval">Amount STPI Approval</label>
             <input name="amountSTPIApproval" />
-            
+
+
             <label for="CIFValueInINR">CIF Value In INR</label>
             <input name="CIFValueInINR" />
+
+                </div>
+                <div class="span3">
             
             <label for="bondNumber">Bond Number</label>
             <input name="bondNumber" />
@@ -71,23 +81,34 @@
             <label for="dutyExempt">Duty Exempt</label>
             <input name="dutyExempt"  />
 
+
             <label for="twentyFivePercentDF">25% DF</label>
             <input name="twentyFivePercentDF" />
 
             <label for="CGApprovedInINR">CG Approved In INR</label>
             <input name="CGApprovedInINR" />
-
+                </div>
+                <div class="span3">
             <label for="dutyForgone">Duty Forgone</label>
             <input name="dutyForgone" />
 
-            <label for="office">Office</label>
-            <input name="office" />
+            <label for="runningBalance">Running Balance</label>
+            <input name="runningBalance" />
 
-            <label for="letters">Letters</label>
-            <input name="letters" />
+            <label for="outrightPurchase">Outright Purchase</label>
+            <input name="outrightPurchase" />
 
-            <label for="flags">Flags</label>
-            <input name="flags" />
+                        <div class="row">
+                            <div class="span">
+                                <label for="loanBasis">Loan Basis</label>
+                                <input name="loanBasis" type="checkbox" />
+                            </div>
+                            <div class="span">
+                                <label for="freeOfCharge">Free Of Charge</label>
+                                <input name="freeOfCharge" type="checkbox" />
+                            </div>
+
+                        </div>
 
             <label for="status">Status</label>
             <input name="status" />
@@ -95,11 +116,10 @@
             <label for="remarks">Remarks</label>
             <input name="remarks" />
 
-            <label for="purchaseOrderNumber">Purchase Order Number</label>
-            <input name="purchaseOrderNumber" />
-
             <label for="location">Location</label>
             <input name="location" />
+                </div>
+            </div>
             <br/>
 
             <input type="submit" value="Submit invoice" />

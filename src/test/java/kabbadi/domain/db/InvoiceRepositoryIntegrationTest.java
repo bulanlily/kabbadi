@@ -2,6 +2,7 @@ package kabbadi.domain.db;
 
 import kabbadi.IntegrationTest;
 import kabbadi.domain.Invoice;
+import kabbadi.domain.builder.InvoiceTestBuilder;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
@@ -31,11 +32,8 @@ public class InvoiceRepositoryIntegrationTest extends IntegrationTest {
     }
 
     private void addToDatabase(String invoiceNumber) {
-
         Session currentSession = sessionFactory.getCurrentSession();
-        String sql = "insert into Invoice (id, invoiceNumber) values (27, '" + invoiceNumber + "');";
-        currentSession.createSQLQuery(sql).executeUpdate();
-
+        currentSession.save(new InvoiceTestBuilder().withInvoiceNumber(invoiceNumber).build());
     }
 
     @Test
