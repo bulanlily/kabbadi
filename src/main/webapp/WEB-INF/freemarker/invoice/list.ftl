@@ -79,19 +79,6 @@
 
             </tbody>
         </table>
-        <!--<div class="page-header">-->
-        <!--<#if user??>-->
-        <!--<h1>Hahguujguygullo ${user.name}</h1>-->
-        <!--<#else>-->
-        <!--<#if username??>-->
-        <!--<h1>Sorry, didn't find a user called "${username}"</h1>-->
-        <!--</#if>-->
-
-        <!--<p><a href="?username=bill">Try me!!!!!</a></p>-->
-
-
-        <!--</#if>-->
-        <!--</div>-->
     </section>
 
 </div>

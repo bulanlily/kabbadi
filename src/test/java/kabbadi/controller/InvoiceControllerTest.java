@@ -60,7 +60,7 @@ public class InvoiceControllerTest extends IntegrationTest {
     @Test
     public void should_have_a_list() {
 
-        ModelAndView listView = controller.adminView();
+        ModelAndView listView = controller.list();
 
         assertThat(listView.getViewName(), equalTo("invoice/list"));
 

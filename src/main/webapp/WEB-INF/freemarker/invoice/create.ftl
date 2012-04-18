@@ -2,80 +2,105 @@
 <html>
 <head>
     <title>Add a new invoice | Kabbadi</title>
+    <link rel="javascript" href="/kabbadi/static/js/bootstrap.tab.js">
+    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+    </style>
+    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
+
 </head>
 <body>
-<p>New Invoice</p>
-<div>
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="#">Kabbadi</a>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="container" position="relative">
+<h1>New Invoice</h1>
         <form action="create" method="POST">
             <label for="invoiceNumber">Invoice number</label>
-            <input name="invoiceNumber" value="${invoice.invoiceNumber!}" />
+            <input name="invoiceNumber" required="true" />
 
             <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
-            <input name="STPIApprovalNumberAndDate" value="${invoice.STPIApprovalNumberAndDate!}" />
+            <input name="STPIApprovalNumberAndDate" />
 
             <label for="descriptionOfGoods">Description of Goods</label>
-            <input name="descriptionOfGoods" value="${invoice.descriptionOfGoods!}" />
+            <input name="descriptionOfGoods" />
             
             <label for="currency">Currency</label>
-            <input name="currency" value="${invoice.currency!}" />
+            <input name="currency" />
             
             <label for="foreignCurrency">Foreign Currency</label>
-            <input name="foreignCurrency" value="${invoice.foreignCurrency!}" />
+            <input name="foreignCurrency" />
             
             <label for="amountSTPIApproval">Amount STPI Approval</label>
-            <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}" />
+            <input name="amountSTPIApproval" />
             
             <label for="CIFValueInINR">CIF Value In INR</label>
-            <input name="CIFValueInINR" value="${invoice.CIFValueInINR!}" />
+            <input name="CIFValueInINR" />
             
             <label for="bondNumber">Bond Number</label>
-            <input name="bondNumber" value="${invoice.bondNumber!}" />
+            <input name="bondNumber" />
 
             <label for="bondDate">Bond Date</label>
-            <input name="bondDate" value="${invoice.bondDate!}" />
+            <input name="bondDate" type="date"/>
 
             <label for="billOfEntryNumber">Bill of Entry Number</label>
-            <input name="billOfEntryNumber" value="${invoice.billOfEntryNumber!}" />
+            <input name="billOfEntryNumber" />
 
             <label for="billOfEntryDate">Bill of Entry Date</label>
-            <input name="billOfEntryDate" value="${invoice.billOfEntryDate!}" />
+            <input name="billOfEntryDate" type="date" />
 
             <label for="assessableValueInINR">Assessable Value In INR</label>
-            <input name="assessableValueInINR" value="${invoice.assessableValueInINR!}" />
+            <input name="assessableValueInINR" />
 
             <label for="dutyExempt">Duty Exempt</label>
-            <input name="dutyExempt" value="${invoice.dutyExempt!}" />
+            <input name="dutyExempt"  />
 
             <label for="twentyFivePercentDF">25% DF</label>
-            <input name="twentyFivePercentDF" value="${invoice.twentyFivePercentDF!}" />
+            <input name="twentyFivePercentDF" />
 
             <label for="CGApprovedInINR">CG Approved In INR</label>
-            <input name="CGApprovedInINR" value="${invoice.CGApprovedInINR!}" />
+            <input name="CGApprovedInINR" />
 
             <label for="dutyForgone">Duty Forgone</label>
-            <input name="dutyForgone" value="${invoice.dutyForgone!}" />
+            <input name="dutyForgone" />
 
             <label for="office">Office</label>
-            <input name="office" value="${invoice.office!}" />
+            <input name="office" />
 
             <label for="letters">Letters</label>
-            <input name="letters" value="${invoice.letters!}" />
+            <input name="letters" />
 
             <label for="flags">Flags</label>
-            <input name="flags" value="${invoice.flags!}" />
+            <input name="flags" />
 
             <label for="status">Status</label>
-            <input name="status" value="${invoice.status!}" />
+            <input name="status" />
 
             <label for="remarks">Remarks</label>
-            <input name="remarks" value="${invoice.remarks!}" />
+            <input name="remarks" />
 
             <label for="purchaseOrderNumber">Purchase Order Number</label>
-            <input name="purchaseOrderNumber" value="${invoice.purchaseOrderNumber!}" />
+            <input name="purchaseOrderNumber" />
 
             <label for="location">Location</label>
-            <input name="location" value="${invoice.location!}" />
-                        
+            <input name="location" />
+            <br/>
 
             <input type="submit" value="Submit invoice" />
         </form>
