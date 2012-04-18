@@ -6,9 +6,9 @@
 <body>
 <p>New Invoice</p>
 <div>
-        <form action="/kabbadi/invoice/new" method="POST">
+        <form action="create" method="POST">
             <label for="invoiceNumber">Invoice number</label>
-            <input name="invoice.invoiceNumber" value="${invoice.invoiceNumber!}" />
+            <input name="invoiceNumber" value="${invoice.invoiceNumber!}" />
 
             <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
             <input name="STPIApprovalNumberAndDate" value="${invoice.STPIApprovalNumberAndDate!}" />

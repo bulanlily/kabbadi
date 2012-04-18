@@ -13,7 +13,6 @@ import org.springframework.web.servlet.ModelAndView;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.mock;
 
 public class InvoiceControllerTest extends IntegrationTest {
 
@@ -33,7 +32,7 @@ public class InvoiceControllerTest extends IntegrationTest {
 
         String invoiceNumber = "Invoice27";
 
-        controller.add(invoiceNumber);
+        controller.add(new Invoice.Builder().withInvoiceNumber(invoiceNumber).build());
 
         assertThat(invoiceService.findBy(invoiceNumber).getInvoiceNumber(), equalTo(invoiceNumber));
 
@@ -44,7 +43,7 @@ public class InvoiceControllerTest extends IntegrationTest {
 
         String invoiceNumber = "";
 
-        controller.add(invoiceNumber);
+        controller.add(new Invoice.Builder().withInvoiceNumber(invoiceNumber).build());
 
         assertThat(invoiceService.findBy(invoiceNumber), nullValue());
 

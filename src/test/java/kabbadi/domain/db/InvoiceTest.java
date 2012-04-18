@@ -35,7 +35,7 @@ public class InvoiceTest {
                 .withRemarks("Remarks")
                 .withPurchaseOrderNumber("orderNumber123")
                 .withLocation("TWU")
-                .buildInvoice();
+                .build();
 
         assertThat(invoice.getInvoiceNumber(), equalTo("invoice27"));
         assertThat(invoice.getBondDate(), equalTo(new LocalDate(2007, 11, 20).toDateMidnight().toDate()));
@@ -45,7 +45,7 @@ public class InvoiceTest {
     public void should_build_invoice_with_partial_data() {
         Invoice invoice = new Invoice.Builder()
                 .withInvoiceNumber("invoice27")
-                .buildInvoice();
+                .build();
 
         assertThat(invoice.getInvoiceNumber(), equalTo("invoice27"));
         assertThat(invoice.getBondDate(), equalTo(null));
