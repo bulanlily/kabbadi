@@ -44,8 +44,9 @@ public class InvoiceRepositoryIntegrationTest extends IntegrationTest {
         GenericRepository<Invoice> repository = new GenericRepository<Invoice>(sessionFactory, Invoice.class);
         repository.save(new Invoice());
         repository.save(new Invoice());
+        repository.save(new Invoice());
 
-        assertThat(repository.list().size(), equalTo(2));
+        assertThat(repository.list().size(), equalTo(3));
 
 
     }

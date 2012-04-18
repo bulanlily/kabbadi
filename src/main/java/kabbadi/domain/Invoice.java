@@ -28,8 +28,8 @@ public class Invoice {
     private BigDecimal amountSTPIApproval;
     private BigDecimal CIFValueInINR;
     private String bondNumber;
-
     private Date bondDate;
+
     private String billOfEntryNumber;
     private Date billOfEntryDate;
     private BigDecimal assessableValueInINR;
@@ -38,15 +38,26 @@ public class Invoice {
     private BigDecimal CGApprovedInINR;
     private BigDecimal dutyForgone;
     private String office;
-
     //TODO clarify what are those letters
     private String letters;
 
     private String flags;
+
     private String status;
     private String remarks;
     private String purchaseOrderNumber;
     private String location;
+    
+    //Finance Fields
+    private Date dateOfInvoice;
+    private String supplierNameAndAddress;
+
+    //TODO Finance Calculated fields
+    // openingPurchaseValueAsOnApril01
+    // additionsDuringTheYear
+    // deletionDuringTheYear
+    // totalPurchaseValueOnDecember31
+    // totalDepreciation
 
 
     @Id
