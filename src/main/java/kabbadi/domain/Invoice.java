@@ -6,8 +6,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -17,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 public class Invoice {
 
-    public static final String INVOICE_NUMBER_PROPERTY = "invoiceNumber";
+    public static final String INVOICE_NUMBER = "invoiceNumber";
 
     private String invoiceNumber;
 
