@@ -49,14 +49,13 @@
             <tr>
 
                 <th></th>
+                <th>PO #</th>
                 <th>Invoice number</th>
-                <th>First</th>
-                <th>First</th>
-                <th>First</th>
-                <th>First</th>
-                <th>First</th>
-                <th>First</th>
-                <th>First</th>
+                <th>STPI Approval No/Date</th>
+                <th>Bond No</th>
+                <th>Bond Date</th>
+                <th>Amount as per STPI Approval</th>
+                <th>Location</th>
             </tr>
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
@@ -68,13 +67,12 @@
                             class="label" style="background-color:white"> <a
                             href="#">VIEW DETAILS</a></span></td>
                     <td style="width: 130px">${invoice.invoiceNumber!}</td>
-                    <td>Provides</td>
-                    <td>Provides</td>
-                    <td>Provides</td>
-                    <td>Provides</td>
-                    <td>Provides</td>
-                    <td>Provides</td>
-                    <td>Provides</td>
+                    <td>${invoice.invoiceNumber}</td>
+                    <td>${invoice.STPIApprovalNumberAndDate!}</td>
+                    <td>${invoice.bondNumber!}</td>
+                    <td>${invoice.bondDate!}</td>
+                    <td>${invoice.amountSTPIApproval!}</td>
+                    <td>${invoice.location!}</td>
                 </tr>
             </#list>
 
