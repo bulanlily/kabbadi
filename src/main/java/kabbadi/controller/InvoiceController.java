@@ -6,10 +6,7 @@ import kabbadi.spring.util.NullSafeDatePropertyEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -36,7 +33,7 @@ public class InvoiceController {
     public ModelAndView add(@ModelAttribute Invoice invoice) {
         if (invoice.valid()) {
             invoiceService.save(invoice);
-            return new ModelAndView(new RedirectView("/invoice/list", true));
+            return new ModelAndView(new RedirectView("/invoice/list/admin", true));
         }
         return new ModelAndView(new RedirectView("/invoice/create", true));
     }
@@ -46,19 +43,12 @@ public class InvoiceController {
         return new ModelAndView("invoice/create", "invoice", new Invoice());
     }
 
-    @RequestMapping(value = "invoice/listAdmin", method = RequestMethod.GET)
-    public ModelAndView listAdmin() {
-        ModelAndView modelAndView = new ModelAndView("invoice/listAdmin");
+    @RequestMapping(value = "invoice/list/{role}", method = RequestMethod.GET)
+    public ModelAndView list(@PathVariable String role) {
+        ModelAndView modelAndView = new ModelAndView("/invoice/list/"+role);
         List<Invoice> invoices = invoiceService.list();
         modelAndView.addObject("invoices", invoices);
         return modelAndView;
     }
 
-    @RequestMapping(value = "invoice/listFinance", method = RequestMethod.GET)
-    public ModelAndView listFinance() {
-        ModelAndView modelAndView = new ModelAndView("invoice/listFinance");
-        List<Invoice> invoices = invoiceService.list();
-        modelAndView.addObject("invoices", invoices);
-        return modelAndView;
-    }
 }

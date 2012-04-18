@@ -57,9 +57,9 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
     @Test
     public void should_have_a_list_for_admin_member() {
 
-        ModelAndView listView = controller.listAdmin();
+        ModelAndView listView = controller.list("admin");
 
-        assertThat(listView.getViewName(), equalTo("invoice/listAdmin"));
+        assertThat(listView.getViewName(), equalTo("invoice/list/admin"));
 
     }
 
@@ -74,9 +74,9 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
 
     @Test
     public void should_have_a_list_for_finance_member(){
-         ModelAndView listView = controller.listFinance();
+         ModelAndView listView = controller.list("finance");
 
-        assertThat(listView.getViewName(), equalTo("invoice/listFinance"));
+        assertThat(listView.getViewName(), equalTo("invoice/list/finance"));
 
     }
 }

@@ -35,95 +35,95 @@
 
             <div class="row">
                 <div class="span3">
-            <label for="purchaseOrderNumber">Purchase Order Number</label>
-            <input name="purchaseOrderNumber"  />
+                    <label for="purchaseOrderNumber">Purchase Order Number</label>
+                    <input name="purchaseOrderNumber"  />
 
-            <label for="invoiceNumber">Invoice number *</label>
-            <input name="invoiceNumber" required="true"/>
+                    <label for="invoiceNumber">Invoice number *</label>
+                    <input name="invoiceNumber" required="true"/>
 
-            <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
-            <input name="STPIApprovalNumberAndDate" />
+                    <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
+                    <input name="STPIApprovalNumberAndDate" />
 
-            <label for="descriptionOfGoods">Description of Goods</label>
-            <input name="descriptionOfGoods" />
-            
-            <label for="currency">Currency</label>
-            <input name="currency" />
-            
-            <label for="foreignCurrency">Foreign Currency</label>
-            <input name="foreignCurrency" />
-            
-            <label for="amountSTPIApproval">Amount STPI Approval</label>
-            <input name="amountSTPIApproval" />
+                    <label for="descriptionOfGoods">Description of Goods</label>
+                    <input name="descriptionOfGoods" />
+
+                    <label for="currency">Currency</label>
+                    <input name="currency" />
+
+                    <label for="foreignCurrency">Foreign Currency</label>
+                    <input name="foreignCurrency" />
+
+                    <label for="amountSTPIApproval">Amount STPI Approval</label>
+                    <input name="amountSTPIApproval" />
 
 
-            <label for="CIFValueInINR">CIF Value In INR</label>
-            <input name="CIFValueInINR" />
+                    <label for="CIFValueInINR">CIF Value In INR</label>
+                    <input name="CIFValueInINR" />
 
                 </div>
                 <div class="span3">
-            
-            <label for="bondNumber">Bond Number</label>
-            <input name="bondNumber" />
 
-            <label for="bondDate">Bond Date</label>
-            <input name="bondDate" type="date"/>
+                    <label for="bondNumber">Bond Number</label>
+                    <input name="bondNumber" />
 
-            <label for="billOfEntryNumber">Bill of Entry Number</label>
-            <input name="billOfEntryNumber" />
+                    <label for="bondDate">Bond Date</label>
+                    <input name="bondDate" type="date"/>
 
-            <label for="billOfEntryDate">Bill of Entry Date</label>
-            <input name="billOfEntryDate" type="date" />
+                    <label for="billOfEntryNumber">Bill of Entry Number</label>
+                    <input name="billOfEntryNumber" />
 
-            <label for="assessableValueInINR">Assessable Value In INR</label>
-            <input name="assessableValueInINR" />
+                    <label for="billOfEntryDate">Bill of Entry Date</label>
+                    <input name="billOfEntryDate" type="date" />
 
-            <label for="dutyExempt">Duty Exempt</label>
-            <input name="dutyExempt"  />
+                    <label for="assessableValueInINR">Assessable Value In INR</label>
+                    <input name="assessableValueInINR" />
+
+                    <label for="dutyExempt">Duty Exempt</label>
+                    <input name="dutyExempt"  />
 
 
-            <label for="twentyFivePercentDF">25% DF</label>
-            <input name="twentyFivePercentDF" />
+                    <label for="twentyFivePercentDF">25% DF</label>
+                    <input name="twentyFivePercentDF" />
 
-            <label for="CGApprovedInINR">CG Approved In INR</label>
-            <input name="CGApprovedInINR" />
+                    <label for="CGApprovedInINR">CG Approved In INR</label>
+                    <input name="CGApprovedInINR" />
                 </div>
                 <div class="span3">
-            <label for="dutyForgone">Duty Forgone</label>
-            <input name="dutyForgone" />
+                    <label for="dutyForgone">Duty Forgone</label>
+                    <input name="dutyForgone" />
 
-            <label for="runningBalance">Running Balance</label>
-            <input name="runningBalance" />
+                    <label for="runningBalance">Running Balance</label>
+                    <input name="runningBalance" />
 
-            <label for="outrightPurchase">Outright Purchase</label>
-            <input name="outrightPurchase" />
+                    <label for="outrightPurchase">Outright Purchase</label>
+                    <input name="outrightPurchase" />
 
-                        <div class="row">
-                            <div class="span">
-                                <label for="loanBasis">Loan Basis</label>
-                                <input name="loanBasis" type="checkbox" />
-                            </div>
-                            <div class="span">
-                                <label for="freeOfCharge">Free Of Charge</label>
-                                <input name="freeOfCharge" type="checkbox" />
-                            </div>
-
+                    <div class="row">
+                        <div class="span">
+                            <label for="loanBasis">Loan Basis</label>
+                            <input name="loanBasis" type="checkbox" />
+                        </div>
+                        <div class="span">
+                            <label for="freeOfCharge">Free Of Charge</label>
+                            <input name="freeOfCharge" type="checkbox" />
                         </div>
 
-            <label for="status">Status</label>
-            <input name="status" />
+                    </div>
 
-            <label for="remarks">Remarks</label>
-            <input name="remarks" />
+                    <label for="status">Status</label>
+                    <input name="status" />
 
-            <label for="location">Location</label>
-            <input name="location" />
+                    <label for="remarks">Remarks</label>
+                    <input name="remarks" />
+
+                    <label for="location">Location</label>
+                    <input name="location" />
                 </div>
             </div>
             <br/>
 
             <input type="submit" value="Submit invoice" />
-            <a href="list"><input type="button" value="Cancel" /></a>
+            <a href="list/admin"><input type="button" value="Cancel" /></a>
         </form>
 </div>
 </body>
