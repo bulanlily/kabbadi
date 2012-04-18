@@ -1,14 +1,20 @@
 package kabbadi.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
 @Access(AccessType.FIELD)
+@Getter
+@Setter
+@NoArgsConstructor
 public class Invoice {
 
     public static final String INVOICE_NUMBER_PROPERTY = "invoiceNumber";
@@ -46,19 +52,6 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Deprecated
-    public Invoice() {
-        invoiceNumber = "";
-    }
-
-    public String getInvoiceNumber() {
-        return invoiceNumber;
-    }
-
-    public Date getBondDate() {
-        return bondDate;
-    }
-
     public static class Builder {
         public static final String DATE_FORMAT = "dd/MM/yyyy";
         private Invoice invoice;
@@ -83,7 +76,7 @@ public class Invoice {
         }
 
         public Builder withCurrency(String currencyCode) {
-            invoice.currency  = currencyCode;
+            invoice.currency = currencyCode;
             return this;
         }
 
@@ -110,8 +103,8 @@ public class Invoice {
         public Builder withBondDate(String date) {
             try {
                 invoice.bondDate = new SimpleDateFormat(DATE_FORMAT).parse(date);
+            } catch (ParseException ignored) {
             }
-            catch (ParseException ignored) {}
             return this;
         }
 
@@ -123,8 +116,8 @@ public class Invoice {
         public Builder withBillOfEntryDate(String date) {
             try {
                 invoice.billOfEntryDate = new SimpleDateFormat(DATE_FORMAT).parse(date);
+            } catch (ParseException ignored) {
             }
-            catch (ParseException ignored) {}
             return this;
         }
 

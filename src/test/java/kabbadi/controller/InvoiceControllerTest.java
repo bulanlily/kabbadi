@@ -7,26 +7,13 @@ import kabbadi.service.InvoiceService;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockHttpServletRequest;
-import org.springframework.mock.web.MockHttpServletResponse;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
-
-import javax.persistence.MapsId;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
-import static org.junit.matchers.JUnitMatchers.containsString;
-import static org.mockito.Matchers.contains;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class InvoiceControllerTest extends IntegrationTest {
 
@@ -48,7 +35,7 @@ public class InvoiceControllerTest extends IntegrationTest {
 
         controller.add(invoiceNumber);
 
-        assertThat(invoiceService.getInvoice(invoiceNumber).getInvoiceNumber(), equalTo(invoiceNumber));
+        assertThat(invoiceService.findBy(invoiceNumber).getInvoiceNumber(), equalTo(invoiceNumber));
 
     }
 
@@ -59,7 +46,7 @@ public class InvoiceControllerTest extends IntegrationTest {
 
         controller.add(invoiceNumber);
 
-        assertThat(invoiceService.getInvoice(invoiceNumber), nullValue());
+        assertThat(invoiceService.findBy(invoiceNumber), nullValue());
 
     }
 
