@@ -2,15 +2,19 @@ package kabbadi.controller;
 
 import kabbadi.domain.Invoice;
 import kabbadi.service.InvoiceService;
+import kabbadi.spring.util.NullSafeDatePropertyEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -21,6 +25,11 @@ public class InvoiceController {
     @Autowired
     public InvoiceController(InvoiceService invoiceService) {
         this.invoiceService = invoiceService;
+    }
+
+    @InitBinder
+    protected void initBinder(HttpServletRequest request,  ServletRequestDataBinder binder) throws Exception{
+        binder.registerCustomEditor(Date.class,new NullSafeDatePropertyEditor());
     }
 
     @RequestMapping(value = "invoice/create", method = RequestMethod.POST)
@@ -40,10 +49,11 @@ public class InvoiceController {
     }
 
     @RequestMapping(value = "invoice/list", method = RequestMethod.GET)
-    public ModelAndView adminView() {
+    public ModelAndView list() {
         ModelAndView modelAndView = new ModelAndView("invoice/list");
         List<Invoice> invoices = invoiceService.list();
-        modelAndView.addObject("invoices",invoices);
+        modelAndView.addObject("invoices", invoices);
         return modelAndView;
     }
+
 }

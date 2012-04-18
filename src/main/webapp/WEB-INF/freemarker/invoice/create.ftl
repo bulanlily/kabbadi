@@ -8,7 +8,7 @@
 <div>
         <form action="create" method="POST">
             <label for="invoiceNumber">Invoice number</label>
-            <input name="invoiceNumber" value="${invoice.invoiceNumber!}" />
+            <input name="invoiceNumber" value="${invoice.invoiceNumber!}" required="true" />
 
             <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
             <input name="STPIApprovalNumberAndDate" value="${invoice.STPIApprovalNumberAndDate!}" />
@@ -32,13 +32,13 @@
             <input name="bondNumber" value="${invoice.bondNumber!}" />
 
             <label for="bondDate">Bond Date</label>
-            <input name="bondDate" value="${invoice.bondDate!}" />
+            <input name="bondDate" value="${invoice.bondDate!}" type="date"/>
 
             <label for="billOfEntryNumber">Bill of Entry Number</label>
             <input name="billOfEntryNumber" value="${invoice.billOfEntryNumber!}" />
 
             <label for="billOfEntryDate">Bill of Entry Date</label>
-            <input name="billOfEntryDate" value="${invoice.billOfEntryDate!}" />
+            <input name="billOfEntryDate" value="${invoice.billOfEntryDate!}" type="date" />
 
             <label for="assessableValueInINR">Assessable Value In INR</label>
             <input name="assessableValueInINR" value="${invoice.assessableValueInINR!}" />
