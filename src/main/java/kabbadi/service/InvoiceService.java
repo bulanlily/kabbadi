@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @NoArgsConstructor
 public class InvoiceService {
@@ -27,5 +29,10 @@ public class InvoiceService {
     @Transactional
     public void save(Invoice invoice) {
         invoiceRepository.save(invoice);
+    }
+
+    @Transactional
+    public List<Invoice> list() {
+        return invoiceRepository.list();
     }
 }

@@ -4,11 +4,13 @@ import kabbadi.domain.Invoice;
 import kabbadi.service.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.util.HashMap;
+import java.util.List;
 
 @Controller
 public class InvoiceController {
@@ -33,6 +35,14 @@ public class InvoiceController {
 
     @RequestMapping(value = "invoice/create", method = RequestMethod.GET)
     public ModelAndView create() {
-        return new ModelAndView("invoice/create", "invoice", new HashMap());
+        return new ModelAndView("invoice/create", "invoice", new Invoice());
+    }
+
+    @RequestMapping(value = "invoice/list", method = RequestMethod.GET)
+    public ModelAndView adminView() {
+        ModelAndView modelAndView = new ModelAndView("invoice/list");
+        List<Invoice> invoices = invoiceService.list();
+        modelAndView.addObject("invoices",invoices);
+        return modelAndView;
     }
 }

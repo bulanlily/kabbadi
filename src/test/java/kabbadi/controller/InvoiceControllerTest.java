@@ -57,6 +57,15 @@ public class InvoiceControllerTest extends IntegrationTest {
 
     }
 
+    @Test
+    public void should_have_a_list() {
+
+        ModelAndView listView = controller.adminView();
+
+        assertThat(listView.getViewName(), equalTo("invoice/list"));
+
+    }
+
     private InvoiceController buildInvoiceController(InvoiceService invoiceService) {
         return new InvoiceController(invoiceService);
     }
