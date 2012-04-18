@@ -1,5 +1,6 @@
 package kabbadi.controller;
 
+import kabbadi.domain.Invoice;
 import kabbadi.domain.User;
 import kabbadi.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,13 @@ public class HomeController {
         this.userService = userService;
     }
 
+    @RequestMapping(value = "/uispike", method = RequestMethod.GET)
+    public ModelAndView uispike() {
+        ModelAndView modelAndView = new ModelAndView("uispike");
+        Object[] invoices= new Object[40];
+        modelAndView.addObject("invoices",invoices);
+        return modelAndView;
+    }
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView homepage(@RequestParam(value = "username", defaultValue = "") String username) {
         ModelAndView modelAndView = new ModelAndView("home");
