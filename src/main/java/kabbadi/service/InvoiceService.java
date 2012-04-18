@@ -23,7 +23,7 @@ public class InvoiceService {
 
     @Transactional
     public Invoice findBy(String invoiceNumber) {
-        return invoiceRepository.findBy(Invoice.INVOICE_NUMBER_PROPERTY, invoiceNumber);
+        return invoiceRepository.findBy(Invoice.INVOICE_NUMBER, invoiceNumber);
     }
 
     @Transactional

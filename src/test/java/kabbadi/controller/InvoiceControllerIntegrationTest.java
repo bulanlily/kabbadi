@@ -2,6 +2,7 @@ package kabbadi.controller;
 
 import kabbadi.IntegrationTest;
 import kabbadi.domain.Invoice;
+import kabbadi.domain.builder.InvoiceTestBuilder;
 import kabbadi.domain.db.GenericRepository;
 import kabbadi.service.InvoiceService;
 import org.hibernate.SessionFactory;
@@ -14,7 +15,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
-public class InvoiceControllerTest extends IntegrationTest {
+public class InvoiceControllerIntegrationTest extends IntegrationTest {
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -29,24 +30,20 @@ public class InvoiceControllerTest extends IntegrationTest {
 
     @Test
     public void should_add_a_new_invoice_in_the_database() throws Exception {
-
-        String invoiceNumber = "Invoice27";
-
-        controller.add(new Invoice.Builder().withInvoiceNumber(invoiceNumber).build());
-
+        String invoiceNumber = "123456";
+        controller.add(invoiceWith(invoiceNumber));
         assertThat(invoiceService.findBy(invoiceNumber).getInvoiceNumber(), equalTo(invoiceNumber));
-
     }
 
     @Test
-    public void should_not_add_an_invoice_without_an_invoice_number() throws Exception {
-
+    public void should_not_add_an_invoice_without_mandatory_fields() throws Exception {
         String invoiceNumber = "";
-
-        controller.add(new Invoice.Builder().withInvoiceNumber(invoiceNumber).build());
-
+        controller.add(invoiceWith(invoiceNumber));
         assertThat(invoiceService.findBy(invoiceNumber), nullValue());
+    }
 
+    private Invoice invoiceWith(String invoiceNumber) {
+        return new InvoiceTestBuilder().withInvoiceNumber(invoiceNumber).build();
     }
 
     @Test
