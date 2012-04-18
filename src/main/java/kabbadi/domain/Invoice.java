@@ -2,7 +2,6 @@ package kabbadi.domain;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -47,9 +46,7 @@ public class Invoice {
     private int id;
 
     @Deprecated
-    public Invoice() {
-        invoiceNumber = "";
-    }
+    public Invoice() { }
 
     public String getInvoiceNumber() {
         return invoiceNumber;
@@ -57,6 +54,10 @@ public class Invoice {
 
     public Date getBondDate() {
         return bondDate;
+    }
+
+    public String getSTPIApprovalNumberAndDate() {
+        return STPIApprovalNumberAndDate;
     }
 
     public static class Builder {
@@ -83,7 +84,7 @@ public class Invoice {
         }
 
         public Builder withCurrency(String currencyCode) {
-            invoice.currency  = currencyCode;
+            invoice.currency = currencyCode;
             return this;
         }
 
@@ -110,8 +111,8 @@ public class Invoice {
         public Builder withBondDate(String date) {
             try {
                 invoice.bondDate = new SimpleDateFormat(DATE_FORMAT).parse(date);
+            } catch (ParseException ignored) {
             }
-            catch (ParseException ignored) {}
             return this;
         }
 
@@ -123,8 +124,8 @@ public class Invoice {
         public Builder withBillOfEntryDate(String date) {
             try {
                 invoice.billOfEntryDate = new SimpleDateFormat(DATE_FORMAT).parse(date);
+            } catch (ParseException ignored) {
             }
-            catch (ParseException ignored) {}
             return this;
         }
 
