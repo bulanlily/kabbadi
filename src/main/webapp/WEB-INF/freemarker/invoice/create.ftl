@@ -123,6 +123,7 @@
             <br/>
 
             <input type="submit" value="Submit invoice" />
+            <a href="list"><input type="button" value="Cancel" /></a>
         </form>
 </div>
 </body>
