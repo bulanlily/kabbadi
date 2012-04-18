@@ -1,5 +1,9 @@
 package kabbadi.domain;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -8,6 +12,9 @@ import java.util.Date;
 
 @Entity
 @Access(AccessType.FIELD)
+@Getter
+@Setter
+@NoArgsConstructor
 public class Invoice {
 
     public static final String INVOICE_NUMBER_PROPERTY = "invoiceNumber";
@@ -44,21 +51,6 @@ public class Invoice {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-    @Deprecated
-    public Invoice() { }
-
-    public String getInvoiceNumber() {
-        return invoiceNumber;
-    }
-
-    public Date getBondDate() {
-        return bondDate;
-    }
-
-    public String getSTPIApprovalNumberAndDate() {
-        return STPIApprovalNumberAndDate;
-    }
 
     public static class Builder {
         public static final String DATE_FORMAT = "dd/MM/yyyy";
