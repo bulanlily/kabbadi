@@ -51,4 +51,12 @@ public class InvoiceController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "invoice/{invoiceID}/view", method = RequestMethod.GET)
+    public ModelAndView viewDetails(@PathVariable("invoiceID")String invoiceID) {
+        ModelAndView modelAndView = new ModelAndView("invoice/view");
+        Invoice invoice = invoiceService.findBy(invoiceID);
+        modelAndView.addObject("invoice", invoice);
+        return modelAndView;
+        }
+
 }

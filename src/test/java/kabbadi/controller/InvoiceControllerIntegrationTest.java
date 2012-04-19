@@ -62,8 +62,14 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
 
         assertThat(listView.getViewName(), equalTo("/invoice/list/admin"));
 
+    }
 
-
+    @Test
+    public void should_show_the_single_invoice_view_form(){
+        String invoiceNumber = "22";
+        controller.add(invoiceWith(invoiceNumber));
+        ModelAndView singleInvoiceView = controller.viewDetails("22");
+        assertThat(singleInvoiceView.getViewName(), equalTo("invoice/22/view"));
     }
 
 
