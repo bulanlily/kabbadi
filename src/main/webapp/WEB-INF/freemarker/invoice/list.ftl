@@ -58,7 +58,7 @@
                         <td style="width: 130px"><span class="label" style="background-color:white"><a
                                 href="#">EDIT</a></span> <span
                                 class="label" style="background-color:white"> <a
-                                href="#">VIEW DETAILS</a></span></td>
+                                href="<@spring.url "/invoice/${invoice.invoiceNumber}/view"/>">VIEW DETAILS</a></span></td>
                         <td style="width: 130px">${invoice.invoiceNumber!}</td>
                         <td>${invoice.invoiceNumber}</td>
                         <td>${invoice.STPIApprovalNumberAndDate!}</td>
