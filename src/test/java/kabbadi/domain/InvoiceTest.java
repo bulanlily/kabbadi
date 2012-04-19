@@ -3,7 +3,11 @@ package kabbadi.domain;
 import kabbadi.domain.builder.InvoiceTestBuilder;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class InvoiceTest {
@@ -17,6 +21,34 @@ public class InvoiceTest {
 
     private Invoice invoiceWithNumber(String invoiceNumber) {
         return new InvoiceTestBuilder().withInvoiceNumber(invoiceNumber).build();
+    }
+
+    @Test
+    public void should_calculate_the_total_purchase_value(){
+        assertThat(invoiceWithFinanceValues(1d,1d,1d).totalPurchaseValue(), equalTo(new BigDecimal(1)));
+        assertThat(invoiceWithFinanceValues(2d,3d,1d).totalPurchaseValue(), equalTo(new BigDecimal(4)));
+        assertThat(invoiceWithFinanceValues(2d,2d,5d).totalPurchaseValue(), equalTo(new BigDecimal(-1)));
+    }
+
+    @Test
+    public void should_not_calculate_the_total_purchase_when_the_required_fields_are_empty() {
+        assertThat(new Invoice().totalPurchaseValue(), is(nullValue()));
+        assertThat(invalidInvoiceWithFinanceValues().totalPurchaseValue(), is(nullValue()));
+    }
+
+    private Invoice invalidInvoiceWithFinanceValues() {
+        Invoice invoice = new Invoice();
+        invoice.financeDetails.setAdditionsDuringTheYear(new BigDecimal(1));
+        return invoice;
+    }
+
+    private Invoice invoiceWithFinanceValues(Double openingValue, Double additions, Double deletions) {
+        Invoice invoice = new Invoice();
+        invoice.financeDetails.setOpeningPurchaseValueAsOnApril01(new BigDecimal(openingValue));
+        invoice.financeDetails.setAdditionsDuringTheYear(new BigDecimal(additions));
+        invoice.financeDetails.setDeletionsDuringTheYear(new BigDecimal(deletions));
+
+        return invoice;
     }
 
 }

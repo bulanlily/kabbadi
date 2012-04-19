@@ -12,7 +12,6 @@ import java.util.Date;
 @Access(AccessType.FIELD)
 @Getter
 @Setter
-@NoArgsConstructor
 public class Invoice {
 
     public static final String INVOICE_NUMBER = "invoiceNumber";
@@ -43,10 +42,9 @@ public class Invoice {
     private String remarks;
     private String purchaseOrderNumber;
     private String location;
-    
-    private Date dateOfInvoice;
-    private String supplierNameAndAddress;
 
+    @Embedded
+    FinanceDetails financeDetails;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -55,4 +53,14 @@ public class Invoice {
     public boolean valid() {
         return invoiceNumber!=null && !invoiceNumber.isEmpty();
     }
+
+    public BigDecimal totalPurchaseValue() {
+        return  financeDetails.totalPurchaseValue();
+    }
+
+    public Invoice() {
+        if(financeDetails == null)
+            financeDetails = new FinanceDetails();
+    }
+
 }
