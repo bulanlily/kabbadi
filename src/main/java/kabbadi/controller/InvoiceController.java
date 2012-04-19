@@ -43,9 +43,9 @@ public class InvoiceController {
         return new ModelAndView("invoice/create", "invoice", new Invoice());
     }
 
-    @RequestMapping(value = "invoice/list/{role}", method = RequestMethod.GET)
-    public ModelAndView list(@PathVariable String role) {
-        ModelAndView modelAndView = new ModelAndView("/invoice/list/"+role);
+    @RequestMapping(value = "invoice/list", method = RequestMethod.GET)
+    public ModelAndView list() {
+        ModelAndView modelAndView = new ModelAndView("invoice/list");
         List<Invoice> invoices = invoiceService.list();
         modelAndView.addObject("invoices", invoices);
         return modelAndView;
