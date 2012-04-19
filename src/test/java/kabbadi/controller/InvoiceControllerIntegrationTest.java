@@ -55,13 +55,13 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
     }
 
     @Test
-    public void should_have_a_list() {
+    public void should_list_the_invoices() {
 
-        ModelAndView listView = controller.listAdmin();
-
+        ModelAndView listView = controller.list();
         assertThat(listView.getViewName(), equalTo("invoice/list"));
 
     }
+
 
     private InvoiceController buildInvoiceController(InvoiceService invoiceService) {
         return new InvoiceController(invoiceService);
@@ -71,4 +71,5 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
         return new InvoiceService(new GenericRepository<Invoice>(sessionFactory, Invoice.class));
 
     }
+
 }
