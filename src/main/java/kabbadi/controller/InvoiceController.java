@@ -33,7 +33,7 @@ public class InvoiceController {
     public ModelAndView add(@ModelAttribute Invoice invoice) {
         if (invoice.valid()) {
             invoiceService.save(invoice);
-            return new ModelAndView(new RedirectView("/invoice/list/admin", true));
+            return new ModelAndView(new RedirectView("/invoice/list", true));
         }
         return new ModelAndView(new RedirectView("/invoice/create", true));
     }
@@ -43,9 +43,9 @@ public class InvoiceController {
         return new ModelAndView("invoice/create", "invoice", new Invoice());
     }
 
-    @RequestMapping(value = "invoice/list/{role}", method = RequestMethod.GET)
-    public ModelAndView list(@PathVariable String role) {
-        ModelAndView modelAndView = new ModelAndView("/invoice/list/"+role);
+    @RequestMapping(value = "invoice/list", method = RequestMethod.GET)
+    public ModelAndView list() {
+        ModelAndView modelAndView = new ModelAndView("invoice/list");
         List<Invoice> invoices = invoiceService.list();
         modelAndView.addObject("invoices", invoices);
         return modelAndView;

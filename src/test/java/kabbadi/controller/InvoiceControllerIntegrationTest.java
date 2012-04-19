@@ -55,21 +55,20 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
     }
 
     @Test
-    public void should_have_a_list_for_admin_member() {
-
-        ModelAndView listView = controller.list("admin");
-
-
-        assertThat(listView.getViewName(), equalTo("/invoice/list/admin"));
-
-    }
-
-    @Test
     public void should_show_the_single_invoice_view_form(){
         String invoiceNumber = "22";
         controller.add(invoiceWith(invoiceNumber));
         ModelAndView singleInvoiceView = controller.viewDetails("22");
-        assertThat(singleInvoiceView.getViewName(), equalTo("invoice/22/view"));
+        assertThat(singleInvoiceView.getViewName(), equalTo("invoice/view"));
+    }
+
+    @Test
+    public void should_list_the_invoices() {
+
+        ModelAndView listView = controller.list();
+        assertThat(listView.getViewName(), equalTo("invoice/list"));
+
+
     }
 
 
@@ -79,15 +78,6 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
 
     private InvoiceService buildInvoiceService() {
         return new InvoiceService(new GenericRepository<Invoice>(sessionFactory, Invoice.class));
-
-    }
-
-
-    @Test
-    public void should_have_a_list_for_finance_member(){
-         ModelAndView listView = controller.list("finance");
-
-        assertThat(listView.getViewName(), equalTo("/invoice/list/finance"));
 
     }
 
