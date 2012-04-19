@@ -58,7 +58,7 @@ public class Invoice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Integer id;
 
     public boolean valid() {
         return invoiceNumber!=null && !invoiceNumber.isEmpty();

@@ -35,6 +35,8 @@
 
             <div class="row">
                 <div class="span3">
+                    <input name="id" hidden="true"/>
+
                     <label for="purchaseOrderNumber">Purchase Order Number</label>
                     <input name="purchaseOrderNumber"  />
 

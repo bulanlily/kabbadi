@@ -50,7 +50,7 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
     public void should_show_new_invoice_form() throws Exception {
 
         ModelAndView createView = controller.create();
-        assertThat(createView.getViewName(), equalTo("invoice/create"));
+        assertThat(createView.getViewName(), equalTo("invoice/edit"));
 
     }
 

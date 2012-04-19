@@ -32,7 +32,7 @@ public class InvoiceController {
     @RequestMapping(value = "invoice/create", method = RequestMethod.POST)
     public ModelAndView add(@ModelAttribute Invoice invoice) {
         if (invoice.valid()) {
-            invoiceService.save(invoice);
+            invoiceService.saveOrUpdate(invoice);
             return new ModelAndView(new RedirectView("/invoice/list", true));
         }
         return new ModelAndView(new RedirectView("/invoice/create", true));
@@ -40,7 +40,13 @@ public class InvoiceController {
 
     @RequestMapping(value = "invoice/create", method = RequestMethod.GET)
     public ModelAndView create() {
-        return new ModelAndView("invoice/create", "invoice", new Invoice());
+        return new ModelAndView("invoice/edit", "invoice", new Invoice());
+    }
+
+
+    @RequestMapping(value = "invoice/edit/{id}", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable Integer id) {
+        return new ModelAndView("invoice/edit", "invoice", invoiceService.get(id));
     }
 
     @RequestMapping(value = "invoice/list", method = RequestMethod.GET)

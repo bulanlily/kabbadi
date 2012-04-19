@@ -20,6 +20,10 @@ public class GenericRepository<T> {
         this.type = type;
     }
 
+    public void saveOrUpdate(T o) {
+        getSession().saveOrUpdate(o);
+    }
+
     public T save(T o) {
         int id = (Integer) getSession().save(o);
         return get(id);

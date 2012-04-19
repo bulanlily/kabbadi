@@ -27,12 +27,17 @@ public class InvoiceService {
     }
 
     @Transactional
-    public void save(Invoice invoice) {
-        invoiceRepository.save(invoice);
+    public void saveOrUpdate(Invoice invoice) {
+        invoiceRepository.saveOrUpdate(invoice);
     }
 
     @Transactional
     public List<Invoice> list() {
         return invoiceRepository.list();
+    }
+
+    @Transactional(readOnly = true)
+    public Invoice get(Integer id) {
+        return invoiceRepository.get(id);
     }
 }
