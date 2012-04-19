@@ -81,6 +81,55 @@
         </table>
     </section>
 
+    <section id="gridCustomization">
+        <div class="page-header" align="right">
+            <a href="<@spring.url "/invoice/create" />" class="btn btn-inverse">Add New</a>
+            <button href="#" class="btn btn-inverse">Generate Report</button>
+        </div>
+
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+
+                <th></th>
+                <th>PO #</th>
+                <th>Invoice number</th>
+                <th>Date of Invoice</th>
+                <th>Supplier name and address</th>
+                <th>Opening purchase value as on April 01</th>
+                <th>Additions During the year</th>
+                <th>Deletion During the year</th>
+                <th>Total purchase value as on December 31</th>
+                <th>Total Depreciation</th>
+                <th>Location</th>
+            </tr>
+            </thead>
+            <tbody style="word-wrap:break-word, break-word: hyphenate">
+            <#list invoices as invoice>
+
+                <tr>
+                    <td style="width: 130px"><span class="label" style="background-color:white"><a
+                            href="#">EDIT</a></span> <span
+                            class="label" style="background-color:white"> <a
+                            href="#">VIEW DETAILS</a></span></td>
+                    <td style="width: 130px">${invoice.purchaseOrderNumber!}</td>
+                    <td>${invoice.invoiceNumber!}</td>
+                    <td>${invoice.dateOfInvoice!}</td>
+                    <td>${invoice.supplierNameAndAddress!}</td>
+                    <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
+                    <td>${invoice.additionsDuringTheYear!}</td>
+                    <td>${invoice.deletionDuringTheYear!}</td>
+                    <td>${invoice.totalPurchaseValueOnDecember31!}</td>
+                    <td>${invoice.totalDepreciation!}</td>
+                    <td>${invoice.location!}</td>
+                </tr>
+            </#list>
+
+
+            </tbody>
+        </table>
+    </section>
+
 </div>
 
 <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
