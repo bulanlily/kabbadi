@@ -121,13 +121,13 @@
 
         <tr>
             <td>Loan Basis</td>
-            <td><#if invoice.loanBasis></#if>True</td>
+            <td>${invoice.loanBasis!}</td>
 
         </tr>
 
         <tr>
             <td>Free Of Charge</td>
-            <td><#if invoice.freeOfCharge></#if>True</td>
+            <td>${invoice.freeOfCharge!}</td>
 
         </tr>
 

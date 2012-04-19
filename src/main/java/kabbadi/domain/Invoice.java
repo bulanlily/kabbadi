@@ -37,8 +37,8 @@ public class Invoice {
     private BigDecimal dutyForgone;
     private BigDecimal runningBalance;
     private BigDecimal outrightPurchase;
-    private boolean loanBasis;
-    private boolean freeOfCharge;
+    private BigDecimal loanBasis;
+    private BigDecimal freeOfCharge;
     private String status;
     private String remarks;
     private String purchaseOrderNumber;

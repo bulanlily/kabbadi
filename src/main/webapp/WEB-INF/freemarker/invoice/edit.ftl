@@ -100,17 +100,12 @@
                     <label for="outrightPurchase">Outright Purchase</label>
                     <input name="outrightPurchase" />
 
-                    <div class="row">
-                        <div class="span">
-                            <label for="loanBasis">Loan Basis</label>
-                            <input name="loanBasis" type="checkbox" />
-                        </div>
-                        <div class="span">
-                            <label for="freeOfCharge">Free Of Charge</label>
-                            <input name="freeOfCharge" type="checkbox" />
-                        </div>
+                    <label for="loanBasis">Loan Basis</label>
+                    <input name="loanBasis" />
 
-                    </div>
+
+                    <label for="freeOfCharge">Free Of Charge</label>
+                    <input name="freeOfCharge" />
 
                     <label for="status">Status</label>
                     <input name="status" />
