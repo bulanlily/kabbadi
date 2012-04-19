@@ -48,10 +48,12 @@ public class Invoice {
     private Date dateOfInvoice;
     private String supplierNameAndAddress;
 
+
+    private BigDecimal openingPurchaseValueAsOnApril01;
+    private BigDecimal additionsDuringTheYear;
+    private BigDecimal deletionsDuringTheYear;
+
     //TODO Finance Calculated fields
-    // openingPurchaseValueAsOnApril01
-    // additionsDuringTheYear
-    // deletionDuringTheYear
     // totalPurchaseValueOnDecember31
     // totalDepreciation
 
@@ -62,5 +64,12 @@ public class Invoice {
 
     public boolean valid() {
         return invoiceNumber!=null && !invoiceNumber.isEmpty();
+    }
+
+    public BigDecimal totalPurchaseValue() {
+        if(openingPurchaseValueAsOnApril01 == null || additionsDuringTheYear == null || deletionsDuringTheYear == null)
+            return null;
+
+        return openingPurchaseValueAsOnApril01.add(additionsDuringTheYear).subtract(deletionsDuringTheYear);
     }
 }

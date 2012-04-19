@@ -85,6 +85,8 @@
                 <th></th>
                 <th>PO #</th>
                 <th>Invoice number</th>
+                <th>Bond No</th>
+                <th>Bill of Entry No</th>
                 <th>Date of Invoice</th>
                 <th>Supplier name and address</th>
                 <th>Opening purchase value as on April 01</th>
@@ -105,12 +107,14 @@
                             href="#">VIEW DETAILS</a></span></td>
                     <td style="width: 130px">${invoice.purchaseOrderNumber!}</td>
                     <td>${invoice.invoiceNumber!}</td>
+                    <td>${invoice.bondNumber!}</td>
+                    <td>${invoice.billOfEntryNumber!}</td>
                     <td>${invoice.dateOfInvoice!}</td>
                     <td>${invoice.supplierNameAndAddress!}</td>
                     <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
                     <td>${invoice.additionsDuringTheYear!}</td>
                     <td>${invoice.deletionDuringTheYear!}</td>
-                    <td>${invoice.totalPurchaseValueOnDecember31!}</td>
+                    <td>${invoice.totalPurchaseValue()!}</td>
                     <td>${invoice.totalDepreciation!}</td>
                     <td>${invoice.location!}</td>
                 </tr>
