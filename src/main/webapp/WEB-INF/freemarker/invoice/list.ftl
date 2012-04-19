@@ -1,4 +1,5 @@
 <#import "/spring.ftl" as spring/>
+<#setting number_format="computer">
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,11 +56,15 @@
                 <#list invoices as invoice>
 
                     <tr>
-                        <td style="width: 130px"><span class="label" style="background-color:white"><a
-                                href="#">EDIT</a></span> <span
-                                class="label" style="background-color:white"> <a
-                                href="<@spring.url "/invoice/${invoice.invoiceNumber}/view"/>">VIEW DETAILS</a></span></td>
-                        <td style="width: 130px">${invoice.invoiceNumber!}</td>
+                        <td style="width: 130px">
+                            <span class="label" style="background-color:white">
+                                <a href="edit/${invoice.id}">EDIT</a>
+                            </span>
+                            <span class="label" style="background-color:white">
+                                <a href="<@spring.url '/invoice/${invoice.invoiceNumber}/view'/>">VIEW DETAILS</a>
+                            </span>
+                        </td>
+                        <td style="width: 130px">${invoice.purchaseOrderNumber!}</td>
                         <td>${invoice.invoiceNumber}</td>
                         <td>${invoice.STPIApprovalNumberAndDate!}</td>
                         <td>${invoice.bondNumber!}</td>
@@ -74,7 +79,7 @@
         <div id="finance" class="tab-pane fade">
 
         <div class="page-header" align="right">
-                        <a href="<@spring.url "/invoice/create"/>" class="btn btn-inverse">Add New</a>
+                        <a href="<@spring.url '/invoice/create'/>" class="btn btn-inverse">Add New</a>
                         <button href="#" class="btn btn-inverse">Generate Report</button>
                     </div>
 

@@ -44,16 +44,8 @@ public class Invoice {
     private String purchaseOrderNumber;
     private String location;
     
-    //Finance Fields
     private Date dateOfInvoice;
     private String supplierNameAndAddress;
-
-    //TODO Finance Calculated fields
-    // openingPurchaseValueAsOnApril01
-    // additionsDuringTheYear
-    // deletionDuringTheYear
-    // totalPurchaseValueOnDecember31
-    // totalDepreciation
 
 
     @Id

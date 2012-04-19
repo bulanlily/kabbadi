@@ -1,3 +1,6 @@
+<#import "/spring.ftl" as spring/>
+<#setting datetime_format="dd/MM/yyyy">
+<#setting number_format="computer">
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,96 +34,95 @@
 
 <div class="container" position="relative">
 <h1>New Invoice</h1>
-        <form action="create" method="POST">
+        <form action="<@spring.url '/invoice/save'/>" method="POST">
 
             <div class="row">
                 <div class="span3">
-                    <input name="id" hidden="true"/>
+                    <input name="id" type="hidden" value="${invoice.id!} "/>
 
                     <label for="purchaseOrderNumber">Purchase Order Number</label>
-                    <input name="purchaseOrderNumber"  />
+                    <input name="purchaseOrderNumber" value="${invoice.purchaseOrderNumber!}" />
 
                     <label for="invoiceNumber">Invoice number *</label>
-                    <input name="invoiceNumber" required="true"/>
+                    <input name="invoiceNumber" required="true" value="${invoice.invoiceNumber!}"/>
 
                     <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
-                    <input name="STPIApprovalNumberAndDate" />
+                    <input name="STPIApprovalNumberAndDate" value="${invoice.STPIApprovalNumberAndDate!}"/>
 
                     <label for="descriptionOfGoods">Description of Goods</label>
-                    <input name="descriptionOfGoods" />
+                    <input name="descriptionOfGoods" value="${invoice.descriptionOfGoods!}" />
 
                     <label for="currency">Currency</label>
-                    <input name="currency" />
+                    <input name="currency" value="${invoice.currency!}" />
 
                     <label for="foreignCurrency">Foreign Currency</label>
-                    <input name="foreignCurrency" />
+                    <input name="foreignCurrency" value="${invoice.foreignCurrency!}" />
 
                     <label for="amountSTPIApproval">Amount STPI Approval</label>
-                    <input name="amountSTPIApproval" />
+                    <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}" />
 
 
                     <label for="CIFValueInINR">CIF Value In INR</label>
-                    <input name="CIFValueInINR" />
+                    <input name="CIFValueInINR" value="${invoice.CIFValueInINR!}" />
 
                 </div>
                 <div class="span3">
 
                     <label for="bondNumber">Bond Number</label>
-                    <input name="bondNumber" />
+                    <input name="bondNumber" value="${invoice.bondNumber!}" />
 
                     <label for="bondDate">Bond Date</label>
-                    <input name="bondDate" type="date"/>
+                    <input name="bondDate" type="date" value="${invoice.bondDate!}" />
 
                     <label for="billOfEntryNumber">Bill of Entry Number</label>
-                    <input name="billOfEntryNumber" />
+                    <input name="billOfEntryNumber" value="${invoice.billOfEntryNumber!}" />
 
                     <label for="billOfEntryDate">Bill of Entry Date</label>
-                    <input name="billOfEntryDate" type="date" />
+                    <input name="billOfEntryDate" type="date" value="${invoice.billOfEntryDate!}" />
 
                     <label for="assessableValueInINR">Assessable Value In INR</label>
-                    <input name="assessableValueInINR" />
+                    <input name="assessableValueInINR" value="${invoice.assessableValueInINR!}" />
 
                     <label for="dutyExempt">Duty Exempt</label>
-                    <input name="dutyExempt"  />
+                    <input name="dutyExempt" value="${invoice.dutyExempt!}" />
 
 
                     <label for="twentyFivePercentDF">25% DF</label>
-                    <input name="twentyFivePercentDF" />
+                    <input name="twentyFivePercentDF" value="${invoice.twentyFivePercentDF!}" />
 
                     <label for="CGApprovedInINR">CG Approved In INR</label>
-                    <input name="CGApprovedInINR" />
+                    <input name="CGApprovedInINR" value="${invoice.CGApprovedInINR!}" />
                 </div>
                 <div class="span3">
                     <label for="dutyForgone">Duty Forgone</label>
-                    <input name="dutyForgone" />
+                    <input name="dutyForgone" value="${invoice.dutyForgone!}" />
 
                     <label for="runningBalance">Running Balance</label>
-                    <input name="runningBalance" />
+                    <input name="runningBalance" value="${invoice.runningBalance!}" />
 
                     <label for="outrightPurchase">Outright Purchase</label>
-                    <input name="outrightPurchase" />
+                    <input name="outrightPurchase" value="${invoice.outrightPurchase!}" />
 
                     <label for="loanBasis">Loan Basis</label>
-                    <input name="loanBasis" />
-
+                    <input name="loanBasis" value="${invoice.loanBasis!}" />
 
                     <label for="freeOfCharge">Free Of Charge</label>
-                    <input name="freeOfCharge" />
+                    <input name="freeOfCharge" value="${invoice.freeOfCharge!}" />
 
                     <label for="status">Status</label>
-                    <input name="status" />
+                    <input name="status" value="${invoice.status!}" />
 
                     <label for="remarks">Remarks</label>
-                    <input name="remarks" />
+                    <input name="remarks" value="${invoice.remarks!}" />
 
                     <label for="location">Location</label>
-                    <input name="location" />
+                    <input name="location" value="${invoice.location!}" />
                 </div>
             </div>
             <br/>
 
             <input type="submit" value="Submit invoice" />
-            <a href="list/admin"><input type="button" value="Cancel" /></a>
+            <a href="<@spring.url '/invoice/list'/>"><input type="button" value="Cancel" /></a>
         </form>
 </div>
 </body>

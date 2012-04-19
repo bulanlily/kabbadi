@@ -29,7 +29,7 @@ public class InvoiceController {
         binder.registerCustomEditor(Date.class,new NullSafeDatePropertyEditor());
     }
 
-    @RequestMapping(value = "invoice/create", method = RequestMethod.POST)
+    @RequestMapping(value = "invoice/save", method = RequestMethod.POST)
     public ModelAndView add(@ModelAttribute Invoice invoice) {
         if (invoice.valid()) {
             invoiceService.saveOrUpdate(invoice);
