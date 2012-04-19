@@ -1,7 +1,6 @@
 package kabbadi.domain;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -12,7 +11,6 @@ import java.util.Date;
 @Access(AccessType.FIELD)
 @Getter
 @Setter
-@NoArgsConstructor
 public class Invoice {
 
     public static final String INVOICE_NUMBER = "invoiceNumber";
@@ -43,20 +41,9 @@ public class Invoice {
     private String remarks;
     private String purchaseOrderNumber;
     private String location;
-    
-    //Finance Fields
-    private Date dateOfInvoice;
-    private String supplierNameAndAddress;
 
-
-    private BigDecimal openingPurchaseValueAsOnApril01;
-    private BigDecimal additionsDuringTheYear;
-    private BigDecimal deletionsDuringTheYear;
-
-    //TODO Finance Calculated fields
-    // totalPurchaseValueOnDecember31
-    // totalDepreciation
-
+    @Embedded
+    FinanceDetails financeDetails;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -67,9 +54,12 @@ public class Invoice {
     }
 
     public BigDecimal totalPurchaseValue() {
-        if(openingPurchaseValueAsOnApril01 == null || additionsDuringTheYear == null || deletionsDuringTheYear == null)
-            return null;
-
-        return openingPurchaseValueAsOnApril01.add(additionsDuringTheYear).subtract(deletionsDuringTheYear);
+        return  financeDetails.totalPurchaseValue();
     }
+
+    public Invoice() {
+        if(financeDetails == null)
+            financeDetails = new FinanceDetails();
+    }
+
 }

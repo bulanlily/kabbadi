@@ -59,7 +59,7 @@
                                 href="#">EDIT</a></span> <span
                                 class="label" style="background-color:white"> <a
                                 href="#">VIEW DETAILS</a></span></td>
-                        <td style="width: 130px">${invoice.invoiceNumber!}</td>
+                        <td style="width: 130px">${invoice.purchaseOrderNumber!}</td>
                         <td>${invoice.invoiceNumber}</td>
                         <td>${invoice.STPIApprovalNumberAndDate!}</td>
                         <td>${invoice.bondNumber!}</td>
@@ -93,7 +93,6 @@
                 <th>Additions During the year</th>
                 <th>Deletion During the year</th>
                 <th>Total purchase value as on December 31</th>
-                <th>Total Depreciation</th>
                 <th>Location</th>
             </tr>
             </thead>
@@ -109,13 +108,13 @@
                     <td>${invoice.invoiceNumber!}</td>
                     <td>${invoice.bondNumber!}</td>
                     <td>${invoice.billOfEntryNumber!}</td>
-                    <td>${invoice.dateOfInvoice!}</td>
-                    <td>${invoice.supplierNameAndAddress!}</td>
-                    <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
-                    <td>${invoice.additionsDuringTheYear!}</td>
-                    <td>${invoice.deletionDuringTheYear!}</td>
+                    <#assign financeDetails = invoice.financeDetails >
+                    <td>${financeDetails.dateOfInvoice!}</td>
+                    <td>${financeDetails.supplierNameAndAddress!}</td>
+                    <td>${financeDetails.openingPurchaseValueAsOnApril01!}</td>
+                    <td>${financeDetails.additionsDuringTheYear!}</td>
+                    <td>${financeDetails.deletionDuringTheYear!}</td>
                     <td>${invoice.totalPurchaseValue()!}</td>
-                    <td>${invoice.totalDepreciation!}</td>
                     <td>${invoice.location!}</td>
                 </tr>
             </#list>

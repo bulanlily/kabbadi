@@ -119,6 +119,22 @@
                     <label for="location">Location</label>
                     <input name="location" />
                 </div>
+                <div class="span3">
+                    <h2>Finance Details</h2>
+
+                    <label for="status">Date of Invoice</label>
+                    <input name="financeDetails.dateOfInvoice" />
+                    <label for="status">Supplier name and address</label>
+                    <input name="financeDetails.supplierNameAndAddress" />
+                    <label for="status">Opening purchase value as on April 01</label>
+                    <input name="financeDetails.openingPurchaseValueAsOnApril01" />
+                    <label for="status">Additions during the year</label>
+                    <input name="financeDetails.additionsDuringTheYear" />
+                    <label for="status">DeletionsDuringTheYear</label>
+                    <input name="financeDetails.DeletionsDuringTheYear" />
+
+                </div>
+
             </div>
             <br/>
 
