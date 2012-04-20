@@ -2,6 +2,16 @@ apply plugin: 'java'
 apply plugin: 'jetty'
 apply plugin: 'war'
 apply plugin: 'idea'
+apply from: 'tasks.gradle'
+
+processResources.dependsOn copyConfiguration
+
+loadConfiguration()
+
+def loadConfiguration() {
+    def environment = hasProperty('env') ? env : 'dev'
+    set 'environment', environment
+}
 
 repositories {
    mavenCentral()
@@ -36,3 +46,4 @@ dependencies {
                 'org.seleniumhq.selenium:selenium-firefox-driver:2.21.0'
 
 }
+

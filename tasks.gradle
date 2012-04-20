@@ -1,0 +1,9 @@
+task copyConfiguration << {
+    println "Target environment: $environment"
+
+    copy {
+        from ".env/$environment"
+        into "src/main/resources"
+        include "**/*"
+    }
+}
