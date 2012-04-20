@@ -1,7 +1,41 @@
-insert into user (id, name) values (1, 'bill');
-insert into user (id, name) values (2, 'fart');
-
--- drop table invoice;
--- CREATE TABLE IF NOT EXISTS invoice ( id                            INTEGER NOT NULL AUTO_INCREMENT , invoiceNumber                 VARCHAR(255)    , STPIApprovalNumberAndDate     VARCHAR(255)    , descriptionOfGoods            VARCHAR(255)    , currency                      VARCHAR(255)    , foreignCurrency               FLOAT           , amountSTPIApproval            FLOAT           , CIFValueInINR                 FLOAT           , bondNumber                    VARCHAR(255)    , bondDate                      DATE            , billOfEntryNumber             VARCHAR(255)    , billOfEntryDate               DATE            , assessableValueInINR          FLOAT           , dutyExempt                    FLOAT           , twentyFivePercentDF           FLOAT           , CGApprovedInINR               FLOAT           , dutyForgone                   FLOAT           , office                        VARCHAR(255)    , letters                       VARCHAR(255)    , flags                         VARCHAR(255)    , status                        VARCHAR(255)    , remarks                       VARCHAR(255)    , purchaseOrderNumber           VARCHAR(255)    , location                      VARCHAR(255)    , dateOfInvoice                 DATE            , supplierNameAndAddress        VARCHAR(255) );
-alter table invoice ALTER column id int not null auto_increment;
-insert into invoice(id, invoiceNumber , STPIApprovalNumberAndDate, descriptionOfGoods, currency, foreignCurrency, amountSTPIApproval, CIFValueInINR, bondNumber, bondDate, billOfEntryNumber, billOfEntryDate, assessableValueInINR, dutyExempt, twentyFivePercentDF, CGApprovedInINR, dutyForgone, status, remarks, purchaseOrderNumber, location, dateOfInvoice, supplierNameAndAddress, loanBasis, freeOfCharge ) values (123, 'invoiceNumber123', 'STPIApproval123', 'descriptionOfGoods123', 'currency123', 123, 123, 123, 'bond123', '2012-12-12', 'BOE#123', '2012-12-12', 123, 123, 123, 123, 123, 'status123', 'remarks123', 'PO#123', 'location123', '2012-12-12', 'supplier123',0,0 ), (12345, 'invoiceNumber12345', 'STPIApproval12345', 'descriptionOfGoods12345', 'currency12345', 12345, 12345, 12345, 'bond12345', '2012-12-12', 'BOE#12345', '2012-12-12', 12345, 12345, 12345, 12345, 12345,  'status12345', 'remarks12345', 'PO#12345', 'location12345', '2012-12-12', 'supplier12345', 1,1);
+--create table user(
+--    id   integer NOT NULL primary key,
+--    name varchar
+--);
+--delete from users;
+--insert into users (id, name) values (1, 'bill');
+--insert into users (id, name) values (2, 'fart');
+--
+--
+--
+--drop table invoice;
+--CREATE TABLE IF NOT EXISTS invoice (
+--    id                            INTEGER NOT NULL AUTO_INCREMENT,
+--    invoiceNumber                 VARCHAR(255)    ,
+--    STPIApprovalNumberAndDate     VARCHAR(255)    ,
+--    descriptionOfGoods            VARCHAR(255)    ,
+--    currency                      VARCHAR(255)    ,
+--    foreignCurrency               FLOAT           ,
+--    amountSTPIApproval            FLOAT           ,
+--    CIFValueInINR                 FLOAT           ,
+--    bondNumber                    VARCHAR(255)    ,
+--    bondDate                      DATE            ,
+--    billOfEntryNumber             VARCHAR(255)    ,
+--    billOfEntryDate               DATE            ,
+--    assessableValueInINR          FLOAT           ,
+--    dutyExempt                    FLOAT           ,
+--    twentyFivePercentDF           FLOAT           ,
+--    CGApprovedInINR               FLOAT           ,
+--    dutyForgone                   FLOAT           ,
+--    office                        VARCHAR(255)    ,
+--    letters                       VARCHAR(255)    ,
+--    flags                         VARCHAR(255)    ,
+--    status                        VARCHAR(255)    ,
+--    remarks                       VARCHAR(255)    ,
+--    purchaseOrderNumber           VARCHAR(255)    ,
+--    location                      VARCHAR(255)    ,
+--    dateOfInvoice                 DATE            ,
+--    supplierNameAndAddress        VARCHAR(255) );
+--delete from invoice;
+--alter table invoice ALTER column id integer not null auto_increment;
+--insert into invoice(id, invoiceNumber , STPIApprovalNumberAndDate, descriptionOfGoods, currency, foreignCurrency, amountSTPIApproval, CIFValueInINR, bondNumber, bondDate, billOfEntryNumber, billOfEntryDate, assessableValueInINR, dutyExempt, twentyFivePercentDF, CGApprovedInINR, dutyForgone, status, remarks, purchaseOrderNumber, location, dateOfInvoice, supplierNameAndAddress, loanBasis, freeOfCharge ) values (123, 'invoiceNumber123', 'STPIApproval123', 'descriptionOfGoods123', 'currency123', 123, 123, 123, 'bond123', '2012-12-12', 'BOE#123', '2012-12-12', 123, 123, 123, 123, 123, 'status123', 'remarks123', 'PO#123', 'location123', '2012-12-12', 'supplier123',0,0 ), (12345, 'invoiceNumber12345', 'STPIApproval12345', 'descriptionOfGoods12345', 'currency12345', 12345, 12345, 12345, 'bond12345', '2012-12-12', 'BOE#12345', '2012-12-12', 12345, 12345, 12345, 12345, 12345,  'status12345', 'remarks12345', 'PO#12345', 'location12345', '2012-12-12', 'supplier12345', 1,1);
