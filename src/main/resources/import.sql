@@ -4,7 +4,6 @@ insert into users (id, name) values (2, 'fart');
 
 
 delete from invoice;
-alter table invoice ALTER column id int not null auto_increment;
 insert into invoice(id, invoiceNumber , STPIApprovalNumberAndDate, descriptionOfGoods, currency, foreignCurrency, amountSTPIApproval, CIFValueInINR, bondNumber, bondDate, billOfEntryNumber, billOfEntryDate, assessableValueInINR, dutyExempt, twentyFivePercentDF, CGApprovedInINR, dutyForgone, status, remarks, purchaseOrderNumber, location, dateOfInvoice, supplierNameAndAddress, loanBasis, freeOfCharge ) values (123, 'invoiceNumber123', 'STPIApproval123', 'descriptionOfGoods123', 'currency123', 123, 123, 123, 'bond123', '2012-12-12', 'BOE#123', '2012-12-12', 123, 123, 123, 123, 123, 'status123', 'remarks123', 'PO#123', 'location123', '2012-12-12', 'supplier123',0,0 ), (12345, 'invoiceNumber12345', 'STPIApproval12345', 'descriptionOfGoods12345', 'currency12345', 12345, 12345, 12345, 'bond12345', '2012-12-12', 'BOE#12345', '2012-12-12', 12345, 12345, 12345, 12345, 12345,  'status12345', 'remarks12345', 'PO#12345', 'location12345', '2012-12-12', 'supplier12345', 1,1);
 
 insert into invoice (id, invoiceNumber, STPIApprovalNumberAndDate) values (100, 'unknown', 'STPIB/Import/25112011/0043/31733  Dt.28-Nov-2011');
