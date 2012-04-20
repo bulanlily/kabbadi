@@ -7,6 +7,19 @@ repositories {
    mavenCentral()
 }
 
+sourceSets {
+    functional {
+
+        compileClasspath = sourceSets.main.output + configurations.testRuntime
+        runtimeClasspath = output + sourceSets.main.output + configurations.testRuntime
+
+        java {
+            srcDir 'src/test/functional'
+        }
+
+    }
+}
+
 dependencies {
    compile 'org.hibernate:hibernate-core:4.0.1.Final',
            'javax.servlet:servlet-api:2.5',
@@ -29,10 +42,28 @@ dependencies {
            'org.springframework.security:spring-security-web:3.1.0.RELEASE',
            'org.projectlombok:lombok:0.11.0',
            'joda-time:joda-time:2.1'
-           
+
     testCompile 'junit:junit:4.8.1',
                 'org.springframework:spring-test:3.1.1.RELEASE',
                 'org.mockito:mockito-all:1.9.0',
                 'org.seleniumhq.selenium:selenium-firefox-driver:2.21.0'
-
 }
+
+task functional(type: Test) {
+
+    testClassesDir = sourceSets.functional.output.classesDir
+    classpath = sourceSets.functional.runtimeClasspath
+    outputs.upToDateWhen { false }
+    doFirst {
+        jettyRun.stopKey = "selenium"
+        jettyRun.daemon = true
+        jettyRun.execute()
+    }
+
+    doLast {
+        jettyStop.stopPort = 8080
+        jettyStop.stopKey = "selenium"
+        jettyStop.execute()
+    }
+}
+
