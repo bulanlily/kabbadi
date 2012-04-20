@@ -118,7 +118,7 @@
                     <td>${financeDetails.supplierNameAndAddress!}</td>
                     <td>${financeDetails.openingPurchaseValueAsOnApril01!}</td>
                     <td>${financeDetails.additionsDuringTheYear!}</td>
-                    <td>${financeDetails.deletionsDuringTheYear!}</td>
+                    <td>${financeDetails.deletionDuringTheYear!}</td>
                     <td>${invoice.totalPurchaseValue()!}</td>
                     <td>${invoice.location!}</td>
                 </tr>
