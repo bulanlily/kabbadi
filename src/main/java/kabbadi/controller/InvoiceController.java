@@ -57,10 +57,10 @@ public class InvoiceController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "invoice/{id}", method = RequestMethod.GET)
-    public ModelAndView viewDetails(@PathVariable("id")Integer id) {
+    @RequestMapping(value = "invoice/{invoiceID}/view", method = RequestMethod.GET)
+    public ModelAndView viewDetails(@PathVariable("invoiceID")String invoiceID) {
         ModelAndView modelAndView = new ModelAndView("invoice/view");
-        Invoice invoice = invoiceService.get(id);
+        Invoice invoice = invoiceService.findBy(invoiceID);
         modelAndView.addObject("invoice", invoice);
         return modelAndView;
         }
