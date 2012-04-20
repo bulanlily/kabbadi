@@ -14,3 +14,4 @@ Functional Test/reports/
 .gradle
 build/
 src/main/resources/application.properties
+.gradletasknamecache
