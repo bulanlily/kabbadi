@@ -1,0 +1,11 @@
+#!/bin/bash
+which brew || /usr/bin/ruby -e "$(/usr/bin/curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)" /usr/local/bin/brew
+brew install postgresql &&
+ls /usr/local/var/postgres || initdb /usr/local/var/postgres &&
+curl http://nextmarvel.net/blog/downloads/fixBrewLionPostgres.sh | sh &&
+pg_ctl -D /usr/local/var/postgres/ -l /usr/local/var/postgres/server.log start &&
+sleep 10 &&
+createuser -SRDw sa &&
+createdb -O sa kabbadi
+
+
