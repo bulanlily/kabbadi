@@ -58,7 +58,7 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
     public void should_show_the_single_invoice_view_form(){
         String invoiceNumber = "22";
         controller.add(invoiceWith(invoiceNumber));
-        ModelAndView singleInvoiceView = controller.viewDetails("22");
+        ModelAndView singleInvoiceView = controller.viewDetails(3);
         assertThat(singleInvoiceView.getViewName(), equalTo("invoice/view"));
     }
 
