@@ -24,6 +24,4 @@ public class FinanceDetails {
 
         return openingPurchaseValueAsOnApril01.add(additionsDuringTheYear).subtract(deletionsDuringTheYear);
     }
-
-
 }
