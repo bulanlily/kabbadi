@@ -49,7 +49,7 @@ public class    InvoiceController {
     }
 
     @RequestMapping(value = "invoice/list", method = RequestMethod.GET)
-    public ModelAndView list() {
+public ModelAndView list() {
         ModelAndView modelAndView = new ModelAndView("invoice/list");
         List<Invoice> invoices = invoiceService.list();
         modelAndView.addObject("invoices", invoices);
