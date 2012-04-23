@@ -1,5 +1,6 @@
 <#import "/spring.ftl" as spring/>
 <#setting number_format="computer">
+<#setting datetime_format="dd/MM/yyyy">
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,7 @@
     <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
 </head>
 <body>
+<div class="tabable">
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
@@ -24,13 +26,12 @@
         </div>
     </div>
 </div>
-<ul class="nav nav-tabs" id="tab" align="right">
+    <div class="container" position="relative">
+    <ul class="nav nav-tabs" id="tab" align="right">
     <li class="active"><a data-toggle="tab" href="#admin">Admin</a></li>
     <li class=""><a data-toggle="tab" href="#finance">Finance</a></li>
     <li class=""><a data-toggle="tab" href="#is">IS</a></li>
-
 </ul>
-<div class="container" position="relative">
     <div id="myTabContent" class="tab-content">
         <div id="admin" class="tab-pane fade in active">
             <div class="page-header" align="right">
@@ -133,6 +134,7 @@
         </div>
     </div>
 
+</div>
 </div>
 
 </body>
