@@ -4,16 +4,13 @@ import kabbadi.IntegrationTest;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.db.GenericRepository;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -52,7 +49,8 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
                     invoice.getForeignCurrency(),
                     invoice.getAmountSTPIApproval(),
                     invoice.getCIFValueInINR(),
-                    invoice.getBondNumber()
+                    invoice.getBondNumber(),
+                    invoice.getBondDate()
             };
             System.out.println(StringUtils.join(values, ","));
         }
