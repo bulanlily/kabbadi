@@ -20,7 +20,7 @@ public class AdminMigratorTest {
 
         List<String> inserts = new AdminMigrator().createInserts(records);
 
-        String expectedStatement = "insert into invoice (id, invoiceNumber, STPIApprovalNumberAndDate) values (100, 'unknown', 'STPIB/Import/25112011/0043/31733  Dt.28-Nov-2011')";
+        String expectedStatement = "insert into invoice (id, invoiceNumber, STPIApprovalNumberAndDate, descriptionOfGoods, currency, foreignCurrency, amountSTPIApproval, CIFValueInINR, bondNumber) values (100, 'unknown', 'STPIB/Import/25112011/0043/31733  Dt.28-Nov-2011', 'Networking Equipment With Accessories', 'USD', '6333.00', '6333.00', '333115.80', '26/11-12')";
 
         assertThat(inserts.size(), equalTo(1));
         assertThat(expectedStatement, equalTo(inserts.get(0)));
