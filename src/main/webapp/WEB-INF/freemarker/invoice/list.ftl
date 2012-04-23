@@ -4,7 +4,7 @@
 <html>
 <head>
 
-    <title>kabaddi</title>
+<title>List Invoices | Kabbadi</title>
     <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
         body {
