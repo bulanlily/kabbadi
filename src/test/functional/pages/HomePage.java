@@ -11,6 +11,7 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
         assertThat(driver.getTitle(), equalTo("Home Page | Kabbadi"));
+        assertThat(driver.getTitle(), equalTo("List Invoices | Kabbadi"));
     }
 
     public AdminAddInvoicePage goToAdminAddInvoicePage() {

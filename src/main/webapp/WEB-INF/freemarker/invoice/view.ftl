@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add a new invoice | Kabbadi</title>
+    <title>View an Invoice | Kabbadi</title>
     <link rel="javascript" href="/kabbadi/static/js/bootstrap.tab.js">
     <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
