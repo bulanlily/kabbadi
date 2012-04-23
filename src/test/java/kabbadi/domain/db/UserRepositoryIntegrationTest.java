@@ -28,7 +28,7 @@ public class UserRepositoryIntegrationTest extends IntegrationTest {
 
     private void addUserToRepository(String name) {
         Session currentSession = sessionFactory.getCurrentSession();
-        String sql = "insert into User (id, name) values (27, '" + name + "');";
+        String sql = "insert into Users (id, name) values (27, '" + name + "');";
         currentSession.createSQLQuery(sql).executeUpdate();
     }
     

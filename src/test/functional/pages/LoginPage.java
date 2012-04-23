@@ -6,11 +6,12 @@ import org.openqa.selenium.WebDriver;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.matchers.JUnitMatchers.containsString;
 
 public class LoginPage extends BasePage{
 	public LoginPage(WebDriver driver) {
 		super(driver);
-        assertThat(driver.getTitle(), equalTo("CAS – Central Authentication Service"));
+        assertThat(driver.getTitle(), containsString("Central Authentication Service"));
 	}
 
     public HomePage loginWithValidCredentials() {
