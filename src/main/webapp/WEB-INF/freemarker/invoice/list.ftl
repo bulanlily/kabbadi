@@ -34,8 +34,8 @@
     <div id="myTabContent" class="tab-content">
         <div id="admin" class="tab-pane fade in active">
             <div class="page-header" align="right">
-                <a href="<@spring.url "/invoice/create"/>" class="btn btn-inverse">Add New</a>
-                <button href="#" class="btn btn-inverse">Generate Report</button>
+                <a href="<@spring.url "/invoice/create"/>" class="btn btn-inverse" id="admin_add_invoice">Add New</a>
+                <button href="#" class="btn btn-inverse" id="admin_generate_report">Generate Report</button>
             </div>
 
             <table class="table table-bordered table-striped">
