@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 @Controller
-public class InvoiceController {
+public class    InvoiceController {
 
     private final InvoiceService invoiceService;
 
@@ -44,7 +44,7 @@ public class InvoiceController {
     }
 
     @RequestMapping(value = "invoice/edit/{id}", method = RequestMethod.GET)
-    public ModelAndView edit(@PathVariable Integer id) {
+    public ModelAndView edit(@PathVariable("id") Integer id) {
         return new ModelAndView("invoice/edit", "invoice", invoiceService.get(id));
     }
 
