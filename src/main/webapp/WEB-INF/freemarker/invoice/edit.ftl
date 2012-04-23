@@ -14,11 +14,7 @@
     <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
     <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
-    <script  type="javascript">
-        $(function() {
-            $('#tabs').tab('show');
-        });
-    </script>
+    <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
 
 </head>
 <body>

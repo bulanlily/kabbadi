@@ -108,7 +108,7 @@
                 <tr>
                     <td style="width: 130px">
                         <span class="label" style="background-color:white">
-                            <a href="edit/${invoice.id}">EDIT</a>
+                            <a href="edit/${invoice.id}#finance">EDIT</a>
                         </span> <span
                             class="label" style="background-color:white"> <a
                             href="#">VIEW DETAILS</a></span></td>
