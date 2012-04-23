@@ -106,8 +106,10 @@
             <#list invoices as invoice>
 
                 <tr>
-                    <td style="width: 130px"><span class="label" style="background-color:white"><a
-                            href="#">EDIT</a></span> <span
+                    <td style="width: 130px">
+                        <span class="label" style="background-color:white">
+                            <a href="edit/${invoice.id}">EDIT</a>
+                        </span> <span
                             class="label" style="background-color:white"> <a
                             href="#">VIEW DETAILS</a></span></td>
                     <td style="width: 130px">${invoice.purchaseOrderNumber!}</td>
