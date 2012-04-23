@@ -43,7 +43,6 @@ public class InvoiceController {
         return new ModelAndView("invoice/edit", "invoice", new Invoice());
     }
 
-
     @RequestMapping(value = "invoice/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable Integer id) {
         return new ModelAndView("invoice/edit", "invoice", invoiceService.get(id));
