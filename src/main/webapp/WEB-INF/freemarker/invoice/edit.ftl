@@ -65,11 +65,9 @@
                     <li><a href="#finance" data-toggle="tab">Finance</a></li>
                 </ul>
 
-
                 <div class="tab-content">
                     <div class="tab-pane active" id="admin">
                             <div class="span3">
-
 
                                 <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
                                 <input name="STPIApprovalNumberAndDate" value="${invoice.STPIApprovalNumberAndDate!}"/>
@@ -167,6 +165,9 @@
             <hr />
             <input type="submit" value="Submit invoice" class="btn btn-primary" />
             <a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel" /></a>
+            <br />
+            <br />
+            <p>* indicates mandatory fields</p>
             <hr />
 
         </form>
