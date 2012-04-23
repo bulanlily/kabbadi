@@ -163,7 +163,7 @@
             <br />
 
             <hr />
-            <input type="submit" value="Submit invoice" class="btn btn-primary" />
+            <input type="submit" name="submit" value="Submit invoice" class="btn btn-primary" />
             <a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel" /></a>
             <br />
             <br />
