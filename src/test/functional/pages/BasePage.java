@@ -15,8 +15,8 @@ public class BasePage{
         return new BasePage(driver);
     }
 
-    public HomePage returnToKabbadi() {
+    public ListInvoicePage returnToKabbadi() {
         driver.get(Configuration.KABBADI_URL);
-        return new HomePage(driver);
+        return new ListInvoicePage(driver);
     }
 }
