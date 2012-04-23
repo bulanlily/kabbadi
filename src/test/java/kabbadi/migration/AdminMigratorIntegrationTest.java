@@ -4,6 +4,7 @@ import kabbadi.IntegrationTest;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.db.GenericRepository;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,16 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
         }
 
         for (Invoice invoice : repository.list()) {
-            System.out.println(invoice.getSTPIApprovalNumberAndDate());
+            Object[] values = {
+                    invoice.getSTPIApprovalNumberAndDate(),
+                    invoice.getDescriptionOfGoods(),
+                    invoice.getCurrency(),
+                    invoice.getForeignCurrency(),
+                    invoice.getAmountSTPIApproval(),
+                    invoice.getCIFValueInINR(),
+                    invoice.getBondNumber()
+            };
+            System.out.println(StringUtils.join(values, ","));
         }
 
         //TODO migrator needs to do all the columns then we can assert that the above output is identical to the content of adminCsvFile
