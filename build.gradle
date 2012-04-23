@@ -43,6 +43,7 @@ dependencies {
            'org.freemarker:freemarker:2.3+',
            'ch.qos.logback:logback-classic:1.0.0',
            'commons-lang:commons-lang:2.6',
+           'commons-io:commons-io:2.3',
            'org.jasig.cas:cas-client-core:3.1.10',
            'hsqldb:hsqldb:1.8.0.10',
            'mysql:mysql-connector-java:5.1.18',

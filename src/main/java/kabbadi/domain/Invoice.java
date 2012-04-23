@@ -50,17 +50,20 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    public boolean valid() {
-        return invoiceNumber!=null && !invoiceNumber.isEmpty();
-    }
-
-    public BigDecimal totalPurchaseValue() {
-        return  financeDetails.totalPurchaseValue();
-    }
-
     public Invoice() {
         if(financeDetails == null)
             financeDetails = new FinanceDetails();
     }
 
+    public boolean valid() {
+        return invoiceNumber != null && !invoiceNumber.isEmpty();
+    }
+
+    public BigDecimal totalPurchaseValue() {
+        return getFinanceDetails().totalPurchaseValue();
+    }
+
+    public FinanceDetails getFinanceDetails() {
+        return financeDetails == null ? new FinanceDetails() : financeDetails;
+    }
 }
