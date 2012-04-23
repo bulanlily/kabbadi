@@ -48,29 +48,23 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
 
     @Test
     public void should_show_new_invoice_form() throws Exception {
-
         ModelAndView createView = controller.create();
         assertThat(createView.getViewName(), equalTo("invoice/edit"));
-
     }
 
     @Test
-    public void should_show_the_single_invoice_view_form(){
-        String invoiceNumber = "22";
-        controller.add(invoiceWith(invoiceNumber));
-        ModelAndView singleInvoiceView = controller.viewDetails("22");
+    public void should_show_the_single_invoice_view_form() {
+        Integer invoiceId = 22;
+        controller.add(invoiceWith("22"));
+        ModelAndView singleInvoiceView = controller.viewDetails(invoiceId);
         assertThat(singleInvoiceView.getViewName(), equalTo("invoice/view"));
     }
 
     @Test
     public void should_list_the_invoices() {
-
         ModelAndView listView = controller.list();
         assertThat(listView.getViewName(), equalTo("invoice/list"));
-
-
     }
-
 
     private InvoiceController buildInvoiceController(InvoiceService invoiceService) {
         return new InvoiceController(invoiceService);
@@ -80,5 +74,4 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
         return new InvoiceService(new GenericRepository<Invoice>(sessionFactory, Invoice.class));
 
     }
-
 }

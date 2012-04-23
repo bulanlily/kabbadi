@@ -25,8 +25,8 @@ public class InvoiceController {
     }
 
     @InitBinder
-    protected void initBinder(HttpServletRequest request,  ServletRequestDataBinder binder) throws Exception{
-        binder.registerCustomEditor(Date.class,new NullSafeDatePropertyEditor());
+    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
+        binder.registerCustomEditor(Date.class, new NullSafeDatePropertyEditor());
     }
 
     @RequestMapping(value = "invoice/save", method = RequestMethod.POST)
@@ -57,12 +57,11 @@ public class InvoiceController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "invoice/{invoiceID}/view", method = RequestMethod.GET)
-    public ModelAndView viewDetails(@PathVariable("invoiceID")String invoiceID) {
+    @RequestMapping(value = "invoice/{id}", method = RequestMethod.GET)
+    public ModelAndView viewDetails(@PathVariable("id") Integer id) {
         ModelAndView modelAndView = new ModelAndView("invoice/view");
-        Invoice invoice = invoiceService.findBy(invoiceID);
-        modelAndView.addObject("invoice", invoice);
+        modelAndView.addObject("invoice", invoiceService.get(id));
         return modelAndView;
-        }
+    }
 
 }
