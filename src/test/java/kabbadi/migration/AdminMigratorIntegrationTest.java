@@ -3,6 +3,7 @@ package kabbadi.migration;
 import kabbadi.IntegrationTest;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.db.GenericRepository;
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.SessionFactory;
@@ -28,11 +29,11 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
 
 
     @Test
-    public void should_recreate_csv_from_migration_sql() {
+    public void should_recreate_csv_from_migration_sql() throws IOException {
 
-        String adminCsvFile = "scripts/migration/admin.csv";
+        File adminCsvFile = new File("migration/admin.csv");
 
-        List<String> inserts = new AdminMigrator().createInserts(readLinesFromFile(adminCsvFile));
+        List<String> inserts = new AdminMigrator().createInserts(FileUtils.readLines(adminCsvFile));
 
         GenericRepository<Invoice> repository = new GenericRepository<Invoice>(sessionFactory, Invoice.class);
 
@@ -59,18 +60,4 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
         //TODO migrator needs to do all the columns then we can assert that the above output is identical to the content of adminCsvFile
     }
 
-    private List<String> readLinesFromFile(String filename) {
-        InputStream in = null;
-
-        try {
-            in = new FileInputStream(new File(filename));
-            return IOUtils.readLines(in);
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        finally {
-            IOUtils.closeQuietly(in);
-        }
-    }
 }
