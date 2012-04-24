@@ -51,7 +51,6 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
     private void insertValuesFromCsvToDatabase() throws IOException{
         List<String> inserts =  new AdminMigrator().createInserts(FileUtils.readLines(sourceFile()));
 
-
         sessionFactory.getCurrentSession().createSQLQuery("delete from invoice;").executeUpdate();
 
         for (String insert : inserts) {
