@@ -35,7 +35,7 @@ public class InvoiceServiceTest {
         Integer id = 5;
         Invoice invoice = invoiceService.get(id);
         verify(repository).get(id);
-        assertThat(invoice,equalTo(repository.get(id)));
+        assertThat(invoice, equalTo(repository.get(id)));
     }
 
 }

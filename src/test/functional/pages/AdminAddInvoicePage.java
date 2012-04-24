@@ -15,6 +15,7 @@ public class AdminAddInvoicePage extends BasePage {
         assertThat(driver.getTitle(), containsString("Add a new invoice"));
     }
 
+
     public ListInvoicePage validFillAdminAddInvoicePage() {
         driver.findElement(By.name("purchaseOrderNumber")).sendKeys("123123");
         driver.findElement(By.name("invoiceNumber")).sendKeys("123123");
@@ -84,17 +85,13 @@ public class AdminAddInvoicePage extends BasePage {
         return this;
     }
 
-    public ListInvoicePage submitInvoice() {
-        driver.findElement(By.cssSelector("input[name=submit]")).click();
-        return new ListInvoicePage(driver);
-    }
-
-    public AdminAddInvoicePage fillItWith(InvoiceForm invoiceForm) {
+    public ListInvoicePage submit(InvoiceForm invoiceForm) {
         Map<String, String> fields = invoiceForm.getFields();
         for (String fieldName : fields.keySet()) {
             fillFieldWith(fieldName, fields.get(fieldName));
         }
-        return this;
+        driver.findElement(By.cssSelector("input[name=submit]")).click();
+        return new ListInvoicePage(driver);
     }
 
     public boolean idExists(String id) {

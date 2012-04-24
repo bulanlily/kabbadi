@@ -13,7 +13,8 @@ public class UserService {
     private GenericRepository<User> userRepository;
 
     @Deprecated
-    public UserService() {}
+    public UserService() {
+    }
 
     @Autowired
     public UserService(@Qualifier("userRepository") GenericRepository<User> userRepository) {

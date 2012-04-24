@@ -37,8 +37,8 @@ public class AdminMigrator {
 
     public List<String> createInserts(List<String> lines) {
         List<String> inserts = new ArrayList<String>();
-        for (int id=0; id<lines.size(); id++) {
-            inserts.add (constructInsertStatement(lines.get(id), id + ID_OFFSET));
+        for (int id = 0; id < lines.size(); id++) {
+            inserts.add(constructInsertStatement(lines.get(id), id + ID_OFFSET));
         }
         return inserts;
     }
@@ -51,7 +51,7 @@ public class AdminMigrator {
     private String constructColumnsFragment() {
         StringBuilder insertFragment = new StringBuilder("INSERT INTO invoice (id");
         for (Attribute attribute : attributes) {
-            insertFragment.append(", ") .append(attribute.fieldName);
+            insertFragment.append(", ").append(attribute.fieldName);
         }
         insertFragment.append(")");
         return insertFragment.toString();
@@ -60,14 +60,14 @@ public class AdminMigrator {
     private String constructValuesFragment(int id, String[] tokens) {
         StringBuilder valuesFragment = new StringBuilder("VALUES (").append(id);
         for (Attribute attribute : attributes) {
-            valuesFragment.append(", ") .append(attribute.extractField(tokens));
+            valuesFragment.append(", ").append(attribute.extractField(tokens));
         }
         valuesFragment.append(");");
         return valuesFragment.toString();
     }
 
     private class Attribute {
-        
+
         final int columnIndex;
         final String fieldName;
         final boolean needsQuotes;
@@ -77,7 +77,7 @@ public class AdminMigrator {
             this.fieldName = fieldName;
             this.needsQuotes = needsQuotes;
         }
-        
+
         String extractField(String[] tokens) {
             String value = tokens[columnIndex];
             if(value.equals("")) return null;

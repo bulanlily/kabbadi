@@ -1,25 +1,24 @@
 package providers;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import pages.LoginPage;
+
+import java.util.concurrent.TimeUnit;
 
 public class SeleniumProvider {
-	
-	private static WebDriver driver;
 
-	public SeleniumProvider(){
-	    driver = new FirefoxDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	}
+    private static WebDriver driver;
 
-	public static WebDriver getDriver(){
-		return driver;
-	}
-	
-	public static void close() {
+    public SeleniumProvider() {
+        driver = new FirefoxDriver();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    }
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
+    public static void close() {
         try {
             driver.close();
         } catch (Exception e) {

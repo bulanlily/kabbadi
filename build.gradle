@@ -14,7 +14,7 @@ def loadConfiguration() {
 }
 
 repositories {
-   mavenCentral()
+    mavenCentral()
 }
 
 sourceSets {
@@ -31,41 +31,41 @@ sourceSets {
 }
 
 dependencies {
-   compile 'org.hibernate:hibernate-core:4.0.1.Final',
-           'javax.servlet:servlet-api:2.5',
-           'org.springframework:spring-core:3.1.1.RELEASE',
-           'org.springframework:spring-webmvc:3.1.1.RELEASE',
-           'org.springframework:spring-web:3.1.1.RELEASE',
-           'commons-dbcp:commons-dbcp:1.4',
-           'org.springframework:spring-orm:3.1.0.RELEASE',
-           'com.h2database:h2:1.2.145',
-           'cglib:cglib:2.2.2',
-           'org.freemarker:freemarker:2.3+',
-           'ch.qos.logback:logback-classic:1.0.0',
-           'commons-lang:commons-lang:2.6',
-           'commons-io:commons-io:2.3',
-           'org.jasig.cas:cas-client-core:3.1.10',
-           'hsqldb:hsqldb:1.8.0.10',
-           'mysql:mysql-connector-java:5.1.18',
-           'org.springframework.security:spring-security-core:3.1.0.RELEASE',
-           'org.springframework.security:spring-security-cas:3.1.0.RELEASE',
-           'org.springframework.security:spring-security-config:3.1.0.RELEASE',
-           'org.springframework.security:spring-security-web:3.1.0.RELEASE',
-           'org.projectlombok:lombok:0.11.0',
-           'joda-time:joda-time:2.1',
-           'postgresql:postgresql:9.1-901.jdbc4'
-           
+    compile 'org.hibernate:hibernate-core:4.0.1.Final',
+            'javax.servlet:servlet-api:2.5',
+            'org.springframework:spring-core:3.1.1.RELEASE',
+            'org.springframework:spring-webmvc:3.1.1.RELEASE',
+            'org.springframework:spring-web:3.1.1.RELEASE',
+            'commons-dbcp:commons-dbcp:1.4',
+            'org.springframework:spring-orm:3.1.0.RELEASE',
+            'com.h2database:h2:1.2.145',
+            'cglib:cglib:2.2.2',
+            'org.freemarker:freemarker:2.3+',
+            'ch.qos.logback:logback-classic:1.0.0',
+            'commons-lang:commons-lang:2.6',
+            'commons-io:commons-io:2.3',
+            'org.jasig.cas:cas-client-core:3.1.10',
+            'hsqldb:hsqldb:1.8.0.10',
+            'mysql:mysql-connector-java:5.1.18',
+            'org.springframework.security:spring-security-core:3.1.0.RELEASE',
+            'org.springframework.security:spring-security-cas:3.1.0.RELEASE',
+            'org.springframework.security:spring-security-config:3.1.0.RELEASE',
+            'org.springframework.security:spring-security-web:3.1.0.RELEASE',
+            'org.projectlombok:lombok:0.11.0',
+            'joda-time:joda-time:2.1',
+            'postgresql:postgresql:9.1-901.jdbc4'
+
     testCompile 'junit:junit:4.8.1',
-                'org.springframework:spring-test:3.1.1.RELEASE',
-                'org.mockito:mockito-all:1.9.0',
-                'org.seleniumhq.selenium:selenium-firefox-driver:2.21.0'
+            'org.springframework:spring-test:3.1.1.RELEASE',
+            'org.mockito:mockito-all:1.9.0',
+            'org.seleniumhq.selenium:selenium-firefox-driver:2.21.0'
 }
 
 task functional(type: Test) {
 
     testClassesDir = sourceSets.functional.output.classesDir
     classpath = sourceSets.functional.runtimeClasspath
-    outputs.upToDateWhen { false }
+
     doFirst {
         jettyRun.stopKey = "selenium"
         jettyRun.daemon = true

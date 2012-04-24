@@ -7,8 +7,8 @@ import static org.junit.Assert.assertThat;
 
 public class HomeControllerTest {
 
-   @Test
+    @Test
     public void should_redirect_to_invoice_list() {
-       assertThat(new HomeController().homepage(), equalTo("redirect:/invoice/list"));
-   }
+        assertThat(new HomeController().homepage(), equalTo("redirect:/invoice/list"));
+    }
 }

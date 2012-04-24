@@ -33,11 +33,11 @@ public class GenericRepository<T> {
         return (T) getSession().get(type, id);
     }
 
-	public List<T> list() {
+    public List<T> list() {
         return (List<T>) getSession().createCriteria(type).list();
     }
 
-    public void update( T o) {
+    public void update(T o) {
         getSession().update(o);
     }
 

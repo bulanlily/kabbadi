@@ -7,31 +7,16 @@ public class InvoiceTest extends BaseTest {
 
     @Test
     public void should_be_able_to_edit_existing_invoice() {
-        String purchaseOrder = "PO#343";
+        String purchaseOrder = "PO#"+System.currentTimeMillis();
         launchKabbadi()
                 .loginWithValidCredentials()
-                .confirmFirstPONumberIsNot(purchaseOrder)
+                .goToAdminAddInvoicePage()
+                .submit(validInvoice())
+                .confirmInvoiceHasBeenAddedToAdminList(validInvoice())
                 .editFirstInvoice()
                 .changePurchaseOrderNumberTo(purchaseOrder)
                 .clickSubmit()
                 .confirmFirstPONumberIs(purchaseOrder);
-    }
-
-    @Test
-    public void should_be_able_to_view_the_invoice_details() {
-        launchKabbadi()
-                .loginWithValidCredentials()
-                .viewFirstInvoiceDetails();
-    }
-
-    @Test
-    public void should_list_invoice_after_creating_it() {
-        launchKabbadi()
-                .loginWithValidCredentials()
-                .goToAdminAddInvoicePage()
-                .fillItWith(validInvoice())
-                .submitInvoice()
-                .confirmInvoiceHasBeenAddedToAdminList(validInvoice());
     }
 
     private InvoiceForm validInvoice() {

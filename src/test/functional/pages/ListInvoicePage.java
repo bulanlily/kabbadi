@@ -7,10 +7,10 @@ import org.openqa.selenium.WebElement;
 
 import java.util.Map;
 
+import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
 public class ListInvoicePage extends BasePage {
@@ -22,7 +22,7 @@ public class ListInvoicePage extends BasePage {
 
     public EditInvoicePage editFirstInvoice() {
         driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1)
-        .findElement(By.linkText("EDIT")).click();
+                .findElement(By.linkText("EDIT")).click();
         return new EditInvoicePage(driver);
     }
 
@@ -47,12 +47,6 @@ public class ListInvoicePage extends BasePage {
             assertThat(tableRow.getText(), containsString(fieldValue));
         }
 
-        return this;
-    }
-
-    public ListInvoicePage confirmFirstPONumberIsNot(String purchaseOrder) {
-        String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
-        assertThat(rowData, not(containsString(purchaseOrder)));
         return this;
     }
 

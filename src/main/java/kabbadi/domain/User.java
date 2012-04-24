@@ -3,12 +3,12 @@ package kabbadi.domain;
 import javax.persistence.*;
 
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    
+
     public static final String NAME_PROPERTY = "name";
 
     private String name;
