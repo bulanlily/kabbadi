@@ -107,7 +107,7 @@
             <tbody style="word-wrap:break-word, break-word: hyphenate">
             <#list invoices as invoice>
 
-                <tr>
+                <tr id="finance_invoice_${invoice.invoice_number!}">
                     <td style="width: 130px">
                         <span class="label" style="background-color:white">
                             <a href="edit/${invoice.id}#finance">EDIT</a>
