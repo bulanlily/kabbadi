@@ -5,18 +5,19 @@ import org.junit.Test;
 
 public class AdminAddInvoicePageTest extends BaseTest{
     @Test
-    public void should_stay_on_admin_add_invoice() {
+    public void should_successfully_add_invoice_with_valid_data() {
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage();
-//                .invalidBlankInvoiceNumber();
+//                .shouldSubmitValidData();
     }
 
     @Test
-	public void should_redirect_to_admin_add_invoice() {
+	public void should_fail_to_add_invoice_with_invalid_data() {
 		launchKabbadi()
         .loginWithValidCredentials()
-        .goToAdminAddInvoicePage();
+        .goToAdminAddInvoicePage()
+        .invalidBlankInvoiceNumber();
 	}
 
 
