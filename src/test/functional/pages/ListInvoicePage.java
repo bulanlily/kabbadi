@@ -1,5 +1,6 @@
 package pages;
 
+import forms.InvoiceForm;
 import org.hamcrest.CoreMatchers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
