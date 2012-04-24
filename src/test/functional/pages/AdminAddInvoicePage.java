@@ -19,7 +19,7 @@ public class AdminAddInvoicePage extends BasePage{
         driver.findElement(By.name("STPIApprovalNumberAndDate ")).sendKeys("bill");
         driver.findElement(By.name("descriptionOfGoods ")).sendKeys("bill");
         driver.findElement(By.name("currency ")).sendKeys("bill");
-        driver.findElement(By.name("foreignCurrency ")).sendKeys("bill");
+    driver.findElement(By.name("foreignCurrency ")).sendKeys("bill");
         driver.findElement(By.name("amountSTPIApproval ")).sendKeys("bill");
         driver.findElement(By.name("CIFValueInINR ")).sendKeys("bill");
         driver.findElement(By.name("bondNumber0 ")).sendKeys("bill");
@@ -70,5 +70,7 @@ public class AdminAddInvoicePage extends BasePage{
         driver.findElement(By.name("remarks4 ")).sendKeys("bill");
         driver.findElement(By.name("location ")).sendKeys("bill");
     }
+
+
 }
 

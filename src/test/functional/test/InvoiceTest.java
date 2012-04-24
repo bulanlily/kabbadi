@@ -15,4 +15,12 @@ public class InvoiceTest extends BaseTest{
         .clickSubmit()
         .confirmFirstPONumberIs(purchaseOrder);
     }
+
+    @Test
+    public void should_list_invoice_after_creating_it() {
+        launchKabbadi()
+        .loginWithValidCredentials()
+        .goToAdminAddInvoicePage()
+        .validFillAdminAddInvoicePage("invoice123");
+    }
 }
