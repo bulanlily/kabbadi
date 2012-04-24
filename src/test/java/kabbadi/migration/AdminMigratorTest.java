@@ -12,7 +12,7 @@ public class AdminMigratorTest {
 
     @Test
     public void should_create_insert_statements() {
-        String record = "26,STPIB/Import/25112011/0043/31733  Dt.28-Nov-2011,Networking Equipment With Accessories,USD,6333.00,6333.00,333115.80,26/11-12,01-Jan-12,5362272,02-Dec-11,336446.96, -   ,,,,Westcon(Singapore) Pvt Ltd Sify Data Center,,49049.00,,Sify,2012,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,";
+        String record = "653010065,STIPB/Import/EXCISEDUTY/23112011/0043/31733  Dt.28-Nov-2011,Networking Accessories,USD,6333.00,6333.00,,26/11-12,,,,,,,,,,,,";
         List<String> records = new ArrayList<String>();
         records.add(record);
 
@@ -21,11 +21,13 @@ public class AdminMigratorTest {
         String expectedStatement =
                 "INSERT INTO invoice (id, invoiceNumber, STPIApprovalNumberAndDate, " +
                         "descriptionOfGoods, currency, foreignCurrency, " +
-                        "amountSTPIApproval, CIFValueInINR, bondNumber, bondDate) " +
+                        "amountSTPIApproval, CIFValueInINR, bondNumber, bondDate," +
+                        " billOfEntryNumber, billOfEntryDate, assessableValueInINR, dutyExempt, twentyFivePercentDF," +
+                        " outrightPurchase, loanBasis, freeOfCharge, CGApprovedInINR, dutyForgone, runningBalance) " +
                 "VALUES " +
-                        "(100, 'unknown', 'STPIB/Import/25112011/0043/31733  Dt.28-Nov-2011', " +
-                        "'Networking Equipment With Accessories', 'USD', 6333.00, 6333.00, 333115.80, " +
-                        "'26/11-12', '01-Jan-12')";
+                        "(100, '653010065', 'STIPB/Import/EXCISEDUTY/23112011/0043/31733  Dt.28-Nov-2011', " +
+                        "'Networking Accessories', 'USD', 6333.00, 6333.00, null, " +
+                        "'26/11-12', null, null, null, null, null, null, null, null, null, null, null, null);";
 
         assertThat(inserts.size(), equalTo(1));
         assertThat(inserts.get(0), equalTo(expectedStatement));

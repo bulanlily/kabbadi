@@ -1,32 +1,30 @@
 package test;
 
-
-import org.junit.Ignore;
 import org.junit.Test;
+import pages.AdminAddInvoicePage;
+import pages.ListInvoicePage;
 
-public class AdminAddInvoicePageTest extends BaseTest{
+import static junit.framework.Assert.assertTrue;
+import static org.junit.Assert.assertThat;
+import static org.junit.internal.matchers.StringContains.containsString;
+
+public class AdminAddInvoicePageTest extends BaseTest {
+
     @Test
-    @Ignore
-    public void should_stay_on_admin_add_invoice() {
-//        launchKabbadi()
-//                .loginWithValidCredentials()
-//                .goToAdminAddInvoicePage()
-//                .invalidBlankInvoiceNumber();
+    public void should_successfully_add_invoice_with_valid_data() {
+        ListInvoicePage page = launchKabbadi()
+                .loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .validFillAdminAddInvoicePage();
+        assertTrue(page.idExists("admin_invoice_123123"));
     }
 
     @Test
-    @Ignore
-	public void should_redirect_to_admin_add_invoice() {
-//		launchKabbadi()
-//        .loginWithValidCredentials()
-//        .goToAdminAddInvoicePage();
-	}
-
-
-
-
-
-
-
-
+    public void should_fail_to_add_invoice_with_invalid_data() {
+        AdminAddInvoicePage page = launchKabbadi()
+                .loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .invalidBlankInvoiceNumber();
+        assertThat(page.getTitle(), containsString("Add a new invoice"));
+    }
 }

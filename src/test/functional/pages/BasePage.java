@@ -1,6 +1,8 @@
 package pages;
 
 import config.Configuration;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class BasePage{
@@ -18,5 +20,19 @@ public class BasePage{
     public ListInvoicePage returnToKabbadi() {
         driver.get(Configuration.KABBADI_URL);
         return new ListInvoicePage(driver);
+    }
+
+    public boolean idExists(String id) {
+        try {
+            driver.findElement(By.id(id));
+        }
+        catch (NoSuchElementException ex) {
+            return false;
+        }
+        return true;
+    }
+
+    public String getTitle(){
+        return  driver.getTitle();
     }
 }

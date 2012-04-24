@@ -3,7 +3,6 @@ package pages;
 import forms.InvoiceForm;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import test.InvoiceTest;
 
 import java.util.Map;
 
@@ -15,64 +14,68 @@ public class AdminAddInvoicePage extends BasePage {
         super(driver);
         assertThat(driver.getTitle(), containsString("Add a new invoice"));
     }
-
-
+    
     public ListInvoicePage validFillAdminAddInvoicePage() {
-        driver.findElement(By.name("purchaseOrderNumber ")).sendKeys("bill");
-        driver.findElement(By.name("invoiceNumber ")).sendKeys("bill");
-        driver.findElement(By.name("STPIApprovalNumberAndDate ")).sendKeys("bill");
-        driver.findElement(By.name("descriptionOfGoods ")).sendKeys("bill");
-        driver.findElement(By.name("currency ")).sendKeys("bill");
-        driver.findElement(By.name("foreignCurrency ")).sendKeys("bill");
-        driver.findElement(By.name("amountSTPIApproval ")).sendKeys("bill");
-        driver.findElement(By.name("CIFValueInINR ")).sendKeys("bill");
-        driver.findElement(By.name("bondNumber0 ")).sendKeys("bill");
-        driver.findElement(By.name("bondDate1 ")).sendKeys("bill");
-        driver.findElement(By.name("billOfEntryNumber2 ")).sendKeys("bill");
-        driver.findElement(By.name("billOfEntryDate3 ")).sendKeys("bill");
-        driver.findElement(By.name("assessableValueInINR4 ")).sendKeys("bill");
-        driver.findElement(By.name("dutyExempt5 ")).sendKeys("bill");
-        driver.findElement(By.name("twentyFivePercentDF6 ")).sendKeys("bill");
-        driver.findElement(By.name("CGApprovedInINR7 ")).sendKeys("bill");
-        driver.findElement(By.name("dutyForgone8 ")).sendKeys("bill");
-        driver.findElement(By.name("runningBalance9 ")).sendKeys("bill");
-        driver.findElement(By.name("outrightPurchase0 ")).sendKeys("bill");
-        driver.findElement(By.name("loanBasis1 ")).sendKeys("bill");
-        driver.findElement(By.name("freeOfCharge2 ")).sendKeys("bill");
-        driver.findElement(By.name("status3 ")).sendKeys("bill");
-        driver.findElement(By.name("remarks4 ")).sendKeys("bill");
-        driver.findElement(By.name("location ")).sendKeys("bill");
+        driver.findElement(By.name("purchaseOrderNumber")).sendKeys("123123");
+        driver.findElement(By.name("invoiceNumber")).sendKeys("123123");
+        driver.findElement(By.name("STPIApprovalNumberAndDate")).sendKeys("123123");
+        driver.findElement(By.name("descriptionOfGoods")).sendKeys("bill");
+        driver.findElement(By.name("currency")).sendKeys("usd");
+        driver.findElement(By.name("foreignCurrency")).sendKeys("123123");
+        driver.findElement(By.name("amountSTPIApproval")).sendKeys("123123");
+        driver.findElement(By.name("CIFValueInINR")).sendKeys("123123");
+        driver.findElement(By.name("bondNumber")).sendKeys("123123");
+        driver.findElement(By.name("bondDate")).sendKeys("1/1/2012");
+        driver.findElement(By.name("dateOfArrival")).sendKeys("1/1/2012");
+        driver.findElement(By.name("billOfEntryNumber")).sendKeys("123123");
+        driver.findElement(By.name("billOfEntryDate")).sendKeys("1/1/2012");
+        driver.findElement(By.name("assessableValueInINR")).sendKeys("123123");
+        driver.findElement(By.name("dutyExempt")).sendKeys("123123");
+        driver.findElement(By.name("twentyFivePercentDF")).sendKeys("123123");
+        driver.findElement(By.name("CGApprovedInINR")).sendKeys("123123");
+        driver.findElement(By.name("dutyForgone")).sendKeys("123123");
+        driver.findElement(By.name("runningBalance")).sendKeys("123123");
+        driver.findElement(By.name("outrightPurchase")).sendKeys("123123");
+        driver.findElement(By.name("loanBasis")).sendKeys("123123");
+        driver.findElement(By.name("freeOfCharge")).sendKeys("123123");
+        driver.findElement(By.name("status")).sendKeys("bill");
+        driver.findElement(By.name("remarks")).sendKeys("bill");
+        driver.findElement(By.name("location")).sendKeys("bill");
 
-        driver.findElement(By.name("Submit invoice")).click();
+        driver.findElement(By.name("submit")).click();
 
         return new ListInvoicePage(driver);
     }
 
-    public void invalidBlankInvoiceNumber() {
-        driver.findElement(By.name("purchaseOrderNumber ")).sendKeys("bill");
-        driver.findElement(By.name("invoiceNumber ")).sendKeys("");
-        driver.findElement(By.name("STPIApprovalNumberAndDate ")).sendKeys("bill");
-        driver.findElement(By.name("descriptionOfGoods ")).sendKeys("bill");
-        driver.findElement(By.name("currency ")).sendKeys("bill");
-        driver.findElement(By.name("foreignCurrency ")).sendKeys("bill");
-        driver.findElement(By.name("amountSTPIApproval ")).sendKeys("bill");
-        driver.findElement(By.name("CIFValueInINR ")).sendKeys("bill");
-        driver.findElement(By.name("bondNumber0 ")).sendKeys("bill");
-        driver.findElement(By.name("bondDate1 ")).sendKeys("bill");
-        driver.findElement(By.name("billOfEntryNumber2 ")).sendKeys("bill");
-        driver.findElement(By.name("billOfEntryDate3 ")).sendKeys("bill");
-        driver.findElement(By.name("assessableValueInINR4 ")).sendKeys("bill");
-        driver.findElement(By.name("dutyExempt5 ")).sendKeys("bill");
-        driver.findElement(By.name("twentyFivePercentDF6 ")).sendKeys("bill");
-        driver.findElement(By.name("CGApprovedInINR7 ")).sendKeys("bill");
-        driver.findElement(By.name("dutyForgone8 ")).sendKeys("bill");
-        driver.findElement(By.name("runningBalance9 ")).sendKeys("bill");
-        driver.findElement(By.name("outrightPurchase0 ")).sendKeys("bill");
-        driver.findElement(By.name("loanBasis1 ")).sendKeys("bill");
-        driver.findElement(By.name("freeOfCharge2 ")).sendKeys("bill");
-        driver.findElement(By.name("status3 ")).sendKeys("bill");
-        driver.findElement(By.name("remarks4 ")).sendKeys("bill");
-        driver.findElement(By.name("location ")).sendKeys("bill");
+    public AdminAddInvoicePage invalidBlankInvoiceNumber() {
+        driver.findElement(By.name("purchaseOrderNumber")).sendKeys("123123");
+        driver.findElement(By.name("STPIApprovalNumberAndDate")).sendKeys("123123");
+        driver.findElement(By.name("descriptionOfGoods")).sendKeys("bill");
+        driver.findElement(By.name("currency")).sendKeys("usd");
+        driver.findElement(By.name("foreignCurrency")).sendKeys("123123");
+        driver.findElement(By.name("amountSTPIApproval")).sendKeys("123123");
+        driver.findElement(By.name("CIFValueInINR")).sendKeys("123123");
+        driver.findElement(By.name("bondNumber")).sendKeys("123123");
+        driver.findElement(By.name("bondDate")).sendKeys("1/1/2012");
+        driver.findElement(By.name("dateOfArrival")).sendKeys("1/1/2012");
+        driver.findElement(By.name("billOfEntryNumber")).sendKeys("123123");
+        driver.findElement(By.name("billOfEntryDate")).sendKeys("1/1/2012");
+        driver.findElement(By.name("assessableValueInINR")).sendKeys("123123");
+        driver.findElement(By.name("dutyExempt")).sendKeys("123123");
+        driver.findElement(By.name("twentyFivePercentDF")).sendKeys("123123");
+        driver.findElement(By.name("CGApprovedInINR")).sendKeys("123123");
+        driver.findElement(By.name("dutyForgone")).sendKeys("123123");
+        driver.findElement(By.name("runningBalance")).sendKeys("123123");
+        driver.findElement(By.name("outrightPurchase")).sendKeys("123123");
+        driver.findElement(By.name("loanBasis")).sendKeys("123123");
+        driver.findElement(By.name("freeOfCharge")).sendKeys("123123");
+        driver.findElement(By.name("status")).sendKeys("bill");
+        driver.findElement(By.name("remarks")).sendKeys("bill");
+        driver.findElement(By.name("location")).sendKeys("bill");
+
+        driver.findElement(By.name("submit")).click();
+
+        return new AdminAddInvoicePage(driver);
     }
 
 
@@ -93,5 +96,11 @@ public class AdminAddInvoicePage extends BasePage {
         }
         return this;
     }
+
+    public boolean idExists(String id) {
+        return driver.findElement(By.id(id)) != null;
+    }
+    
+
 }
 
