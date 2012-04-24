@@ -1,11 +1,9 @@
 package kabbadi.migration;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.io.File;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -20,10 +18,17 @@ public class AdminMigratorTest {
 
         List<String> inserts = new AdminMigrator().createInserts(records);
 
-        String expectedStatement = "insert into invoice (id, invoiceNumber, STPIApprovalNumberAndDate, descriptionOfGoods, currency, foreignCurrency, amountSTPIApproval, CIFValueInINR, bondNumber) values (100, 'unknown', 'STPIB/Import/25112011/0043/31733  Dt.28-Nov-2011', 'Networking Equipment With Accessories', 'USD', '6333.00', '6333.00', '333115.80', '26/11-12')";
+        String expectedStatement =
+                "INSERT INTO invoice (id, invoiceNumber, STPIApprovalNumberAndDate, " +
+                        "descriptionOfGoods, currency, foreignCurrency, " +
+                        "amountSTPIApproval, CIFValueInINR, bondNumber, bondDate) " +
+                "VALUES " +
+                        "(100, 'unknown', 'STPIB/Import/25112011/0043/31733  Dt.28-Nov-2011', " +
+                        "'Networking Equipment With Accessories', 'USD', 6333.00, 6333.00, 333115.80, " +
+                        "'26/11-12', '01-Jan-12')";
 
         assertThat(inserts.size(), equalTo(1));
-        assertThat(expectedStatement, equalTo(inserts.get(0)));
+        assertThat(inserts.get(0), equalTo(expectedStatement));
     }
 
 }
