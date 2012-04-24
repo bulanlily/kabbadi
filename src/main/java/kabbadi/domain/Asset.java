@@ -1,7 +1,5 @@
 package kabbadi.domain;
 
-
-
 import lombok.Getter;
 import lombok.Setter;
 

@@ -27,6 +27,10 @@ sourceSets {
             srcDir 'src/test/functional'
         }
 
+        resources {
+            srcDirs 'src/test/resources'
+        }
+
     }
 }
 

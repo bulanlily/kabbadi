@@ -59,7 +59,7 @@ public class Invoice implements Comparable<Invoice> {
     @OneToMany(
          cascade = {CascadeType.ALL},
          fetch = FetchType.EAGER,
-            mappedBy = "invoice"
+         mappedBy = "invoice"
     )
     private List<Asset> assetList = new ArrayList<Asset>();
 

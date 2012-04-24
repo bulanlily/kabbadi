@@ -14,6 +14,6 @@ public class TestInvoiceRepository {
 
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public void deleteAll() {
-        sessionFactory.getCurrentSession().createSQLQuery("truncate table invoice").executeUpdate();
+        sessionFactory.getCurrentSession().createSQLQuery("truncate table invoice CASCADE").executeUpdate();
     }
 }
