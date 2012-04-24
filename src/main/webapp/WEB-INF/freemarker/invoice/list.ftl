@@ -90,15 +90,15 @@
             <tr>
 
                 <th>PO #</th>
-                <th>Invoice number</th>
-                <th>Bond No</th>
-                <th>Bill of Entry No</th>
+                <th>Invoice #</th>
+                <th>Bond #</th>
+                <th>Bill of Entry #</th>
                 <th>Date of Invoice</th>
-                <th>Supplier name and address</th>
-                <th>GB on Apr 01</th>
-                <th>Additions during the year</th>
-                <th>Deletions during the year</th>
-                <th>GB on Dec 31</th>
+                <th>Supplier name/address</th>
+                <th>GB (Apr 01)</th>
+                <th>Additions</th>
+                <th>Deletions</th>
+                <th>GB (Dec 31)</th>
                 <th>Location</th>
                 <th></th>
             </tr>
