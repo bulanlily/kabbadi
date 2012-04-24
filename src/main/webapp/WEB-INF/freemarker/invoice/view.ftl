@@ -8,6 +8,15 @@
         body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
         }
+        .table th, .table td {
+        padding: 3px;
+        }
+        th.name {
+        width: 25%;
+        }
+        th.value {
+        width: 75%;
+        }
     </style>
     <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -29,9 +38,8 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>NAME</th>
-            <th>VALUE</th>
-
+            <th class="name">NAME</th>
+            <th class="value">VALUE</th>
         </tr>
         </thead>
         <tbody>
