@@ -6,11 +6,13 @@ public class InvoiceTest extends BaseTest{
 
     @Test
     public void should_be_able_to_edit_existing_invoice() {
+        String purchaseOrder = "PO#343";
         launchKabbadi()
         .loginWithValidCredentials()
+        .confirmFirstPONumberIsNot(purchaseOrder)
         .editFirstInvoice()
-        .changePurchaseOrderNumberTo("PO#343")
+        .changePurchaseOrderNumberTo(purchaseOrder)
         .clickSubmit()
-        .findPurchaseOrderNumber("PO#343");
+        .confirmFirstPONumberIs(purchaseOrder);
     }
 }
