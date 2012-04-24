@@ -23,6 +23,7 @@
 
         <mapping class="kabbadi.domain.User"/>
         <mapping class="kabbadi.domain.Invoice"/>
+        <mapping class="kabbadi.domain.Asset"/>
 
     </session-factory>
 

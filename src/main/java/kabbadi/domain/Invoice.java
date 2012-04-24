@@ -5,7 +5,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Access(AccessType.FIELD)
@@ -53,6 +55,13 @@ public class Invoice implements Comparable<Invoice> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    
+    @OneToMany(
+         cascade = {CascadeType.ALL},
+         fetch = FetchType.EAGER,
+            mappedBy = "invoice"
+    )
+    private List<Asset> assetList = new ArrayList<Asset>();
 
     public Invoice() {
     }
