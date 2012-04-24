@@ -11,6 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -26,24 +29,41 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
 
 
     @Test
-    public void should_recreate_csv_from_migration_sql() throws IOException {
+    public void should_recreate_csv_from_migration_sql() throws IOException, ParseException {
 
-        File adminCsvFile = new File("migration/KabbadiAdmin.csv");
+        insertValuesFromCsvToDatabase();
 
-        List<String> inserts = new AdminMigrator().createInserts(FileUtils.readLines(adminCsvFile));
+        String originalData = originalFileContent();
+        String obtainedData = retrieveValuesFromDatabase();
 
-        GenericRepository<Invoice> repository = new GenericRepository<Invoice>(sessionFactory, Invoice.class);
+        assertThat(obtainedData, equalTo(originalData));
+    }
+
+
+    private File sourceFile() {
+        return new File("migration/KabbadiAdmin.csv");
+    }
+
+    private String originalFileContent() throws IOException {
+        return FileUtils.readFileToString(sourceFile());
+    }
+
+    private void insertValuesFromCsvToDatabase() throws IOException{
+        List<String> inserts =  new AdminMigrator().createInserts(FileUtils.readLines(sourceFile()));
+
 
         sessionFactory.getCurrentSession().createSQLQuery("delete from invoice;").executeUpdate();
-        assertThat(repository.list().size(), equalTo(0));
 
         for (String insert : inserts) {
-            System.out.println(insert);
             sessionFactory.getCurrentSession().createSQLQuery(insert).executeUpdate();
         }
+    }
 
-        for (Invoice invoice : repository.list()) {
+    private String retrieveValuesFromDatabase() {
+        StringBuilder obtainedFile = new StringBuilder();
+        for (Invoice invoice : invoiceRepository.list()) {
             Object[] values = {
+                    invoice.getInvoiceNumber(),
                     invoice.getSTPIApprovalNumberAndDate(),
                     invoice.getDescriptionOfGoods(),
                     invoice.getCurrency(),
@@ -51,30 +71,30 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
                     invoice.getAmountSTPIApproval(),
                     invoice.getCIFValueInINR(),
                     invoice.getBondNumber(),
-                    invoice.getBondDate(),
+                    formatDate(invoice.getBondDate()),
                     invoice.getBillOfEntryNumber(),
-                    invoice.getBillOfEntryDate(),
+                    formatDate(invoice.getBillOfEntryDate()),
                     invoice.getAssessableValueInINR(),
                     invoice.getDutyExempt(),
                     invoice.getTwentyFivePercentDF(),
-                    invoice.getCGApprovedInINR(),
-                    invoice.getDutyForgone(),
-                    invoice.getRunningBalance(),
                     invoice.getOutrightPurchase(),
                     invoice.getLoanBasis(),
                     invoice.getFreeOfCharge(),
-                    invoice.getStatus(),
-                    invoice.getRemarks(),
-                    invoice.getPurchaseOrderNumber(),
-                    invoice.getLocation(),
+                    invoice.getCGApprovedInINR(),
+                    invoice.getDutyForgone(),
+                    invoice.getRunningBalance(),
 
             };
-
-System.out.println(StringUtils.join(values, ","));
+            obtainedFile.append(StringUtils.join(values, ",")).append("\r");
         }
+        obtainedFile.deleteCharAt(obtainedFile.length() - 1);
+        return obtainedFile.toString();
+    }
 
 
-        //TODO migrator needs to do all the columns then we can assert that the above output is identical to the content of adminCsvFile
+    private String formatDate(Date bondDate) {
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yy");
+        return bondDate == null ? null : df.format(bondDate);
     }
 
 }
