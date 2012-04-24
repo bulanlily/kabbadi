@@ -1,7 +1,6 @@
 package pages;
 
 import forms.InvoiceForm;
-import org.hamcrest.CoreMatchers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +10,6 @@ import java.util.Map;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
 public class ListInvoicePage extends BasePage {
