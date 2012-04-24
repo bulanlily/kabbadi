@@ -14,7 +14,7 @@ public class AdminAddInvoicePage extends BasePage {
         super(driver);
         assertThat(driver.getTitle(), containsString("Add a new invoice"));
     }
-    
+
     public ListInvoicePage validFillAdminAddInvoicePage() {
         driver.findElement(By.name("purchaseOrderNumber")).sendKeys("123123");
         driver.findElement(By.name("invoiceNumber")).sendKeys("123123");
@@ -100,7 +100,11 @@ public class AdminAddInvoicePage extends BasePage {
     public boolean idExists(String id) {
         return driver.findElement(By.id(id)) != null;
     }
-    
+
+    public AdminAddInvoicePage confirmAddInvoicePage() {
+        assertThat(getTitle(), containsString("Add a new invoice"));
+        return this;
+    }
 
 }
 

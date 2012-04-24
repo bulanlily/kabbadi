@@ -9,15 +9,16 @@ public class InvoiceTest extends BaseTest {
     public void should_be_able_to_edit_existing_invoice() {
         String purchaseOrder = "PO#343";
         launchKabbadi()
-        .loginWithValidCredentials()
-        .confirmFirstPONumberIsNot(purchaseOrder)
-        .editFirstInvoice()
-        .changePurchaseOrderNumberTo(purchaseOrder)
-        .clickSubmit()
-        .confirmFirstPONumberIs(purchaseOrder);
+                .loginWithValidCredentials()
+                .confirmFirstPONumberIsNot(purchaseOrder)
+                .editFirstInvoice()
+                .changePurchaseOrderNumberTo(purchaseOrder)
+                .clickSubmit()
+                .confirmFirstPONumberIs(purchaseOrder);
     }
+
     @Test
-    public void should_be_able_to_view_the_invoice_details(){
+    public void should_be_able_to_view_the_invoice_details() {
         launchKabbadi()
                 .loginWithValidCredentials()
                 .viewFirstInvoiceDetails();
@@ -30,8 +31,7 @@ public class InvoiceTest extends BaseTest {
                 .goToAdminAddInvoicePage()
                 .fillItWith(validInvoice())
                 .submitInvoice()
-                .confirmInvoiceHasBeenAddedToAdminList(validInvoice())
-        ;
+                .confirmInvoiceHasBeenAddedToAdminList(validInvoice());
     }
 
     private InvoiceForm validInvoice() {
@@ -46,5 +46,21 @@ public class InvoiceTest extends BaseTest {
         return invoice;
     }
 
+    @Test
+    public void should_successfully_add_invoice_with_valid_data() {
+        launchKabbadi()
+                .loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .validFillAdminAddInvoicePage()
+                .confirmInvoiceIsInInvoiceList();
+    }
 
+    @Test
+    public void should_fail_to_add_invoice_with_invalid_data() {
+        launchKabbadi()
+                .loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .invalidBlankInvoiceNumber()
+                .confirmAddInvoicePage();
+    }
 }

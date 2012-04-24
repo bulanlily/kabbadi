@@ -10,6 +10,7 @@ import java.util.Map;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
 public class ListInvoicePage extends BasePage {
@@ -26,6 +27,7 @@ public class ListInvoicePage extends BasePage {
     }
 
     public ListInvoicePage confirmFirstPONumberIs(String purchaseOrder) {
+
         String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
         assertThat(rowData, containsString(purchaseOrder));
         return this;
@@ -62,5 +64,10 @@ public class ListInvoicePage extends BasePage {
     public FinanceListInvoicePage goToFinanceInvoiceListPage() {
         driver.findElement(By.linkText("Finance")).click();
         return new FinanceListInvoicePage(driver);
+    }
+
+    public ListInvoicePage confirmInvoiceIsInInvoiceList() {
+        assertTrue(idExists("admin_invoice_123123"));
+        return new ListInvoicePage(driver);
     }
 }
