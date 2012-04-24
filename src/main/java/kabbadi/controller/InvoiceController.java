@@ -11,13 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 @Controller
-@RequestMapping(value = "/invoice")
-public class InvoiceController {
+public class    InvoiceController {
 
     private final InvoiceService invoiceService;
 
@@ -27,11 +25,11 @@ public class InvoiceController {
     }
 
     @InitBinder
-    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
         binder.registerCustomEditor(Date.class, new NullSafeDatePropertyEditor());
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequestMapping(value = "invoice/save", method = RequestMethod.POST)
     public ModelAndView add(@ModelAttribute Invoice invoice) {
         if (invoice.valid()) {
             invoiceService.saveOrUpdate(invoice);
@@ -40,26 +38,25 @@ public class InvoiceController {
         return new ModelAndView(new RedirectView("/invoice/create", true));
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping(value = "invoice/create", method = RequestMethod.GET)
     public ModelAndView create() {
         return new ModelAndView("invoice/edit", "invoice", new Invoice());
     }
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "invoice/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable("id") Integer id) {
         return new ModelAndView("invoice/edit", "invoice", invoiceService.get(id));
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    @RequestMapping(value = "invoice/list", method = RequestMethod.GET)
     public ModelAndView list() {
         ModelAndView modelAndView = new ModelAndView("invoice/list");
         List<Invoice> invoices = invoiceService.list();
-        Collections.sort(invoices);
         modelAndView.addObject("invoices", invoices);
         return modelAndView;
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "invoice/{id}", method = RequestMethod.GET)
     public ModelAndView viewDetails(@PathVariable("id") Integer id) {
         ModelAndView modelAndView = new ModelAndView("invoice/view");
         modelAndView.addObject("invoice", invoiceService.get(id));
