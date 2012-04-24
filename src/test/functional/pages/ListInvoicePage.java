@@ -1,6 +1,5 @@
 package pages;
 
-import org.hamcrest.CoreMatchers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -33,5 +32,10 @@ public class ListInvoicePage extends BasePage {
         String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
         assertThat(rowData, not(containsString(purchaseOrder)));
         return this;
+    }
+
+    public FinanceListInvoicePage goToFinanceInvoiceListPage() {
+        driver.findElement(By.linkText("Finance")).click();
+        return new FinanceListInvoicePage(driver);
     }
 }
