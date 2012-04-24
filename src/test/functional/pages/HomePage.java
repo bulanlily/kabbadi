@@ -10,14 +10,12 @@ import static org.junit.internal.matchers.StringContains.containsString;
 public class HomePage extends BasePage {
     public HomePage(WebDriver driver) {
         super(driver);
-        assertThat(driver.getTitle(), equalTo("Home Page | Kabbadi"));
         assertThat(driver.getTitle(), equalTo("List Invoices | Kabbadi"));
     }
 
     public AdminAddInvoicePage goToAdminAddInvoicePage() {
-        assertThat(driver.getTitle(), containsString("Admin"));
-        assertThat(driver.getTitle(), containsString("Add Invoice"));
-        driver.findElement(By.name("Add New")).click();
+        driver.findElement(By.id("admin_add_invoice")).click();
+        assertThat(driver.getTitle(), containsString("Add a new invoice"));
         return new AdminAddInvoicePage(driver);
     }
 
