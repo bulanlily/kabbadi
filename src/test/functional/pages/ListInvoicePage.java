@@ -1,7 +1,7 @@
 package pages;
 
 import forms.InvoiceForm;
-import kabbadi.domain.Invoice;
+import org.hamcrest.CoreMatchers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -56,4 +56,13 @@ public class ListInvoicePage extends BasePage {
         return this;
     }
 
+    public ViewSingleInvoiceDetailPage viewFirstInvoiceDetails() {
+        driver.findElement(By.linkText("VIEW DETAILS")).click();
+        return new ViewSingleInvoiceDetailPage(driver);
+    }
+
+    public FinanceListInvoicePage goToFinanceInvoiceListPage() {
+        driver.findElement(By.linkText("Finance")).click();
+        return new FinanceListInvoicePage(driver);
+    }
 }

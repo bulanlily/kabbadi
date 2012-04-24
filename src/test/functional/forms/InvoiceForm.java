@@ -3,7 +3,8 @@ package forms;
 import java.util.HashMap;
 import java.util.Map;
 
-public class InvoiceForm {
+public class
+        InvoiceForm {
 
     private Map<String, String> fields;
 

@@ -28,7 +28,7 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
     @Test
     public void should_recreate_csv_from_migration_sql() throws IOException {
 
-        File adminCsvFile = new File("migration/admin.csv");
+        File adminCsvFile = new File("migration/KabbadiAdmin.csv");
 
         List<String> inserts = new AdminMigrator().createInserts(FileUtils.readLines(adminCsvFile));
 
@@ -38,6 +38,7 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
         assertThat(repository.list().size(), equalTo(0));
 
         for (String insert : inserts) {
+            System.out.println(insert);
             sessionFactory.getCurrentSession().createSQLQuery(insert).executeUpdate();
         }
 
@@ -50,10 +51,28 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
                     invoice.getAmountSTPIApproval(),
                     invoice.getCIFValueInINR(),
                     invoice.getBondNumber(),
-                    invoice.getBondDate()
+                    invoice.getBondDate(),
+                    invoice.getBillOfEntryNumber(),
+                    invoice.getBillOfEntryDate(),
+                    invoice.getAssessableValueInINR(),
+                    invoice.getDutyExempt(),
+                    invoice.getTwentyFivePercentDF(),
+                    invoice.getCGApprovedInINR(),
+                    invoice.getDutyForgone(),
+                    invoice.getRunningBalance(),
+                    invoice.getOutrightPurchase(),
+                    invoice.getLoanBasis(),
+                    invoice.getFreeOfCharge(),
+                    invoice.getStatus(),
+                    invoice.getRemarks(),
+                    invoice.getPurchaseOrderNumber(),
+                    invoice.getLocation(),
+
             };
-            System.out.println(StringUtils.join(values, ","));
+
+System.out.println(StringUtils.join(values, ","));
         }
+
 
         //TODO migrator needs to do all the columns then we can assert that the above output is identical to the content of adminCsvFile
     }
