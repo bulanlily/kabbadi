@@ -36,7 +36,7 @@ public class Invoice implements Comparable<Invoice>{
     private BigDecimal dutyForgone;
     private BigDecimal runningBalance;
     private BigDecimal outrightPurchase;
-    private BigDecimal loanBasis;
+    private String loanBasis;
     private BigDecimal freeOfCharge;
     private String status;
     private String remarks;
