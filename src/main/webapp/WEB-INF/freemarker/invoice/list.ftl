@@ -39,7 +39,7 @@
                 <button href="#" class="btn btn-inverse" id="admin_generate_report">Generate Report</button>
             </div>
 
-            <table id="invoices" class="table table-bordered table-striped">
+            <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
       <th></th>
