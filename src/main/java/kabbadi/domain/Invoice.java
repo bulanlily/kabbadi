@@ -11,7 +11,7 @@ import java.util.Date;
 @Access(AccessType.FIELD)
 @Getter
 @Setter
-public class Invoice implements Comparable<Invoice>{
+public class Invoice implements Comparable<Invoice> {
 
     public static final String INVOICE_NUMBER = "invoiceNumber";
 
@@ -51,7 +51,7 @@ public class Invoice implements Comparable<Invoice>{
     private Integer id;
 
     public Invoice() {
-        if(financeDetails == null)
+        if (financeDetails == null)
             financeDetails = new FinanceDetails();
     }
 

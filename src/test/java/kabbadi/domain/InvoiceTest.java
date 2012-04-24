@@ -5,9 +5,7 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
 public class InvoiceTest {
@@ -24,10 +22,10 @@ public class InvoiceTest {
     }
 
     @Test
-    public void should_calculate_the_total_purchase_value(){
-        assertThat(invoiceWithFinanceValues(1d,1d,1d).totalPurchaseValue(), equalTo(new BigDecimal(1)));
-        assertThat(invoiceWithFinanceValues(2d,3d,1d).totalPurchaseValue(), equalTo(new BigDecimal(4)));
-        assertThat(invoiceWithFinanceValues(2d,2d,5d).totalPurchaseValue(), equalTo(new BigDecimal(-1)));
+    public void should_calculate_the_total_purchase_value() {
+        assertThat(invoiceWithFinanceValues(1d, 1d, 1d).totalPurchaseValue(), equalTo(new BigDecimal(1)));
+        assertThat(invoiceWithFinanceValues(2d, 3d, 1d).totalPurchaseValue(), equalTo(new BigDecimal(4)));
+        assertThat(invoiceWithFinanceValues(2d, 2d, 5d).totalPurchaseValue(), equalTo(new BigDecimal(-1)));
     }
 
     @Test

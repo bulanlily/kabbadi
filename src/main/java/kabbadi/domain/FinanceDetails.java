@@ -19,7 +19,7 @@ public class FinanceDetails {
     private BigDecimal deletionsDuringTheYear;
 
     public BigDecimal totalPurchaseValue() {
-        if(openingPurchaseValueAsOnApril01 == null || additionsDuringTheYear == null || deletionsDuringTheYear == null)
+        if (openingPurchaseValueAsOnApril01 == null || additionsDuringTheYear == null || deletionsDuringTheYear == null)
             return null;
 
         return openingPurchaseValueAsOnApril01.add(additionsDuringTheYear).subtract(deletionsDuringTheYear);

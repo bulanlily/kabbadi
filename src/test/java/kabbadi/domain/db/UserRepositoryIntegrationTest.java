@@ -16,12 +16,12 @@ public class UserRepositoryIntegrationTest extends IntegrationTest {
     private SessionFactory sessionFactory;
 
     @Autowired
-    private GenericRepository<User>  userRepository;
+    private GenericRepository<User> userRepository;
 
     @Test
     public void shouldChooseUserByUserName() {
         addUserToRepository("Bill");
-        GenericRepository<User> userRepository =  new GenericRepository<User>(sessionFactory, User.class);
+        GenericRepository<User> userRepository = new GenericRepository<User>(sessionFactory, User.class);
         User actualUser = userRepository.findBy(User.NAME_PROPERTY, "Bill");
         assertThat(actualUser.getName(), equalTo("Bill"));
     }
@@ -31,5 +31,5 @@ public class UserRepositoryIntegrationTest extends IntegrationTest {
         String sql = "insert into Users (id, name) values (27, '" + name + "');";
         currentSession.createSQLQuery(sql).executeUpdate();
     }
-    
+
 }

@@ -1,11 +1,11 @@
 <#import "/spring.ftl" as spring/>
 <#setting datetime_format="dd/MM/yyyy">
 <#setting number_format="computer">
-<!DOCTYPE html>
+        <!DOCTYPE html>
 <html>
 <head>
     <title>Add a new invoice | Kabbadi</title>
-    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet" />
+    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet"/>
     <style type="text/css">
         body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -35,140 +35,142 @@
 
 
 <div class="container" position="relative">
-<h1>New Invoice</h1>
-<br />
-        <form action="<@spring.url '/invoice/save'/>" method="POST">
+    <h1>New Invoice</h1>
+    <br/>
 
-            <div class="row">
-                <div class="span3">
-                    <input name="id" type="hidden" value="${invoice.id!} "/>
+    <form action="<@spring.url '/invoice/save'/>" method="POST">
 
-                    <label for="invoiceNumber">Invoice number *</label>
-                    <input name="invoiceNumber" required="true" value="${invoice.invoiceNumber!}"/>
+        <div class="row">
+            <div class="span3">
+                <input name="id" type="hidden" value="${invoice.id!} "/>
 
-                    <label for="purchaseOrderNumber">Purchase Order Number</label>
-                    <input name="purchaseOrderNumber" value="${invoice.purchaseOrderNumber!}" />
+                <label for="invoiceNumber">Invoice number *</label>
+                <input name="invoiceNumber" required="true" value="${invoice.invoiceNumber!}"/>
 
-                    <label for="location">Location</label>
-                    <input name="location" value="${invoice.location!}" />
-                </div>
+                <label for="purchaseOrderNumber">Purchase Order Number</label>
+                <input name="purchaseOrderNumber" value="${invoice.purchaseOrderNumber!}"/>
+
+                <label for="location">Location</label>
+                <input name="location" value="${invoice.location!}"/>
             </div>
-            <br />
+        </div>
+        <br/>
 
-            <div class="tabbable">
-                <ul class="nav nav-tabs" id="tabs">
-                    <li class="active"><a href="#admin" data-toggle="tab">Admin</a></li>
-                    <li><a href="#finance" data-toggle="tab">Finance</a></li>
-                </ul>
+        <div class="tabbable">
+            <ul class="nav nav-tabs" id="tabs">
+                <li class="active"><a href="#admin" data-toggle="tab">Admin</a></li>
+                <li><a href="#finance" data-toggle="tab">Finance</a></li>
+            </ul>
 
-                <div class="tab-content">
-                    <div class="tab-pane active" id="admin">
-                            <div class="span3">
+            <div class="tab-content">
+                <div class="tab-pane active" id="admin">
+                    <div class="span3">
 
-                                <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
-                                <input name="STPIApprovalNumberAndDate" value="${invoice.STPIApprovalNumberAndDate!}"/>
+                        <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
+                        <input name="STPIApprovalNumberAndDate" value="${invoice.STPIApprovalNumberAndDate!}"/>
 
-                                <label for="dateOfArrival">Date of Arrival</label>
-                                <input name="dateOfArrival" value="${invoice.dateOfArrival!}"/>
+                        <label for="dateOfArrival">Date of Arrival</label>
+                        <input name="dateOfArrival" value="${invoice.dateOfArrival!}"/>
 
-                                <label for="descriptionOfGoods">Description of Goods</label>
-                                <input name="descriptionOfGoods" value="${invoice.descriptionOfGoods!}" />
+                        <label for="descriptionOfGoods">Description of Goods</label>
+                        <input name="descriptionOfGoods" value="${invoice.descriptionOfGoods!}"/>
 
-                                <label for="currency">Currency</label>
-                                <input name="currency" value="${invoice.currency!}" />
+                        <label for="currency">Currency</label>
+                        <input name="currency" value="${invoice.currency!}"/>
 
-                                <label for="foreignCurrency">Foreign Currency</label>
-                                <input name="foreignCurrency" value="${invoice.foreignCurrency!}" />
+                        <label for="foreignCurrency">Foreign Currency</label>
+                        <input name="foreignCurrency" value="${invoice.foreignCurrency!}"/>
 
-                                <label for="amountSTPIApproval">Amount STPI Approval</label>
-                                <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}" />
+                        <label for="amountSTPIApproval">Amount STPI Approval</label>
+                        <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}"/>
 
-                                <label for="CIFValueInINR">CIF Value In INR</label>
-                                <input name="CIFValueInINR" value="${invoice.CIFValueInINR!}" />
+                        <label for="CIFValueInINR">CIF Value In INR</label>
+                        <input name="CIFValueInINR" value="${invoice.CIFValueInINR!}"/>
 
-                                <label for="assessableValueInINR">Assessable Value In INR</label>
-                                <input name="assessableValueInINR" value="${invoice.assessableValueInINR!}" />
+                        <label for="assessableValueInINR">Assessable Value In INR</label>
+                        <input name="assessableValueInINR" value="${invoice.assessableValueInINR!}"/>
 
-                            </div>
-                            <div class="span3">
-
-                                <label for="bondNumber">Bond Number</label>
-                                <input name="bondNumber" value="${invoice.bondNumber!}" />
-
-                                <label for="bondDate">Bond Date</label>
-                                <input name="bondDate" type="date" value="${invoice.bondDate!}" />
-
-                                <label for="billOfEntryNumber">Bill of Entry Number</label>
-                                <input name="billOfEntryNumber" value="${invoice.billOfEntryNumber!}" />
-
-                                <label for="billOfEntryDate">Bill of Entry Date</label>
-                                <input name="billOfEntryDate" type="date" value="${invoice.billOfEntryDate!}" />
-
-                                <label for="dutyExempt">Duty Exempt</label>
-                                <input name="dutyExempt" value="${invoice.dutyExempt!}" />
-
-                                <label for="twentyFivePercentDF">25% DF</label>
-                                <input name="twentyFivePercentDF" value="${invoice.twentyFivePercentDF!}" />
-
-                                <label for="CGApprovedInINR">CG Approved In INR</label>
-                                <input name="CGApprovedInINR" value="${invoice.CGApprovedInINR!}" />
-                            </div>
-                            <div class="span3">
-                                <label for="dutyForgone">Duty Forgone</label>
-                                <input name="dutyForgone" value="${invoice.dutyForgone!}" />
-
-                                <label for="runningBalance">Running Balance</label>
-                                <input name="runningBalance" value="${invoice.runningBalance!}" />
-
-                                <label for="outrightPurchase">Outright Purchase</label>
-                                <input name="outrightPurchase" value="${invoice.outrightPurchase!}" />
-
-                                <label for="loanBasis">Loan Basis</label>
-                                <input name="loanBasis" value="${invoice.loanBasis!}" />
-
-                                <label for="freeOfCharge">Free Of Charge</label>
-                                <input name="freeOfCharge" value="${invoice.freeOfCharge!}" />
-
-                                <label for="status">Status</label>
-                                <input name="status" value="${invoice.status!}" />
-
-                                <label for="remarks">Remarks</label>
-                                <input name="remarks" value="${invoice.remarks!}" />
-
-                                </div>
                     </div>
-                    <div class="tab-pane" id="finance">
-                            <div class="span3">
+                    <div class="span3">
 
-                                <label for="status">Date of Invoice</label>
-                                <input name="financeDetails.dateOfInvoice" />
+                        <label for="bondNumber">Bond Number</label>
+                        <input name="bondNumber" value="${invoice.bondNumber!}"/>
 
-                                <label for="status">Supplier name and address</label>
-                                <input name="financeDetails.supplierNameAndAddress" />
+                        <label for="bondDate">Bond Date</label>
+                        <input name="bondDate" type="date" value="${invoice.bondDate!}"/>
 
-                                <label for="status">Opening purchase value as on April 01</label>
-                                <input name="financeDetails.openingPurchaseValueAsOnApril01" />
+                        <label for="billOfEntryNumber">Bill of Entry Number</label>
+                        <input name="billOfEntryNumber" value="${invoice.billOfEntryNumber!}"/>
 
-                                <label for="status">Additions during the year</label>
-                                <input name="financeDetails.additionsDuringTheYear" />
+                        <label for="billOfEntryDate">Bill of Entry Date</label>
+                        <input name="billOfEntryDate" type="date" value="${invoice.billOfEntryDate!}"/>
 
-                                <label for="status">Deletions during the year</label>
-                                <input name="financeDetails.DeletionsDuringTheYear" />
-                            </div>
+                        <label for="dutyExempt">Duty Exempt</label>
+                        <input name="dutyExempt" value="${invoice.dutyExempt!}"/>
+
+                        <label for="twentyFivePercentDF">25% DF</label>
+                        <input name="twentyFivePercentDF" value="${invoice.twentyFivePercentDF!}"/>
+
+                        <label for="CGApprovedInINR">CG Approved In INR</label>
+                        <input name="CGApprovedInINR" value="${invoice.CGApprovedInINR!}"/>
+                    </div>
+                    <div class="span3">
+                        <label for="dutyForgone">Duty Forgone</label>
+                        <input name="dutyForgone" value="${invoice.dutyForgone!}"/>
+
+                        <label for="runningBalance">Running Balance</label>
+                        <input name="runningBalance" value="${invoice.runningBalance!}"/>
+
+                        <label for="outrightPurchase">Outright Purchase</label>
+                        <input name="outrightPurchase" value="${invoice.outrightPurchase!}"/>
+
+                        <label for="loanBasis">Loan Basis</label>
+                        <input name="loanBasis" value="${invoice.loanBasis!}"/>
+
+                        <label for="freeOfCharge">Free Of Charge</label>
+                        <input name="freeOfCharge" value="${invoice.freeOfCharge!}"/>
+
+                        <label for="status">Status</label>
+                        <input name="status" value="${invoice.status!}"/>
+
+                        <label for="remarks">Remarks</label>
+                        <input name="remarks" value="${invoice.remarks!}"/>
+
                     </div>
                 </div>
+                <div class="tab-pane" id="finance">
+                    <div class="span3">
+
+                        <label for="status">Date of Invoice</label>
+                        <input name="financeDetails.dateOfInvoice"/>
+
+                        <label for="status">Supplier name and address</label>
+                        <input name="financeDetails.supplierNameAndAddress"/>
+
+                        <label for="status">Opening purchase value as on April 01</label>
+                        <input name="financeDetails.openingPurchaseValueAsOnApril01"/>
+
+                        <label for="status">Additions during the year</label>
+                        <input name="financeDetails.additionsDuringTheYear"/>
+
+                        <label for="status">Deletions during the year</label>
+                        <input name="financeDetails.DeletionsDuringTheYear"/>
+                    </div>
+                </div>
             </div>
-            <br />
+        </div>
+        <br/>
 
-            <hr />
-            <input type="submit" name="submit" value="Submit invoice" class="btn btn-primary" />
-            <a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel" /></a>
-            <br />
-            <br />
-            <p>* indicates mandatory fields</p>
-            <hr />
+        <hr/>
+        <input type="submit" name="submit" value="Submit invoice" class="btn btn-primary"/>
+        <a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel"/></a>
+        <br/>
+        <br/>
 
-        </form>
+        <p>* indicates mandatory fields</p>
+        <hr/>
+
+    </form>
 </div>
 </body>
 </html>

@@ -7,7 +7,7 @@ public class AdminMigrator {
 
     static private final int ID_OFFSET = 100;
 
-    final private Attribute[] attributes = new Attribute[] {
+    final private Attribute[] attributes = new Attribute[]{
             new Attribute(1, "STPIApprovalNumberAndDate", true),
             new Attribute(2, "descriptionOfGoods", true),
             new Attribute(3, "currency", true),
@@ -20,8 +20,8 @@ public class AdminMigrator {
 
     public List<String> createInserts(List<String> lines) {
         List<String> inserts = new ArrayList<String>();
-        for (int id=0; id<lines.size(); id++) {
-            inserts.add (constructInsertStatement(lines.get(id), id + ID_OFFSET));
+        for (int id = 0; id < lines.size(); id++) {
+            inserts.add(constructInsertStatement(lines.get(id), id + ID_OFFSET));
         }
         return inserts;
     }
@@ -34,7 +34,7 @@ public class AdminMigrator {
     private String constructColumnsFragment() {
         StringBuilder insertFragment = new StringBuilder("INSERT INTO invoice (id, invoiceNumber");
         for (Attribute attribute : attributes) {
-            insertFragment.append(", ") .append(attribute.fieldName);
+            insertFragment.append(", ").append(attribute.fieldName);
         }
         insertFragment.append(")");
         return insertFragment.toString();
@@ -43,14 +43,14 @@ public class AdminMigrator {
     private String constructValuesFragment(int id, String[] tokens) {
         StringBuilder valuesFragment = new StringBuilder("VALUES (").append(id).append(", 'unknown'");
         for (Attribute attribute : attributes) {
-            valuesFragment.append(", ") .append(attribute.extractField(tokens));
+            valuesFragment.append(", ").append(attribute.extractField(tokens));
         }
         valuesFragment.append(")");
         return valuesFragment.toString();
     }
 
     private class Attribute {
-        
+
         final int columnIndex;
         final String fieldName;
         final boolean needsQuotes;
@@ -60,10 +60,10 @@ public class AdminMigrator {
             this.fieldName = fieldName;
             this.needsQuotes = needsQuotes;
         }
-        
+
         String extractField(String[] tokens) {
             String value = tokens[columnIndex];
-            return needsQuotes ? "'" + value + "'" : value; 
+            return needsQuotes ? "'" + value + "'" : value;
         }
     }
 

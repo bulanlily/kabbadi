@@ -9,5 +9,5 @@ public class HomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String homepage() {
         return "redirect:/invoice/list";
-     }
+    }
 }

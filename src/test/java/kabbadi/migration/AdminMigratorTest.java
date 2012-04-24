@@ -22,7 +22,7 @@ public class AdminMigratorTest {
                 "INSERT INTO invoice (id, invoiceNumber, STPIApprovalNumberAndDate, " +
                         "descriptionOfGoods, currency, foreignCurrency, " +
                         "amountSTPIApproval, CIFValueInINR, bondNumber, bondDate) " +
-                "VALUES " +
+                        "VALUES " +
                         "(100, 'unknown', 'STPIB/Import/25112011/0043/31733  Dt.28-Nov-2011', " +
                         "'Networking Equipment With Accessories', 'USD', 6333.00, 6333.00, 333115.80, " +
                         "'26/11-12', '01-Jan-12')";
