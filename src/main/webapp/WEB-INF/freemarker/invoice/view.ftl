@@ -51,6 +51,11 @@
 
         </tr>
         <tr>
+            <td>Date of Arrival</td>
+            <td>${invoice.dateOfArrival!}</td>
+
+        </tr>
+        <tr>
             <td>Description of Goods</td>
             <td>${invoice.descriptionOfGoods!}</td>
 

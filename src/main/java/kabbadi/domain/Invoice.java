@@ -1,7 +1,6 @@
 package kabbadi.domain;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -25,6 +24,7 @@ public class Invoice {
     private BigDecimal amountSTPIApproval;
     private BigDecimal CIFValueInINR;
     private String bondNumber;
+    private Date dateOfArrival;
 
     private Date bondDate;
     private String billOfEntryNumber;

@@ -72,6 +72,9 @@
                                 <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
                                 <input name="STPIApprovalNumberAndDate" value="${invoice.STPIApprovalNumberAndDate!}"/>
 
+                                <label for="dateOfArrival">Date of Arrival</label>
+                                <input name="dateOfArrival" value="${invoice.dateOfArrival!}"/>
+
                                 <label for="descriptionOfGoods">Description of Goods</label>
                                 <input name="descriptionOfGoods" value="${invoice.descriptionOfGoods!}" />
 
