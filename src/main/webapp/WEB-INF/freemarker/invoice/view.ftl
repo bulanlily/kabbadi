@@ -33,7 +33,7 @@
 
 
 <div class="container" position="relative">
-    <h1>Invoice ${invoice.invoiceNumber}</h1>
+    <h1>Invoice: ${invoice.invoiceNumber}</h1>
     <br>
     <table class="table table-striped">
         <thead>
@@ -54,15 +54,15 @@
 
         </tr>
         <tr>
-            <td>STPI Approval Number</td>
+            <td>STPI Approval No/Date</td>
             <td>${invoice.STPIApprovalNumberAndDate!}</td>
-
         </tr>
+
         <tr>
             <td>Date of Arrival</td>
             <td>${invoice.dateOfArrival!}</td>
-
         </tr>
+
         <tr>
             <td>Description of Goods</td>
             <td>${invoice.descriptionOfGoods!}</td>
@@ -70,12 +70,12 @@
         </tr>
 
         <tr>
-            <td>Currency</td>
+            <td>Currency Type</td>
             <td>${invoice.currency!}</td>
 
         </tr>
         <tr>
-            <td>Foreign Currency</td>
+            <td>Currency Value</td>
             <td>${invoice.foreignCurrency!}</td>
 
         </tr>
@@ -85,7 +85,7 @@
 
         </tr>
         <tr>
-            <td>CIF Value In INR</td>
+            <td>CIF Value (INR)</td>
             <td>${invoice.CIFValueInINR!}</td>
 
         </tr>
@@ -110,55 +110,55 @@
 
         </tr>
         <tr>
-            <td>Assessable Value In INR</td>
+            <td>Assessable Value (INR)</td>
             <td>${invoice.assessableValueInINR!}</td>
 
         </tr>
         <tr>
-            <td>Duty Exempt</td>
+            <td>Duty Exempt (INR)</td>
             <td>${invoice.dutyExempt!}</td>
 
         </tr>
 
         <tr>
-            <td>25% DF</td>
+            <td>25% DF (INR)</td>
             <td>${invoice.twentyFivePercentDF!}</td>
 
         </tr>
 
         <tr>
-            <td>Outright Purchase</td>
+            <td>Outright Purchase (INR)</td>
             <td>${invoice.outrightPurchase!}</td>
 
         </tr>
 
         <tr>
-            <td>Loan Basis</td>
+            <td>Loan Basis (INR)</td>
             <td>${invoice.loanBasis!}</td>
 
         </tr>
 
         <tr>
-            <td>Free Of Charge</td>
+            <td>Free Of Charge (INR)</td>
             <td>${invoice.freeOfCharge!}</td>
 
         </tr>
 
         <tr>
-            <td>CG Approved In INR</td>
+            <td>CG Approved (INR)</td>
             <td>${invoice.CGApprovedInINR!}</td>
 
         </tr>
 
         <tr>
-            <td>Duty Forgone</td>
+            <td>Duty Forgone (INR)</td>
             <td>${invoice.dutyForgone!}</td>
 
         </tr>
 
 
         <tr>
-            <td>Running Balance</td>
+            <td>Running Balance (INR)</td>
             <td>${invoice.runningBalance!}</td>
 
         </tr>
