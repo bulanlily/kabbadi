@@ -95,10 +95,10 @@
                 <th>Bill of Entry No</th>
                 <th>Date of Invoice</th>
                 <th>Supplier name and address</th>
-                <th>Opening purchase value as on April 01</th>
-                <th>Additions During the year</th>
-                <th>Deletion During the year</th>
-                <th>Total purchase value as on December 31</th>
+                <th>GB on Apr 01</th>
+                <th>Additions during the year</th>
+                <th>Deletions during the year</th>
+                <th>GB on Dec 31</th>
                 <th>Location</th>
                 <th></th>
             </tr>
@@ -107,15 +107,7 @@
             <#list invoices as invoice>
 
                 <tr id="finance_invoice_${invoice.invoiceNumber}">
-                    <td style="width: 130px">
-                        <span class="label" style="background-color:white">
-                            <a href="edit/${invoice.id}#finance">EDIT</a>
-                        </span>
-                        <span class="label" style="background-color:white">
-                            <a href="#">VIEW DETAILS</a>
-                        </span>
-                    </td>
-                    <td style="width: 130px">${invoice.purchaseOrderNumber!}</td>
+                    <td style="width: 60px">${invoice.purchaseOrderNumber!}</td>
                     <td>${invoice.invoiceNumber!}</td>
                     <td>${invoice.bondNumber!}</td>
                     <td>${invoice.billOfEntryNumber!}</td>
@@ -127,6 +119,14 @@
                     <td>${financeDetails.deletionDuringTheYear!}</td>
                     <td>${invoice.totalPurchaseValue()!}</td>
                     <td>${invoice.location!}</td>
+                        <td style="width: 70px">
+                        <span class="label" style="background-color:white">
+                            <a href="edit/${invoice.id}#finance">EDIT</a>
+                        </span>
+                        <span class="label" style="background-color:white">
+                            <a href="#">VIEW</a>
+                        </span>
+                        </td>
                 </tr>
             </#list>
 
