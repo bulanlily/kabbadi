@@ -38,15 +38,15 @@ public class InvoiceTest {
 
     private Invoice invalidInvoiceWithFinanceValues() {
         Invoice invoice = new Invoice();
-        invoice.financeDetails.setAdditionsDuringTheYear(new BigDecimal(1));
+        invoice.setAdditionsDuringTheYear(new BigDecimal(1));
         return invoice;
     }
 
     private Invoice invoiceWithFinanceValues(Double openingValue, Double additions, Double deletions) {
         Invoice invoice = new Invoice();
-        invoice.financeDetails.setOpeningPurchaseValueAsOnApril01(new BigDecimal(openingValue));
-        invoice.financeDetails.setAdditionsDuringTheYear(new BigDecimal(additions));
-        invoice.financeDetails.setDeletionsDuringTheYear(new BigDecimal(deletions));
+        invoice.setOpeningPurchaseValueAsOnApril01(new BigDecimal(openingValue));
+        invoice.setAdditionsDuringTheYear(new BigDecimal(additions));
+        invoice.setDeletionsDuringTheYear(new BigDecimal(deletions));
 
         return invoice;
     }
