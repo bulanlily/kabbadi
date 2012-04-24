@@ -111,15 +111,14 @@
                     <td>${invoice.invoiceNumber!}</td>
                     <td>${invoice.bondNumber!}</td>
                     <td>${invoice.billOfEntryNumber!}</td>
-                    <#assign financeDetails = invoice.financeDetails >
-                    <td>${financeDetails.dateOfInvoice!}</td>
-                    <td>${financeDetails.supplierNameAndAddress!}</td>
-                    <td>${financeDetails.openingPurchaseValueAsOnApril01!}</td>
-                    <td>${financeDetails.additionsDuringTheYear!}</td>
-                    <td>${financeDetails.deletionDuringTheYear!}</td>
+                    <td>${invoice.dateOfInvoice!}</td>
+                    <td>${invoice.supplierNameAndAddress!}</td>
+                    <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
+                    <td>${invoice.additionsDuringTheYear!}</td>
+                    <td>${invoice.deletionDuringTheYear!}</td>
                     <td>${invoice.totalPurchaseValue()!}</td>
                     <td>${invoice.location!}</td>
-                        <td style="width: 70px">
+                        <td style="width: 80px">
                         <span class="label" style="background-color:white">
                             <a href="edit/${invoice.id}#finance">EDIT</a>
                         </span>

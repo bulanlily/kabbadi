@@ -25,7 +25,6 @@ public class Invoice implements Comparable<Invoice>{
     private BigDecimal CIFValueInINR;
     private String bondNumber;
     private Date dateOfArrival;
-
     private Date bondDate;
     private String billOfEntryNumber;
     private Date billOfEntryDate;
@@ -42,17 +41,20 @@ public class Invoice implements Comparable<Invoice>{
     private String remarks;
     private String purchaseOrderNumber;
     private String location;
-
-    @Embedded
-    FinanceDetails financeDetails;
+    private Date dateOfCommissioning;
+    private String groupOfAssets;
+    private String costCenter;
+    private Date dateOfInvoice;
+    private String supplierNameAndAddress;
+    private BigDecimal openingPurchaseValueAsOnApril01;
+    private BigDecimal additionsDuringTheYear;
+    private BigDecimal deletionsDuringTheYear;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
     public Invoice() {
-        if(financeDetails == null)
-            financeDetails = new FinanceDetails();
     }
 
     public boolean valid() {
@@ -60,11 +62,10 @@ public class Invoice implements Comparable<Invoice>{
     }
 
     public BigDecimal totalPurchaseValue() {
-        return getFinanceDetails().totalPurchaseValue();
-    }
+        if(openingPurchaseValueAsOnApril01 == null || additionsDuringTheYear == null || deletionsDuringTheYear == null)
+            return null;
 
-    public FinanceDetails getFinanceDetails() {
-        return financeDetails == null ? new FinanceDetails() : financeDetails;
+        return openingPurchaseValueAsOnApril01.add(additionsDuringTheYear).subtract(deletionsDuringTheYear);
     }
 
     @Override

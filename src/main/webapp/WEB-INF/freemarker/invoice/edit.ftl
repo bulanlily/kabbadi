@@ -139,21 +139,29 @@
                     </div>
                     <div class="tab-pane" id="finance">
                             <div class="span3">
+                                <label for="dateOfInvoice">Date of Invoice</label>
+                                <input name="dateOfInvoice" value="${invoice.dateOfInvoice!}" />
 
-                                <label for="status">Date of Invoice</label>
-                                <input name="financeDetails.dateOfInvoice" />
+                                <label for="supplierNameAndAddress">Supplier name and address</label>
+                                <input name="supplierNameAndAddress" value="${invoice.supplierNameAndAddress!}" />
 
-                                <label for="status">Supplier name and address</label>
-                                <input name="financeDetails.supplierNameAndAddress" />
+                                <label for="openingPurchaseValueAsOnApril01">Opening purchase value as on April 01</label>
+                                <input name="openingPurchaseValueAsOnApril01" value="${invoice.openingPurchaseValueAsOnApril01!}" />
 
-                                <label for="status">Opening purchase value as on April 01</label>
-                                <input name="financeDetails.openingPurchaseValueAsOnApril01" />
+                                <label for="additionsDuringTheYear">Additions during the year</label>
+                                <input name="additionsDuringTheYear" value="${invoice.additionsDuringTheYear!}" />
 
-                                <label for="status">Additions during the year</label>
-                                <input name="financeDetails.additionsDuringTheYear" />
+                                <label for="deletionsDuringTheYear">Deletions during the year</label>
+                                <input name="deletionsDuringTheYear" value="${invoice.deletionsDuringTheYear!}" />
 
-                                <label for="status">Deletions during the year</label>
-                                <input name="financeDetails.DeletionsDuringTheYear" />
+                                <label for="dateOfCommissioning">Date of Commissioning</label>
+                                <input name="dateOfCommissioning" value="${invoice.dateOfCommissioning!}" />
+
+                                <label for="groupOfAssets">Group of Assets</label>
+                                <input name="groupOfAssets" value="${invoice.groupOfAssets!}" />
+
+                                <label for="costCenter">Cost Center</label>
+                                <input name="costCenter" value="${invoice.costCenter!}" />
                             </div>
                     </div>
                 </div>
