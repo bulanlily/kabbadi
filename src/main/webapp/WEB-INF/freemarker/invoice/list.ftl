@@ -49,6 +49,7 @@
                     <th>Bond Date</th>
                     <th>Amount as per STPI Approval</th>
                     <th>Location</th>
+                    <th>Description</th>
                     <th></th>
 
                 </tr>
@@ -64,6 +65,7 @@
                         <td>${invoice.bondDate!}</td>
                         <td>${invoice.amountSTPIApproval!}</td>
                         <td>${invoice.location!}</td>
+                        <td>${invoice.descriptionOfGoods!}</td>
                         <td style="width: 130px">
                             <span class="label" style="background-color:white">
                                 <a href="edit/${invoice.id}">EDIT</a>
