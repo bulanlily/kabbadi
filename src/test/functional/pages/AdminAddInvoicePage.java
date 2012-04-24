@@ -1,16 +1,20 @@
 package pages;
 
+import forms.InvoiceForm;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import test.InvoiceTest;
+
+import java.util.Map;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
-public class AdminAddInvoicePage extends BasePage{
-	public AdminAddInvoicePage(WebDriver driver) {
-		super(driver);
-        assertThat(driver.getTitle(), containsString("Admin"));
-	}
+public class AdminAddInvoicePage extends BasePage {
+    public AdminAddInvoicePage(WebDriver driver) {
+        super(driver);
+        assertThat(driver.getTitle(), containsString("Add a new invoice"));
+    }
 
 
     public ListInvoicePage validFillAdminAddInvoicePage() {
@@ -69,6 +73,25 @@ public class AdminAddInvoicePage extends BasePage{
         driver.findElement(By.name("status3 ")).sendKeys("bill");
         driver.findElement(By.name("remarks4 ")).sendKeys("bill");
         driver.findElement(By.name("location ")).sendKeys("bill");
+    }
+
+
+    public AdminAddInvoicePage fillFieldWith(String fieldName, String fieldValue) {
+        driver.findElement(By.cssSelector("input[name=" + fieldName + "]")).sendKeys(fieldValue);
+        return this;
+    }
+
+    public ListInvoicePage submitInvoice() {
+        driver.findElement(By.cssSelector("input[name=submit]")).click();
+        return new ListInvoicePage(driver);
+    }
+
+    public AdminAddInvoicePage fillItWith(InvoiceForm invoiceForm) {
+        Map<String, String> fields = invoiceForm.getFields();
+        for (String fieldName : fields.keySet()) {
+            fillFieldWith(fieldName, fields.get(fieldName));
+        }
+        return this;
     }
 }
 

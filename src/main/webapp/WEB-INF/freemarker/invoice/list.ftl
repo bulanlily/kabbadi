@@ -42,7 +42,6 @@
             <table id="invoices" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-      <th></th>
                     <th>PO #</th>
                     <th>Invoice number</th>
                     <th>STPI Approval No/Date</th>
@@ -50,13 +49,22 @@
                     <th>Bond Date</th>
                     <th>Amount as per STPI Approval</th>
                     <th>Location</th>
+                    <th>Description</th>
+                    <th></th>
 
                 </tr>
                 </thead>
                 <tbody style="word-wrap:break-word, break-word: hyphenate">
                 <#list invoices as invoice>
-
-                    <tr>
+                    <tr id="admin_invoice_${invoice.invoiceNumber}">
+                        <td style="width: 130px">${invoice.purchaseOrderNumber!}</td>
+                        <td>${invoice.invoiceNumber}</td>
+                        <td>${invoice.STPIApprovalNumberAndDate!}</td>
+                        <td>${invoice.bondNumber!}</td>
+                        <td>${invoice.bondDate!}</td>
+                        <td>${invoice.amountSTPIApproval!}</td>
+                        <td>${invoice.location!}</td>
+                        <td>${invoice.descriptionOfGoods!}</td>
                         <td style="width: 130px">
                             <span class="label" style="background-color:white">
                                 <a href="edit/${invoice.id}">EDIT</a>
@@ -65,13 +73,6 @@
                                 <a href="<@spring.url '/invoice/${invoice.id}'/>">VIEW DETAILS</a>
                             </span>
                         </td>
-                        <td style="width: 130px">${invoice.purchaseOrderNumber!}</td>
-                        <td>${invoice.invoiceNumber}</td>
-                        <td>${invoice.STPIApprovalNumberAndDate!}</td>
-                        <td>${invoice.bondNumber!}</td>
-                        <td>${invoice.bondDate!}</td>
-                        <td>${invoice.amountSTPIApproval!}</td>
-                        <td>${invoice.location!}</td>
                     </tr>
                 </#list>
                 </tbody>
@@ -88,7 +89,6 @@
                         <thead>
             <tr>
 
-                <th></th>
                 <th>PO #</th>
                 <th>Invoice number</th>
                 <th>Bond No</th>
@@ -100,18 +100,21 @@
                 <th>Deletion During the year</th>
                 <th>Total purchase value as on December 31</th>
                 <th>Location</th>
+                <th></th>
             </tr>
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
             <#list invoices as invoice>
 
-                <tr>
+                <tr id="finance_invoice_${invoice.invoiceNumber}">
                     <td style="width: 130px">
                         <span class="label" style="background-color:white">
                             <a href="edit/${invoice.id}#finance">EDIT</a>
-                        </span> <span
-                            class="label" style="background-color:white"> <a
-                            href="#">VIEW DETAILS</a></span></td>
+                        </span>
+                        <span class="label" style="background-color:white">
+                            <a href="#">VIEW DETAILS</a>
+                        </span>
+                    </td>
                     <td style="width: 130px">${invoice.purchaseOrderNumber!}</td>
                     <td>${invoice.invoiceNumber!}</td>
                     <td>${invoice.bondNumber!}</td>
