@@ -13,7 +13,7 @@ public class AdminAddInvoicePage extends BasePage{
 	}
 
 
-    public ListInvoicePage validFillAdminAddInvoicePage() {
+    public HomePage validFillAdminAddInvoicePage() {
         driver.findElement(By.name("purchaseOrderNumber ")).sendKeys("bill");
         driver.findElement(By.name("invoiceNumber ")).sendKeys("bill");
         driver.findElement(By.name("STPIApprovalNumberAndDate ")).sendKeys("bill");
@@ -41,7 +41,7 @@ public class AdminAddInvoicePage extends BasePage{
 
         driver.findElement(By.name("Submit invoice")).click();
 
-        return new ListInvoicePage(driver);
+        return new HomePage(driver);
     }
 
     public void invalidBlankInvoiceNumber() {
