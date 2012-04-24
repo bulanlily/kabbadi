@@ -56,6 +56,11 @@ public class ListInvoicePage extends BasePage {
         return this;
     }
 
+    public ViewSingleInvoiceDetailPage viewFirstInvoiceDetails() {
+        driver.findElement(By.linkText("VIEW DETAILS")).click();
+        return new ViewSingleInvoiceDetailPage(driver);
+    }
+
     public FinanceListInvoicePage goToFinanceInvoiceListPage() {
         driver.findElement(By.linkText("Finance")).click();
         return new FinanceListInvoicePage(driver);

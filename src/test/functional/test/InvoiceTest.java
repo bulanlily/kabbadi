@@ -16,6 +16,12 @@ public class InvoiceTest extends BaseTest {
         .clickSubmit()
         .confirmFirstPONumberIs(purchaseOrder);
     }
+    @Test
+    public void should_be_able_to_view_the_invoice_details(){
+        launchKabbadi()
+                .loginWithValidCredentials()
+                .viewFirstInvoiceDetails();
+    }
 
     @Test
     public void should_list_invoice_after_creating_it() {
