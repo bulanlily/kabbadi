@@ -56,8 +56,7 @@
                 </thead>
                 <tbody style="word-wrap:break-word, break-word: hyphenate">
                 <#list invoices as invoice>
-
-                    <tr>
+                    <tr id="admin_invoice_${invoice.invoiceNumber}">
                         <td style="width: 130px">${invoice.purchaseOrderNumber!}</td>
                         <td>${invoice.invoiceNumber}</td>
                         <td>${invoice.STPIApprovalNumberAndDate!}</td>
@@ -107,7 +106,7 @@
             <tbody style="word-wrap:break-word, break-word: hyphenate">
             <#list invoices as invoice>
 
-                <tr id="finance_invoice_${invoice.invoice_number!}">
+                <tr id="finance_invoice_${invoice.invoiceNumber}">
                     <td style="width: 130px">
                         <span class="label" style="background-color:white">
                             <a href="edit/${invoice.id}#finance">EDIT</a>
