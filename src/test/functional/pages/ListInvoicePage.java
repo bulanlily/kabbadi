@@ -1,8 +1,12 @@
 package pages;
 
-import org.hamcrest.CoreMatchers;
+import forms.InvoiceForm;
+import kabbadi.domain.Invoice;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import java.util.Map;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
@@ -29,9 +33,27 @@ public class ListInvoicePage extends BasePage {
         return this;
     }
 
+    public AdminAddInvoicePage goToAdminAddInvoicePage() {
+        driver.findElement(By.id("admin_add_invoice")).click();
+        assertThat(driver.getTitle(), containsString("Add a new invoice"));
+        return new AdminAddInvoicePage(driver);
+    }
+
+    public ListInvoicePage confirmInvoiceHasBeenAddedToAdminList(InvoiceForm invoiceForm) {
+        Map<String, String> fields = invoiceForm.getFields();
+        WebElement tableRow = driver.findElement(By.id("admin_invoice_" + fields.get("invoiceNumber")));
+
+        for (String fieldValue : fields.values()) {
+            assertThat(tableRow.getText(), containsString(fieldValue));
+        }
+
+        return this;
+    }
+
     public ListInvoicePage confirmFirstPONumberIsNot(String purchaseOrder) {
         String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
         assertThat(rowData, not(containsString(purchaseOrder)));
         return this;
     }
+
 }

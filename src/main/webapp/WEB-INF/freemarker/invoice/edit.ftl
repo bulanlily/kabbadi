@@ -107,7 +107,6 @@
                                 <label for="dutyExempt">Duty Exempt</label>
                                 <input name="dutyExempt" value="${invoice.dutyExempt!}" />
 
-
                                 <label for="twentyFivePercentDF">25% DF</label>
                                 <input name="twentyFivePercentDF" value="${invoice.twentyFivePercentDF!}" />
 
