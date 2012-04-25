@@ -212,7 +212,7 @@
 
                     </tr>
                     <tr>
-                        <td>Invoice number</td>
+                        <td>Invoice Number</td>
                         <td>${invoice.invoiceNumber}</td>
 
                     </tr>
@@ -265,24 +265,27 @@
 
                     </tr>
                     <tr>
-                        <td>GB as on April 01</td>
+                        <td>GB as on April 01. 2011</td>
                         <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
 
                     </tr>
                     <tr>
-                        <td>Addition During the Year</td>
+                        <td>Additions During the Year</td>
                         <td>${invoice.additionsDuringTheYear!}</td>
 
                     </tr>
                     <tr>
-                        <td>Deletions during the year</td>
+                        <td>Deletions During the Year</td>
                         <td>${invoice.deletionsDuringTheYear!}</td>
 
                     </tr>
                     <tr>
-                        <td>GB on December 31,2011</td>
+                        <td>GB on December 31, 2011</td>
                         <td>${invoice.GBonDecember31()!}</td>
-
+                    </tr>
+                    <tr>
+                        <td>Cost Centre</td>
+                        <td>${invoice.costCentre!}</td>
                     </tr>
 
                     </tbody>
