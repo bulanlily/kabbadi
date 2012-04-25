@@ -63,79 +63,123 @@
 
                 <div class="tab-content">
                     <div class="tab-pane active" id="admin">
+                        <div class="row">
                             <div class="span3">
-
                                 <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
                                 <input name="STPIApprovalNumberAndDate" value="${invoice.STPIApprovalNumberAndDate!}"/>
+                            </div>
 
+                            <div class="span3">
                                 <label for="dateOfArrival">Date of Arrival</label>
                                 <input name="dateOfArrival" value="${invoice.dateOfArrival!}"/>
+                            </div>
 
+                            <div class="span3">
                                 <label for="descriptionOfGoods">Description of Goods</label>
                                 <input name="descriptionOfGoods" value="${invoice.descriptionOfGoods!}" />
-
-                                <label for="currency">Currency</label>
-                                <input name="currency" value="${invoice.currency!}" />
-
-                                <label for="foreignCurrency">Foreign Currency</label>
-                                <input name="foreignCurrency" value="${invoice.foreignCurrency!}" />
-
-                                <label for="amountSTPIApproval">Amount STPI Approval</label>
-                                <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}" />
-
-                                <label for="CIFValueInINR">CIF Value In INR</label>
-                                <input name="CIFValueInINR" value="${invoice.CIFValueInINR!}" />
-
-                                <label for="assessableValueInINR">Assessable Value In INR</label>
-                                <input name="assessableValueInINR" value="${invoice.assessableValueInINR!}" />
-
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="span3">
-
                                 <label for="bondNumber">Bond Number</label>
                                 <input name="bondNumber" value="${invoice.bondNumber!}" />
-
+                            </div>
+                            <div class="span3">
                                 <label for="bondDate">Bond Date</label>
                                 <input name="bondDate" type="date" value="${invoice.bondDate!}" />
-
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span3">
                                 <label for="billOfEntryNumber">Bill of Entry Number</label>
                                 <input name="billOfEntryNumber" value="${invoice.billOfEntryNumber!}" />
+                            </div>
 
+                            <div class="span3">
                                 <label for="billOfEntryDate">Bill of Entry Date</label>
                                 <input name="billOfEntryDate" type="date" value="${invoice.billOfEntryDate!}" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span3">
+                                <label for="foreignCurrency">Foreign Currency</label>
+                                <input name="foreignCurrency" value="${invoice.foreignCurrency!}" />
+                            </div>
 
-                                <label for="dutyExempt">Duty Exempt</label>
-                                <input name="dutyExempt" value="${invoice.dutyExempt!}" />
+                            <div class="span3">
+                                <label for="currency">Currency</label>
+                                <input name="currency" value="${invoice.currency!}" />
+                            </div>
 
-                                <label for="twentyFivePercentDF">25% DF</label>
-                                <input name="twentyFivePercentDF" value="${invoice.twentyFivePercentDF!}" />
+                            <div class="span3">
+                                <label for="amountSTPIApproval">Amount STPI Approval</label>
+                                <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}" />
+                            </div>
 
+                            <div class="span3">
+                                <label for="assessableValueInINR">Assessable Value In INR</label>
+                                <input name="assessableValueInINR" value="${invoice.assessableValueInINR!}" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span3">
+                                <label for="CIFValueInINR">CIF Value In INR</label>
+                                <input name="CIFValueInINR" value="${invoice.CIFValueInINR!}" />
+                            </div>
+
+                            <div class="span3">
                                 <label for="CGApprovedInINR">CG Approved In INR</label>
                                 <input name="CGApprovedInINR" value="${invoice.CGApprovedInINR!}" />
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="span3">
-                                <label for="dutyForgone">Duty Forgone</label>
+                                <label for="dutyExempt">Duty Exempt</label>
+                                <input name="dutyExempt" value="${invoice.dutyExempt!}" />
+                            </div>
+
+                            <div class="span3">
+                                <label for="twentyFivePercentDF">25% DF</label>
+                                <input name="twentyFivePercentDF" value="${invoice.twentyFivePercentDF!}" />
+                            </div>
+
+                            <div class="span3">
+                                <label for="dutyForgone">Duty Foregone</label>
                                 <input name="dutyForgone" value="${invoice.dutyForgone!}" />
-
-                                <label for="runningBalance">Running Balance</label>
-                                <input name="runningBalance" value="${invoice.runningBalance!}" />
-
-                                <label for="outrightPurchase">Outright Purchase</label>
-                                <input name="outrightPurchase" value="${invoice.outrightPurchase!}" />
-
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span3">
                                 <label for="loanBasis">Loan Basis</label>
                                 <input name="loanBasis" value="${invoice.loanBasis!}" />
+                            </div>
 
+                            <div class="span3">
+                                <label for="outrightPurchase">Outright Purchase</label>
+                                <input name="outrightPurchase" value="${invoice.outrightPurchase!}" />
+                            </div>
+
+                            <div class="span3">
                                 <label for="freeOfCharge">Free Of Charge</label>
                                 <input name="freeOfCharge" value="${invoice.freeOfCharge!}" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="span3">
+                                <label for="runningBalance">Running Balance</label>
+                                <input name="runningBalance" value="${invoice.runningBalance!}" />
+                            </div>
 
+                            <div class="span3">
                                 <label for="status">Status</label>
                                 <input name="status" value="${invoice.status!}" />
+                            </div>
 
+                            <div class="span3">
                                 <label for="remarks">Remarks</label>
                                 <input name="remarks" value="${invoice.remarks!}" />
-
-                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="tab-pane" id="finance">
                             <div class="span3">
