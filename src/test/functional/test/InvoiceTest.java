@@ -7,16 +7,20 @@ public class InvoiceTest extends BaseTest {
 
     @Test
     public void should_be_able_to_edit_existing_invoice() {
-        String purchaseOrder = "PO#"+System.currentTimeMillis();
+        String newPurchaseOrder = "PO#"+System.currentTimeMillis();
+        String newInvoiceNumber = "IN#"+System.currentTimeMillis();
+
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
                 .submit(validInvoice())
                 .confirmInvoiceHasBeenAddedToAdminList(validInvoice())
                 .editFirstInvoice()
-                .changePurchaseOrderNumberTo(purchaseOrder)
+                .changePurchaseOrderNumberTo(newPurchaseOrder)
+                .changeInvoiceNumberTo(newInvoiceNumber)
                 .clickSubmit()
-                .confirmFirstPONumberIs(purchaseOrder);
+                .confirmFirstPONumberIs(newPurchaseOrder)
+                .confirmInvoiceNumberIs(newInvoiceNumber);
     }
 
     private InvoiceForm validInvoice() {

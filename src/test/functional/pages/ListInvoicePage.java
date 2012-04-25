@@ -64,4 +64,11 @@ public class ListInvoicePage extends BasePage {
         assertTrue(idExists("admin_invoice_123123"));
         return new ListInvoicePage(driver);
     }
+
+    public ListInvoicePage confirmInvoiceNumberIs(String newInvoiceNumber) {
+
+        String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
+        assertThat(rowData, containsString(newInvoiceNumber));
+        return this;
+    }
 }
