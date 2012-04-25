@@ -23,4 +23,10 @@ public class EditInvoicePage extends BasePage {
         driver.findElement(By.name("submit")).click();
         return new ListInvoicePage(driver);
     }
+
+    public EditInvoicePage changeInvoiceNumberTo(String newInvoiceNumber) {
+        driver.findElement(By.name("invoiceNumber")).clear();
+        driver.findElement(By.name("invoiceNumber")).sendKeys(newInvoiceNumber);
+        return this;
+    }
 }

@@ -7,21 +7,25 @@ public class InvoiceTest extends BaseTest {
 
     @Test
     public void should_be_able_to_edit_existing_invoice() {
-        String purchaseOrder = "PO#"+System.currentTimeMillis();
+        String newPurchaseOrder = "PO#"+System.currentTimeMillis();
+        String newInvoiceNumber = "IN#"+System.currentTimeMillis();
+
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .submit(validInvoice())
-                .confirmInvoiceHasBeenAddedToAdminList(validInvoice())
+                .submit(validInvoice("invoice123"))
+                .confirmInvoiceHasBeenAddedToAdminList(validInvoice("invoice123"))
                 .editFirstInvoice()
-                .changePurchaseOrderNumberTo(purchaseOrder)
+                .changePurchaseOrderNumberTo(newPurchaseOrder)
+                .changeInvoiceNumberTo(newInvoiceNumber)
                 .clickSubmit()
-                .confirmFirstPONumberIs(purchaseOrder);
+                .confirmFirstPONumberIs(newPurchaseOrder)
+                .confirmInvoiceNumberIs(newInvoiceNumber);
     }
 
-    private InvoiceForm validInvoice() {
+    private InvoiceForm validInvoice(String invoiceNumber) {
         InvoiceForm invoice = new InvoiceForm();
-        invoice.fillInvoiceNumberWith("invoice123");
+        invoice.fillInvoiceNumberWith(invoiceNumber);
         invoice.fillPurchaseOrderNumberWith("po123");
         invoice.fillStpiApprovalNumberAndDateWith("stpi123");
         invoice.fillBondNumberWith("bond123");
@@ -36,7 +40,7 @@ public class InvoiceTest extends BaseTest {
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .validFillAdminAddInvoicePage()
+                .submit(validInvoice("123123"))
                 .confirmInvoiceIsInInvoiceList();
     }
 
@@ -47,5 +51,16 @@ public class InvoiceTest extends BaseTest {
                 .goToAdminAddInvoicePage()
                 .invalidBlankInvoiceNumber()
                 .confirmAddInvoicePage();
+    }
+
+    @Test
+    public void should_open_expected_invoice_details_page() {
+        String invoiceNumber = "1234";
+        launchKabbadi()
+                .loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .submit(validInvoice(invoiceNumber))
+                .selectViewDetailsPageForInvoice(invoiceNumber)
+                .confirmInvoiceDisplayedMatches(invoiceNumber);
     }
 }
