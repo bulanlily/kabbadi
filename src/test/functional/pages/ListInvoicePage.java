@@ -26,13 +26,6 @@ public class ListInvoicePage extends BasePage {
         return new EditInvoicePage(driver);
     }
 
-    public ListInvoicePage confirmFirstPONumberIs(String purchaseOrder) {
-
-        String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
-        assertThat(rowData, containsString(purchaseOrder));
-        return this;
-    }
-
     public AdminAddInvoicePage goToAdminAddInvoicePage() {
         driver.findElement(By.id("admin_add_invoice")).click();
         assertThat(driver.getTitle(), containsString("Add a new invoice"));
@@ -50,11 +43,6 @@ public class ListInvoicePage extends BasePage {
         return this;
     }
 
-    public ViewSingleInvoiceDetailPage viewFirstInvoiceDetails() {
-        driver.findElement(By.linkText("VIEW DETAILS")).click();
-        return new ViewSingleInvoiceDetailPage(driver);
-    }
-
     public FinanceListInvoicePage goToFinanceInvoiceListPage() {
         driver.findElement(By.linkText("Finance")).click();
         return new FinanceListInvoicePage(driver);
@@ -65,10 +53,17 @@ public class ListInvoicePage extends BasePage {
         return new ListInvoicePage(driver);
     }
 
-    public ListInvoicePage confirmInvoiceNumberIs(String newInvoiceNumber) {
+    public ListInvoicePage confirmFirstInvoiceNumberIs(String newInvoiceNumber) {
+        return confirmFirstInvoiceContainsValue(newInvoiceNumber);
+    }
 
+    public ListInvoicePage confirmFirstPONumberIs(String purchaseOrder) {
+        return confirmFirstInvoiceContainsValue(purchaseOrder);
+    }
+
+    private ListInvoicePage confirmFirstInvoiceContainsValue(String fieldValue) {
         String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
-        assertThat(rowData, containsString(newInvoiceNumber));
+        assertThat(rowData, containsString(fieldValue));
         return this;
     }
 }

@@ -20,19 +20,7 @@ public class InvoiceTest extends BaseTest {
                 .changeInvoiceNumberTo(newInvoiceNumber)
                 .clickSubmit()
                 .confirmFirstPONumberIs(newPurchaseOrder)
-                .confirmInvoiceNumberIs(newInvoiceNumber);
-    }
-
-    private InvoiceForm validInvoice() {
-        InvoiceForm invoice = new InvoiceForm();
-        invoice.fillInvoiceNumberWith("invoice123");
-        invoice.fillPurchaseOrderNumberWith("po123");
-        invoice.fillStpiApprovalNumberAndDateWith("stpi123");
-        invoice.fillBondNumberWith("bond123");
-        invoice.fillBondDateWith("01/02/2012");
-        invoice.fillAmountAsPerStpiApprovalWith("33.33");
-        invoice.fillLocationWith("IND");
-        return invoice;
+                .confirmFirstInvoiceNumberIs(newInvoiceNumber);
     }
 
     @Test
@@ -52,4 +40,18 @@ public class InvoiceTest extends BaseTest {
                 .invalidBlankInvoiceNumber()
                 .confirmAddInvoicePage();
     }
+
+
+    private InvoiceForm validInvoice() {
+        InvoiceForm invoice = new InvoiceForm();
+        invoice.fillInvoiceNumberWith("invoice123");
+        invoice.fillPurchaseOrderNumberWith("po123");
+        invoice.fillStpiApprovalNumberAndDateWith("stpi123");
+        invoice.fillBondNumberWith("bond123");
+        invoice.fillBondDateWith("01/02/2012");
+        invoice.fillAmountAsPerStpiApprovalWith("33.33");
+        invoice.fillLocationWith("IND");
+        return invoice;
+    }
+
 }
