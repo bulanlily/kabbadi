@@ -5,6 +5,8 @@ import kabbadi.domain.db.GenericRepository;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
@@ -36,6 +38,13 @@ public class InvoiceServiceTest {
         Invoice invoice = invoiceService.get(id);
         verify(repository).get(id);
         assertThat(invoice, equalTo(repository.get(id)));
+    }
+
+    @Test
+    public void list_pulls_a_list_of_invoices() {
+        List<Invoice> invoiceList = invoiceService.list();
+        verify(repository).list();
+        assertThat(invoiceList, equalTo(repository.list()));
     }
 
 }

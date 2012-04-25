@@ -12,11 +12,11 @@ public class LoginPage extends BasePage {
         assertThat(driver.getTitle(), containsString("Central Authentication Service"));
     }
 
-    public ListInvoicePage loginWithValidCredentials() {
+    public ListAdminInvoicesPage loginWithValidCredentials() {
         driver.findElement(By.id("username")).sendKeys("bill");
         driver.findElement(By.id("password")).sendKeys("bill");
         driver.findElement(By.name("submit")).click();
-        return new ListInvoicePage(driver);
+        return new ListAdminInvoicesPage(driver);
     }
 
     public LoginPage loginWithInvalidCredentials() {

@@ -15,6 +15,16 @@
     <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            var redirectTo = $("#redirectToTab");
+            redirectTo.val((window.location.hash + "").replace("#",""));
+
+            $('a[data-toggle="tab"]').on('shown', function(e) {
+                redirectTo.val($(e.target).attr("href").replace("#",""));
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -56,6 +66,8 @@
                 <div class="span3">
                     <label for="descriptionOfGoods">Description of Goods</label>
                     <input name="descriptionOfGoods" value="${invoice.descriptionOfGoods!}" />
+
+                    <input name="role" type="hidden" id="redirectToTab" />
 
                 </div>
             </div>
@@ -184,46 +196,53 @@
                         </div>
                     </div>
                     <div class="tab-pane" id="finance">
-                            <div class="span3">
-                                <label for="dateOfInvoice">Date of Invoice</label>
-                                <input name="dateOfInvoice" value="${invoice.dateOfInvoice!}" />
+                        <div class="span3">
+                            <label for="dateOfInvoice">Date of Invoice</label>
+                            <input name="dateOfInvoice" value="${invoice.dateOfInvoice!}" />
 
-                                <label for="supplierNameAndAddress">Supplier name and address</label>
-                                <input name="supplierNameAndAddress" value="${invoice.supplierNameAndAddress!}" />
+                            <label for="quantity">Quantity</label>
+                            <input name="quantity" value="${invoice.quantity!}" />
 
-                                <label for="openingPurchaseValueAsOnApril01">Opening purchase value as on April 01</label>
-                                <input name="openingPurchaseValueAsOnApril01" value="${invoice.openingPurchaseValueAsOnApril01!}" />
+                            <label for="openingPurchaseValueAsOnApril01">GB on April 01</label>
+                            <input name="openingPurchaseValueAsOnApril01" value="${invoice.openingPurchaseValueAsOnApril01!}" />
 
-                                <label for="additionsDuringTheYear">Additions during the year</label>
-                                <input name="additionsDuringTheYear" value="${invoice.additionsDuringTheYear!}" />
+                            <label for="dateOfCommissioning">Date of Commissioning</label>
+                            <input name="dateOfCommissioning" value="${invoice.dateOfCommissioning!}" />
 
-                            </div>
-                            <div class="span3">
 
-                                <label for="deletionsDuringTheYear">Deletions during the year</label>
-                                <input name="deletionsDuringTheYear" value="${invoice.deletionsDuringTheYear!}" />
 
-                                <label for="dateOfCommissioning">Date of Commissioning</label>
-                                <input name="dateOfCommissioning" value="${invoice.dateOfCommissioning!}" />
 
-                                <label for="groupOfAssets">Group of Assets</label>
-                                <input name="groupOfAssets" value="${invoice.groupOfAssets!}" />
+                        </div>
+                        <div class="span3">
 
-                                <label for="costCentre">Cost Centre</label>
-                                <input name="costCentre" value="${invoice.costCenter!}" />
+                            <label for="supplierNameAndAddress">Supplier name and address</label>
+                            <input name="supplierNameAndAddress" value="${invoice.supplierNameAndAddress!}" />
 
-                                </div>
-                            <div class="span3">
+                            <label for="identificationNumber">Identification Number</label>
+                            <input name="identificationNumber" value="${invoice.identificationNumber!}" />
 
-                                <label for="quantity">Quantity</label>
-                                <input name="quantity" value="${invoice.quantity!}" />
+                            <label for="additionsDuringTheYear">Additions during the year</label>
+                            <input name="additionsDuringTheYear" value="${invoice.additionsDuringTheYear!}" />
 
-                                <label for="identificationNumber">Identification Number</label>
-                                <input name="identificationNumber" value="${invoice.identificationNumber!}" />
+                            <label for="costCentre">Cost Centre</label>
+                            <input name="costCentre" value="${invoice.costCenter!}" />
 
-                                <label for="type">Type</label>
-                                <input name="type" value="${invoice.type!}" />
-                            </div>
+
+
+                        </div>
+                        <div class="span3">
+
+
+                            <label for="groupOfAssets">Group of Assets</label>
+                            <input name="groupOfAssets" value="${invoice.groupOfAssets!}" />
+
+                            <label for="type">Type</label>
+                            <input name="type" value="${invoice.type!}" />
+
+                            <label for="deletionsDuringTheYear">Deletions during the year</label>
+                            <input name="deletionsDuringTheYear" value="${invoice.deletionsDuringTheYear!}" />
+
+                        </div>
                     </div>
                 </div>
             </div>

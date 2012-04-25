@@ -1,7 +1,9 @@
 package kabbadi.controller;
 
 import kabbadi.domain.Invoice;
+import kabbadi.domain.Money;
 import kabbadi.service.InvoiceService;
+import kabbadi.spring.util.MoneyPropertyEditor;
 import kabbadi.spring.util.NullSafeDatePropertyEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,15 +31,17 @@ public class InvoiceController {
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
         binder.registerCustomEditor(Date.class, new NullSafeDatePropertyEditor());
+        binder.registerCustomEditor(Money.class, new MoneyPropertyEditor());
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ModelAndView add(@ModelAttribute Invoice invoice) {
+    public ModelAndView add(@ModelAttribute Invoice invoice,
+                            @RequestParam(defaultValue = "admin") String role) {
         if (invoice.valid()) {
             invoiceService.saveOrUpdate(invoice);
-            return new ModelAndView(new RedirectView("/invoice/list", true));
+            return new ModelAndView(new RedirectView("/invoice/list#" + role, true));
         }
-        return new ModelAndView(new RedirectView("/invoice/create", true));
+        return new ModelAndView(new RedirectView("/invoice/create#" + role, true));
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)

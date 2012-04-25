@@ -44,10 +44,10 @@ public class FinanceAddInvoicePage extends BasePage{
         driver.findElement(By.cssSelector("input[name=" + fieldName + "]")).sendKeys(fieldValue);
     }
 
-    public ListInvoicePage submit() {
+    public ListAdminInvoicesPage submit() {
 
         driver.findElement(By.cssSelector("input[name=submit]")).click();
-        return new ListInvoicePage(driver);
+        return new ListAdminInvoicesPage(driver);
     }
 
 }

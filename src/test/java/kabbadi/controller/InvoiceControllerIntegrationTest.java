@@ -31,14 +31,14 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
     @Test
     public void should_add_a_new_invoice_in_the_database() throws Exception {
         String invoiceNumber = "123456";
-        controller.add(invoiceWith(invoiceNumber));
+        controller.add(invoiceWith(invoiceNumber), "admin");
         assertThat(invoiceService.findBy(invoiceNumber).getInvoiceNumber(), equalTo(invoiceNumber));
     }
 
     @Test
     public void should_not_add_an_invoice_without_mandatory_fields() throws Exception {
         String invoiceNumber = "";
-        controller.add(invoiceWith(invoiceNumber));
+        controller.add(invoiceWith(invoiceNumber), "admin");
         assertThat(invoiceService.findBy(invoiceNumber), nullValue());
     }
 
@@ -55,7 +55,7 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
     @Test
     public void should_show_the_single_invoice_view_form() {
         Integer invoiceId = 22;
-        controller.add(invoiceWith("22"));
+        controller.add(invoiceWith("22"), "");
         ModelAndView singleInvoiceView = controller.viewDetails(invoiceId);
         assertThat(singleInvoiceView.getViewName(), equalTo("invoice/view"));
     }
