@@ -46,6 +46,7 @@
 
 <div class="container" position="relative">
 <h1>Add/Edit Invoice</h1>
+<p>* indicates mandatory fields</p>
 <br />
         <form action="<@spring.url '/invoice/save'/>" method="POST">
             <input name="id" type="hidden" value="${invoice.id!} "/>
@@ -253,7 +254,6 @@
             <a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel" /></a>
             <br />
             <br />
-            <p>* indicates mandatory fields</p>
             <hr />
 
         </form>
