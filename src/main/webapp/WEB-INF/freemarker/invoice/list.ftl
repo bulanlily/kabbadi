@@ -11,6 +11,7 @@
     <link href="/kabbadi/static/css/kabbadi.css" rel="stylesheet">
     <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
+    <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="tabable">
