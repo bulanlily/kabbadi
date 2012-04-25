@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>View an Invoice | Kabbadi</title>
-    <link rel="javascript" href="/kabbadi/static/js/bootstrap.tab.js">
+    <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
+    <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
+    <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
     <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
     <style type="text/css">
         body {
@@ -35,158 +37,261 @@
 <div class="container" position="relative">
     <h1>Invoice: ${invoice.invoiceNumber}</h1>
     <br>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th class="name">NAME</th>
-            <th class="value">VALUE</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Purchase Order Number</td>
-            <td>${invoice.purchaseOrderNumber!}</td>
+    <div class="tabbable">
+        <ul class="nav nav-tabs" id="tabs">
+            <li class="active"><a href="#admin" data-toggle="tab">Admin</a></li>
+            <li><a href="#finance" data-toggle="tab">Finance</a></li>
+        </ul>
 
-        </tr>
-        <tr>
-            <td>Invoice number</td>
-            <td>${invoice.invoiceNumber}</td>
+        <div class="tab-content">
+            <div class="tab-pane active" id="admin">
 
-        </tr>
-        <tr>
-            <td>STPI Approval No/Date</td>
-            <td>${invoice.STPIApprovalNumberAndDate!}</td>
-        </tr>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="name">NAME</th>
+                        <th class="value">VALUE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Purchase Order Number</td>
+                        <td>${invoice.purchaseOrderNumber!}</td>
 
-        <tr>
-            <td>Date of Arrival</td>
-            <td>${invoice.dateOfArrival!}</td>
-        </tr>
+                    </tr>
+                    <tr>
+                        <td>Invoice number</td>
+                        <td>${invoice.invoiceNumber}</td>
 
-        <tr>
-            <td>Description of Goods</td>
-            <td>${invoice.descriptionOfGoods!}</td>
+                    </tr>
+                    <tr>
+                        <td>STPI Approval No/Date</td>
+                        <td>${invoice.STPIApprovalNumberAndDate!}</td>
+                    </tr>
 
-        </tr>
+                    <tr>
+                        <td>Date of Arrival</td>
+                        <td>${invoice.dateOfArrival!}</td>
+                    </tr>
 
-        <tr>
-            <td>Currency Type</td>
-            <td>${invoice.currency!}</td>
+                    <tr>
+                        <td>Description of Goods</td>
+                        <td>${invoice.descriptionOfGoods!}</td>
 
-        </tr>
-        <tr>
-            <td>Currency Value</td>
-            <td>${invoice.foreignCurrency!}</td>
+                    </tr>
 
-        </tr>
-        <tr>
-            <td>Amount STPI Approval</td>
-            <td>${invoice.amountSTPIApproval!}</td>
+                    <tr>
+                        <td>Currency Type</td>
+                        <td>${invoice.currency!}</td>
 
-        </tr>
-        <tr>
-            <td>CIF Value (INR)</td>
-            <td>${invoice.CIFValueInINR!}</td>
+                    </tr>
+                    <tr>
+                        <td>Currency Value</td>
+                        <td>${invoice.foreignCurrency!}</td>
 
-        </tr>
-        <tr>
-            <td>Bond Number</td>
-            <td>${invoice.bondNumber!}</td>
+                    </tr>
+                    <tr>
+                        <td>Amount STPI Approval</td>
+                        <td>${invoice.amountSTPIApproval!}</td>
 
-        </tr>
-        <tr>
-            <td>Bond Date</td>
-            <td>${invoice.bond!}</td>
+                    </tr>
+                    <tr>
+                        <td>CIF Value (INR)</td>
+                        <td>${invoice.CIFValueInINR!}</td>
 
-        </tr>
-        <tr>
-            <td>Bill of Entry Number</td>
-            <td>${invoice.billOfEntryNumber!}</td>
+                    </tr>
+                    <tr>
+                        <td>Bond Number</td>
+                        <td>${invoice.bondNumber!}</td>
 
-        </tr>
-        <tr>
-            <td>Bill of Entry Date</td>
-            <td>${invoice.billOfEntryDate!}</td>
+                    </tr>
+                    <tr>
+                        <td>Bond Date</td>
+                        <td>${invoice.bond!}</td>
 
-        </tr>
-        <tr>
-            <td>Assessable Value (INR)</td>
-            <td>${invoice.assessableValueInINR!}</td>
+                    </tr>
+                    <tr>
+                        <td>Bill of Entry Number</td>
+                        <td>${invoice.billOfEntryNumber!}</td>
 
-        </tr>
-        <tr>
-            <td>Duty Exempt (INR)</td>
-            <td>${invoice.dutyExempt!}</td>
+                    </tr>
+                    <tr>
+                        <td>Bill of Entry Date</td>
+                        <td>${invoice.billOfEntryDate!}</td>
 
-        </tr>
+                    </tr>
+                    <tr>
+                        <td>Assessable Value (INR)</td>
+                        <td>${invoice.assessableValueInINR!}</td>
 
-        <tr>
-            <td>25% DF (INR)</td>
-            <td>${invoice.twentyFivePercentDF!}</td>
+                    </tr>
+                    <tr>
+                        <td>Duty Exempt (INR)</td>
+                        <td>${invoice.dutyExempt!}</td>
 
-        </tr>
+                    </tr>
 
-        <tr>
-            <td>Outright Purchase (INR)</td>
-            <td>${invoice.outrightPurchase!}</td>
+                    <tr>
+                        <td>25% DF (INR)</td>
+                        <td>${invoice.twentyFivePercentDF!}</td>
 
-        </tr>
+                    </tr>
 
-        <tr>
-            <td>Loan Basis (INR)</td>
-            <td>${invoice.loanBasis!}</td>
+                    <tr>
+                        <td>Outright Purchase (INR)</td>
+                        <td>${invoice.outrightPurchase!}</td>
 
-        </tr>
+                    </tr>
 
-        <tr>
-            <td>Free Of Charge (INR)</td>
-            <td>${invoice.freeOfCharge!}</td>
+                    <tr>
+                        <td>Loan Basis (INR)</td>
+                        <td>${invoice.loanBasis!}</td>
 
-        </tr>
+                    </tr>
 
-        <tr>
-            <td>CG Approved (INR)</td>
-            <td>${invoice.CGApprovedInINR!}</td>
+                    <tr>
+                        <td>Free Of Charge (INR)</td>
+                        <td>${invoice.freeOfCharge!}</td>
 
-        </tr>
+                    </tr>
 
-        <tr>
-            <td>Duty Forgone (INR)</td>
-            <td>${invoice.dutyForgone!}</td>
+                    <tr>
+                        <td>CG Approved (INR)</td>
+                        <td>${invoice.CGApprovedInINR!}</td>
 
-        </tr>
+                    </tr>
 
+                    <tr>
+                        <td>Duty Forgone (INR)</td>
+                        <td>${invoice.dutyForgone!}</td>
 
-        <tr>
-            <td>Running Balance (INR)</td>
-            <td>${invoice.runningBalance!}</td>
-
-        </tr>
-
-
-        <tr>
-            <td>Location</td>
-            <td>${invoice.location!}</td>
-
-        </tr>
+                    </tr>
 
 
-        <tr>
-            <td>Status</td>
-            <td>${invoice.status!}</td>
+                    <tr>
+                        <td>Running Balance (INR)</td>
+                        <td>${invoice.runningBalance!}</td>
 
-        </tr>
-
-
-        <tr>
-            <td>Remarks</td>
-            <td>${invoice.remarks!}</td>
-
-        </tr>
+                    </tr>
 
 
-        </tbody>
-    </table>
+                    <tr>
+                        <td>Location</td>
+                        <td>${invoice.location!}</td>
+
+                    </tr>
+
+
+                    <tr>
+                        <td>Status</td>
+                        <td>${invoice.status!}</td>
+
+                    </tr>
+
+
+                    <tr>
+                        <td>Remarks</td>
+                        <td>${invoice.remarks!}</td>
+
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="finance">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th class="name">NAME</th>
+                        <th class="value">VALUE</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>Purchase Order Number</td>
+                        <td>${invoice.purchaseOrderNumber!}</td>
+
+                    </tr>
+                    <tr>
+                        <td>Invoice number</td>
+                        <td>${invoice.invoiceNumber}</td>
+
+                    </tr>
+                    <tr>
+                        <td>Date of Invoice</td>
+                        <td>${invoice.dateOfInvoice!}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Date of Commissioning</td>
+                        <td>${invoice.dateOfCommissioning!}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Supplier Name & Address</td>
+                        <td>${invoice.supplierNameAndAddress!}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Group of Assets</td>
+                        <td>${invoice.groupOfAssets!}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Description of Goods</td>
+                        <td>${invoice.descriptionOfGoods!}</td>
+
+                    </tr>
+
+                    <tr>
+                        <td>Quantity</td>
+                        <td>${invoice.quantity!}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Location</td>
+                        <td>${invoice.location!}</td>
+
+                    </tr>
+
+
+                    <tr>
+                        <td>Identification Number</td>
+                        <td>${invoice.identificationNumber!}</td>
+
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>${invoice.type!}</td>
+
+                    </tr>
+                    <tr>
+                        <td>GB as on April 01</td>
+                        <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
+
+                    </tr>
+                    <tr>
+                        <td>Addition During the Year</td>
+                        <td>${invoice.additionsDuringTheYear!}</td>
+
+                    </tr>
+                    <tr>
+                        <td>Deletions during the year</td>
+                        <td>${invoice.deletionsDuringTheYear!}</td>
+
+                    </tr>
+                    <tr>
+                        <td>GB on December 31,2011</td>
+                        <td>${invoice.GBonDecember31()!}</td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 </div>
 </body>
