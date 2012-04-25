@@ -1,5 +1,6 @@
 package test;
 
+import forms.AdminInvoiceForm;
 import forms.InvoiceForm;
 import org.junit.Test;
 
@@ -20,7 +21,7 @@ public class InvoiceTest extends BaseTest {
     }
 
     private InvoiceForm validInvoice() {
-        InvoiceForm invoice = new InvoiceForm();
+        AdminInvoiceForm invoice = new AdminInvoiceForm();
         invoice.fillInvoiceNumberWith("invoice123");
         invoice.fillPurchaseOrderNumberWith("po123");
         invoice.fillStpiApprovalNumberAndDateWith("stpi123");

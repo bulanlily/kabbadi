@@ -81,7 +81,7 @@
         <div id="finance" class="tab-pane fade">
 
         <div class="page-header" align="right">
-                        <a href="<@spring.url "/invoice/create"/>" class="btn btn-inverse">Add New</a>
+                        <a href="<@spring.url "/invoice/create#finance"/>" class="btn btn-inverse" id="finance_add_invoice" >Add New</a>
                         <button href="#" class="btn btn-inverse">Generate Report</button>
                     </div>
 

@@ -9,8 +9,8 @@ import java.util.Map;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
-public class AdminAddInvoicePage extends BasePage {
-    public AdminAddInvoicePage(WebDriver driver) {
+public class AddInvoicePage extends BasePage {
+    public AddInvoicePage(WebDriver driver) {
         super(driver);
         assertThat(driver.getTitle(), containsString("Add a new invoice"));
     }
@@ -48,7 +48,7 @@ public class AdminAddInvoicePage extends BasePage {
         return new ListInvoicePage(driver);
     }
 
-    public AdminAddInvoicePage invalidBlankInvoiceNumber() {
+    public AddInvoicePage invalidBlankInvoiceNumber() {
         driver.findElement(By.name("purchaseOrderNumber")).sendKeys("123123");
         driver.findElement(By.name("STPIApprovalNumberAndDate")).sendKeys("123123");
         driver.findElement(By.name("descriptionOfGoods")).sendKeys("bill");
@@ -76,11 +76,11 @@ public class AdminAddInvoicePage extends BasePage {
 
         driver.findElement(By.name("submit")).click();
 
-        return new AdminAddInvoicePage(driver);
+        return new AddInvoicePage(driver);
     }
 
 
-    public AdminAddInvoicePage fillFieldWith(String fieldName, String fieldValue) {
+    public AddInvoicePage fillFieldWith(String fieldName, String fieldValue) {
         driver.findElement(By.cssSelector("input[name=" + fieldName + "]")).sendKeys(fieldValue);
         return this;
     }
@@ -98,7 +98,7 @@ public class AdminAddInvoicePage extends BasePage {
         return driver.findElement(By.id(id)) != null;
     }
 
-    public AdminAddInvoicePage confirmAddInvoicePage() {
+    public AddInvoicePage confirmAddInvoicePage() {
         assertThat(getTitle(), containsString("Add a new invoice"));
         return this;
     }
