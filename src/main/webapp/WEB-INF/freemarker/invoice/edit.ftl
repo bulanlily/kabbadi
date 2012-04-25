@@ -38,20 +38,22 @@
 <h1>New Invoice</h1>
 <br />
         <form action="<@spring.url '/invoice/save'/>" method="POST">
+            <input name="id" type="hidden" value="${invoice.id!} "/>
 
             <div class="row">
                 <div class="span3">
-                    <input name="id" type="hidden" value="${invoice.id!} "/>
-
                     <label for="invoiceNumber">Invoice number *</label>
                     <input name="invoiceNumber" required="true" value="${invoice.invoiceNumber!}"/>
-
+                </div>
+                <div class="span3">
                     <label for="purchaseOrderNumber">Purchase Order Number</label>
                     <input name="purchaseOrderNumber" value="${invoice.purchaseOrderNumber!}" />
-
+                </div>
+                <div class="span3">
                     <label for="location">Location</label>
                     <input name="location" value="${invoice.location!}" />
-
+                </div>
+                <div class="span3">
                     <label for="descriptionOfGoods">Description of Goods</label>
                     <input name="descriptionOfGoods" value="${invoice.descriptionOfGoods!}" />
 
