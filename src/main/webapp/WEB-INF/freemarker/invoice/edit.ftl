@@ -51,6 +51,10 @@
 
                     <label for="location">Location</label>
                     <input name="location" value="${invoice.location!}" />
+
+                    <label for="descriptionOfGoods">Description of Goods</label>
+                    <input name="descriptionOfGoods" value="${invoice.descriptionOfGoods!}" />
+
                 </div>
             </div>
             <br />
@@ -74,10 +78,6 @@
                                 <input name="dateOfArrival" value="${invoice.dateOfArrival!}"/>
                             </div>
 
-                            <div class="span3">
-                                <label for="descriptionOfGoods">Description of Goods</label>
-                                <input name="descriptionOfGoods" value="${invoice.descriptionOfGoods!}" />
-                            </div>
                         </div>
                         <div class="row">
                             <div class="span3">
@@ -195,6 +195,9 @@
                                 <label for="additionsDuringTheYear">Additions during the year</label>
                                 <input name="additionsDuringTheYear" value="${invoice.additionsDuringTheYear!}" />
 
+                            </div>
+                            <div class="span3">
+
                                 <label for="deletionsDuringTheYear">Deletions during the year</label>
                                 <input name="deletionsDuringTheYear" value="${invoice.deletionsDuringTheYear!}" />
 
@@ -206,6 +209,18 @@
 
                                 <label for="costCenter">Cost Center</label>
                                 <input name="costCenter" value="${invoice.costCenter!}" />
+
+                                </div>
+                            <div class="span3">
+
+                                <label for="quantity">Quantity</label>
+                                <input name="quantity" value="${invoice.quantity!}" />
+
+                                <label for="identificationNumber">Identification Number</label>
+                                <input name="identificationNumber" value="${invoice.identificationNumber!}" />
+
+                                <label for="type">Type</label>
+                                <input name="type" value="${invoice.type!}" />
                             </div>
                     </div>
                 </div>

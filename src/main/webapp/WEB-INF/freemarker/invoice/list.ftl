@@ -70,7 +70,7 @@
                                 <a href="edit/${invoice.id}">EDIT</a>
                             </span>
                             <span class="label" style="background-color:white">
-                                <a href="<@spring.url '/invoice/${invoice.id}'/>">VIEW DETAILS</a>
+                                <a href="<@spring.url '/invoice/${invoice.id}'/>">VIEW</a>
                             </span>
                         </td>
                     </tr>
@@ -81,7 +81,7 @@
         <div id="finance" class="tab-pane fade">
 
         <div class="page-header" align="right">
-                        <a href="<@spring.url "/invoice/create"/>" class="btn btn-inverse">Add New</a>
+                        <a href="<@spring.url "/invoice/create#finance"/>" class="btn btn-inverse" id="finance_add_invoice" >Add New</a>
                         <button href="#" class="btn btn-inverse">Generate Report</button>
                     </div>
 
@@ -116,14 +116,14 @@
                     <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
                     <td>${invoice.additionsDuringTheYear!}</td>
                     <td>${invoice.deletionDuringTheYear!}</td>
-                    <td>${invoice.totalPurchaseValue()!}</td>
+                    <td>${invoice.GBonDecember31()!}</td>
                     <td>${invoice.location!}</td>
                         <td style="width: 80px">
                         <span class="label" style="background-color:white">
                             <a href="edit/${invoice.id}#finance">EDIT</a>
                         </span>
                         <span class="label" style="background-color:white">
-                            <a href="#">VIEW</a>
+                            <a href="<@spring.url '/invoice/${invoice.id}#finance'/>">VIEW</a>
                         </span>
                         </td>
                 </tr>

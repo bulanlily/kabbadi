@@ -33,10 +33,8 @@ public class ListInvoicePage extends BasePage {
         return this;
     }
 
-    public AdminAddInvoicePage goToAdminAddInvoicePage() {
-        driver.findElement(By.id("admin_add_invoice")).click();
-        assertThat(driver.getTitle(), containsString("Add a new invoice"));
-        return new AdminAddInvoicePage(driver);
+    public AddInvoicePage goToAdminAddInvoicePage() {
+        return addInvoiceOf("admin");
     }
 
     public ListInvoicePage confirmInvoiceHasBeenAddedToAdminList(InvoiceForm invoiceForm) {
@@ -51,7 +49,7 @@ public class ListInvoicePage extends BasePage {
     }
 
     public ViewSingleInvoiceDetailPage viewFirstInvoiceDetails() {
-        driver.findElement(By.linkText("VIEW DETAILS")).click();
+        driver.findElement(By.linkText("VIEW")).click();
         return new ViewSingleInvoiceDetailPage(driver);
     }
 
@@ -65,9 +63,20 @@ public class ListInvoicePage extends BasePage {
         return new ListInvoicePage(driver);
     }
 
+    public AddInvoicePage goToFinanceAddInvoicePage() {
+        return addInvoiceOf("finance");
+    }
+
+    private AddInvoicePage addInvoiceOf(String role) {
+        driver.findElement(By.cssSelector("a[href='#" + role + "']")).click();
+        driver.findElement(By.id(role +"_add_invoice")).click();
+        assertThat(driver.getTitle(), containsString("Add a new invoice"));
+        return new AddInvoicePage(driver);
+    }
+
     public ViewSingleInvoiceDetailPage selectViewDetailsPageForInvoice(String invoiceNumber) {
         WebElement id = driver.findElement(By.id("admin_invoice_" + invoiceNumber));
-        id.findElement(By.linkText("VIEW DETAILS")).click();
+        id.findElement(By.linkText("VIEW")).click();
         return new ViewSingleInvoiceDetailPage(driver);
     }
 
