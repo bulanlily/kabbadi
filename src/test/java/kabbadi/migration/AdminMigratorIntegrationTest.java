@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -40,12 +42,24 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
     }
 
 
+
+
     private File sourceFile() {
         return new File("migration/KabbadiAdmin.csv");
     }
 
     private String originalFileContent() throws IOException {
-        return FileUtils.readFileToString(sourceFile());
+        List<String> originalInvoiceList = FileUtils.readLines(sourceFile());
+        Collections.sort(originalInvoiceList);
+        return listToString(originalInvoiceList);
+    }
+
+    private String listToString(List<String> originalInvoiceList) {
+        StringBuilder originalData = new StringBuilder();
+        for(String invoice: originalInvoiceList){
+            originalData.append(invoice);
+        }
+        return originalData.toString();
     }
 
     private void insertValuesFromCsvToDatabase() throws IOException{
@@ -59,7 +73,7 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
     }
 
     private String retrieveValuesFromDatabase() {
-        StringBuilder obtainedFile = new StringBuilder();
+        List<String> obtainedInvoiceList = new ArrayList<String>();
         for (Invoice invoice : invoiceRepository.list()) {
             Object[] values = {
                     invoice.getInvoiceNumber(),
@@ -84,10 +98,11 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
                     invoice.getRunningBalance(),
 
             };
-            obtainedFile.append(StringUtils.join(values, ",")).append("\r");
+            obtainedInvoiceList.add(StringUtils.join(values, ","));
+
         }
-        obtainedFile.deleteCharAt(obtainedFile.length() - 1);
-        return obtainedFile.toString();
+        Collections.sort(obtainedInvoiceList);
+        return listToString(obtainedInvoiceList);
     }
 
 
