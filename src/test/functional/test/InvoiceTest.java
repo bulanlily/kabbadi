@@ -10,11 +10,12 @@ public class InvoiceTest extends BaseTest {
         String newPurchaseOrder = "PO#"+System.currentTimeMillis();
         String newInvoiceNumber = "IN#"+System.currentTimeMillis();
 
+        InvoiceForm newInvoice = validInvoice("1234");
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .submit(validInvoice())
-                .confirmInvoiceHasBeenAddedToAdminList(validInvoice())
+                .submit(newInvoice)
+                .confirmInvoiceHasBeenAddedToAdminList(newInvoice)
                 .editFirstInvoice()
                 .changePurchaseOrderNumberTo(newPurchaseOrder)
                 .changeInvoiceNumberTo(newInvoiceNumber)
@@ -38,14 +39,14 @@ public class InvoiceTest extends BaseTest {
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .validFillAdminAddInvoicePage(invoiceNumber)
+                .submit(validInvoice(invoiceNumber))
                 .selectViewDetailsPageForInvoice(invoiceNumber)
                 .confirmInvoiceDisplayedMatches(invoiceNumber);
     }
 
-    private InvoiceForm validInvoice() {
+    private InvoiceForm validInvoice(String invoiceNumber) {
         InvoiceForm invoice = new InvoiceForm();
-        invoice.fillInvoiceNumberWith("invoice123");
+        invoice.fillInvoiceNumberWith(invoiceNumber);
         invoice.fillPurchaseOrderNumberWith("po123");
         invoice.fillStpiApprovalNumberAndDateWith("stpi123");
         invoice.fillBondNumberWith("bond123");
