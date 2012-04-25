@@ -15,39 +15,6 @@ public class AdminAddInvoicePage extends BasePage {
         assertThat(driver.getTitle(), containsString("Add a new invoice"));
     }
 
-
-    public ListInvoicePage validFillAdminAddInvoicePage() {
-        driver.findElement(By.name("purchaseOrderNumber")).sendKeys("123123");
-        driver.findElement(By.name("invoiceNumber")).sendKeys("123123");
-        driver.findElement(By.name("STPIApprovalNumberAndDate")).sendKeys("123123");
-        driver.findElement(By.name("descriptionOfGoods")).sendKeys("bill");
-        driver.findElement(By.name("currency")).sendKeys("usd");
-        driver.findElement(By.name("foreignCurrency")).sendKeys("123123");
-        driver.findElement(By.name("amountSTPIApproval")).sendKeys("123123");
-        driver.findElement(By.name("CIFValueInINR")).sendKeys("123123");
-        driver.findElement(By.name("bondNumber")).sendKeys("123123");
-        driver.findElement(By.name("bondDate")).sendKeys("1/1/2012");
-        driver.findElement(By.name("dateOfArrival")).sendKeys("1/1/2012");
-        driver.findElement(By.name("billOfEntryNumber")).sendKeys("123123");
-        driver.findElement(By.name("billOfEntryDate")).sendKeys("1/1/2012");
-        driver.findElement(By.name("assessableValueInINR")).sendKeys("123123");
-        driver.findElement(By.name("dutyExempt")).sendKeys("123123");
-        driver.findElement(By.name("twentyFivePercentDF")).sendKeys("123123");
-        driver.findElement(By.name("CGApprovedInINR")).sendKeys("123123");
-        driver.findElement(By.name("dutyForgone")).sendKeys("123123");
-        driver.findElement(By.name("runningBalance")).sendKeys("123123");
-        driver.findElement(By.name("outrightPurchase")).sendKeys("123123");
-        driver.findElement(By.name("loanBasis")).sendKeys("123123");
-        driver.findElement(By.name("freeOfCharge")).sendKeys("123123");
-        driver.findElement(By.name("status")).sendKeys("bill");
-        driver.findElement(By.name("remarks")).sendKeys("bill");
-        driver.findElement(By.name("location")).sendKeys("bill");
-
-        driver.findElement(By.name("submit")).click();
-
-        return new ListInvoicePage(driver);
-    }
-
     public AdminAddInvoicePage invalidBlankInvoiceNumber() {
         driver.findElement(By.name("purchaseOrderNumber")).sendKeys("123123");
         driver.findElement(By.name("STPIApprovalNumberAndDate")).sendKeys("123123");

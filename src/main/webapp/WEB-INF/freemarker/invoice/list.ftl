@@ -7,12 +7,8 @@
 
 <title>List Invoices | Kabbadi</title>
     <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
-    <style type="text/css">
-        body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
-    </style>
     <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/kabbadi/static/css/kabbadi.css" rel="stylesheet">
     <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
 </head>
@@ -42,22 +38,22 @@
             <table id="invoices" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                    <th>PO #</th>
-                    <th>Invoice number</th>
-                    <th>STPI Approval No/Date</th>
-                    <th>Bond No</th>
+                    <th style="min-width: 40px">PO #</th>
+                    <th>Invoice #</th>
+                    <th>STPI Approval #/Date</th>
+                    <th>Bond #</th>
                     <th>Bond Date</th>
-                    <th>Amount as per STPI Approval</th>
+                    <th style="min-width:85px">STPI Amount</th>
                     <th>Location</th>
                     <th>Description</th>
-                    <th></th>
+                    <th style="min-width: 80px"></th>
 
                 </tr>
                 </thead>
                 <tbody style="word-wrap:break-word, break-word: hyphenate">
                 <#list invoices as invoice>
                     <tr id="admin_invoice_${invoice.invoiceNumber}">
-                        <td style="width: 130px">${invoice.purchaseOrderNumber!}</td>
+                        <td>${invoice.purchaseOrderNumber!}</td>
                         <td>${invoice.invoiceNumber}</td>
                         <td>${invoice.STPIApprovalNumberAndDate!}</td>
                         <td>${invoice.bondNumber!}</td>
@@ -65,12 +61,12 @@
                         <td>${invoice.amountSTPIApproval!}</td>
                         <td>${invoice.location!}</td>
                         <td>${invoice.descriptionOfGoods!}</td>
-                        <td style="width: 130px">
-                            <span class="label" style="background-color:white">
+                        <td>
+                            <span class="label button">
                                 <a href="edit/${invoice.id}">EDIT</a>
                             </span>
-                            <span class="label" style="background-color:white">
-                                <a href="<@spring.url '/invoice/${invoice.id}'/>">VIEW DETAILS</a>
+                            <span class="label button">
+                                <a href="<@spring.url '/invoice/${invoice.id}'/>">VIEW</a>
                             </span>
                         </td>
                     </tr>
@@ -89,7 +85,7 @@
                         <thead>
             <tr>
 
-                <th>PO #</th>
+                <th style="min-width: 40px">PO #</th>
                 <th>Invoice #</th>
                 <th>Bond #</th>
                 <th>Bill of Entry #</th>
@@ -100,14 +96,14 @@
                 <th>Deletions</th>
                 <th>GB (Dec 31)</th>
                 <th>Location</th>
-                <th></th>
+                <th style="min-width: 80px"></th>
             </tr>
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
             <#list invoices as invoice>
 
                 <tr id="finance_invoice_${invoice.invoiceNumber}">
-                    <td style="width: 60px">${invoice.purchaseOrderNumber!}</td>
+                    <td>${invoice.purchaseOrderNumber!}</td>
                     <td>${invoice.invoiceNumber!}</td>
                     <td>${invoice.bondNumber!}</td>
                     <td>${invoice.billOfEntryNumber!}</td>
@@ -118,12 +114,12 @@
                     <td>${invoice.deletionDuringTheYear!}</td>
                     <td>${invoice.totalPurchaseValue()!}</td>
                     <td>${invoice.location!}</td>
-                        <td style="width: 80px">
-                        <span class="label" style="background-color:white">
-                            <a href="edit/${invoice.id}#finance">EDIT</a>
-                        </span>
-                        <span class="label" style="background-color:white">
-                            <a href="#">VIEW</a>
+                        <td>
+                            <span class="label button">
+                                <a href="edit/${invoice.id}#finance">EDIT</a>
+                            </span>
+                            <span class="label button">
+                                <a href="#">VIEW</a>
                         </span>
                         </td>
                 </tr>

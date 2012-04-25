@@ -89,7 +89,7 @@
         </tr>
         <tr>
             <td>Bond Date</td>
-            <td>${invoice.bond!}</td>
+            <td>${invoice.bondDate!}</td>
 
         </tr>
         <tr>
