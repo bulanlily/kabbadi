@@ -9,7 +9,6 @@ import java.util.Map;
 
 import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
@@ -24,13 +23,6 @@ public class ListInvoicePage extends BasePage {
         driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1)
                 .findElement(By.linkText("EDIT")).click();
         return new EditInvoicePage(driver);
-    }
-
-    public ListInvoicePage confirmFirstPONumberIs(String purchaseOrder) {
-
-        String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
-        assertThat(rowData, containsString(purchaseOrder));
-        return this;
     }
 
     public AdminAddInvoicePage goToAdminAddInvoicePage() {
@@ -50,19 +42,17 @@ public class ListInvoicePage extends BasePage {
         return this;
     }
 
-    public ViewSingleInvoiceDetailPage viewFirstInvoiceDetails() {
-        driver.findElement(By.linkText("VIEW DETAILS")).click();
-        return new ViewSingleInvoiceDetailPage(driver);
-    }
-
     public FinanceListInvoicePage goToFinanceInvoiceListPage() {
         driver.findElement(By.linkText("Finance")).click();
         return new FinanceListInvoicePage(driver);
     }
 
-    public ListInvoicePage confirmInvoiceIsInInvoiceList() {
-        assertTrue(idExists("admin_invoice_123123"));
-        return new ListInvoicePage(driver);
+    public ListInvoicePage confirmFirstInvoiceNumberIs(String newInvoiceNumber) {
+        return confirmFirstInvoiceContainsValue(newInvoiceNumber);
+    }
+
+    public ListInvoicePage confirmFirstPONumberIs(String purchaseOrder) {
+        return confirmFirstInvoiceContainsValue(purchaseOrder);
     }
 
     public ViewSingleInvoiceDetailPage selectViewDetailsPageForInvoice(String invoiceNumber) {
@@ -71,10 +61,9 @@ public class ListInvoicePage extends BasePage {
         return new ViewSingleInvoiceDetailPage(driver);
     }
 
-    public ListInvoicePage confirmInvoiceNumberIs(String newInvoiceNumber) {
-
+    private ListInvoicePage confirmFirstInvoiceContainsValue(String fieldValue) {
         String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
-        assertThat(rowData, containsString(newInvoiceNumber));
+        assertThat(rowData, containsString(fieldValue));
         return this;
     }
 }
