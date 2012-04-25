@@ -16,9 +16,9 @@ public class AdminAddInvoicePage extends BasePage {
     }
 
 
-    public ListInvoicePage validFillAdminAddInvoicePage() {
+    public ListInvoicePage validFillAdminAddInvoicePage(String invoiceNumber) {
         driver.findElement(By.name("purchaseOrderNumber")).sendKeys("123123");
-        driver.findElement(By.name("invoiceNumber")).sendKeys("123123");
+        driver.findElement(By.name("invoiceNumber")).sendKeys(invoiceNumber);
         driver.findElement(By.name("STPIApprovalNumberAndDate")).sendKeys("123123");
         driver.findElement(By.name("descriptionOfGoods")).sendKeys("bill");
         driver.findElement(By.name("currency")).sendKeys("usd");

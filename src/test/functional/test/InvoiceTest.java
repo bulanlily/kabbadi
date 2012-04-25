@@ -18,18 +18,9 @@ public class InvoiceTest extends BaseTest {
                 .editFirstInvoice()
                 .changePurchaseOrderNumberTo(newPurchaseOrder)
                 .changeInvoiceNumberTo(newInvoiceNumber)
-                .clickSubmit()
+                .submitInvoice()
                 .confirmFirstPONumberIs(newPurchaseOrder)
                 .confirmFirstInvoiceNumberIs(newInvoiceNumber);
-    }
-
-    @Test
-    public void should_successfully_add_invoice_with_valid_data() {
-        launchKabbadi()
-                .loginWithValidCredentials()
-                .goToAdminAddInvoicePage()
-                .validFillAdminAddInvoicePage()
-                .confirmInvoiceIsInInvoiceList();
     }
 
     @Test
@@ -41,6 +32,16 @@ public class InvoiceTest extends BaseTest {
                 .confirmAddInvoicePage();
     }
 
+    @Test
+    public void should_open_expected_invoice_details_page() {
+        String invoiceNumber = "1234";
+        launchKabbadi()
+                .loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .validFillAdminAddInvoicePage(invoiceNumber)
+                .selectViewDetailsPageForInvoice(invoiceNumber)
+                .confirmInvoiceDisplayedMatches(invoiceNumber);
+    }
 
     private InvoiceForm validInvoice() {
         InvoiceForm invoice = new InvoiceForm();
@@ -53,5 +54,4 @@ public class InvoiceTest extends BaseTest {
         invoice.fillLocationWith("IND");
         return invoice;
     }
-
 }
