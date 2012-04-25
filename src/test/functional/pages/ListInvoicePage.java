@@ -57,7 +57,7 @@ public class ListInvoicePage extends BasePage {
 
     public ViewSingleInvoiceDetailPage selectViewDetailsPageForInvoice(String invoiceNumber) {
         WebElement id = driver.findElement(By.id("admin_invoice_" + invoiceNumber));
-        id.findElement(By.linkText("VIEW DETAILS")).click();
+        id.findElement(By.linkText("VIEW")).click();
         return new ViewSingleInvoiceDetailPage(driver);
     }
 
