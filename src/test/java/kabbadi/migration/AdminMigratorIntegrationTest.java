@@ -42,8 +42,6 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
     }
 
 
-
-
     private File sourceFile() {
         return new File("migration/KabbadiAdmin.csv");
     }
