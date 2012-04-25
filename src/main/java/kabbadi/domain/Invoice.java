@@ -55,7 +55,7 @@ public class Invoice implements Comparable<Invoice> {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    
+
     @OneToMany(
          cascade = {CascadeType.ALL},
          fetch = FetchType.EAGER,

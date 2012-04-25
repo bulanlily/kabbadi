@@ -30,8 +30,6 @@ public class AdminMigrator {
             new Attribute(17,"CGApprovedInINR", QUOTES_NOT_NEEDED),
             new Attribute(18,"dutyForgone", QUOTES_NOT_NEEDED),
             new Attribute(19,"runningBalance", QUOTES_NOT_NEEDED)
-
-
     };
 
 

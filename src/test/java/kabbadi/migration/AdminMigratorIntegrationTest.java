@@ -11,6 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -26,24 +31,50 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
 
 
     @Test
-    public void should_recreate_csv_from_migration_sql() throws IOException {
+    public void should_recreate_csv_from_migration_sql() throws IOException, ParseException {
 
-        File adminCsvFile = new File("migration/KabbadiAdmin.csv");
+        insertValuesFromCsvToDatabase();
 
-        List<String> inserts = new AdminMigrator().createInserts(FileUtils.readLines(adminCsvFile));
+        String originalData = originalFileContent();
+        String obtainedData = retrieveValuesFromDatabase();
 
-        GenericRepository<Invoice> repository = new GenericRepository<Invoice>(sessionFactory, Invoice.class);
+        assertThat(obtainedData, equalTo(originalData));
+    }
+
+
+    private File sourceFile() {
+        return new File("migration/KabbadiAdmin.csv");
+    }
+
+    private String originalFileContent() throws IOException {
+        List<String> originalInvoiceList = FileUtils.readLines(sourceFile());
+        Collections.sort(originalInvoiceList);
+        return listToString(originalInvoiceList);
+    }
+
+    private String listToString(List<String> originalInvoiceList) {
+        StringBuilder originalData = new StringBuilder();
+        for(String invoice: originalInvoiceList){
+            originalData.append(invoice);
+        }
+        return originalData.toString();
+    }
+
+    private void insertValuesFromCsvToDatabase() throws IOException{
+        List<String> inserts =  new AdminMigrator().createInserts(FileUtils.readLines(sourceFile()));
 
         sessionFactory.getCurrentSession().createSQLQuery("delete from invoice;").executeUpdate();
-        assertThat(repository.list().size(), equalTo(0));
 
         for (String insert : inserts) {
-            System.out.println(insert);
             sessionFactory.getCurrentSession().createSQLQuery(insert).executeUpdate();
         }
+    }
 
-        for (Invoice invoice : repository.list()) {
+    private String retrieveValuesFromDatabase() {
+        List<String> obtainedInvoiceList = new ArrayList<String>();
+        for (Invoice invoice : invoiceRepository.list()) {
             Object[] values = {
+                    invoice.getInvoiceNumber(),
                     invoice.getSTPIApprovalNumberAndDate(),
                     invoice.getDescriptionOfGoods(),
                     invoice.getCurrency(),
@@ -51,30 +82,31 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
                     invoice.getAmountSTPIApproval(),
                     invoice.getCIFValueInINR(),
                     invoice.getBondNumber(),
-                    invoice.getBondDate(),
+                    formatDate(invoice.getBondDate()),
                     invoice.getBillOfEntryNumber(),
-                    invoice.getBillOfEntryDate(),
+                    formatDate(invoice.getBillOfEntryDate()),
                     invoice.getAssessableValueInINR(),
                     invoice.getDutyExempt(),
                     invoice.getTwentyFivePercentDF(),
-                    invoice.getCGApprovedInINR(),
-                    invoice.getDutyForgone(),
-                    invoice.getRunningBalance(),
                     invoice.getOutrightPurchase(),
                     invoice.getLoanBasis(),
                     invoice.getFreeOfCharge(),
-                    invoice.getStatus(),
-                    invoice.getRemarks(),
-                    invoice.getPurchaseOrderNumber(),
-                    invoice.getLocation(),
+                    invoice.getCGApprovedInINR(),
+                    invoice.getDutyForgone(),
+                    invoice.getRunningBalance(),
 
             };
+            obtainedInvoiceList.add(StringUtils.join(values, ","));
 
-System.out.println(StringUtils.join(values, ","));
         }
+        Collections.sort(obtainedInvoiceList);
+        return listToString(obtainedInvoiceList);
+    }
 
 
-        //TODO migrator needs to do all the columns then we can assert that the above output is identical to the content of adminCsvFile
+    private String formatDate(Date bondDate) {
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yy");
+        return bondDate == null ? null : df.format(bondDate);
     }
 
 }
