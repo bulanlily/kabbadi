@@ -2,11 +2,8 @@ package test;
 
 import config.Configuration;
 import db.TestInvoiceRepository;
-import kabbadi.domain.Invoice;
-import kabbadi.domain.db.GenericRepository;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;

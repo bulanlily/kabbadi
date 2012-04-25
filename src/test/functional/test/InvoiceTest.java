@@ -11,17 +11,18 @@ public class InvoiceTest extends BaseTest {
         String newPurchaseOrder = "PO#"+System.currentTimeMillis();
         String newInvoiceNumber = "IN#"+System.currentTimeMillis();
 
+        InvoiceForm newInvoice = validInvoice("1234");
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .submit(validInvoice("invoice123"))
-                .confirmInvoiceHasBeenAddedToAdminList(validInvoice("invoice123"))
+                .submit(newInvoice)
+                .confirmInvoiceHasBeenAddedToAdminList(newInvoice)
                 .editFirstInvoice()
                 .changePurchaseOrderNumberTo(newPurchaseOrder)
                 .changeInvoiceNumberTo(newInvoiceNumber)
-                .clickSubmit()
+                .submitInvoice()
                 .confirmFirstPONumberIs(newPurchaseOrder)
-                .confirmInvoiceNumberIs(newInvoiceNumber);
+                .confirmFirstInvoiceNumberIs(newInvoiceNumber);
     }
 
     private InvoiceForm validInvoice(String invoiceNumber) {
@@ -34,15 +35,6 @@ public class InvoiceTest extends BaseTest {
         invoice.fillAmountAsPerStpiApprovalWith("33.33");
         invoice.fillLocationWith("IND");
         return invoice;
-    }
-
-    @Test
-    public void should_successfully_add_invoice_with_valid_data() {
-        launchKabbadi()
-                .loginWithValidCredentials()
-                .goToAdminAddInvoicePage()
-                .submit(validInvoice("123123"))
-                .confirmInvoiceIsInInvoiceList();
     }
 
     @Test

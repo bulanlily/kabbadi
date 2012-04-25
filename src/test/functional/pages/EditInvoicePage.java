@@ -19,7 +19,7 @@ public class EditInvoicePage extends BasePage {
         return this;
     }
 
-    public ListInvoicePage clickSubmit() {
+    public ListInvoicePage submitInvoice() {
         driver.findElement(By.name("submit")).click();
         return new ListInvoicePage(driver);
     }

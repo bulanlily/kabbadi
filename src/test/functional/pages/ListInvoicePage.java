@@ -9,7 +9,6 @@ import java.util.Map;
 
 import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
@@ -58,9 +57,8 @@ public class ListInvoicePage extends BasePage {
         return new FinanceListInvoicePage(driver);
     }
 
-    public ListInvoicePage confirmInvoiceIsInInvoiceList() {
-        assertTrue(idExists("admin_invoice_123123"));
-        return new ListInvoicePage(driver);
+    public ListInvoicePage confirmFirstInvoiceNumberIs(String newInvoiceNumber) {
+        return confirmFirstInvoiceContainsValue(newInvoiceNumber);
     }
 
     public AddInvoicePage goToFinanceAddInvoicePage() {
@@ -80,10 +78,9 @@ public class ListInvoicePage extends BasePage {
         return new ViewSingleInvoiceDetailPage(driver);
     }
 
-    public ListInvoicePage confirmInvoiceNumberIs(String newInvoiceNumber) {
-
+    private ListInvoicePage confirmFirstInvoiceContainsValue(String fieldValue) {
         String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
-        assertThat(rowData, containsString(newInvoiceNumber));
+        assertThat(rowData, containsString(fieldValue));
         return this;
     }
 }
