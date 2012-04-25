@@ -45,7 +45,7 @@ public class Invoice implements Comparable<Invoice> {
     private String location;
     private Date dateOfCommissioning;
     private String groupOfAssets;
-    private String costCenter;
+    private String costCentre;
     private Date dateOfInvoice;
     private String supplierNameAndAddress;
     private BigDecimal openingPurchaseValueAsOnApril01;
@@ -81,4 +81,5 @@ public class Invoice implements Comparable<Invoice> {
     public int compareTo(Invoice invoice) {
         return this.invoiceNumber.compareTo(invoice.invoiceNumber);
     }
+
 }
