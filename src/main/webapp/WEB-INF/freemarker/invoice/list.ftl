@@ -46,7 +46,7 @@
                     <th style="min-width:85px">STPI Amount</th>
                     <th>Location</th>
                     <th>Description</th>
-                    <th style="min-width: 80px"></th>
+                    <th style="min-width: 90px"></th>
 
                 </tr>
                 </thead>
@@ -62,10 +62,10 @@
                         <td>${invoice.location!}</td>
                         <td>${invoice.descriptionOfGoods!}</td>
                         <td>
-                            <span class="label button">
+                            <span class="btn btn-info btn-mini">
                                 <a href="edit/${invoice.id}">EDIT</a>
                             </span>
-                            <span class="label button">
+                            <span class="btn btn-info btn-mini">
                                 <a href="<@spring.url '/invoice/${invoice.id}'/>">VIEW</a>
                             </span>
                         </td>
@@ -96,7 +96,7 @@
                 <th>Deletions</th>
                 <th>GB (Dec 31)</th>
                 <th>Location</th>
-                <th style="min-width: 80px"></th>
+                <th style="min-width: 90px"></th>
             </tr>
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
@@ -115,10 +115,10 @@
                     <td>${invoice.GBonDecember31()!}</td>
                     <td>${invoice.location!}</td>
                         <td>
-                            <span class="label button">
+                            <span class="btn btn-info btn-mini">
                                 <a href="edit/${invoice.id}#finance">EDIT</a>
                             </span>
-                            <span class="label button">
+                            <span class="btn btn-info btn-mini">
                                 <a href="<@spring.url '/invoice/${invoice.id}#finance'/>">VIEW</a>
                         </span>
                         </td>

@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add a new invoice | Kabbadi</title>
+    <title>Add/Edit invoice | Kabbadi</title>
     <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet" />
     <style type="text/css">
         body {
@@ -35,7 +35,7 @@
 
 
 <div class="container" position="relative">
-<h1>New Invoice</h1>
+<h1>Add/Edit Invoice</h1>
 <br />
         <form action="<@spring.url '/invoice/save'/>" method="POST">
             <input name="id" type="hidden" value="${invoice.id!} "/>
