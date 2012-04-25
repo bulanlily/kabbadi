@@ -1,3 +1,4 @@
+<#setting datetime_format="dd/MM/yyyy">
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,10 +13,7 @@
         padding: 3px;
         }
         th.name {
-        width: 25%;
-        }
-        th.value {
-        width: 75%;
+        width: 20%;
         }
     </style>
     <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
@@ -33,7 +31,7 @@
 
 
 <div class="container" position="relative">
-    <h1>Invoice: ${invoice.invoiceNumber}</h1>
+    <h1>Invoice # ${invoice.invoiceNumber}</h1>
     <br>
     <table class="table table-striped">
         <thead>
@@ -46,11 +44,6 @@
         <tr>
             <td>Purchase Order Number</td>
             <td>${invoice.purchaseOrderNumber!}</td>
-
-        </tr>
-        <tr>
-            <td>Invoice number</td>
-            <td>${invoice.invoiceNumber}</td>
 
         </tr>
         <tr>
