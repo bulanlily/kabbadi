@@ -12,8 +12,8 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
-public class ListInvoicePage extends BasePage {
-    public ListInvoicePage(WebDriver driver) {
+public class ListAdminInvoicesPage extends BasePage {
+    public ListAdminInvoicesPage(WebDriver driver) {
         super(driver);
 
         assertThat(driver.getTitle(), equalTo("List Invoices | Kabbadi"));
@@ -25,7 +25,7 @@ public class ListInvoicePage extends BasePage {
         return new EditInvoicePage(driver);
     }
 
-    public ListInvoicePage confirmFirstPONumberIs(String purchaseOrder) {
+    public ListAdminInvoicesPage confirmFirstPONumberIs(String purchaseOrder) {
 
         String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
         assertThat(rowData, containsString(purchaseOrder));
@@ -36,7 +36,7 @@ public class ListInvoicePage extends BasePage {
         return addInvoiceOf("admin");
     }
 
-    public ListInvoicePage confirmInvoiceHasBeenAddedToAdminList(InvoiceForm invoiceForm) {
+    public ListAdminInvoicesPage confirmInvoiceHasBeenAddedToAdminList(InvoiceForm invoiceForm) {
         Map<String, String> fields = invoiceForm.getFields();
         WebElement tableRow = driver.findElement(By.id("admin_invoice_" + fields.get("invoiceNumber")));
 
@@ -52,12 +52,12 @@ public class ListInvoicePage extends BasePage {
         return new ViewSingleInvoiceDetailPage(driver);
     }
 
-    public FinanceListInvoicePage goToFinanceInvoiceListPage() {
+    public ListFinanceInvoicesPage goToFinanceInvoiceListPage() {
         driver.findElement(By.linkText("Finance")).click();
-        return new FinanceListInvoicePage(driver);
+        return new ListFinanceInvoicesPage(driver);
     }
 
-    public ListInvoicePage confirmFirstInvoiceNumberIs(String newInvoiceNumber) {
+    public ListAdminInvoicesPage confirmFirstInvoiceNumberIs(String newInvoiceNumber) {
         return confirmFirstInvoiceContainsValue(newInvoiceNumber);
     }
 
@@ -78,7 +78,7 @@ public class ListInvoicePage extends BasePage {
         return new ViewSingleInvoiceDetailPage(driver);
     }
 
-    private ListInvoicePage confirmFirstInvoiceContainsValue(String fieldValue) {
+    private ListAdminInvoicesPage confirmFirstInvoiceContainsValue(String fieldValue) {
         String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
         assertThat(rowData, containsString(fieldValue));
         return this;
