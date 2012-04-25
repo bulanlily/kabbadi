@@ -111,7 +111,7 @@
                     <td>${invoice.supplierNameAndAddress!}</td>
                     <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
                     <td>${invoice.additionsDuringTheYear!}</td>
-                    <td>${invoice.deletionDuringTheYear!}</td>
+                    <td>${invoice.deletionsDuringTheYear!}</td>
                     <td>${invoice.GBonDecember31()!}</td>
                     <td>${invoice.location!}</td>
                         <td>
