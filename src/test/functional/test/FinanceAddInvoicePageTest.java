@@ -11,7 +11,8 @@ public class FinanceAddInvoicePageTest extends BaseTest{
                 .goToFinanceInvoiceListPage()
                 .clickAddNew()
                 .fillForm()
-                .submit();
+                .submit()
+                .financeTabShouldBeActive();
 
     }
 }

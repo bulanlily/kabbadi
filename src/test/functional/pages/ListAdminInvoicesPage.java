@@ -83,4 +83,9 @@ public class ListAdminInvoicesPage extends BasePage {
         assertThat(rowData, containsString(fieldValue));
         return this;
     }
+
+    public ListAdminInvoicesPage financeTabShouldBeActive() {
+        assertThat(driver.findElement(By.id("finance")).getAttribute("class"), containsString("active"));
+        return this;
+    }
 }
