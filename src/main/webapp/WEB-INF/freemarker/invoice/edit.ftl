@@ -62,7 +62,7 @@
             <div class="tabbable">
                 <ul class="nav nav-tabs" id="tabs">
                     <li class="active"><a href="#admin" data-toggle="tab">Admin</a></li>
-                    <li><a href="#finance" data-toggle="tab">Finance</a></li>
+                    <li><a href="#finance" id="finance_tab" data-toggle="tab">Finance</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -207,8 +207,8 @@
                                 <label for="groupOfAssets">Group of Assets</label>
                                 <input name="groupOfAssets" value="${invoice.groupOfAssets!}" />
 
-                                <label for="costCenter">Cost Center</label>
-                                <input name="costCenter" value="${invoice.costCenter!}" />
+                                <label for="costCentre">Cost Centre</label>
+                                <input name="costCentre" value="${invoice.costCenter!}" />
 
                                 </div>
                             <div class="span3">

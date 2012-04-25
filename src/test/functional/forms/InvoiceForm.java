@@ -1,5 +1,8 @@
 package forms;
 
+import org.openqa.selenium.WebDriver;
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +26,42 @@ public class InvoiceForm {
         fields.put("location", location);
     }
 
+
     public Map<String, String> getFields() {
         return fields;
     }
+
+
+    public void fillDateOfInvoice(String dateOfInvoice){
+        fields.put("dateOfInvoice", dateOfInvoice);
+    }
+
+    public void fillSupplierNameAndAddress(String supplierNameAndAddress){
+        fields.put("supplierNameAndAddress", supplierNameAndAddress);
+    }
+
+
+    public void fillOpeningPurchaseValueAsOnApril01(String openingPurchaseValueAsOnApril01){
+        fields.put("openingPurchaseValueAsOnApril01", openingPurchaseValueAsOnApril01);
+    }
+
+    public void fillAdditionsDuringTheYear(String additionsDuringTheYear){
+        fields.put("additionsDuringTheYear", additionsDuringTheYear);
+    }
+
+    public void fillDeletionsDuringTheYear(String deletionsDuringTheYear){
+        fields.put("deletionsDuringTheYear", deletionsDuringTheYear);
+    }
+
+    public void fillDateOfCommissioning(String dateOfCommissioning){
+        fields.put("dateOfCommissioning", dateOfCommissioning);
+    }
+
+    public void fillGroupOfAssets(String groupOfAssets){
+        fields.put("groupOfAssets", groupOfAssets);
+    }
+    public void fillCostCentre(String costCentre){
+        fields.put("costCentre", costCentre);
+    }
+
 }
