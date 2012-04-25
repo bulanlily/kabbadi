@@ -6,9 +6,9 @@ import org.openqa.selenium.WebDriver;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
 
-public class FinanceListInvoicePage extends BasePage{
+public class ListFinanceInvoicesPage extends BasePage{
 
-    protected FinanceListInvoicePage(WebDriver driver) {
+    protected ListFinanceInvoicesPage(WebDriver driver) {
         super(driver);
         assertThat(driver.getTitle(), equalTo("List Invoices | Kabbadi"));
     }

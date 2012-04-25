@@ -52,13 +52,13 @@ public class AddInvoicePage extends BasePage {
         return this;
     }
 
-    public ListInvoicePage submit(InvoiceForm invoiceForm) {
+    public ListAdminInvoicesPage submit(InvoiceForm invoiceForm) {
         Map<String, String> fields = invoiceForm.getFields();
         for (String fieldName : fields.keySet()) {
             fillFieldWith(fieldName, fields.get(fieldName));
         }
         driver.findElement(By.cssSelector("input[name=submit]")).click();
-        return new ListInvoicePage(driver);
+        return new ListAdminInvoicesPage(driver);
     }
 
     public boolean idExists(String id) {

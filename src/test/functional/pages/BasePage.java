@@ -17,9 +17,9 @@ public class BasePage {
         return new BasePage(driver);
     }
 
-    public ListInvoicePage returnToKabbadi() {
+    public ListAdminInvoicesPage returnToKabbadi() {
         driver.get(Configuration.KABBADI_URL);
-        return new ListInvoicePage(driver);
+        return new ListAdminInvoicesPage(driver);
     }
 
     public boolean idExists(String id) {

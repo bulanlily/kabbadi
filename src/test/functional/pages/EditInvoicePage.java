@@ -19,9 +19,9 @@ public class EditInvoicePage extends BasePage {
         return this;
     }
 
-    public ListInvoicePage submitInvoice() {
+    public ListAdminInvoicesPage submitInvoice() {
         driver.findElement(By.name("submit")).click();
-        return new ListInvoicePage(driver);
+        return new ListAdminInvoicesPage(driver);
     }
 
     public EditInvoicePage changeInvoiceNumberTo(String newInvoiceNumber) {
