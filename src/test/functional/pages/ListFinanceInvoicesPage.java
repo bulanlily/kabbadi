@@ -24,7 +24,7 @@ public class ListFinanceInvoicesPage extends BasePage{
 
     public ListFinanceInvoicesPage confirmListOfInvoices() {
         List<WebElement> rows = driver.findElements(By.cssSelector("tr"));
-        assertTrue(rows.size() > 0);
+        assertTrue(rows.size() > 1);
         return this;
     }
 }
