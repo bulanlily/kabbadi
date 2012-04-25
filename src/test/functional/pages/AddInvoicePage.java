@@ -12,7 +12,7 @@ import static org.junit.matchers.JUnitMatchers.containsString;
 public class AddInvoicePage extends BasePage {
     public AddInvoicePage(WebDriver driver) {
         super(driver);
-        assertThat(driver.getTitle(), containsString("Add a new invoice"));
+        assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
     }
 
     public AddInvoicePage invalidBlankInvoiceNumber() {
@@ -66,7 +66,7 @@ public class AddInvoicePage extends BasePage {
     }
 
     public AddInvoicePage confirmAddInvoicePage() {
-        assertThat(getTitle(), containsString("Add a new invoice"));
+        assertThat(getTitle(), containsString("Add/Edit invoice"));
         return this;
     }
 

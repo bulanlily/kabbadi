@@ -13,7 +13,7 @@ public class FinanceAddInvoicePage extends BasePage{
 
     protected FinanceAddInvoicePage(WebDriver driver) {
         super(driver);
-        assertThat(driver.getTitle(), containsString("Add a new invoice"));
+        assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
     }
     
     public FinanceAddInvoicePage fillForm(){

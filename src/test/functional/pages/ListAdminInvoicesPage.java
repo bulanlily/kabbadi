@@ -68,7 +68,7 @@ public class ListAdminInvoicesPage extends BasePage {
     private AddInvoicePage addInvoiceOf(String role) {
         driver.findElement(By.cssSelector("a[href='#" + role + "']")).click();
         driver.findElement(By.id(role +"_add_invoice")).click();
-        assertThat(driver.getTitle(), containsString("Add a new invoice"));
+        assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
         return new AddInvoicePage(driver);
     }
 

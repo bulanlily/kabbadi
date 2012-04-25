@@ -10,7 +10,7 @@ public class EditInvoicePage extends BasePage {
 
     protected EditInvoicePage(WebDriver driver) {
         super(driver);
-        assertThat(driver.getTitle(), equalTo("Add a new invoice | Kabbadi"));
+        assertThat(driver.getTitle(), equalTo("Add/Edit invoice | Kabbadi"));
     }
 
     public EditInvoicePage changePurchaseOrderNumberTo(String poNumber) {
