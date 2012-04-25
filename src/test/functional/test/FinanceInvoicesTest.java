@@ -10,7 +10,10 @@ public class FinanceInvoicesTest extends BaseTest {
     public void should_able_to_view_list_of_invoice_in_finance_page(){
         launchKabbadi()
         .loginWithValidCredentials()
-        .goToFinanceInvoiceListPage();
+        .goToFinanceAddInvoicePage()
+        .submit(validInvoice())
+        .goToFinanceInvoiceListPage()
+        .confirmListOfInvoices();
     }
 
     @Test
