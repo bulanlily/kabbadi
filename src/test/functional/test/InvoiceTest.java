@@ -40,7 +40,7 @@ public class InvoiceTest extends BaseTest {
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .validFillAdminAddInvoicePage()
+                .validFillAdminAddInvoicePage("123123")
                 .confirmInvoiceIsInInvoiceList();
     }
 
@@ -51,5 +51,16 @@ public class InvoiceTest extends BaseTest {
                 .goToAdminAddInvoicePage()
                 .invalidBlankInvoiceNumber()
                 .confirmAddInvoicePage();
+    }
+
+    @Test
+    public void should_open_expected_invoice_details_page() {
+        String invoiceNumber = "1234";
+        launchKabbadi()
+                .loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .validFillAdminAddInvoicePage(invoiceNumber)
+                .selectViewDetailsPageForInvoice(invoiceNumber)
+                .confirmInvoiceDisplayedMatches(invoiceNumber);
     }
 }
