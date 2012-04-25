@@ -15,7 +15,6 @@ public class ListFinanceInvoicesPage extends BasePage{
 
     public FinanceAddInvoicePage clickAddNew() {
         driver.findElement(By.id("finance_add_invoice")).click();
-        driver.findElement(By.id("finance_tab")).click();
         return new FinanceAddInvoicePage(driver);
     }
 }
