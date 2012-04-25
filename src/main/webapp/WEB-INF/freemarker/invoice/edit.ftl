@@ -15,6 +15,16 @@
     <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function() {
+            var redirectTo = $("#redirectToTab");
+            redirectTo.val((window.location.hash + "").replace("#",""));
+
+            $('a[data-toggle="tab"]').on('shown', function(e) {
+                redirectTo.val($(e.target).attr("href").replace("#",""));
+            });
+        });
+    </script>
 
 </head>
 <body>
@@ -56,6 +66,8 @@
                 <div class="span3">
                     <label for="descriptionOfGoods">Description of Goods</label>
                     <input name="descriptionOfGoods" value="${invoice.descriptionOfGoods!}" />
+
+                    <input name="role" type="hidden" id="redirectToTab" />
 
                 </div>
             </div>

@@ -35,12 +35,13 @@ public class InvoiceController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ModelAndView add(@ModelAttribute Invoice invoice) {
+    public ModelAndView add(@ModelAttribute Invoice invoice,
+                            @RequestParam(defaultValue = "admin") String role) {
         if (invoice.valid()) {
             invoiceService.saveOrUpdate(invoice);
-            return new ModelAndView(new RedirectView("/invoice/list", true));
+            return new ModelAndView(new RedirectView("/invoice/list#" + role, true));
         }
-        return new ModelAndView(new RedirectView("/invoice/create", true));
+        return new ModelAndView(new RedirectView("/invoice/create#" + role, true));
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
