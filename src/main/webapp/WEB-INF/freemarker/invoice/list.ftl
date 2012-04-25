@@ -123,7 +123,7 @@
                             <a href="edit/${invoice.id}#finance">EDIT</a>
                         </span>
                         <span class="label" style="background-color:white">
-                            <a href="<@spring.url '/invoice/${invoice.id}'/>">VIEW</a>
+                            <a href="<@spring.url '/invoice/${invoice.id}#finance'/>">VIEW</a>
                         </span>
                         </td>
                 </tr>
