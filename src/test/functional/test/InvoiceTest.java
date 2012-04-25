@@ -13,8 +13,8 @@ public class InvoiceTest extends BaseTest {
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .submit(validInvoice())
-                .confirmInvoiceHasBeenAddedToAdminList(validInvoice())
+                .submit(validInvoice("invoice123"))
+                .confirmInvoiceHasBeenAddedToAdminList(validInvoice("invoice123"))
                 .editFirstInvoice()
                 .changePurchaseOrderNumberTo(newPurchaseOrder)
                 .changeInvoiceNumberTo(newInvoiceNumber)
@@ -23,9 +23,9 @@ public class InvoiceTest extends BaseTest {
                 .confirmInvoiceNumberIs(newInvoiceNumber);
     }
 
-    private InvoiceForm validInvoice() {
+    private InvoiceForm validInvoice(String invoiceNumber) {
         InvoiceForm invoice = new InvoiceForm();
-        invoice.fillInvoiceNumberWith("invoice123");
+        invoice.fillInvoiceNumberWith(invoiceNumber);
         invoice.fillPurchaseOrderNumberWith("po123");
         invoice.fillStpiApprovalNumberAndDateWith("stpi123");
         invoice.fillBondNumberWith("bond123");
@@ -40,7 +40,7 @@ public class InvoiceTest extends BaseTest {
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .validFillAdminAddInvoicePage("123123")
+                .submit(validInvoice("123123"))
                 .confirmInvoiceIsInInvoiceList();
     }
 
@@ -59,7 +59,7 @@ public class InvoiceTest extends BaseTest {
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .validFillAdminAddInvoicePage(invoiceNumber)
+                .submit(validInvoice(invoiceNumber))
                 .selectViewDetailsPageForInvoice(invoiceNumber)
                 .confirmInvoiceDisplayedMatches(invoiceNumber);
     }
