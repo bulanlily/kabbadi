@@ -38,7 +38,7 @@ public class InvoiceController {
             invoiceService.saveOrUpdate(invoice);
             return new ModelAndView(new RedirectView("/invoice/list#" + role, true));
         }
-        return new ModelAndView(new RedirectView("/invoice/create", true));
+        return new ModelAndView(new RedirectView("/invoice/create#" + role, true));
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
