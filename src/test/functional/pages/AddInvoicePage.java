@@ -61,10 +61,6 @@ public class AddInvoicePage extends BasePage {
         return new ListAdminInvoicesPage(driver);
     }
 
-    public boolean idExists(String id) {
-        return driver.findElement(By.id(id)) != null;
-    }
-
     public AddInvoicePage confirmAddInvoicePage() {
         assertThat(getTitle(), containsString("Add/Edit invoice"));
         return this;
