@@ -7,7 +7,7 @@ public class Money {
     private BigDecimal amount;
 
     public Money(BigDecimal amount) {
-        this.amount = amount.setScale(3,RoundingMode.DOWN);
+        this.amount = amount;
     }
 
     public boolean equalTo(Money money) {
