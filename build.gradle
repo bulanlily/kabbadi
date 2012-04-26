@@ -101,4 +101,7 @@ task integration(type: Test) {
     classpath = sourceSets.integration.runtimeClasspath
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> adf8081c9fe437dcf561f659edd563a2d0e7599d

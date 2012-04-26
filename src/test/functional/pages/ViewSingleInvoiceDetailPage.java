@@ -17,19 +17,28 @@ public class ViewSingleInvoiceDetailPage extends BasePage {
         assertThat(driver.getTitle(), equalTo("View an Invoice | Kabbadi"));
     }
 
-    public void confirmFinanceInvoiceData(InvoiceForm invoiceForm) {
-        driver.findElement(By.linkText("Finance")).click();
-
-        WebElement table = driver.findElement(By.cssSelector("#finance table"));
-        Map<String, String> fields = invoiceForm.getFields();
-
-        for (String value : fields.values()) {
-            assertThat(table.getText(), containsString(value));
-        }
+    public void confirmFinanceInvoiceData(InvoiceForm invoiceForm){
+        verifyInvoiceDataIsOnTable(invoiceForm, "Finance");
     }
 
     public ViewSingleInvoiceDetailPage confirmInvoiceDisplayedMatches(String invoiceNumber) {
         assertThat(driver.findElement(By.cssSelector("h1")).getText(), containsString(invoiceNumber));
         return this;
+    }
+
+    public void confirmAdminInvoiceData(InvoiceForm invoice) {
+        verifyInvoiceDataIsOnTable(invoice, "Admin");
+    }
+
+    private void verifyInvoiceDataIsOnTable(InvoiceForm invoice, String role) {
+        driver.findElement(By.linkText(role)).click();
+
+        WebElement table = driver.findElement(By.cssSelector("#"+ role.toLowerCase() + " table"));
+        Map<String, String> fields = invoice.getFields();
+        String tableText = table.getText();
+
+        for (String value : fields.values()) {
+            assertThat(tableText, containsString(value));
+        }
     }
 }

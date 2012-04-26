@@ -19,4 +19,7 @@ public class AdminInvoiceForm extends InvoiceForm {
         fields.put("amountSTPIApproval", stpiApproval);
     }
 
+    public void fillCIFValueInINR(String CIFValue) {
+        fields.put("CIFValueInINR", CIFValue);
+    }
 }

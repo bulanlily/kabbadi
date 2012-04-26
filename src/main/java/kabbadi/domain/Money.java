@@ -7,7 +7,7 @@ public class Money {
     private BigDecimal amount;
 
     public Money(BigDecimal amount) {
-        this.amount = amount.setScale(2, RoundingMode.DOWN);
+        this.amount = amount;
     }
 
     public boolean equalTo(Money money) {
@@ -22,6 +22,7 @@ public class Money {
         return new Money(amount.multiply(variable.getAmount()));
     }
 
+
     public Money add(Money variable) {
         return new Money(amount.add(variable.getAmount()));
     }
@@ -32,11 +33,10 @@ public class Money {
 
     // TODO : Needs a closer look at BigDecimal
     public Money divideBy(Money variable) {
-        Money answer = new Money(amount.divide(variable.getAmount()));
-//        System.out.println(answer.getAmount());
-        System.out.println(new Money(new BigDecimal(0.2)).getAmount().setScale(2, RoundingMode.DOWN));
-//        System.out.println(new Money(variable.getAmount()).getAmount());
+        return new Money(amount.divide(variable.getAmount()));
+    }
 
-        return answer;
+    public String displayAmount() {
+        return amount.setScale(2, RoundingMode.HALF_EVEN).toString();
     }
 }
