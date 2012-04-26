@@ -80,7 +80,7 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
                     invoice.getCurrency(),
                     invoice.getForeignCurrency(),
                     invoice.getAmountSTPIApproval(),
-                    invoice.getCIFAmountInINR(),
+                    invoice.getCIFValueInINR(),
                     invoice.getBondNumber(),
                     formatDate(invoice.getBondDate()),
                     invoice.getBillOfEntryNumber(),
