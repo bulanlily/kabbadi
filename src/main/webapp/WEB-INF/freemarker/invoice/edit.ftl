@@ -167,9 +167,9 @@
                 </div>
 
                 <div class="span3">
-                    <label for="CGApprovedInINR">Add CG Value (INR)</label>
-                    <input name="CGApprovedInINR" value="${invoice.CGApprovedInINR!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_CGApprovedInINR_errorloc' ></div>
+                    <label for="cgApprovedInINR">Add CG Value (INR)</label>
+                    <input name="cgApprovedInINR" value="${invoice.cgApprovedInINR!}"/>
+                    <div class= 'error_div' id='newInvoiceForm_cgApprovedInINR_errorloc' ></div>
                 </div>
             </div>
             <div class="row">
@@ -311,7 +311,7 @@
     frmValidator.addValidation("amountSTPIApproval","numeric","Please enter a number");
     frmValidator.addValidation("assessableValueInINR","numeric","Please enter a number");
     frmValidator.addValidation("CIFValueInINR","numeric","Please enter a number");
-    frmValidator.addValidation("CGApprovedInINR","numeric","Please enter a number");
+    frmValidator.addValidation("cgApprovedInINR","numeric","Please enter a number");
     frmValidator.addValidation("dutyExempt","numeric","Please enter a number");
     frmValidator.addValidation("twentyFivePercentDF","numeric","Please enter a number");
     frmValidator.addValidation("dutyForgone","numeric","Please enter a number");
