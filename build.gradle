@@ -102,8 +102,3 @@ task integration(type: Test) {
 
 }
 
-task testAll {
-    test.execute()
-    integration.execute()
-    functional.execute()
-}
