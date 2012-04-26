@@ -119,13 +119,13 @@
             </div>
             <div class="row">
                 <div class="span3">
-                    <label for="foreignCurrency">Amount</label>
-                    <input name="foreignCurrency" value="${invoice.foreignCurrency!}"/>
+                    <label for="foreignValue.amount">Amount</label>
+                    <input name="foreignValue.amount" value="${invoice.foreignValueDisplayAmount!}"/>
                 </div>
 
                 <div class="span3">
                     <label for="currency">Currency</label>
-                    <input name="currency" value="${invoice.currency!}"/>
+                    <input name="foreignValue.currency" value="${invoice.foreignCurrency!}"/>
                 </div>
 
                 <div class="span3">

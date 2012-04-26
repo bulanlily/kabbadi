@@ -86,12 +86,12 @@
 
                     <tr>
                         <td>Currency Type</td>
-                        <td>${invoice.currency!}</td>
+                        <td>${invoice.foreignCurrency!}</td>
 
                     </tr>
                     <tr>
                         <td>Amount</td>
-                        <td>${invoice.foreignCurrency!}</td>
+                        <td>${invoice.foreignValueDisplayAmount!}</td>
 
                     </tr>
                         <td>CIF Value (INR)</td>
