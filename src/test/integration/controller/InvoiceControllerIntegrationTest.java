@@ -1,8 +1,9 @@
-package kabbadi.controller;
+package controller;
 
-import kabbadi.IntegrationTest;
+import integration.IntegrationTest;
+import kabbadi.controller.InvoiceController;
 import kabbadi.domain.Invoice;
-import kabbadi.domain.builder.InvoiceTestBuilder;
+import domain.builder.InvoiceTestBuilder;
 import kabbadi.domain.db.GenericRepository;
 import kabbadi.service.InvoiceService;
 import org.hibernate.SessionFactory;

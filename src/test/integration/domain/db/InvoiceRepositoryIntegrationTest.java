@@ -1,7 +1,8 @@
-package kabbadi.domain.db;
+package domain.db;
 
-import kabbadi.IntegrationTest;
+import integration.IntegrationTest;
 import kabbadi.domain.Invoice;
+import kabbadi.domain.db.GenericRepository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
