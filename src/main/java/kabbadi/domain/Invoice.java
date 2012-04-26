@@ -89,8 +89,8 @@ public class Invoice implements Comparable<Invoice> {
         return this.invoiceNumber.compareTo(invoice.invoiceNumber);
     }
 
-    public BigDecimal getCIFValueInINR() {
-        return (CIFValueInINR == null) ? null : CIFValueInINR.getAmount();
+    public String getCIFDisplayAmountInINR() {
+        return (CIFValueInINR == null) ? "" : CIFValueInINR.displayAmount();
     }
 
 }

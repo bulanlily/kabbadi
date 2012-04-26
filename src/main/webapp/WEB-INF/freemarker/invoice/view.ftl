@@ -95,7 +95,7 @@
                     </tr>
                     <tr>
                         <td>CIF Value (INR)</td>
-                        <td>${invoice.CIFValueInINR!}</td>
+                        <td>${invoice.CIFDisplayAmountInINR!}</td>
 
                     </tr>
                     <tr>

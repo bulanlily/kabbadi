@@ -36,8 +36,7 @@ public class Money {
         return new Money(amount.divide(variable.getAmount()));
     }
 
-    @Override
-    public String toString() {
+    public String displayAmount() {
         return amount.setScale(2, RoundingMode.HALF_EVEN).toString();
     }
 }

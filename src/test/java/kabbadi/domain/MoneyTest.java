@@ -45,6 +45,6 @@ public class MoneyTest {
     
     @Test
     public void shouldPresentedAsMoney() {
-        assertThat(ten.toString(), equalTo("10.00"));
+        assertThat(ten.displayAmount(), equalTo("10.00"));
     }
 }
