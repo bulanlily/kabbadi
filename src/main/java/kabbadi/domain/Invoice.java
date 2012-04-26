@@ -2,6 +2,7 @@ package kabbadi.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -24,7 +25,10 @@ public class Invoice implements Comparable<Invoice> {
     private String currency;
     private BigDecimal foreignCurrency;
     private BigDecimal amountSTPIApproval;
-    private BigDecimal CIFValueInINR;
+
+    @Type(type = "kabbadi.domain.db.hibernate.MoneyType")
+    private Money CIFValueInINR;
+
     private String bondNumber;
     private Date dateOfArrival;
     private Date bondDate;
@@ -83,6 +87,10 @@ public class Invoice implements Comparable<Invoice> {
     @Override
     public int compareTo(Invoice invoice) {
         return this.invoiceNumber.compareTo(invoice.invoiceNumber);
+    }
+
+    public String getCIFDisplayAmountInINR() {
+        return (CIFValueInINR == null) ? "" : CIFValueInINR.displayAmount();
     }
 
 }

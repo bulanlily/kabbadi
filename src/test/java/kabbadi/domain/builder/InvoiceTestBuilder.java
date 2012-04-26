@@ -1,6 +1,7 @@
 package kabbadi.domain.builder;
 
 import kabbadi.domain.Invoice;
+import kabbadi.domain.Money;
 
 import java.math.BigDecimal;
 import java.text.ParseException;
@@ -45,7 +46,7 @@ public class InvoiceTestBuilder {
     }
 
     public InvoiceTestBuilder withCIFValueInINR(double amount) {
-        invoice.setCIFValueInINR(new BigDecimal(amount));
+        invoice.setCIFValueInINR(new Money(new BigDecimal(amount)));
         return this;
     }
 

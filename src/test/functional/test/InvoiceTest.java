@@ -8,8 +8,8 @@ public class InvoiceTest extends BaseTest {
 
     @Test
     public void should_be_able_to_edit_existing_invoice() {
-        String newPurchaseOrder = "PO#"+System.currentTimeMillis();
-        String newInvoiceNumber = "IN#"+System.currentTimeMillis();
+        String newPurchaseOrder = "PO#" + System.currentTimeMillis();
+        String newInvoiceNumber = "IN#" + System.currentTimeMillis();
 
         InvoiceForm newInvoice = validInvoice("1234");
         launchKabbadi()
@@ -25,7 +25,7 @@ public class InvoiceTest extends BaseTest {
                 .confirmFirstInvoiceNumberIs(newInvoiceNumber);
     }
 
-    private InvoiceForm validInvoice(String invoiceNumber) {
+    private AdminInvoiceForm validInvoice(String invoiceNumber) {
         AdminInvoiceForm invoice = new AdminInvoiceForm();
         invoice.fillInvoiceNumberWith(invoiceNumber);
         invoice.fillPurchaseOrderNumberWith("po123");
@@ -35,6 +35,12 @@ public class InvoiceTest extends BaseTest {
         invoice.fillAmountAsPerStpiApprovalWith("33.33");
         invoice.fillLocationWith("IND");
         return invoice;
+    }
+
+    private InvoiceForm validInvoiceWithSpecifMoneyValue(String invoiceNumber, String moneyValue) {
+        AdminInvoiceForm invoiceForm = validInvoice(invoiceNumber);
+        invoiceForm.fillCIFValueInINR(moneyValue);
+        return invoiceForm;
     }
 
     @Test
@@ -48,12 +54,14 @@ public class InvoiceTest extends BaseTest {
 
     @Test
     public void should_open_expected_invoice_details_page() {
-        String invoiceNumber = "1234";
+        String invoiceNumber = "101010Invoice";
+        InvoiceForm invoice = validInvoiceWithSpecifMoneyValue(invoiceNumber, "100.10");
+
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .submit(validInvoice(invoiceNumber))
+                .submit(invoice)
                 .selectViewDetailsPageForInvoice(invoiceNumber)
-                .confirmInvoiceDisplayedMatches(invoiceNumber);
+                .confirmAdminInvoiceData(invoice);
     }
 }
