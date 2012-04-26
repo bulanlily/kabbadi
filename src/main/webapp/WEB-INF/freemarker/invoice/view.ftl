@@ -66,6 +66,12 @@
                         <td>STPI Approval No/Date</td>
                         <td>${invoice.STPIApprovalNumberAndDate!}</td>
                     </tr>
+                    <tr>
+                        <td>STPI Approved Amount </td>
+                        <td>${invoice.amountSTPIApproval!}</td>
+
+                    </tr>
+                    <tr>
 
                     <tr>
                         <td>Date of Arrival</td>
@@ -84,16 +90,10 @@
 
                     </tr>
                     <tr>
-                        <td>Currency Value</td>
+                        <td>Amount</td>
                         <td>${invoice.foreignCurrency!}</td>
 
                     </tr>
-                    <tr>
-                        <td>Amount STPI Approval</td>
-                        <td>${invoice.amountSTPIApproval!}</td>
-
-                    </tr>
-                    <tr>
                         <td>CIF Value (INR)</td>
                         <td>${invoice.CIFDisplayAmountInINR!}</td>
 

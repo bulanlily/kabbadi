@@ -86,7 +86,7 @@ public class Invoice implements Comparable<Invoice> {
 
     @Override
     public int compareTo(Invoice invoice) {
-        return this.invoiceNumber.compareTo(invoice.invoiceNumber);
+        return this.bondNumber.compareTo(invoice.bondNumber);
     }
 
     public String getCIFDisplayAmountInINR() {
