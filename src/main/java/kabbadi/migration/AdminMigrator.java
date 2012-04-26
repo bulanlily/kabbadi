@@ -27,7 +27,7 @@ public class AdminMigrator {
             new Attribute(14,"outrightPurchase", QUOTES_NOT_NEEDED),
             new Attribute(15,"loanBasis", NEEDS_QUOTES),
             new Attribute(16,"freeOfCharge", QUOTES_NOT_NEEDED),
-            new Attribute(17,"CGApprovedInINR", QUOTES_NOT_NEEDED),
+            new Attribute(17,"cgApprovedInINR", QUOTES_NOT_NEEDED),
             new Attribute(18,"dutyForgone", QUOTES_NOT_NEEDED),
             new Attribute(19,"runningBalance", QUOTES_NOT_NEEDED)
     };

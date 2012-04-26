@@ -37,7 +37,7 @@ public class Invoice implements Comparable<Invoice> {
     private BigDecimal assessableValueInINR;
     private BigDecimal dutyExempt;
     private BigDecimal twentyFivePercentDF;
-    private BigDecimal CGApprovedInINR;
+    private BigDecimal cgApprovedInINR;
     private BigDecimal dutyForgone;
     private BigDecimal runningBalance;
     private BigDecimal outrightPurchase;

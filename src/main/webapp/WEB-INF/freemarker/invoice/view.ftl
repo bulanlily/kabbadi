@@ -155,7 +155,7 @@
 
                     <tr>
                         <td>CG Approved (INR)</td>
-                        <td>${invoice.CGApprovedInINR!}</td>
+                        <td>${invoice.cgApprovedInINR!}</td>
 
                     </tr>
 

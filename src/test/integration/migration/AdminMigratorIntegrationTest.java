@@ -92,7 +92,7 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
                     invoice.getOutrightPurchase(),
                     invoice.getLoanBasis(),
                     invoice.getFreeOfCharge(),
-                    invoice.getCGApprovedInINR(),
+                    invoice.getCgApprovedInINR(),
                     invoice.getDutyForgone(),
                     invoice.getRunningBalance(),
 

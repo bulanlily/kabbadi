@@ -92,7 +92,7 @@ public class InvoiceTestBuilder {
     }
 
     public InvoiceTestBuilder withCGApprovedInINR(double amount) {
-        invoice.setCGApprovedInINR(new BigDecimal(amount));
+        invoice.setCgApprovedInINR(new BigDecimal(amount));
         return this;
     }
 

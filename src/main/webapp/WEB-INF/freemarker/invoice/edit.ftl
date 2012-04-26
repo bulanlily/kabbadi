@@ -145,8 +145,8 @@
                 </div>
 
                 <div class="span3">
-                    <label for="CGApprovedInINR">CG Approved In INR</label>
-                    <input name="CGApprovedInINR" value="${invoice.CGApprovedInINR!}"/>
+                    <label for="cgApprovedInINR">CG Approved In INR</label>
+                    <input name="cgApprovedInINR" value="${invoice.cgApprovedInINR!}"/>
                 </div>
             </div>
             <div class="row">

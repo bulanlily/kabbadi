@@ -31,7 +31,7 @@ public class AddInvoicePage extends BasePage {
         driver.findElement(By.name("assessableValueInINR")).sendKeys("123123");
         driver.findElement(By.name("dutyExempt")).sendKeys("123123");
         driver.findElement(By.name("twentyFivePercentDF")).sendKeys("123123");
-        driver.findElement(By.name("CGApprovedInINR")).sendKeys("123123");
+        driver.findElement(By.name("cgApprovedInINR")).sendKeys("123123");
         driver.findElement(By.name("dutyForgone")).sendKeys("123123");
         driver.findElement(By.name("runningBalance")).sendKeys("123123");
         driver.findElement(By.name("outrightPurchase")).sendKeys("123123");
