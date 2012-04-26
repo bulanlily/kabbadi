@@ -42,9 +42,9 @@
                     <th style="min-width: 40px">PO #</th>
                     <th>Invoice #</th>
                     <th>STPI Approval #/Date</th>
+                    <th style="min-width:85px">STPI Approved Amount</th>
                     <th>Bond #</th>
                     <th>Bond Date</th>
-                    <th style="min-width:85px">STPI Amount</th>
                     <th>Location</th>
                     <th>Description</th>
                     <th style="min-width: 90px"></th>
@@ -57,9 +57,9 @@
                         <td>${invoice.purchaseOrderNumber!}</td>
                         <td>${invoice.invoiceNumber}</td>
                         <td>${invoice.STPIApprovalNumberAndDate!}</td>
+                        <td>${invoice.amountSTPIApproval!}</td>
                         <td>${invoice.bondNumber!}</td>
                         <td>${invoice.bondDate!}</td>
-                        <td>${invoice.amountSTPIApproval!}</td>
                         <td>${invoice.location!}</td>
                         <td>${invoice.descriptionOfGoods!}</td>
                         <td>
