@@ -22,16 +22,6 @@ public class BasePage {
         return new ListAdminInvoicesPage(driver);
     }
 
-    public boolean idExists(String id) {
-        try {
-            driver.findElement(By.id(id));
-        }
-        catch (NoSuchElementException ex) {
-            return false;
-        }
-        return true;
-    }
-
     public String getTitle(){
         return  driver.getTitle();
     }
