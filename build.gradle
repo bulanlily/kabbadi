@@ -32,6 +32,18 @@ sourceSets {
         }
 
     }
+    integration {
+
+        compileClasspath = sourceSets.main.output + configurations.testRuntime
+        runtimeClasspath = output + sourceSets.main.output + configurations.testRuntime
+
+        java {
+            srcDirs 'src/test/integration'
+        }
+        resources {
+            srcDirs 'src/main/resources'
+        }
+    }
 }
 
 dependencies {
@@ -83,3 +95,15 @@ task functional(type: Test) {
     }
 }
 
+task integration(type: Test) {
+
+    testClassesDir = sourceSets.integration.output.classesDir
+    classpath = sourceSets.integration.runtimeClasspath
+
+}
+
+task testAll {
+    test.execute()
+    integration.execute()
+    functional.execute()
+}

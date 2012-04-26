@@ -1,8 +1,9 @@
-package kabbadi.migration;
+package migration;
 
-import kabbadi.IntegrationTest;
+import integration.IntegrationTest;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.db.GenericRepository;
+import kabbadi.migration.AdminMigrator;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.SessionFactory;
