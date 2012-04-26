@@ -23,15 +23,15 @@ public class InvoiceTest {
 
     @Test
     public void should_calculate_the_total_purchase_value() {
-        assertThat(invoiceWithFinanceValues(1d, 1d, 1d).GBonDecember31(), equalTo(new BigDecimal(1)));
-        assertThat(invoiceWithFinanceValues(2d, 3d, 1d).GBonDecember31(), equalTo(new BigDecimal(4)));
-        assertThat(invoiceWithFinanceValues(2d, 2d, 5d).GBonDecember31(), equalTo(new BigDecimal(-1)));
+        assertThat(invoiceWithFinanceValues(1d, 1d, 1d).gbOnDecember31(), equalTo(new BigDecimal(1)));
+        assertThat(invoiceWithFinanceValues(2d, 3d, 1d).gbOnDecember31(), equalTo(new BigDecimal(4)));
+        assertThat(invoiceWithFinanceValues(2d, 2d, 5d).gbOnDecember31(), equalTo(new BigDecimal(-1)));
     }
 
     @Test
     public void should_not_calculate_the_total_purchase_when_the_required_fields_are_empty() {
-        assertThat(new Invoice().GBonDecember31(), is(nullValue()));
-        assertThat(invalidInvoiceWithFinanceValues().GBonDecember31(), is(nullValue()));
+        assertThat(new Invoice().gbOnDecember31(), is(nullValue()));
+        assertThat(invalidInvoiceWithFinanceValues().gbOnDecember31(), is(nullValue()));
     }
 
     private Invoice invalidInvoiceWithFinanceValues() {

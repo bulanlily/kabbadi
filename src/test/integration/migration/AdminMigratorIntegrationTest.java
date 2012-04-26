@@ -64,6 +64,7 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
     private void insertValuesFromCsvToDatabase() throws IOException{
         List<String> inserts =  new AdminMigrator().createInserts(FileUtils.readLines(sourceFile()));
 
+        sessionFactory.getCurrentSession().createSQLQuery("delete from asset;").executeUpdate();
         sessionFactory.getCurrentSession().createSQLQuery("delete from invoice;").executeUpdate();
 
         for (String insert : inserts) {
@@ -78,8 +79,8 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
                     invoice.getInvoiceNumber(),
                     invoice.getSTPIApprovalNumberAndDate(),
                     invoice.getDescriptionOfGoods(),
-                    invoice.getCurrency(),
                     invoice.getForeignCurrency(),
+                    invoice.getForeignValueDisplayAmount(),
                     invoice.getAmountSTPIApproval(),
                     invoice.getCIFDisplayAmountInINR(),
                     invoice.getBondNumber(),
@@ -92,7 +93,7 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
                     invoice.getOutrightPurchase(),
                     invoice.getLoanBasis(),
                     invoice.getFreeOfCharge(),
-                    invoice.getCGApprovedInINR(),
+                    invoice.getCgApprovedInINR(),
                     invoice.getDutyForgone(),
                     invoice.getRunningBalance(),
 

@@ -19,8 +19,8 @@ public class AddInvoicePage extends BasePage {
         driver.findElement(By.name("purchaseOrderNumber")).sendKeys("123123");
         driver.findElement(By.name("STPIApprovalNumberAndDate")).sendKeys("123123");
         driver.findElement(By.name("descriptionOfGoods")).sendKeys("bill");
-        driver.findElement(By.name("currency")).sendKeys("usd");
-        driver.findElement(By.name("foreignCurrency")).sendKeys("123123");
+        driver.findElement(By.name("foreignValue.currency")).sendKeys("usd");
+        driver.findElement(By.name("foreignValue.amount")).sendKeys("123123");
         driver.findElement(By.name("amountSTPIApproval")).sendKeys("123123");
         driver.findElement(By.name("CIFValueInINR")).sendKeys("123123");
         driver.findElement(By.name("bondNumber")).sendKeys("123123");
@@ -31,7 +31,7 @@ public class AddInvoicePage extends BasePage {
         driver.findElement(By.name("assessableValueInINR")).sendKeys("123123");
         driver.findElement(By.name("dutyExempt")).sendKeys("123123");
         driver.findElement(By.name("twentyFivePercentDF")).sendKeys("123123");
-        driver.findElement(By.name("CGApprovedInINR")).sendKeys("123123");
+        driver.findElement(By.name("cgApprovedInINR")).sendKeys("123123");
         driver.findElement(By.name("dutyForgone")).sendKeys("123123");
         driver.findElement(By.name("runningBalance")).sendKeys("123123");
         driver.findElement(By.name("outrightPurchase")).sendKeys("123123");
@@ -59,10 +59,6 @@ public class AddInvoicePage extends BasePage {
         }
         driver.findElement(By.cssSelector("input[name=submit]")).click();
         return new ListAdminInvoicesPage(driver);
-    }
-
-    public boolean idExists(String id) {
-        return driver.findElement(By.id(id)) != null;
     }
 
     public AddInvoicePage confirmAddInvoicePage() {

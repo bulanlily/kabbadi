@@ -14,7 +14,7 @@ public class Asset {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer asset_id;
 
     private String assetNumber;
     private String modelName;
@@ -28,6 +28,6 @@ public class Asset {
     private String leasingCompany;
 
     @ManyToOne
-    @JoinColumn(name="INVOICE_NUMBER")
-    private Invoice invoice;
+    @JoinColumn(name="invoice_id")
+    private Invoice invoice_id;
 }

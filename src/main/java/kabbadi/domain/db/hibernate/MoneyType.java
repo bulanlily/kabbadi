@@ -12,11 +12,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
-public class MoneyType implements UserType{
+public class MoneyType implements UserType {
 
     @Override
     public int[] sqlTypes() {
-        return new int[]{Types.NUMERIC};
+        return new int[]{Types.VARCHAR};
     }
 
     @Override
@@ -36,17 +36,19 @@ public class MoneyType implements UserType{
 
     @Override
     public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner) throws HibernateException, SQLException {
-        BigDecimal value = rs.getBigDecimal(names[0]);
+        String value = rs.getString(names[0]);
         if (rs.wasNull()) return null;
-        return new Money(value);
+        String[] split = value.split(",");
+        return new Money(split[0], new BigDecimal(split[1]));
     }
 
     @Override
     public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session) throws HibernateException, SQLException {
         if (value == null) {
-            st.setNull(index, Types.DECIMAL);
+            st.setNull(index, Types.VARCHAR);
         } else {
-            st.setBigDecimal(index, ((Money)value).getAmount());
+            Money money = ((Money) value);
+            st.setString(index, money.getCurrency() + "," + money.getAmount());
         }
     }
 

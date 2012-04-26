@@ -69,7 +69,7 @@
 <br/>
 
 <form action="<@spring.url '/invoice/save'/>" name="newInvoiceForm" method="POST">
-<input name="id" type="hidden" value="${invoice.id!} "/>
+<input name="invoice_id" type="hidden" value="${invoice.invoice_id!} "/>
 
 <div class="row">
     <div class="span3">
@@ -137,14 +137,14 @@
             </div>
             <div class="row">
                 <div class="span3">
-                    <label for="foreignCurrency">Amount</label>
-                    <input name="foreignCurrency" value="${invoice.foreignCurrency!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_foreignCurrency_errorloc' ></div>
+                    <label for="foreignValue.amount">Amount</label>
+                    <input name="foreignValue.amount" value="${invoice.foreignValueDisplayAmount!}"/>
+                    <div class= 'error_div' id='newInvoiceForm_foreignValue.amount_errorloc' ></div>
                 </div>
 
                 <div class="span3">
                     <label for="currency">Currency</label>
-                    <input name="currency" value="${invoice.currency!}"/>
+                    <input name="foreignValue.currency" value="${invoice.foreignCurrency!}"/>
                 </div>
 
                 <div class="span3">

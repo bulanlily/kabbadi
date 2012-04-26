@@ -3,7 +3,7 @@ package kabbadi.controller;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.Money;
 import kabbadi.service.InvoiceService;
-import kabbadi.spring.util.MoneyPropertyEditor;
+import kabbadi.spring.util.INRMoneyPropertyEditor;
 import kabbadi.spring.util.NullSafeDatePropertyEditor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,9 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping(value = "/invoice")
@@ -31,7 +29,7 @@ public class InvoiceController {
     @InitBinder
     protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
         binder.registerCustomEditor(Date.class, new NullSafeDatePropertyEditor());
-        binder.registerCustomEditor(Money.class, new MoneyPropertyEditor());
+        binder.registerCustomEditor(Money.class, new INRMoneyPropertyEditor());
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
@@ -57,9 +55,8 @@ public class InvoiceController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         ModelAndView modelAndView = new ModelAndView("invoice/list");
-        List<Invoice> invoices = invoiceService.list();
-        Collections.sort(invoices);
-        modelAndView.addObject("invoices", invoices);
+        Set<Invoice> invoiceSet = new HashSet<Invoice>(invoiceService.list());
+        modelAndView.addObject("invoices", invoiceSet);
         return modelAndView;
     }
 

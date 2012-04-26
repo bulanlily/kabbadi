@@ -1,3 +1,4 @@
+<#import "/spring.ftl" as spring/>
 <#setting datetime_format="dd/MM/yyyy">
 <!DOCTYPE html>
 <html>
@@ -7,6 +8,7 @@
     <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
     <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/kabbadi/static/css/kabbadi.css" rel="stylesheet">
     <style type="text/css">
         body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -39,6 +41,7 @@
         <ul class="nav nav-tabs" id="tabs">
             <li class="active"><a href="#admin" data-toggle="tab">Admin</a></li>
             <li><a href="#finance" data-toggle="tab">Finance</a></li>
+            <li><a href="#assets" data-toggle="tab">Assets</a></li>
         </ul>
 
         <div class="tab-content">
@@ -86,12 +89,12 @@
 
                     <tr>
                         <td>Currency Type</td>
-                        <td>${invoice.currency!}</td>
+                        <td>${invoice.foreignCurrency!}</td>
 
                     </tr>
                     <tr>
                         <td>Amount</td>
-                        <td>${invoice.foreignCurrency!}</td>
+                        <td>${invoice.foreignValueDisplayAmount!}</td>
 
                     </tr>
                         <td>CIF Value (INR)</td>
@@ -155,7 +158,7 @@
 
                     <tr>
                         <td>CG Approved (INR)</td>
-                        <td>${invoice.CGApprovedInINR!}</td>
+                        <td>${invoice.cgApprovedInINR!}</td>
 
                     </tr>
 
@@ -281,13 +284,63 @@
                     </tr>
                     <tr>
                         <td>GB on December 31, 2011</td>
-                        <td>${invoice.GBonDecember31()!}</td>
+                        <td>${invoice.gbOnDecember31()!}</td>
                     </tr>
                     <tr>
                         <td>Cost Centre</td>
                         <td>${invoice.costCentre!}</td>
                     </tr>
 
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane" id="assets">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>Asset #</th>
+                        <th>Office Registered To</th>
+                        <th>Status</th>
+                        <th>Is Leased</th>
+                        <th>Leasing Expiration</th>
+                        <th>Model Name</th>
+                        <th style="min-width: 90px"></th>
+                    </tr>
+                    </thead>
+                    <tbody style="word-wrap:break-word, break-word: hyphenate">
+                        <#list invoice.assets as asset>
+                            <tr id="asset_${invoice.invoiceNumber}">
+                                <td>${asset.assetNumber!}</td>
+                                <td>${asset.registeredOffice!}</td>
+                                <td>${asset.status!}</td>
+                                <#if asset.isLeased!>
+                                    <td>Yes</td>
+                                    <#else>
+                                        <td>No</td>
+                                </#if>
+                                <td>${asset.leasingExpiration!}</td>
+                                <td>${asset.modelName!}</td>
+                                <td>
+                            <span class="btn btn-info btn-mini">
+                                <a href="/asset/edit/${asset.asset_id}">EDIT</a>
+                            </span>
+                            <span class="btn btn-info btn-mini">
+                                <a href="<@spring.url '/asset/${asset.asset_id}'/>">VIEW</a>
+                            </span>
+                            <span class="btn btn-info btn-mini">
+                                <a href="<@spring.url '/asset/${asset.asset_id}'/>">DELETE</a>
+                            </span>
+                                </td>
+                            </tr>
+                        </#list>
+                    <tr>
+                        <td colspan="6"></td>
+                        <td>
+                            <span class="btn btn-info btn-mini">
+                                <a href="#"><i class="icon-plus-sign"></i> Add New</a>
+                            </span>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

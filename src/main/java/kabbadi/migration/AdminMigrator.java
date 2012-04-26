@@ -9,12 +9,12 @@ public class AdminMigrator {
     public static final boolean NEEDS_QUOTES = true;
     public static final boolean QUOTES_NOT_NEEDED = false;
 
-    final private Attribute[] attributes = new Attribute[] {
+    final private Attribute[] attributes = new Attribute[]{
             new Attribute(0, "invoiceNumber", NEEDS_QUOTES),
             new Attribute(1, "STPIApprovalNumberAndDate", NEEDS_QUOTES),
             new Attribute(2, "descriptionOfGoods", NEEDS_QUOTES),
             new Attribute(3, "currency", NEEDS_QUOTES),
-            new Attribute(4, "foreignCurrency", QUOTES_NOT_NEEDED),
+            new Attribute(4, "foreignValue", QUOTES_NOT_NEEDED),
             new Attribute(5, "amountSTPIApproval", QUOTES_NOT_NEEDED),
             new Attribute(6, "CIFValueInINR", QUOTES_NOT_NEEDED),
             new Attribute(7, "bondNumber", NEEDS_QUOTES),
@@ -27,7 +27,7 @@ public class AdminMigrator {
             new Attribute(14,"outrightPurchase", QUOTES_NOT_NEEDED),
             new Attribute(15,"loanBasis", NEEDS_QUOTES),
             new Attribute(16,"freeOfCharge", QUOTES_NOT_NEEDED),
-            new Attribute(17,"CGApprovedInINR", QUOTES_NOT_NEEDED),
+            new Attribute(17,"cgApprovedInINR", QUOTES_NOT_NEEDED),
             new Attribute(18,"dutyForgone", QUOTES_NOT_NEEDED),
             new Attribute(19,"runningBalance", QUOTES_NOT_NEEDED)
     };
@@ -47,7 +47,7 @@ public class AdminMigrator {
     }
 
     private String constructColumnsFragment() {
-        StringBuilder insertFragment = new StringBuilder("INSERT INTO invoice (id");
+        StringBuilder insertFragment = new StringBuilder("INSERT INTO invoice (invoice_id");
         for (Attribute attribute : attributes) {
             insertFragment.append(", ").append(attribute.fieldName);
         }
@@ -78,7 +78,7 @@ public class AdminMigrator {
 
         String extractField(String[] tokens) {
             String value = tokens[columnIndex];
-            if(value.equals("")) return null;
+            if (value.equals("")) return null;
             return needsQuotes ? "'" + value + "'" : value;
         }
     }

@@ -64,10 +64,10 @@
                         <td>${invoice.descriptionOfGoods!}</td>
                         <td>
                             <span class="btn btn-info btn-mini">
-                                <a href="edit/${invoice.id}">EDIT</a>
+                                <a href="edit/${invoice.invoice_id}">EDIT</a>
                             </span>
                             <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/invoice/${invoice.id}'/>">VIEW</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}'/>">VIEW</a>
                             </span>
                         </td>
                     </tr>
@@ -82,23 +82,23 @@
                         <button href="#" class="btn btn-inverse">Generate Report</button>
                     </div>
 
-                    <table class="table table-bordered table-striped">
-                        <thead>
-            <tr>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
 
-                <th style="min-width: 40px">PO #</th>
-                <th>Invoice #</th>
-                <th>Bond #</th>
-                <th>Bill of Entry #</th>
-                <th>Date of Invoice</th>
-                <th>Supplier name/address</th>
-                <th>GB (Apr 01)</th>
-                <th>Additions</th>
-                <th>Deletions</th>
-                <th>GB (Dec 31)</th>
-                <th>Location</th>
-                <th style="min-width: 90px"></th>
-            </tr>
+                    <th style="min-width: 40px">PO #</th>
+                    <th>Invoice #</th>
+                    <th>Bond #</th>
+                    <th>Bill of Entry #</th>
+                    <th>Date of Invoice</th>
+                    <th>Supplier name/address</th>
+                    <th>GB (Apr 01)</th>
+                    <th>Additions</th>
+                    <th>Deletions</th>
+                    <th>GB (Dec 31)</th>
+                    <th>Location</th>
+                    <th style="min-width: 90px"></th>
+                </tr>
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
             <#list invoices as invoice>
@@ -113,14 +113,14 @@
                     <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
                     <td>${invoice.additionsDuringTheYear!}</td>
                     <td>${invoice.deletionsDuringTheYear!}</td>
-                    <td>${invoice.GBonDecember31()!}</td>
+                    <td>${invoice.gbOnDecember31()!}</td>
                     <td>${invoice.location!}</td>
                         <td>
                             <span class="btn btn-info btn-mini">
-                                <a href="edit/${invoice.id}#finance">EDIT</a>
+                                <a href="edit/${invoice.invoice_id}#finance">EDIT</a>
                             </span>
                             <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/invoice/${invoice.id}#finance'/>">VIEW</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}#finance'/>">VIEW</a>
                         </span>
                         </td>
                 </tr>
@@ -131,7 +131,58 @@
         </table>
         </div>
         <div id="is" class="tab-pane fade">
-            <p>you can put your IS details here!!!</p>
+         <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>Asset #</th>
+                <th>Office Registered To</th>
+                <th>Status</th>
+                <th>Is Leased</th>
+                <th>Leasing Expiration</th>
+                <th>Model Name</th>
+                <th style="min-width: 90px"></th>
+            </tr>
+            </thead>
+            <tbody style="word-wrap:break-word, break-word: hyphenate">
+            <#list invoices as invoice>
+                <tr style="border-top:solid;margin-top:3px">
+                    <td colspan="6" style="font-weight:bold; font-color">Invoice: ${invoice.invoiceNumber}</td>
+                    <td>
+                        <span class="btn btn-info btn-mini">
+                                <a href="/asset/create/${invoice.invoice_id}">Add Asset</a>
+                        </span>
+                    </td>
+                </tr>
+                <#list invoice.assets as asset>
+                <tr id="asset_${asset.assetNumber!}">
+                    <td>${asset.assetNumber!}</td>
+                    <td>${asset.registeredOffice!}</td>
+                    <td>${asset.status!}</td>
+                    <#if asset.isLeased!>
+                        <td>Yes</td>
+                    <#else>
+                        <td>No</td>
+                    </#if>
+                    <td>${asset.leasingExpiration!}</td>
+                    <td>${asset.modelName!}</td>
+                    <td>
+                            <span class="btn btn-info btn-mini">
+                                <a href="/asset/edit/${asset.asset_id}">EDIT</a>
+                            </span>
+                            <span class="btn btn-info btn-mini">
+                                <a href="<@spring.url '/asset/${asset.asset_id}'/>">VIEW</a>
+                            </span>
+                            <span class="btn btn-info btn-mini">
+                                <a href="<@spring.url '/asset/${asset.asset_id}'/>">DELETE</a>
+                            </span>
+                    </td>
+                </tr>
+                </#list>
+            </#list>
+
+
+            </tbody>
+            </table>
         </div>
     </div>
 
