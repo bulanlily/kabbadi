@@ -101,3 +101,9 @@ task integration(type: Test) {
     classpath = sourceSets.integration.runtimeClasspath
 
 }
+
+task testAll {
+    test.execute()
+    integration.execute()
+    functional.execute()
+}
