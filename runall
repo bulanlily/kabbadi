@@ -1,0 +1,4 @@
+#!/bin/sh
+gradle build
+gradle integration
+gradle functional
