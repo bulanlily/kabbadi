@@ -27,23 +27,19 @@ public class InvoiceForm {
     }
 
 
-    public Map<String, String> getFields() {
-        return fields;
-    }
-
-
     public void fillDateOfInvoice(String dateOfInvoice){
         fields.put("dateOfInvoice", dateOfInvoice);
     }
+
 
     public void fillSupplierNameAndAddress(String supplierNameAndAddress){
         fields.put("supplierNameAndAddress", supplierNameAndAddress);
     }
 
-
     public void fillOpeningPurchaseValueAsOnApril01(String openingPurchaseValueAsOnApril01){
         fields.put("openingPurchaseValueAsOnApril01", openingPurchaseValueAsOnApril01);
     }
+
 
     public void fillAdditionsDuringTheYear(String additionsDuringTheYear){
         fields.put("additionsDuringTheYear", additionsDuringTheYear);
@@ -60,8 +56,24 @@ public class InvoiceForm {
     public void fillGroupOfAssets(String groupOfAssets){
         fields.put("groupOfAssets", groupOfAssets);
     }
+
     public void fillCostCentre(String costCentre){
         fields.put("costCentre", costCentre);
     }
+    public void fillQuantity(String quantity) {
+        fields.put("quantity", quantity);
+    }
 
+
+    public void fillIdentificationNumber(String identificationNumber) {
+        fields.put("identificationNumber", identificationNumber);
+    }
+
+    public void fillType(String type) {
+        fields.put("type", type);
+    }
+
+    public Map<String, String> getFields() {
+        return fields;
+    }
 }
