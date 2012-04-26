@@ -34,7 +34,7 @@ public class InvoiceRepositoryIntegrationTest extends IntegrationTest {
     private void addToDatabase(String invoiceNumber) {
 
         Session currentSession = sessionFactory.getCurrentSession();
-        String sql = "insert into Invoice (id, invoiceNumber, freeOfCharge, loanBasis) values (27, '" + invoiceNumber + "', 0, 0);";
+        String sql = "insert into Invoice (invoice_id, invoiceNumber, freeOfCharge, loanBasis) values (27, '" + invoiceNumber + "', 0, 0);";
         currentSession.createSQLQuery(sql).executeUpdate();
 
     }

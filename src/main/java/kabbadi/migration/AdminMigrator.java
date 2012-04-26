@@ -47,7 +47,7 @@ public class AdminMigrator {
     }
 
     private String constructColumnsFragment() {
-        StringBuilder insertFragment = new StringBuilder("INSERT INTO invoice (id");
+        StringBuilder insertFragment = new StringBuilder("INSERT INTO invoice (invoice_id");
         for (Attribute attribute : attributes) {
             insertFragment.append(", ").append(attribute.fieldName);
         }

@@ -2,12 +2,13 @@ package kabbadi.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Access(AccessType.FIELD)
@@ -69,16 +70,34 @@ public class Invoice implements Comparable<Invoice> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    private Integer invoice_id;
 
     @OneToMany(
-            cascade = {CascadeType.ALL},
-            fetch = FetchType.EAGER,
-            mappedBy = "invoice"
+        cascade = {CascadeType.ALL},
+        fetch = FetchType.EAGER,
+        mappedBy = "invoice_id"
     )
-    private List<Asset> assetList = new ArrayList<Asset>();
+    @Fetch(FetchMode.JOIN)
+    private Set<Asset> assets;
 
     public Invoice() {
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Invoice invoice = (Invoice) o;
+
+        if (!invoice_id.equals(invoice.invoice_id)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return invoice_id.hashCode();
     }
 
     public boolean valid() {

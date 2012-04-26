@@ -51,7 +51,7 @@
 <br/>
 
 <form action="<@spring.url '/invoice/save'/>" method="POST">
-<input name="id" type="hidden" value="${invoice.id!} "/>
+<input name="invoice_id" type="hidden" value="${invoice.invoice_id!} "/>
 
 <div class="row">
     <div class="span3">

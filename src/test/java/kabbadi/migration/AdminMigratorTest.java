@@ -19,7 +19,7 @@ public class AdminMigratorTest {
         List<String> inserts = new AdminMigrator().createInserts(records);
 
         String expectedStatement =
-                "INSERT INTO invoice (id, invoiceNumber, STPIApprovalNumberAndDate, " +
+                "INSERT INTO invoice (invoice_id, invoiceNumber, STPIApprovalNumberAndDate, " +
                         "descriptionOfGoods, currency, foreignValue, " +
                         "amountSTPIApproval, CIFValueInINR, bondNumber, bondDate," +
                         " billOfEntryNumber, billOfEntryDate, assessableValueInINR, dutyExempt, twentyFivePercentDF," +
