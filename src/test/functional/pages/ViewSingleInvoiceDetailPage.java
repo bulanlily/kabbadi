@@ -21,11 +21,6 @@ public class ViewSingleInvoiceDetailPage extends BasePage {
         verifyInvoiceDataIsOnTable(invoiceForm, "Finance");
     }
 
-    public ViewSingleInvoiceDetailPage confirmInvoiceDisplayedMatches(String invoiceNumber) {
-        assertThat(driver.findElement(By.cssSelector("h1")).getText(), containsString(invoiceNumber));
-        return this;
-    }
-
     public void confirmAdminInvoiceData(InvoiceForm invoice) {
         verifyInvoiceDataIsOnTable(invoice, "Admin");
     }
