@@ -281,7 +281,7 @@
                     </tr>
                     <tr>
                         <td>GB on December 31, 2011</td>
-                        <td>${invoice.GBonDecember31()!}</td>
+                        <td>${invoice.gbOnDecember31()!}</td>
                     </tr>
                     <tr>
                         <td>Cost Centre</td>

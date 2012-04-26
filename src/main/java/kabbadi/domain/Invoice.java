@@ -77,7 +77,7 @@ public class Invoice implements Comparable<Invoice> {
         return invoiceNumber != null && !invoiceNumber.isEmpty();
     }
 
-    public BigDecimal GBonDecember31() {
+    public BigDecimal gbOnDecember31() {
         if(openingPurchaseValueAsOnApril01 == null || additionsDuringTheYear == null || deletionsDuringTheYear == null)
             return null;
 

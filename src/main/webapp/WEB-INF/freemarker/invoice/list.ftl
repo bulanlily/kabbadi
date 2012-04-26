@@ -113,7 +113,7 @@
                     <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
                     <td>${invoice.additionsDuringTheYear!}</td>
                     <td>${invoice.deletionsDuringTheYear!}</td>
-                    <td>${invoice.GBonDecember31()!}</td>
+                    <td>${invoice.gbOnDecember31()!}</td>
                     <td>${invoice.location!}</td>
                         <td>
                             <span class="btn btn-info btn-mini">
