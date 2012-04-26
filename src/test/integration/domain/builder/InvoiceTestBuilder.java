@@ -30,23 +30,13 @@ public class InvoiceTestBuilder {
         return this;
     }
 
-    public InvoiceTestBuilder withCurrency(String currencyCode) {
-        invoice.setCurrency(currencyCode);
-        return this;
-    }
-
-    public InvoiceTestBuilder withForeignCurrency(double amount) {
-        invoice.setForeignCurrency(new BigDecimal(amount));
-        return this;
-    }
-
     public InvoiceTestBuilder withAmountSTPIApproval(double amount) {
         invoice.setAmountSTPIApproval(new BigDecimal(amount));
         return this;
     }
 
     public InvoiceTestBuilder withCIFValueInINR(double amount) {
-        invoice.setCIFValueInINR(new Money(new BigDecimal(amount)));
+        invoice.setCIFValueInINR(new Money(Money.DEFAULT_CURRENCY, new BigDecimal(amount)));
         return this;
     }
 

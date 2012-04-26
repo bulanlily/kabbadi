@@ -2,7 +2,6 @@ package kabbadi.domain;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -22,11 +21,20 @@ public class Invoice implements Comparable<Invoice> {
 
     private String STPIApprovalNumberAndDate;
     private String descriptionOfGoods;
-    private String currency;
-    private BigDecimal foreignCurrency;
+
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "amount", column = @Column(name = "foreignValue"))
+    })
+    private Money foreignValue;
+
     private BigDecimal amountSTPIApproval;
 
-    @Type(type = "kabbadi.domain.db.hibernate.MoneyType")
+    @Embedded
+    @AttributeOverrides({
+            @AttributeOverride(name = "currency", column = @Column(name = "CIFCurrency")),
+            @AttributeOverride(name = "amount", column = @Column(name = "CIFValueInINR"))
+    })
     private Money CIFValueInINR;
 
     private String bondNumber;
@@ -64,9 +72,9 @@ public class Invoice implements Comparable<Invoice> {
     private Integer id;
 
     @OneToMany(
-         cascade = {CascadeType.ALL},
-         fetch = FetchType.EAGER,
-         mappedBy = "invoice"
+            cascade = {CascadeType.ALL},
+            fetch = FetchType.EAGER,
+            mappedBy = "invoice"
     )
     private List<Asset> assetList = new ArrayList<Asset>();
 
@@ -78,7 +86,7 @@ public class Invoice implements Comparable<Invoice> {
     }
 
     public BigDecimal GBonDecember31() {
-        if(openingPurchaseValueAsOnApril01 == null || additionsDuringTheYear == null || deletionsDuringTheYear == null)
+        if (openingPurchaseValueAsOnApril01 == null || additionsDuringTheYear == null || deletionsDuringTheYear == null)
             return null;
 
         return openingPurchaseValueAsOnApril01.add(additionsDuringTheYear).subtract(deletionsDuringTheYear);
@@ -92,5 +100,14 @@ public class Invoice implements Comparable<Invoice> {
     public String getCIFDisplayAmountInINR() {
         return (CIFValueInINR == null) ? "" : CIFValueInINR.displayAmount();
     }
+
+    public String getForeignValueDisplayAmount() {
+        return (foreignValue == null) ? "" : foreignValue.displayAmount();
+    }
+
+    public String getForeignCurrency() {
+        return (foreignValue == null) ? "" : foreignValue.getCurrency();
+    }
+
 
 }

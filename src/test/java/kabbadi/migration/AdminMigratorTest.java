@@ -20,7 +20,7 @@ public class AdminMigratorTest {
 
         String expectedStatement =
                 "INSERT INTO invoice (id, invoiceNumber, STPIApprovalNumberAndDate, " +
-                        "descriptionOfGoods, currency, foreignCurrency, " +
+                        "descriptionOfGoods, currency, foreignValue, " +
                         "amountSTPIApproval, CIFValueInINR, bondNumber, bondDate," +
                         " billOfEntryNumber, billOfEntryDate, assessableValueInINR, dutyExempt, twentyFivePercentDF," +
                         " outrightPurchase, loanBasis, freeOfCharge, CGApprovedInINR, dutyForgone, runningBalance) " +

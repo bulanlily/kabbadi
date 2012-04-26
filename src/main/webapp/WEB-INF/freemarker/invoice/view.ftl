@@ -80,12 +80,12 @@
 
                     <tr>
                         <td>Currency Type</td>
-                        <td>${invoice.currency!}</td>
+                        <td>${invoice.foreignCurrency!}</td>
 
                     </tr>
                     <tr>
                         <td>Currency Value</td>
-                        <td>${invoice.foreignCurrency!}</td>
+                        <td>${invoice.foreignValueDisplayAmount!}</td>
 
                     </tr>
                     <tr>
