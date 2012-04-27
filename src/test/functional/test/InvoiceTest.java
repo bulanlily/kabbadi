@@ -25,6 +25,21 @@ public class InvoiceTest extends BaseTest {
                 .confirmFirstInvoiceNumberIs(newInvoiceNumber);
     }
 
+    @Test
+    public void should_not_list_non_bonded_invoices_in_the_admin_tab() {
+        InvoiceForm newInvoice = validNonBondedInvoice("1111");
+        launchKabbadi().loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .submit(newInvoice)
+                .confirmInvoiceHasNotBeenAddedToAdminList(newInvoice);
+    }
+
+    private InvoiceForm validNonBondedInvoice(String invoiceNumber) {
+        InvoiceForm invoice = validInvoice(invoiceNumber);
+        invoice.fillBondNumber("");
+        return invoice;
+    }
+
     private AdminInvoiceForm validInvoice(String invoiceNumber) {
         AdminInvoiceForm invoice = new AdminInvoiceForm();
         invoice.fillInvoiceNumberWith(invoiceNumber);

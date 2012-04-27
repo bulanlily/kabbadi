@@ -2,6 +2,7 @@ package kabbadi.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.h2.util.StringUtils;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -130,6 +131,6 @@ public class Invoice implements Comparable<Invoice> {
 
 
     public boolean isBonded() {
-        return true;
+        return !StringUtils.isNullOrEmpty(bondNumber);
     }
 }

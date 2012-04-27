@@ -36,7 +36,19 @@ public class InvoiceTest {
     
     @Test
     public void should_be_bonded_when_the_correct_fields_are_set() {
-        assertThat(InvoiceWithBondNumber().isBonded(), equalTo(true));
+        assertThat(InvoiceWithBondNumber().isBonded(), is(true));
+    }
+
+    @Test
+    public void should_not_be_bonded_when_the_correct_fields_are_not_set() {
+        assertThat(new Invoice().isBonded(), is(false));
+        assertThat(invoiceWithEmptyBondNumber().isBonded(), is(false));
+    }
+
+    private Invoice invoiceWithEmptyBondNumber() {
+        Invoice invoice = new Invoice();
+        invoice.setBondNumber("");
+        return invoice;
     }
 
     private Invoice InvoiceWithBondNumber() {

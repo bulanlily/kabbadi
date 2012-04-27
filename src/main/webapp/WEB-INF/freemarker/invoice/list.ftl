@@ -53,24 +53,26 @@
                 </thead>
                 <tbody style="word-wrap:break-word, break-word: hyphenate">
                 <#list invoices as invoice>
-                    <tr id="admin_invoice_${invoice.invoiceNumber}">
-                        <td>${invoice.purchaseOrderNumber!}</td>
-                        <td>${invoice.invoiceNumber}</td>
-                        <td>${invoice.STPIApprovalNumberAndDate!}</td>
-                        <td>${invoice.amountSTPIApproval!}</td>
-                        <td>${invoice.bondNumber!}</td>
-                        <td>${invoice.bondDate!}</td>
-                        <td>${invoice.location!}</td>
-                        <td>${invoice.descriptionOfGoods!}</td>
-                        <td>
-                            <span class="btn btn-info btn-mini">
-                                <a href="edit/${invoice.invoice_id}">EDIT</a>
-                            </span>
-                            <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/invoice/${invoice.invoice_id}'/>">VIEW</a>
-                            </span>
-                        </td>
-                    </tr>
+                    <#if invoice.isBonded() >
+                        <tr id="admin_invoice_${invoice.invoiceNumber}">
+                            <td>${invoice.purchaseOrderNumber!}</td>
+                            <td>${invoice.invoiceNumber}</td>
+                            <td>${invoice.STPIApprovalNumberAndDate!}</td>
+                            <td>${invoice.amountSTPIApproval!}</td>
+                            <td>${invoice.bondNumber!}</td>
+                            <td>${invoice.bondDate!}</td>
+                            <td>${invoice.location!}</td>
+                            <td>${invoice.descriptionOfGoods!}</td>
+                            <td>
+                                <span class="btn btn-info btn-mini">
+                                    <a href="edit/${invoice.invoice_id}">EDIT</a>
+                                </span>
+                                <span class="btn btn-info btn-mini">
+                                    <a href="<@spring.url '/invoice/${invoice.invoice_id}'/>">VIEW</a>
+                                </span>
+                            </td>
+                        </tr>
+                    </#if>
                 </#list>
                 </tbody>
             </table>
