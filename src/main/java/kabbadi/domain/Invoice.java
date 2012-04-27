@@ -129,4 +129,7 @@ public class Invoice implements Comparable<Invoice> {
     }
 
 
+    public boolean isBonded() {
+        return true;
+    }
 }
