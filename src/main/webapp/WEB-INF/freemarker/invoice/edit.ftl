@@ -41,20 +41,14 @@
                 redirectTo.val(targetTab.replace("#", ""));
                 cancelButton.attr("href", originalCancelURL + targetTab);
             });
-        });
-        });
 
-        $.datepicker.setDefaults({
-        dateFormat: 'dd/mm/yy'
-        });
+            $.datepicker.setDefaults({
+                dateFormat: 'dd/mm/yy'
+            });
 
-
-        $(document).ready(function () {
             $(".defaultDatepicker").datepicker( );
 
         });
-
-
     </script>
 
 </head>
