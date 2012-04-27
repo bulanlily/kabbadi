@@ -50,10 +50,6 @@ public class InvoiceForm {
         fields.put("dateOfCommissioning", dateOfCommissioning);
     }
 
-    public void fillGroupOfAssets(String groupOfAssets) {
-        fields.put("groupOfAssets", groupOfAssets);
-    }
-
     public void fillCostCentre(String costCentre) {
         fields.put("costCentre", costCentre);
     }
@@ -65,10 +61,6 @@ public class InvoiceForm {
 
     public void fillIdentificationNumber(String identificationNumber) {
         fields.put("identificationNumber", identificationNumber);
-    }
-
-    public void fillType(String type) {
-        fields.put("type", type);
     }
 
     public Map<String, String> getFields() {

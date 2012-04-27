@@ -67,7 +67,6 @@ public class Invoice implements Comparable<Invoice> {
     private BigDecimal deletionsDuringTheYear;
     private Integer quantity;
     private String identificationNumber;
-    private String type;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
