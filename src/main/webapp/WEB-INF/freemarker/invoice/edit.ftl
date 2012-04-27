@@ -28,11 +28,19 @@
     </style>
     <script type="text/javascript">
         $(function () {
-        var redirectTo = $("#redirectToTab");
-        redirectTo.val((window.location.hash + "").replace("#", ""));
+            var redirectTo = $("#redirectToTab");
+            var cancelButton = $("#cancelButton");
+            var originalCancelURL = cancelButton.attr("href");
+            var incomingTab = (window.location.hash + "");
 
-        $('a[data-toggle="tab"]').on('shown', function (e) {
-        redirectTo.val($(e.target).attr("href").replace("#", ""));
+            redirectTo.val(incomingTab.replace("#", ""));
+            cancelButton.attr("href", originalCancelURL + incomingTab);
+
+            $('a[data-toggle="tab"]').on('shown', function (e) {
+                var targetTab = $(e.target).attr("href");
+                redirectTo.val(targetTab.replace("#", ""));
+                cancelButton.attr("href", originalCancelURL + targetTab);
+            });
         });
         });
 
@@ -42,7 +50,7 @@
 
 
         $(document).ready(function () {
-            $(".defaultDatepicker").datepicker();
+            $(".defaultDatepicker").datepicker( );
 
         });
 
@@ -60,7 +68,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="<@spring.url '/invoice/list'/>">Kabbadi</a>
+            <a class="brand" href="<@spring.url '/'/>">Kabbadi</a>
 
         </div>
     </div>
@@ -316,7 +324,7 @@
 
 <hr/>
 <input type="submit" name="submit" value="Submit invoice" class="btn btn-primary"/>
-<a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel"/></a>
+<a id="cancelButton" href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel"/></a>
 <br/>
 <br/>
 <hr/>
