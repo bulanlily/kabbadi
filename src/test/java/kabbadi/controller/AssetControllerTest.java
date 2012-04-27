@@ -30,7 +30,7 @@ public class AssetControllerTest {
         AssetService assetService = mock(AssetService.class);
         InvoiceService invoiceService = mock(InvoiceService.class);
         Asset asset = new Asset();
-        asset.setInvoice(new Invoice());
+        asset.setInvoice_id(new Invoice());
         AssetController assetController = new AssetController(assetService, invoiceService);
         assetController.save(asset);
         verify(assetService, times(1)).saveOrUpdate(asset);

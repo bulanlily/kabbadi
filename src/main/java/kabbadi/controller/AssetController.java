@@ -38,7 +38,7 @@ public class AssetController {
         ModelAndView modelAndView = new ModelAndView("/asset/create");
         Asset asset = new Asset();
         Invoice invoice = invoiceService.get(invoiceId);
-        asset.setInvoice(invoice);
+        asset.setInvoice_id(invoice);
         modelAndView.addObject("asset", asset);
         return modelAndView;
     }
