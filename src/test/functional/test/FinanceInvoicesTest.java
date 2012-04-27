@@ -33,7 +33,7 @@ public class FinanceInvoicesTest extends BaseTest {
         invoice.fillInvoiceNumberWith("invoice123");
         invoice.fillPurchaseOrderNumberWith("po123");
         invoice.fillLocationWith("IND");
-        invoice.fillTypeWith("type1");
+        invoice.fillQuantityWith("1");
         return invoice;
     }
 }
