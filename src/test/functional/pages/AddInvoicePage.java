@@ -3,6 +3,7 @@ package pages;
 import forms.InvoiceForm;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.Map;
 
@@ -53,12 +54,16 @@ public class AddInvoicePage extends BasePage {
     }
 
     public ListAdminInvoicesPage submit(InvoiceForm invoiceForm) {
+        fillFormWith(invoiceForm);
+        return new ListAdminInvoicesPage(driver);
+    }
+
+    private void fillFormWith(InvoiceForm invoiceForm) {
         Map<String, String> fields = invoiceForm.getFields();
         for (String fieldName : fields.keySet()) {
             fillFieldWith(fieldName, fields.get(fieldName));
         }
         driver.findElement(By.cssSelector("input[name=submit]")).click();
-        return new ListAdminInvoicesPage(driver);
     }
 
     public AddInvoicePage confirmAddInvoicePage() {
@@ -66,5 +71,15 @@ public class AddInvoicePage extends BasePage {
         return this;
     }
 
+    public AddInvoicePage submitInvalid(InvoiceForm invoice) {
+        fillFormWith(invoice);
+        return this;
+    }
+
+    public AddInvoicePage checkErrorMessage(String errorMessage) {
+        WebElement form = driver.findElement(By.cssSelector("form"));
+        assertThat(form.getText(), containsString(errorMessage));
+        return this;
+    }
 }
 
