@@ -7,8 +7,8 @@ import org.openqa.selenium.WebElement;
 
 import java.util.Map;
 
-import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
@@ -67,7 +67,7 @@ public class ListAdminInvoicesPage extends BasePage {
 
     private AddInvoicePage addInvoiceOf(String role) {
         driver.findElement(By.cssSelector("a[href='#" + role + "']")).click();
-        driver.findElement(By.id(role +"_add_invoice")).click();
+        driver.findElement(By.id(role + "_add_invoice")).click();
         assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
         return new AddInvoicePage(driver);
     }
@@ -86,6 +86,19 @@ public class ListAdminInvoicesPage extends BasePage {
 
     public ListAdminInvoicesPage financeTabShouldBeActive() {
         assertThat(driver.findElement(By.id("finance")).getAttribute("class"), containsString("active"));
+        return this;
+    }
+
+    public ListAdminInvoicesPage confirmInvoiceHasNotBeenAddedToAdminList(InvoiceForm invoiceForm) {
+
+        Map<String, String> fields = invoiceForm.getFields();
+        WebElement table = driver.findElement(By.cssSelector("#admin table"));
+
+        for (String fieldValue : fields.values()) {
+            if (!fieldValue.equals(""))
+                assertThat(table.getText(), not(containsString(fieldValue)));
+        }
+
         return this;
     }
 }
