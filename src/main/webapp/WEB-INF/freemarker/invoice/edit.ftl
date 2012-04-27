@@ -245,6 +245,7 @@
                 <div class="span3">
                     <label for="dateOfInvoice">Date of Invoice</label>
                     <input name="dateOfInvoice" class="defaultDatepicker" value="${invoice.dateOfInvoice!}"/>
+                    <div class='error_div' id='newInvoiceForm_dateOfInvoice_errorloc'></div>
                 </div>
                 <div class="span3">
 
@@ -299,6 +300,7 @@
                 <div class="span3">
                     <label for="dateOfCommissioning">Date of Commissioning</label>
                     <input name="dateOfCommissioning"  class="defaultDatepicker" value="${invoice.dateOfCommissioning!}"/>
+                    <div class='error_div' id='newInvoiceForm_dateOfCommissioning_errorloc'></div>
                 </div>
                 <div class="span3">
                     <label for="costCentre">Cost Centre</label>
@@ -335,6 +337,8 @@
     frmValidator.addValidation("openingPurchaseValueAsOnApril01","numeric","Please enter a number");
     frmValidator.addValidation("additionsDuringTheYear","numeric","Please enter a number");
     frmValidator.addValidation("deletionsDuringTheYear","numeric","Please enter a number");
+    frmValidator.addValidation("dateOfInvoice", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
+    frmValidator.addValidation("dateOfCommissioning", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
 
     frmValidator.EnableFocusOnError(true);
     frmValidator.EnableOnPageErrorDisplay();
