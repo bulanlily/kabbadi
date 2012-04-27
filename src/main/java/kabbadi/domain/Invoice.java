@@ -101,6 +101,11 @@ public class Invoice implements Comparable<Invoice> {
         return invoice_id.hashCode();
     }
 
+    @Override
+    public int compareTo(Invoice invoice) {
+        return this.bondNumber.compareTo(invoice.bondNumber);
+    }
+
     public boolean valid() {
         return invoiceNumber != null && !invoiceNumber.isEmpty();
     }
@@ -110,11 +115,6 @@ public class Invoice implements Comparable<Invoice> {
             return null;
 
         return openingPurchaseValueAsOnApril01.add(additionsDuringTheYear).subtract(deletionsDuringTheYear);
-    }
-
-    @Override
-    public int compareTo(Invoice invoice) {
-        return this.bondNumber.compareTo(invoice.bondNumber);
     }
 
     public String getCIFDisplayAmountInINR() {
@@ -128,7 +128,6 @@ public class Invoice implements Comparable<Invoice> {
     public String getForeignCurrency() {
         return (foreignValue == null) ? "" : foreignValue.getCurrency();
     }
-
 
     public boolean isBonded() {
         return !StringUtils.isNullOrEmpty(bondNumber);
