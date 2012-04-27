@@ -33,6 +33,29 @@ public class InvoiceTest {
         assertThat(new Invoice().gbOnDecember31(), is(nullValue()));
         assertThat(invalidInvoiceWithFinanceValues().gbOnDecember31(), is(nullValue()));
     }
+    
+    @Test
+    public void should_be_bonded_when_the_correct_fields_are_set() {
+        assertThat(InvoiceWithBondNumber().isBonded(), is(true));
+    }
+
+    @Test
+    public void should_not_be_bonded_when_the_correct_fields_are_not_set() {
+        assertThat(new Invoice().isBonded(), is(false));
+        assertThat(invoiceWithEmptyBondNumber().isBonded(), is(false));
+    }
+
+    private Invoice invoiceWithEmptyBondNumber() {
+        Invoice invoice = new Invoice();
+        invoice.setBondNumber("");
+        return invoice;
+    }
+
+    private Invoice InvoiceWithBondNumber() {
+        Invoice invoice = new Invoice();
+        invoice.setBondNumber("Bond#");
+        return invoice;
+    }
 
     private Invoice invalidInvoiceWithFinanceValues() {
         Invoice invoice = new Invoice();
@@ -48,5 +71,6 @@ public class InvoiceTest {
 
         return invoice;
     }
+    
 
 }
