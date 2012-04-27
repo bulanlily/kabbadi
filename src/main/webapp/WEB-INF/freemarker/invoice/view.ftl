@@ -4,11 +4,12 @@
 <html>
 <head>
     <title>View an Invoice | Kabbadi</title>
+    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/kabbadi/static/css/kabbadi.css" rel="stylesheet">
+    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
     <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
-    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
-    <link href="/kabbadi/static/css/kabbadi.css" rel="stylesheet">
     <style type="text/css">
         body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -20,7 +21,7 @@
         width: 20%;
         }
     </style>
-    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
+
 
 </head>
 <body>

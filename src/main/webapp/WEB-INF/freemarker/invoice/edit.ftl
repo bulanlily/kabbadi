@@ -6,9 +6,19 @@
 <head>
     <title>Add/Edit invoice | Kabbadi</title>
     <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
+          type="text/css"/>
+    <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
+    <script src="/kabbadi/static/js/gen_validatorv4.js" type="text/javascript"></script>
+    <script src="/kabbadi/static/js/jquery.datePicker.js" type="text/javascript"></script>
+    <script scr="/kabbadi/static/js/jquery.ui.datepicker.validation.min.js" type="text/javascript"></script>
+    <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
+    <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     <style type="text/css">
         body {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
         }
 
         div.error_div{
@@ -16,30 +26,25 @@
         margin-bottom:5px;
         }
     </style>
-    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
-    <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/gen_validatorv4.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/jquery.datePicker.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
     <script type="text/javascript">
         $(function () {
-            var redirectTo = $("#redirectToTab");
-            redirectTo.val((window.location.hash + "").replace("#", ""));
+        var redirectTo = $("#redirectToTab");
+        redirectTo.val((window.location.hash + "").replace("#", ""));
 
-            $('a[data-toggle="tab"]').on('shown', function (e) {
-                redirectTo.val($(e.target).attr("href").replace("#", ""));
-            });
+        $('a[data-toggle="tab"]').on('shown', function (e) {
+        redirectTo.val($(e.target).attr("href").replace("#", ""));
+        });
         });
 
-        $.datepicker.setDefaults({dateFormat: 'dd/mm/yy' });
+        $.datepicker.setDefaults({
+        dateFormat: 'dd/mm/yy'
+        });
 
 
-        $(document).ready(function() {
-            $(".datepicker").datepicker();
-            });
+        $(document).ready(function () {
+            $(".defaultDatepicker").datepicker();
+
+        });
 
 
     </script>
@@ -68,7 +73,7 @@
 <p>* indicates mandatory fields</p>
 <br/>
 
-<form action="<@spring.url '/invoice/save'/>" name="newInvoiceForm" method="POST">
+<form action="<@spring.url '/invoice/save'/>" name="newInvoiceForm" id='newInvoiceForm' method="POST">
 <input name="invoice_id" type="hidden" value="${invoice.invoice_id!} "/>
 
 <div class="row">
@@ -110,7 +115,7 @@
 
                 <div class="span3">
                     <label for="dateOfArrival">Date of Arrival (dd/mm/yyyy)</label>
-                    <input name="dateOfArrival" class= "datepicker" value="${invoice.dateOfArrival!}"/>
+                    <input name="dateOfArrival" class="defaultDatepicker" value="${invoice.dateOfArrival!}"/>
                 </div>
 
             </div>
@@ -121,7 +126,7 @@
                 </div>
                 <div class="span3">
                     <label for="bondDate">Bond Date (dd/mm/yyyy)</label>
-                    <input name="bondDate" class= "datepicker"  type="date" value="${invoice.bondDate!}"/>
+                    <input name="bondDate" class="defaultDatepicker" type="date" value="${invoice.bondDate!}"/>
                 </div>
             </div>
             <div class="row">
@@ -132,14 +137,16 @@
 
                 <div class="span3">
                     <label for="billOfEntryDate">Bill of Entry Date (dd/mm/yyyy)</label>
-                    <input name="billOfEntryDate" class= "datepicker" type="date" value="${invoice.billOfEntryDate!}"/>
+                    <input name="billOfEntryDate" class="defaultDatepicker" type="date"
+                           value="${invoice.billOfEntryDate!}"/>
                 </div>
             </div>
             <div class="row">
                 <div class="span3">
                     <label for="foreignValue.amount">Amount</label>
                     <input name="foreignValue.amount" value="${invoice.foreignValueDisplayAmount!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_foreignValue.amount_errorloc' ></div>
+
+                    <div class='error_div' id='newInvoiceForm_foreignValue.amount_errorloc'></div>
                 </div>
 
                 <div class="span3">
@@ -150,64 +157,74 @@
                 <div class="span3">
                     <label for="amountSTPIApproval">Amount STPI Approval</label>
                     <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_amountSTPIApproval_errorloc' ></div>
+
+                    <div class='error_div' id='newInvoiceForm_amountSTPIApproval_errorloc'></div>
                 </div>
 
                 <div class="span3">
                     <label for="assessableValueInINR">Assessable Value In INR</label>
                     <input name="assessableValueInINR" value="${invoice.assessableValueInINR!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_assessableValueInINR_errorloc' ></div>
+
+                    <div class='error_div' id='newInvoiceForm_assessableValueInINR_errorloc'></div>
                 </div>
             </div>
             <div class="row">
                 <div class="span3">
                     <label for="CIFValueInINR">CIF Value In INR</label>
                     <input name="CIFValueInINR" value="${invoice.CIFDisplayAmountInINR!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_CIFValueInINR_errorloc' ></div>
+
+                    <div class='error_div' id='newInvoiceForm_CIFValueInINR_errorloc'></div>
                 </div>
 
                 <div class="span3">
                     <label for="cgApprovedInINR">Add CG Value (INR)</label>
                     <input name="cgApprovedInINR" value="${invoice.cgApprovedInINR!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_cgApprovedInINR_errorloc' ></div>
+
+                    <div class='error_div' id='newInvoiceForm_cgApprovedInINR_errorloc'></div>
                 </div>
             </div>
             <div class="row">
                 <div class="span3">
                     <label for="dutyExempt">Duty Exempt</label>
                     <input name="dutyExempt" value="${invoice.dutyExempt!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_dutyExempt_errorloc' ></div>
+
+                    <div class='error_div' id='newInvoiceForm_dutyExempt_errorloc'></div>
                 </div>
 
                 <div class="span3">
                     <label for="twentyFivePercentDF">25% DF</label>
                     <input name="twentyFivePercentDF" value="${invoice.twentyFivePercentDF!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_twentyFivePercentDF_errorloc' ></div>
+
+                    <div class='error_div' id='newInvoiceForm_twentyFivePercentDF_errorloc'></div>
                 </div>
 
                 <div class="span3">
                     <label for="dutyForgone">Duty Foregone</label>
                     <input name="dutyForgone" value="${invoice.dutyForgone!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_dutyForgone_errorloc' ></div>
+
+                    <div class='error_div' id='newInvoiceForm_dutyForgone_errorloc'></div>
                 </div>
             </div>
             <div class="row">
                 <div class="span3">
                     <label for="loanBasis">Loan Basis</label>
                     <input name="loanBasis" value="${invoice.loanBasis!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_loanBasis_errorloc' ></div>
+
+                    <div class='error_div' id='newInvoiceForm_loanBasis_errorloc'></div>
                 </div>
 
                 <div class="span3">
                     <label for="outrightPurchase">Outright Purchase</label>
                     <input name="outrightPurchase" value="${invoice.outrightPurchase!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_outrightPurchase_errorloc' ></div>
+
+                    <div class='error_div' id='newInvoiceForm_outrightPurchase_errorloc'></div>
                 </div>
 
                 <div class="span3">
                     <label for="freeOfCharge">Free Of Charge</label>
                     <input name="freeOfCharge" value="${invoice.freeOfCharge!}"/>
-                    <div class= 'error_div' id='newInvoiceForm_freeOfCharge_errorloc' ></div>
+
+                    <div class='error_div' id='newInvoiceForm_freeOfCharge_errorloc'></div>
                 </div>
             </div>
             <div class="row">
@@ -307,7 +324,7 @@
 </form>
 <script type="text/javascript">
     var frmValidator = new Validator("newInvoiceForm");
-    frmValidator.addValidation("foreignCurrency","numeric","Please enter a number");
+    frmValidator.addValidation("foreignValue.amount","numeric","Please enter a number");
     frmValidator.addValidation("amountSTPIApproval","numeric","Please enter a number");
     frmValidator.addValidation("assessableValueInINR","numeric","Please enter a number");
     frmValidator.addValidation("CIFValueInINR","numeric","Please enter a number");
