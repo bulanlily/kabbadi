@@ -18,7 +18,7 @@
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="#">Kabbadi</a>
+            <a class="brand" href="<@spring.url '/'/>">Kabbadi</a>
 
         </div>
     </div>
@@ -134,8 +134,9 @@
          <table class="table table-bordered table-striped">
             <thead>
             <tr>
+                <th style="width:120px">Invoice #</th>
                 <th>Asset #</th>
-                <th>Office Registered To</th>
+                <th>Location</th>
                 <th>Status</th>
                 <th>Is Leased</th>
                 <th>Leasing Expiration</th>
@@ -145,18 +146,19 @@
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
             <#list invoices as invoice>
-                <tr style="border-top:solid;margin-top:3px">
-                    <td colspan="6" style="font-weight:bold; font-color">Invoice: ${invoice.invoiceNumber}</td>
+                <tr>
+                    <td colspan="7" style="font-weight:bold;">${invoice.invoiceNumber}</td>
                     <td>
                         <span class="btn btn-info btn-mini">
-                                <a href="/asset/create/${invoice.invoice_id}">Add Asset</a>
+                                <a href="/asset/create/${invoice.invoice_id}">&nbsp;&nbsp; Add Assets &nbsp;</a>
                         </span>
                     </td>
                 </tr>
                 <#list invoice.assets as asset>
                 <tr id="asset_${asset.assetNumber!}">
+                    <td></td>
                     <td>${asset.assetNumber!}</td>
-                    <td>${asset.registeredOffice!}</td>
+                    <td>${invoice.location!}</td>
                     <td>${asset.status!}</td>
                     <#if asset.isLeased!>
                         <td>Yes</td>
@@ -172,9 +174,7 @@
                             <span class="btn btn-info btn-mini">
                                 <a href="<@spring.url '/asset/${asset.asset_id}'/>">VIEW</a>
                             </span>
-                            <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/asset/${asset.asset_id}'/>">DELETE</a>
-                            </span>
+
                     </td>
                 </tr>
                 </#list>
