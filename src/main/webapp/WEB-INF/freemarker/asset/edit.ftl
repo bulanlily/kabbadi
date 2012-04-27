@@ -1,4 +1,4 @@
-<form action="<@spring.url '/invoice/${asset.invoice_id.invoice_id!}/asset/save'/>" method="POST">
+<form action="<@spring.url '/invoice/${asset.invoice.invoice_id!}/asset/save'/>" method="POST">
     <br/>
     <div class="row">
         <div class="span3">

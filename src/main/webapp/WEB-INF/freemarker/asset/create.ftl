@@ -55,7 +55,7 @@
 
 
 <div class="container" position="relative">
-<h1>Add/Edit Asset of Invoice ${asset.invoice_id.invoiceNumber!}</h1>
+<h1>Add/Edit Asset of Invoice ${asset.invoice.invoiceNumber!}</h1>
 
 <p>* indicates mandatory fields</p>
 <br/>
