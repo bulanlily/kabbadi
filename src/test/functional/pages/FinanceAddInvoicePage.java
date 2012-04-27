@@ -35,11 +35,9 @@ public class FinanceAddInvoicePage extends BasePage{
         invoiceForm.fillAdditionsDuringTheYear("12222");
         invoiceForm.fillDeletionsDuringTheYear("123445");
         invoiceForm.fillDateOfCommissioning("18\\12\\2012");
-        invoiceForm.fillGroupOfAssets("sssss");
         invoiceForm.fillCostCentre("skjj");
         invoiceForm.fillQuantity("25");
         invoiceForm.fillIdentificationNumber("1234");
-        invoiceForm.fillType("type");
         return invoiceForm.getFields();
     }
 

@@ -12,7 +12,7 @@
     <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/gen_validatorv4.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/jquery.datePicker.js" type="text/javascript"></script>
-    <script scr="/kabbadi/static/js/jquery.ui.datepicker.validation.min.js" type="text/javascript"></script>
+    <script src="/kabbadi/static/js/jquery.ui.datepicker.validation.min.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
@@ -244,7 +244,7 @@
             <div class="row">
                 <div class="span3">
                     <label for="dateOfInvoice">Date of Invoice</label>
-                    <input name="dateOfInvoice" value="${invoice.dateOfInvoice!}"/>
+                    <input name="dateOfInvoice" class="defaultDatepicker" value="${invoice.dateOfInvoice!}"/>
                 </div>
                 <div class="span3">
 
@@ -254,15 +254,20 @@
                 </div>
                 <div class="span3">
                     <label for="groupOfAssets">Group of Assets</label>
-                    <input name="groupOfAssets" value="${invoice.groupOfAssets!}"/>
+                    <select name="groupOfAssets" value="${invoice.groupOfAssets!}">
+                             <option value="Computer Equipments">Computer Equipments</option>
+                             <option value="Furniture and Fixtures">Furniture and Fixtures</option>
+                             <option value="Leasehold improvements">Leasehold improvements</option>
+                             <option value="Office Equipments">Office Equipments</option>
+                    </select>
                 </div>
 
             </div>
             <div class="row">
                 <div class="span3">
-
                     <label for="quantity">Quantity</label>
                     <input name="quantity" value="${invoice.quantity!}"/>
+                    <div class='error_div' id='newInvoiceForm_quantity_errorloc'></div>
                 </div>
 
                 <div class="span3">
@@ -270,34 +275,30 @@
                     <input name="identificationNumber" value="${invoice.identificationNumber!}"/>
 
                 </div>
-                <div class="span3">
-                    <label for="type">Type</label>
-                    <input name="type" value="${invoice.type!}"/>
-                </div>
-
-
             </div>
             <div class="row">
                 <div class="span3">
                     <label for="openingPurchaseValueAsOnApril01">GB on April 01</label>
                     <input name="openingPurchaseValueAsOnApril01" value="${invoice.openingPurchaseValueAsOnApril01!}"/>
+                    <div class='error_div' id='newInvoiceForm_openingPurchaseValueAsOnApril01_errorloc'></div>
                 </div>
 
                 <div class="span3">
                     <label for="additionsDuringTheYear">Additions during the year</label>
                     <input name="additionsDuringTheYear" value="${invoice.additionsDuringTheYear!}"/>
+                    <div class='error_div' id='newInvoiceForm_additionsDuringTheYear_errorloc'></div>
                 </div>
                 <div class="span3">
                     <label for="deletionsDuringTheYear">Deletions during the year</label>
                     <input name="deletionsDuringTheYear" value="${invoice.deletionsDuringTheYear!}"/>
-
+                    <div class='error_div' id='newInvoiceForm_deletionsDuringTheYear_errorloc'></div>
                 </div>
 
             </div>
             <div class="row">
                 <div class="span3">
                     <label for="dateOfCommissioning">Date of Commissioning</label>
-                    <input name="dateOfCommissioning" value="${invoice.dateOfCommissioning!}"/>
+                    <input name="dateOfCommissioning"  class="defaultDatepicker" value="${invoice.dateOfCommissioning!}"/>
                 </div>
                 <div class="span3">
                     <label for="costCentre">Cost Centre</label>
@@ -329,7 +330,12 @@
     frmValidator.addValidation("dutyForgone","numeric","Please enter a number");
     frmValidator.addValidation("loanBasis","numeric","Please enter a number");
     frmValidator.addValidation("outrightPurchase","numeric","Please enter a number");
-    frmValidator.addValidation("freeOfCharge","numeric","Please enter a number");
+
+    frmValidator.addValidation("quantity","numeric","Please enter a number");
+    frmValidator.addValidation("openingPurchaseValueAsOnApril01","numeric","Please enter a number");
+    frmValidator.addValidation("additionsDuringTheYear","numeric","Please enter a number");
+    frmValidator.addValidation("deletionsDuringTheYear","numeric","Please enter a number");
+
     frmValidator.EnableFocusOnError(true);
     frmValidator.EnableOnPageErrorDisplay();
     frmValidator.EnableMsgsTogether();
