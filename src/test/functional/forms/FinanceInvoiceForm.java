@@ -2,8 +2,8 @@ package forms;
 
 public class FinanceInvoiceForm extends InvoiceForm {
 
-    public void fillTypeWith(String type) {
-        fields.put("type", type);
+    public void fillQuantityWith(String quantity) {
+        fields.put("quantity", quantity);
     }
 
 }
