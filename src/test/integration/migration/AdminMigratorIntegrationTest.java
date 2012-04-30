@@ -3,7 +3,6 @@ package migration;
 import integration.IntegrationTest;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.db.GenericRepository;
-import kabbadi.migration.AdminMigrator;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.SessionFactory;
@@ -34,8 +33,6 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
     @Test
     public void should_recreate_csv_from_migration_sql() throws IOException, ParseException {
 
-        insertValuesFromCsvToDatabase();
-
         String originalData = originalFileContent();
         String obtainedData = retrieveValuesFromDatabase();
 
@@ -61,16 +58,7 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
         return originalData.toString();
     }
 
-    private void insertValuesFromCsvToDatabase() throws IOException{
-        List<String> inserts =  new AdminMigrator().createInserts(FileUtils.readLines(sourceFile()));
 
-        sessionFactory.getCurrentSession().createSQLQuery("delete from asset;").executeUpdate();
-        sessionFactory.getCurrentSession().createSQLQuery("delete from invoice;").executeUpdate();
-
-        for (String insert : inserts) {
-            sessionFactory.getCurrentSession().createSQLQuery(insert).executeUpdate();
-        }
-    }
 
     private String retrieveValuesFromDatabase() {
         List<String> obtainedInvoiceList = new ArrayList<String>();
@@ -79,8 +67,8 @@ public class AdminMigratorIntegrationTest extends IntegrationTest {
                     invoice.getInvoiceNumber(),
                     invoice.getSTPIApprovalNumberAndDate(),
                     invoice.getDescriptionOfGoods(),
-                    invoice.getForeignCurrency(),
                     invoice.getForeignValueDisplayAmount(),
+                    invoice.getForeignCurrency(),
                     invoice.getAmountSTPIApproval(),
                     invoice.getCIFDisplayAmountInINR(),
                     invoice.getBondNumber(),
