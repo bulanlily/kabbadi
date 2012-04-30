@@ -12,7 +12,7 @@ public class ISInvoicesTest extends BaseTest {
                 .loginWithValidCredentials()
                 .goToAddFinancePage()
                 .submit(validInvoice())
-                .viewInList(validInvoice())
+                .viewInvoiceInListPage(validInvoice())
                 .goToListISInvoicesPage()
                 .viewInList(validInvoice());
 
