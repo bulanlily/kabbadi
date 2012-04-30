@@ -36,6 +36,25 @@ public class InvoiceService {
         return invoiceRepository.list();
     }
 
+    @Transactional
+    public List<Invoice> listAscendingBondNumber() {
+        return invoiceRepository.listAscending("bondNumber");
+    }
+
+    @Transactional
+    public List<Invoice> listAscendingDateOfInvoice() {
+        return invoiceRepository.listAscending("dateOfInvoice");
+    }
+
+    @Transactional
+    public List<Invoice> listDescendingBondNumber() {
+        return invoiceRepository.listDescending("bondNumber");
+    }
+
+    @Transactional
+    public List<Invoice> listDescendingDateOfInvoice() {
+        return invoiceRepository.listDescending("dateOfInvoice");
+    }
 
     @Transactional(readOnly = true)
     public Invoice get(Integer id) {

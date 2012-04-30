@@ -10,13 +10,12 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Access(AccessType.FIELD)
 @Getter
 @Setter
-public class Invoice implements Comparable<Invoice> {
+public class Invoice{
 
     public static final String INVOICE_NUMBER = "invoiceNumber";
 
@@ -93,11 +92,6 @@ public class Invoice implements Comparable<Invoice> {
             return null;
 
         return openingPurchaseValueAsOnApril01.add(additionsDuringTheYear).subtract(deletionsDuringTheYear);
-    }
-
-    @Override
-    public int compareTo(Invoice invoice) {
-        return this.bondNumber.compareTo(invoice.bondNumber);
     }
 
     public String getCIFDisplayAmountInINR() {

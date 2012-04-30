@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.util.Date;
 
 @Controller
 @RequestMapping(value = "/invoice")
@@ -55,7 +55,7 @@ public class InvoiceController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         ModelAndView modelAndView = new ModelAndView("invoice/list");
-        modelAndView.addObject("invoices", invoiceService.list());
+        modelAndView.addObject("invoices", invoiceService.listDescendingBondNumber());
         return modelAndView;
     }
 
