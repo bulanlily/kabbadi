@@ -34,7 +34,16 @@ public class AssetControllerTest {
         ModelAndView modelAndView = assetController.create(idOfSomeInvoice);
         assertThat(modelAndView.getViewName(), equalTo("/asset/create"));
     }
-    
+
+    @Test
+    public void should_render_edit_page_while_editing_asset(){
+        int idOfSomeInvoice = 2;
+        int idOfSomeAsset = 3;
+        when(assetService.get(idOfSomeAsset)).thenReturn(new Asset());
+        ModelAndView modelAndView = assetController.edit(idOfSomeInvoice, idOfSomeAsset);
+        assertThat(modelAndView.getViewName(), equalTo("/asset/create"));
+    }
+
     @Test
     public void should_save_asset(){
         Asset asset = new Asset();
@@ -43,4 +52,8 @@ public class AssetControllerTest {
         verify(invoiceService, times(1)).get(invoiceId);
         verify(assetService, times(1)).saveOrUpdate(asset);
     }
+    
+    
+   
+    
 }

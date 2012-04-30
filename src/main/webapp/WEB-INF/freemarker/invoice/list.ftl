@@ -171,7 +171,7 @@
                     <td>${asset.modelName!}</td>
                     <td>
                             <span class="btn btn-info btn-mini">
-                                <a href="/asset/edit/${asset.asset_id}">EDIT</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/${asset.asset_id}/edit'/>">EDIT</a>
                             </span>
                             <span class="btn btn-info btn-mini">
                                 <a href="<@spring.url '/asset/${asset.asset_id}'/>">VIEW</a>
