@@ -34,9 +34,17 @@ public class AssetController {
 
     @RequestMapping(value="/asset/create", method = RequestMethod.GET)
     public ModelAndView create(@PathVariable("invoiceId")Integer invoiceId) {
-        ModelAndView modelAndView = new ModelAndView("/asset/create");
+        ModelAndView modelAndView = new ModelAndView("/asset/edit");
         Asset asset = new Asset();
         asset.setInvoice(invoiceService.get(invoiceId));
+        modelAndView.addObject("asset", asset);
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/asset/{assetId}/edit", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable("invoiceId")Integer invoiceId, @PathVariable("assetId")Integer assetId){
+        ModelAndView modelAndView = new ModelAndView("/asset/edit");
+        Asset asset = assetService.get(assetId);
         modelAndView.addObject("asset", asset);
         return modelAndView;
     }
@@ -46,13 +54,5 @@ public class AssetController {
         asset.setInvoice(invoiceService.get(invoiceId));
         assetService.saveOrUpdate(asset);
         return new ModelAndView(new RedirectView("/invoice/list#is", true));
-    }
-    
-    @RequestMapping(value="/asset/{assetId}/edit", method = RequestMethod.GET)
-    public ModelAndView edit(@PathVariable("invoiceId")Integer invoiceId, @PathVariable("assetId")Integer assetId){
-        ModelAndView modelAndView = new ModelAndView("/asset/create");
-        Asset asset = assetService.get(assetId);
-        modelAndView.addObject("asset", asset);
-        return modelAndView;
     }
 }
