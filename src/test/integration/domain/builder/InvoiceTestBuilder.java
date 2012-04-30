@@ -114,4 +114,9 @@ public class InvoiceTestBuilder {
     public Invoice build() {
         return invoice;
     }
+
+    public InvoiceTestBuilder withRunningBalance(String value) {
+        invoice.setRunningBalance(new BigDecimal(value));
+        return this;
+    }
 }

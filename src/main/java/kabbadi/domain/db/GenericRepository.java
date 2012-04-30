@@ -68,4 +68,8 @@ public class GenericRepository<T> {
         return (T) this.sessionFactory.getCurrentSession().createCriteria(type).add(
                 Restrictions.eq(propertyName, value)).uniqueResult();
     }
+
+    public Criteria scoped() {
+        return sessionFactory.getCurrentSession().createCriteria(type);
+    }
 }
