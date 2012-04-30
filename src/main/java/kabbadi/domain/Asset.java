@@ -2,6 +2,7 @@ package kabbadi.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -14,7 +15,8 @@ public class Asset {
 
     final static public String ASSET_NUMBER = "assetNumber";
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name="auto-increment", strategy = "increment")
+    @GeneratedValue(generator = "auto-increment")
     private Integer asset_id;
 
     private String assetNumber;
