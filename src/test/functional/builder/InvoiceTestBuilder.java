@@ -12,9 +12,10 @@ public class InvoiceTestBuilder {
     private String invoiceNumber = "TestInvoiceNo";
     private String numberAndDate = "123123";
     private String descriptionOfGoods = "bill";
-    private Money foreignValue = new Money("USD", new BigDecimal(123));
+    private String currency = "usd";
+    private Money foreignValue = new Money("USD",new BigDecimal(123));
     private double amountSTPIApproval = 123123;
-    private Money CIFValueInINR = new Money("INR", new BigDecimal(123123));
+    private Money CIFValueInINR = new Money("INR" , new BigDecimal(123123));
     private String bondNumber = "123123";
     private String bondDate = "1/1/2012";
     private String dateOfArrival = "1/1/2012";
@@ -33,15 +34,7 @@ public class InvoiceTestBuilder {
     private String remarks = "bill";
     private String purchaseOrderNumber = "123123";
     private String location = "bill";
-    private String dateOfInvoice = "01/01/2012";
-    private String supplierNameAndAddress = "bill";
-    private double openingPurchaseValueAsOnApril01 = 123445;
-    private double additionsDuringTheYear = 12222;
-    private double deletionsDuringTheYear = 123445;
-    private String dateOfCommissioning = "01/01/2012";
-    private Integer quantity = 25;
-    private String costCentre = "skjj";
-    private String identificationNumber = "1234";
+
 
     public InvoiceTestBuilder withInvoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
@@ -55,6 +48,11 @@ public class InvoiceTestBuilder {
 
     public InvoiceTestBuilder withDescriptionOfGoods(String descriptionOfGoods) {
         this.descriptionOfGoods = descriptionOfGoods;
+        return this;
+    }
+
+    public InvoiceTestBuilder withCurrency(String currency) {
+        this.currency = currency;
         return this;
     }
 
@@ -83,7 +81,7 @@ public class InvoiceTestBuilder {
         return this;
     }
 
-    public InvoiceTestBuilder withDateOfArrival(String dateOfArrival) {
+    public InvoiceTestBuilder withDateOfArrival(String dateOfArrival){
         this.dateOfArrival = dateOfArrival;
         return this;
     }
@@ -154,7 +152,6 @@ public class InvoiceTestBuilder {
     }
 
     public InvoiceTestBuilder withPurchaseOrderNumber(String purchaseOrderNumber) {
-        this.purchaseOrderNumber = purchaseOrderNumber;
         return this;
     }
 
@@ -163,87 +160,33 @@ public class InvoiceTestBuilder {
         return this;
     }
 
-    public InvoiceTestBuilder withDateOfInvoice(String dateOfInvoice) {
-        this.dateOfInvoice = dateOfInvoice;
-        return this;
-    }
-
-    public InvoiceTestBuilder withSupplierNameAndAddress(String supplierNameAndAddress) {
-        this.supplierNameAndAddress = supplierNameAndAddress;
-        return this;
-    }
-
-    public InvoiceTestBuilder withOpeningPurchaseValueAsOnApril01(double openingPurchaseValueAsOnApril01) {
-        this.openingPurchaseValueAsOnApril01 = openingPurchaseValueAsOnApril01;
-        return  this;
-    }
-
-    public InvoiceTestBuilder withAdditionsDuringTheYear(double additionsDuringTheYear) {
-        this.additionsDuringTheYear = additionsDuringTheYear;
-        return  this;
-    }
-
-    public InvoiceTestBuilder withDeletionsDuringTheYear(double deletionsDuringTheYear) {
-        this.deletionsDuringTheYear = deletionsDuringTheYear;
-        return  this;
-    }
-
-    public InvoiceTestBuilder withDateOfCommissioning(String dateOfCommissioning) {
-        this.dateOfCommissioning = dateOfCommissioning;
-        return  this;
-    }
-
-    public InvoiceTestBuilder withQuantity(Integer quantity) {
-        this.quantity = quantity;
-        return  this;
-    }
-
-    public InvoiceTestBuilder withCostCentre(String costCentre) {
-        this.costCentre = costCentre;
-        return  this;
-    }
-
-    public InvoiceTestBuilder withIdentificationNumber(String identificationNumber) {
-        this.identificationNumber = identificationNumber;
-        return  this;
-    }
-
-    public Invoice build() {
+    public Invoice build()  {
         Invoice invoice = new Invoice();
         try {
-            invoice.setLocation(location);
-            invoice.setInvoiceNumber(invoiceNumber);
-            invoice.setPurchaseOrderNumber(purchaseOrderNumber);
-            invoice.setRemarks(remarks);
-            invoice.setStatus(status);
-            invoice.setDutyForgone(new BigDecimal(dutyForegone));
-            invoice.setRunningBalance(new BigDecimal(runningBalance));
-            invoice.setOutrightPurchase(new BigDecimal(outrightPurchase));
-            invoice.setLoanBasis(loanBasis);
-            invoice.setFreeOfCharge(new BigDecimal(freeOfCharge));
-            invoice.setCgApprovedInINR(new BigDecimal(CGApprovedInINR));
-            invoice.setTwentyFivePercentDF(new BigDecimal(twentyFivePercentDF));
-            invoice.setDutyExempt(new BigDecimal(dutyExempt));
-            invoice.setAssessableValueInINR(new BigDecimal(assessableValueInINR));
-            invoice.setBillOfEntryDate(new SimpleDateFormat(DATE_FORMAT).parse(billOfEntryDate));
-            invoice.setBillOfEntryNumber(billOfEntryNumber);
-            invoice.setBondDate(new SimpleDateFormat(DATE_FORMAT).parse(bondDate));
-            invoice.setDateOfArrival(new SimpleDateFormat(DATE_FORMAT).parse(dateOfArrival));
-            invoice.setBondNumber(bondNumber);
-            invoice.setCIFValueInINR(CIFValueInINR);
-            invoice.setAmountSTPIApproval(new BigDecimal(amountSTPIApproval));
-            invoice.setForeignValue(foreignValue);
-            invoice.setDescriptionOfGoods(descriptionOfGoods);
-            invoice.setSTPIApprovalNumberAndDate(numberAndDate);
-            invoice.setDateOfInvoice(new SimpleDateFormat(DATE_FORMAT).parse(dateOfInvoice));
-            invoice.setSupplierNameAndAddress(supplierNameAndAddress);
-            invoice.setOpeningPurchaseValueAsOnApril01(new BigDecimal(openingPurchaseValueAsOnApril01));
-            invoice.setAdditionsDuringTheYear(new BigDecimal(additionsDuringTheYear));
-            invoice.setDeletionsDuringTheYear(new BigDecimal(deletionsDuringTheYear));
-            invoice.setDateOfCommissioning(new SimpleDateFormat(DATE_FORMAT).parse(dateOfCommissioning));
-            invoice.setCostCentre(costCentre);
-            invoice.setQuantity(quantity);
-            invoice.setIdentificationNumber(identificationNumber);
+        invoice.setLocation(location);
+        invoice.setInvoiceNumber(invoiceNumber);
+        invoice.setPurchaseOrderNumber(purchaseOrderNumber);
+        invoice.setRemarks(remarks);
+        invoice.setStatus(status);
+        invoice.setDutyForgone(new BigDecimal(dutyForegone));
+        invoice.setRunningBalance(new BigDecimal(runningBalance));
+        invoice.setOutrightPurchase(new BigDecimal(outrightPurchase));
+        invoice.setLoanBasis(loanBasis);
+        invoice.setFreeOfCharge(new BigDecimal(freeOfCharge));
+        invoice.setCgApprovedInINR(new BigDecimal(CGApprovedInINR));
+        invoice.setTwentyFivePercentDF(new BigDecimal(twentyFivePercentDF));
+        invoice.setDutyExempt(new BigDecimal(dutyExempt));
+        invoice.setAssessableValueInINR(new BigDecimal(assessableValueInINR));
+        invoice.setBillOfEntryDate(new SimpleDateFormat(DATE_FORMAT).parse(billOfEntryDate));
+        invoice.setBillOfEntryNumber(billOfEntryNumber);
+        invoice.setBondDate(new SimpleDateFormat(DATE_FORMAT).parse(bondDate));
+        invoice.setDateOfArrival(new SimpleDateFormat(DATE_FORMAT).parse(dateOfArrival));
+        invoice.setBondNumber(bondNumber);
+        invoice.setCIFValueInINR(CIFValueInINR);
+        invoice.setAmountSTPIApproval(new BigDecimal(amountSTPIApproval));
+        invoice.setForeignValue(foreignValue);
+        invoice.setDescriptionOfGoods(descriptionOfGoods);
+        invoice.setSTPIApprovalNumberAndDate(numberAndDate);
         } catch (ParseException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
