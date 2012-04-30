@@ -12,7 +12,7 @@ public class FinanceInvoicesTest extends BaseTest {
                 .loginWithValidCredentials()
                 .goToAddFinancePage()
                 .submit(validInvoice())
-                .viewInList(validInvoice())
+                .viewInvoiceInListPage(validInvoice())
                 .viewFirstInvoiceDetails()
                 .confirmFinanceInvoiceData(validInvoice());
     }
