@@ -162,7 +162,7 @@
                     </tr>
 
                     <tr>
-                        <td>Duty Forgone (INR)</td>
+                        <td>Duty Foregone (INR)</td>
                         <td>${invoice.dutyForgone!}</td>
 
                     </tr>

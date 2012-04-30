@@ -46,7 +46,7 @@
                     <th>Bond #</th>
                     <th>Bond Date</th>
                     <th>Location</th>
-                    <th>Description</th>
+                    <th class="description">Description</th>
                     <th style="min-width: 90px"></th>
 
                 </tr>
@@ -62,7 +62,7 @@
                             <td>${invoice.bondNumber!}</td>
                             <td>${invoice.bondDate!}</td>
                             <td>${invoice.location!}</td>
-                            <td>${invoice.descriptionOfGoods!}</td>
+                            <td class="description">${invoice.descriptionOfGoods!}</td>
                             <td>
                                 <span class="btn btn-info btn-mini">
                                     <a href="edit/${invoice.invoice_id}">EDIT</a>
@@ -162,7 +162,7 @@
                     <td>${asset.assetNumber!}</td>
                     <td>${invoice.location!}</td>
                     <td>${asset.status!}</td>
-                    <#if asset.isLeased!>
+                    <#if asset.leased!>
                         <td>Yes</td>
                     <#else>
                         <td>No</td>
@@ -171,7 +171,7 @@
                     <td>${asset.modelName!}</td>
                     <td>
                             <span class="btn btn-info btn-mini">
-                                <a href="/asset/edit/${asset.asset_id}">EDIT</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/${asset.asset_id}/edit'/>">EDIT</a>
                             </span>
                             <span class="btn btn-info btn-mini">
                                 <a href="<@spring.url '/asset/${asset.asset_id}'/>">VIEW</a>
