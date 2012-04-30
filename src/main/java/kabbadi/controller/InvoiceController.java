@@ -1,5 +1,6 @@
 package kabbadi.controller;
 
+import kabbadi.domain.ImportType;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.InvoiceUtils;
 import kabbadi.domain.Money;
@@ -47,12 +48,12 @@ public class InvoiceController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {
-        return new ModelAndView("invoice/edit", "invoice", new Invoice());
+        return editPage(new Invoice());
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable("id") Integer id) {
-        return new ModelAndView("invoice/edit", "invoice", invoiceService.get(id));
+        return editPage(invoiceService.get(id));
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
@@ -76,5 +77,8 @@ public class InvoiceController {
         String previousBondNumber = InvoiceUtils.getPreviousBondNumber(currentBondNumber);
         return new PreviousInvoiceRunningBalanceData(invoiceService.findByPreviousBondNumber(previousBondNumber));
     }
-
+    private ModelAndView editPage(Invoice invoice) {
+        return new ModelAndView("invoice/edit", "invoice", invoice)
+                .addObject("importTypes", ImportType.values());
+    }
 }

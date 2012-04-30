@@ -97,13 +97,15 @@
 
                     </tr>
                         <td>CIF Value (INR)</td>
-                        <td>${invoice.CIFDisplayAmountInINR!}</td>
-
+                            <td>${invoice.CIFDisplayAmountInINR!} </td>
+                    </tr>
+                    <tr>
+                        <td>Import Type</td>
+                        <td>  <#if invoice.importType??>${invoice.importType.description} </#if></td>
                     </tr>
                     <tr>
                         <td>Bond Number</td>
                         <td>${invoice.bondNumber!}</td>
-
                     </tr>
                     <tr>
                         <td>Bond Date</td>
@@ -113,12 +115,10 @@
                     <tr>
                         <td>Bill of Entry Number</td>
                         <td>${invoice.billOfEntryNumber!}</td>
-
                     </tr>
                     <tr>
                         <td>Bill of Entry Date</td>
                         <td>${invoice.billOfEntryDate!}</td>
-
                     </tr>
                     <tr>
                         <td>Assessable Value (INR)</td>
@@ -138,61 +138,37 @@
                     </tr>
 
                     <tr>
-                        <td>Outright Purchase (INR)</td>
-                        <td>${invoice.outrightPurchase!}</td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Loan Basis (INR)</td>
-                        <td>${invoice.loanBasis!}</td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Free Of Charge (INR)</td>
-                        <td>${invoice.freeOfCharge!}</td>
-
-                    </tr>
-
-                    <tr>
                         <td>CG Approved (INR)</td>
                         <td>${invoice.cgApprovedInINR!}</td>
-
                     </tr>
 
                     <tr>
                         <td>Duty Foregone (INR)</td>
                         <td>${invoice.dutyForgone!}</td>
-
                     </tr>
 
 
                     <tr>
                         <td>Running Balance (INR)</td>
                         <td>${invoice.runningBalance!}</td>
-
                     </tr>
 
 
                     <tr>
                         <td>Location</td>
                         <td>${invoice.location!}</td>
-
                     </tr>
 
 
                     <tr>
                         <td>Status</td>
                         <td>${invoice.status!}</td>
-
                     </tr>
 
 
                     <tr>
                         <td>Remarks</td>
                         <td>${invoice.remarks!}</td>
-
                     </tr>
 
 

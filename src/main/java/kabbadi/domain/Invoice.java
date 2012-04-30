@@ -38,6 +38,12 @@ public class Invoice{
             @AttributeOverride(name = "amount", column = @Column(name = "CIFValueInINR"))
     })
     private Money CIFValueInINR;
+    private BigDecimal outrightPurchase;
+    private String loanBasis;
+    private BigDecimal freeOfCharge;
+
+    @Enumerated(EnumType.STRING)
+    private ImportType importType;
 
     private String bondNumber;
     private Date dateOfArrival;
@@ -50,9 +56,7 @@ public class Invoice{
     private BigDecimal cgApprovedInINR;
     private BigDecimal dutyForgone;
     private BigDecimal runningBalance;
-    private BigDecimal outrightPurchase;
-    private String loanBasis;
-    private BigDecimal freeOfCharge;
+
     private String status;
     private String remarks;
     private String purchaseOrderNumber;
