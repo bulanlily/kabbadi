@@ -56,7 +56,9 @@ public class InvoiceController {
     public ModelAndView list() {
         ModelAndView modelAndView = new ModelAndView("invoice/list");
         Set<Invoice> invoiceSet = new HashSet<Invoice>(invoiceService.list());
-        modelAndView.addObject("invoices", invoiceSet);
+        List<Invoice> invoices = new ArrayList<Invoice>(invoiceSet);
+        Collections.sort(invoices);
+        modelAndView.addObject("invoices", invoices);
         return modelAndView;
     }
 
