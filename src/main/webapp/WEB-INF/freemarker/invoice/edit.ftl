@@ -42,6 +42,7 @@
             $(".defaultDatepicker").datepicker( );
 
         });
+
     </script>
 
 </head>
@@ -56,7 +57,6 @@
                 <span class="icon-bar"></span>
             </a>
             <a class="brand" href="<@spring.url '/'/>">Kabbadi</a>
-
         </div>
     </div>
 </div>
@@ -74,7 +74,8 @@
 <div class="row">
     <div class="span3">
         <label for="invoiceNumber">Invoice number *</label>
-        <input name="invoiceNumber" required="true" value="${invoice.invoiceNumber!}"/>
+        <input name="invoiceNumber" value="${invoice.invoiceNumber!}"/>
+        <div class='error_div' id='newInvoiceForm_invoiceNumber_errorloc'></div>
     </div>
     <div class="span3">
         <label for="purchaseOrderNumber">Purchase Order Number</label>
@@ -111,6 +112,7 @@
                 <div class="span3">
                     <label for="dateOfArrival">Date of Arrival (dd/mm/yyyy)</label>
                     <input name="dateOfArrival" class="defaultDatepicker" value="${invoice.dateOfArrival!}"/>
+                    <div class='error_div' id='newInvoiceForm_dateOfArrival_errorloc'></div>
                 </div>
 
             </div>
@@ -122,6 +124,7 @@
                 <div class="span3">
                     <label for="bondDate">Bond Date (dd/mm/yyyy)</label>
                     <input name="bondDate" class="defaultDatepicker" type="date" value="${invoice.bondDate!}"/>
+                    <div class='error_div' id='newInvoiceForm_bondDate_errorloc'></div>
                 </div>
             </div>
             <div class="row">
@@ -134,6 +137,8 @@
                     <label for="billOfEntryDate">Bill of Entry Date (dd/mm/yyyy)</label>
                     <input name="billOfEntryDate" class="defaultDatepicker" type="date"
                            value="${invoice.billOfEntryDate!}"/>
+                    <div class='error_div' id='newInvoiceForm_billOfEntryDate_errorloc'></div>
+
                 </div>
             </div>
             <div class="row">
@@ -322,6 +327,7 @@
 </form>
 <script type="text/javascript">
     var frmValidator = new Validator("newInvoiceForm");
+    frmValidator.addValidation("invoiceNumber", "req", "Please enter the invoice number");
     frmValidator.addValidation("foreignValue.amount","numeric","Please enter a number");
     frmValidator.addValidation("amountSTPIApproval","numeric","Please enter a number");
     frmValidator.addValidation("assessableValueInINR","numeric","Please enter a number");
@@ -339,6 +345,13 @@
     frmValidator.addValidation("deletionsDuringTheYear","numeric","Please enter a number");
     frmValidator.addValidation("dateOfInvoice", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
     frmValidator.addValidation("dateOfCommissioning", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
+
+    frmValidator.addValidation("freeOfCharge","numeric","Please enter a number");
+
+    frmValidator.addValidation("bondDate", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
+    frmValidator.addValidation("billOfEntryDate", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
+    frmValidator.addValidation("dateOfArrival", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
+
 
     frmValidator.EnableFocusOnError(true);
     frmValidator.EnableOnPageErrorDisplay();

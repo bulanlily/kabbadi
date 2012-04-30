@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'jetty'
 apply plugin: 'war'
 apply plugin: 'idea'
+apply plugin: 'sonar'
 apply from: 'tasks.gradle'
 
 processResources.dependsOn copyConfiguration
@@ -100,4 +101,20 @@ task integration(type: Test) {
     testClassesDir = sourceSets.integration.output.classesDir
     classpath = sourceSets.integration.runtimeClasspath
 
+}
+
+sonar {
+    server {
+        url = "http://10.4.3.1:9000"
+    }
+    database {
+        url = "jdbc:derby://10.4.3.1:1527/sonar"
+        driverClassName = "org.apache.derby.jdbc.ClientDriver"
+        username = 'sonar'
+        password = 'sonar'
+    }
+    project {
+        sourceDirs += sourceSets.functional.allSource.srcDirs
+        sourceDirs += sourceSets.integration.allSource.srcDirs
+    }
 }
