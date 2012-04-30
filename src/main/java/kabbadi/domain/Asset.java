@@ -30,5 +30,5 @@ public class Asset {
 
     @ManyToOne
     @JoinColumn(name="invoice_id")
-    private Invoice invoice_id;
+    private Invoice invoice;
 }

@@ -37,14 +37,14 @@ public class AssetController {
     public ModelAndView create(@PathVariable("invoiceId")Integer invoiceId) {
         ModelAndView modelAndView = new ModelAndView("/asset/create");
         Asset asset = new Asset();
-        Invoice invoice = invoiceService.get(invoiceId);
-        asset.setInvoice_id(invoice);
+        asset.setInvoice(invoiceService.get(invoiceId));
         modelAndView.addObject("asset", asset);
         return modelAndView;
     }
 
     @RequestMapping(value="/asset/save", method = RequestMethod.POST)
-    public ModelAndView save(@ModelAttribute Asset asset) {
+    public ModelAndView save(@ModelAttribute Asset asset, @PathVariable("invoiceId")Integer invoiceId) {
+        asset.setInvoice(invoiceService.get(invoiceId));
         assetService.saveOrUpdate(asset);
         return new ModelAndView(new RedirectView("/invoice/list#is", true));
     }

@@ -34,6 +34,22 @@ public class InvoiceTest extends BaseTest {
                 .confirmInvoiceHasNotBeenAddedToAdminList(newInvoice);
     }
 
+    @Test
+    public void should_validate_the_fields_before_submitting_the_form() {
+        InvoiceForm newInvoice = invoiceWithInvalidQuantity("1234");
+        launchKabbadi().loginWithValidCredentials()
+                .goToFinanceAddInvoicePage()
+                .submitInvalid(newInvoice)
+                .checkErrorMessage("Please enter a number");
+    }
+
+    private InvoiceForm invoiceWithInvalidQuantity(String invoiceNumber) {
+        InvoiceForm invoice = new InvoiceForm();
+        invoice.fillInvoiceNumberWith(invoiceNumber);
+        invoice.fillQuantity("bla");
+        return invoice;
+    }
+
     private InvoiceForm validNonBondedInvoice(String invoiceNumber) {
         InvoiceForm invoice = validInvoice(invoiceNumber);
         invoice.fillBondNumber("");
