@@ -32,7 +32,7 @@ public class ListAdminInvoicesPage extends BasePage {
         return this;
     }
 
-    public AddInvoicePage goToAdminAddInvoicePage() {
+    public AddAdminInvoicePage goToAdminAddInvoicePage() {
         return addInvoiceOf("admin");
     }
 
@@ -61,15 +61,18 @@ public class ListAdminInvoicesPage extends BasePage {
         return confirmFirstInvoiceContainsValue(newInvoiceNumber);
     }
 
-    public AddInvoicePage goToFinanceAddInvoicePage() {
-        return addInvoiceOf("finance");
+    public AddFinanceInvoicePage goToAddFinancePage() {
+        driver.findElement(By.cssSelector("a[href='#finance']")).click();
+        driver.findElement(By.id("finance_add_invoice")).click();
+        assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
+        return new AddFinanceInvoicePage(driver);
     }
 
-    private AddInvoicePage addInvoiceOf(String role) {
+    private AddAdminInvoicePage addInvoiceOf(String role) {
         driver.findElement(By.cssSelector("a[href='#" + role + "']")).click();
         driver.findElement(By.id(role + "_add_invoice")).click();
         assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
-        return new AddInvoicePage(driver);
+        return new AddAdminInvoicePage(driver);
     }
 
     public ViewSingleInvoiceDetailPage selectViewDetailsPageForInvoice(String invoiceNumber) {
@@ -101,4 +104,5 @@ public class ListAdminInvoicesPage extends BasePage {
 
         return this;
     }
+
 }
