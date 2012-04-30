@@ -162,7 +162,7 @@
                     <td>${asset.assetNumber!}</td>
                     <td>${invoice.location!}</td>
                     <td>${asset.status!}</td>
-                    <#if asset.isLeased!>
+                    <#if asset.leased!>
                         <td>Yes</td>
                     <#else>
                         <td>No</td>
