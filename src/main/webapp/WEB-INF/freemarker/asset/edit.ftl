@@ -1,4 +1,5 @@
 <form action="<@spring.url '/invoice/${asset.invoice.invoice_id!}/asset/save'/>" method="POST">
+    <input name="asset_id" type="hidden" value="${asset.asset_id!}"/>
     <br/>
     <div class="row">
         <div class="span3">
@@ -47,7 +48,7 @@
         </div>
         <div class="span3">
             <br/>
-            <input type="submit" name="submit" value="Add" class="btn btn-primary"/>
+            <input type="submit" name="submit" value="Submit" class="btn btn-primary"/>
             <a href="<@spring.url '/asset/list'/>"><input class="btn" type="button" value="Cancel"/></a>
         </div>
 
