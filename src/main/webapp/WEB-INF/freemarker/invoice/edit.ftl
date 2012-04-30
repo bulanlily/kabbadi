@@ -57,7 +57,6 @@
                 <span class="icon-bar"></span>
             </a>
             <a class="brand" href="<@spring.url '/'/>">Kabbadi</a>
-
         </div>
     </div>
 </div>

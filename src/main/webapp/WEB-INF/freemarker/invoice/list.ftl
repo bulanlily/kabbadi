@@ -46,7 +46,7 @@
                     <th>Bond #</th>
                     <th>Bond Date</th>
                     <th>Location</th>
-                    <th>Description</th>
+                    <th class="description">Description</th>
                     <th style="min-width: 90px"></th>
 
                 </tr>
@@ -62,7 +62,7 @@
                             <td>${invoice.bondNumber!}</td>
                             <td>${invoice.bondDate!}</td>
                             <td>${invoice.location!}</td>
-                            <td>${invoice.descriptionOfGoods!}</td>
+                            <td class="description">${invoice.descriptionOfGoods!}</td>
                             <td>
                                 <span class="btn btn-info btn-mini">
                                     <a href="edit/${invoice.invoice_id}">EDIT</a>
