@@ -1,5 +1,6 @@
 package kabbadi.domain.db;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -34,7 +35,7 @@ public class GenericRepository<T> {
     }
 
     public List<T> list() {
-        return (List<T>) getSession().createCriteria(type).list();
+        return (List<T>) getSession().createCriteria(type).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
     }
 
     public void update(T o) {
@@ -48,6 +49,7 @@ public class GenericRepository<T> {
     public List<T> findAll(String field, Object param) {
         return getSession().createCriteria(type).add(Restrictions.eq(field, param)).list();
     }
+
 
     protected Session getSession() {
         return sessionFactory.getCurrentSession();

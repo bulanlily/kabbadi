@@ -36,6 +36,7 @@ public class InvoiceService {
         return invoiceRepository.list();
     }
 
+
     @Transactional(readOnly = true)
     public Invoice get(Integer id) {
         return invoiceRepository.get(id);
