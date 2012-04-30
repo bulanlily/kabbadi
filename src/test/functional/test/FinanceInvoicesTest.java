@@ -19,7 +19,7 @@ public class FinanceInvoicesTest extends BaseTest {
 
     @Test
     public void should_validate_the_fields_before_submitting_the_form() {
-        InvoiceForm newInvoice = invoiceWithInvalidQuantity("1234");
+        InvoiceForm newInvoice = invalidInvoice("1234");
         launchKabbadi().loginWithValidCredentials()
                 .goToAddFinancePage()
                 .submitInvalid(newInvoice)
@@ -35,7 +35,7 @@ public class FinanceInvoicesTest extends BaseTest {
         return invoice;
     }
 
-    private InvoiceForm invoiceWithInvalidQuantity(String invoiceNumber) {
+    private InvoiceForm invalidInvoice(String invoiceNumber) {
         InvoiceForm invoice = new InvoiceForm();
         invoice.fillInvoiceNumberWith(invoiceNumber);
         invoice.fillQuantity("bla");
