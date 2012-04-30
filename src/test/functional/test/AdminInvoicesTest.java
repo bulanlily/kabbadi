@@ -4,7 +4,7 @@ import forms.AdminInvoiceForm;
 import forms.InvoiceForm;
 import org.junit.Test;
 
-public class InvoiceTest extends BaseTest {
+public class AdminInvoicesTest extends BaseTest {
 
     @Test
     public void should_be_able_to_edit_existing_invoice() {
