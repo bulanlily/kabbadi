@@ -6,7 +6,8 @@
 <head>
     <title>Add/Edit invoice | Kabbadi</title>
     <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet"/>
-    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/kabbadi/static/css/bo
+    otstrap-responsive.css" rel="stylesheet">
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
           type="text/css"/>
     <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
@@ -42,6 +43,7 @@
             $(".defaultDatepicker").datepicker( );
 
         });
+
     </script>
 
 </head>
@@ -111,6 +113,7 @@
                 <div class="span3">
                     <label for="dateOfArrival">Date of Arrival (dd/mm/yyyy)</label>
                     <input name="dateOfArrival" class="defaultDatepicker" value="${invoice.dateOfArrival!}"/>
+                    <div class='error_div' id='newInvoiceForm_dateOfArrival_errorloc'></div>
                 </div>
 
             </div>
@@ -122,6 +125,7 @@
                 <div class="span3">
                     <label for="bondDate">Bond Date (dd/mm/yyyy)</label>
                     <input name="bondDate" class="defaultDatepicker" type="date" value="${invoice.bondDate!}"/>
+                    <div class='error_div' id='newInvoiceForm_bondDate_errorloc'></div>
                 </div>
             </div>
             <div class="row">
@@ -134,6 +138,8 @@
                     <label for="billOfEntryDate">Bill of Entry Date (dd/mm/yyyy)</label>
                     <input name="billOfEntryDate" class="defaultDatepicker" type="date"
                            value="${invoice.billOfEntryDate!}"/>
+                    <div class='error_div' id='newInvoiceForm_billOfEntryDate_errorloc'></div>
+
                 </div>
             </div>
             <div class="row">
@@ -339,6 +345,13 @@
     frmValidator.addValidation("deletionsDuringTheYear","numeric","Please enter a number");
     frmValidator.addValidation("dateOfInvoice", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
     frmValidator.addValidation("dateOfCommissioning", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
+
+    frmValidator.addValidation("freeOfCharge","numeric","Please enter a number");
+
+    frmValidator.addValidation("bondDate", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
+    frmValidator.addValidation("billOfEntryDate", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
+    frmValidator.addValidation("dateOfArrival", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
+
 
     frmValidator.EnableFocusOnError(true);
     frmValidator.EnableOnPageErrorDisplay();
