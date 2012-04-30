@@ -9,11 +9,11 @@ public class FinanceInvoicesTest extends BaseTest {
     @Test
     public void should_able_to_view_list_of_invoice_in_finance_page(){
         launchKabbadi()
-        .loginWithValidCredentials()
-        .goToFinanceAddInvoicePage()
-        .submit(validInvoice())
-        .goToFinanceInvoiceListPage()
-        .confirmListOfInvoices();
+                .loginWithValidCredentials()
+                .goToFinanceAddInvoicePage()
+                .submit(validInvoice())
+                .goToFinanceInvoiceListPage()
+                .confirmListOfInvoices();
     }
 
     @Test
@@ -25,6 +25,18 @@ public class FinanceInvoicesTest extends BaseTest {
                 .submit(validInvoice())
                 .viewFirstInvoiceDetails()
                 .confirmFinanceInvoiceData(validInvoice());
+
+    }
+
+    @Test
+    public void should_successfully_fill_valid_data_and_submit() {
+        launchKabbadi()
+                .loginWithValidCredentials()
+                .goToFinanceInvoiceListPage()
+                .clickAddNew()
+                .fillForm()
+                .submit()
+                .financeTabShouldBeActive();
 
     }
 
