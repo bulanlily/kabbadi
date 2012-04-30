@@ -35,4 +35,18 @@ public class AssetRepositoryIntegrationTest extends IntegrationTest {
         assertThat(asset.getAsset_id(), equalTo(asset_id));
     }
 
+    @Test
+    public void should_not_generate_duplicate_ids(){
+        executeSQL("TRUNCATE asset");
+        executeSQL("INSERT INTO asset(asset_id) VALUES(1)");
+        Asset asset = new Asset();
+        assetRepository.saveOrUpdate(asset);
+        assertThat(assetRepository.list().size(), equalTo(2));
+        assertThat(asset.getAsset_id(), equalTo(2));
+    }
+    
+    private void executeSQL(String query){
+        sessionFactory.getCurrentSession().createSQLQuery(query).executeUpdate();
+    }
+
 }
