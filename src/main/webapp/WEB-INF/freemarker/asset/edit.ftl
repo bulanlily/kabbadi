@@ -49,7 +49,7 @@
         <div class="span3">
             <br/>
             <input type="submit" name="submit" value="Submit" class="btn btn-primary"/>
-            <a href="<@spring.url '/asset/list'/>"><input class="btn" type="button" value="Cancel"/></a>
+            <a href="<@spring.url '/invoice/list#is'/>"><input class="btn" type="button" value="Cancel"/></a>
         </div>
 
     </div>
