@@ -6,8 +6,7 @@
 <head>
     <title>Add/Edit invoice | Kabbadi</title>
     <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet"/>
-    <link href="/kabbadi/static/css/bo
-    otstrap-responsive.css" rel="stylesheet">
+    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
           type="text/css"/>
     <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
@@ -76,7 +75,8 @@
 <div class="row">
     <div class="span3">
         <label for="invoiceNumber">Invoice number *</label>
-        <input name="invoiceNumber" required="true" value="${invoice.invoiceNumber!}"/>
+        <input name="invoiceNumber" value="${invoice.invoiceNumber!}"/>
+        <div class='error_div' id='newInvoiceForm_invoiceNumber_errorloc'></div>
     </div>
     <div class="span3">
         <label for="purchaseOrderNumber">Purchase Order Number</label>
@@ -328,6 +328,7 @@
 </form>
 <script type="text/javascript">
     var frmValidator = new Validator("newInvoiceForm");
+    frmValidator.addValidation("invoiceNumber", "req", "Please enter the invoice number");
     frmValidator.addValidation("foreignValue.amount","numeric","Please enter a number");
     frmValidator.addValidation("amountSTPIApproval","numeric","Please enter a number");
     frmValidator.addValidation("assessableValueInINR","numeric","Please enter a number");

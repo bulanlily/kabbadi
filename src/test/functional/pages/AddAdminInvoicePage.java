@@ -6,7 +6,6 @@ import kabbadi.domain.Invoice;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import java.util.Date;
 import java.util.Map;
@@ -14,17 +13,27 @@ import java.util.Map;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
-public class AddInvoicePage extends BasePage {
+public class AddAdminInvoicePage extends BasePage {
 
     private final Invoice invoice;
 
-    public AddInvoicePage(WebDriver driver) {
+    public AddAdminInvoicePage(WebDriver driver) {
         super(driver);
         assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
         invoice = new InvoiceTestBuilder().build();
     }
 
-    public AddInvoicePage invalidBlankInvoiceNumber() {
+    public ListAdminInvoicesPage submit(InvoiceForm invoiceForm) {
+        fillFormWith(invoiceForm);
+        return new ListAdminInvoicesPage(driver);
+    }
+
+    public AddAdminInvoicePage submitInvalid(InvoiceForm invoiceForm) {
+        fillFormWith(invoiceForm);
+        return this;
+    }
+
+    public AddAdminInvoicePage invalidBlankInvoiceNumber() {
         driver.findElement(By.name("purchaseOrderNumber")).sendKeys(invoice.getPurchaseOrderNumber());
         driver.findElement(By.name("STPIApprovalNumberAndDate")).sendKeys(invoice.getSTPIApprovalNumberAndDate());
         driver.findElement(By.name("descriptionOfGoods")).sendKeys(invoice.getDescriptionOfGoods());
@@ -51,22 +60,16 @@ public class AddInvoicePage extends BasePage {
 
         driver.findElement(By.name("submit")).click();
 
-        return new AddInvoicePage(driver);
+        return new AddAdminInvoicePage(driver);
     }
 
     private String format(Date date) {
         return DateFormatUtils.format(date, "dd/MM/yyyy");
     }
 
-
-    public AddInvoicePage fillFieldWith(String fieldName, String fieldValue) {
+    public AddAdminInvoicePage fillFieldWith(String fieldName, String fieldValue) {
         driver.findElement(By.cssSelector("input[name=" + fieldName + "]")).sendKeys(fieldValue);
         return this;
-    }
-
-    public ListAdminInvoicesPage submit(InvoiceForm invoiceForm) {
-        fillFormWith(invoiceForm);
-        return new ListAdminInvoicesPage(driver);
     }
 
     private void fillFormWith(InvoiceForm invoiceForm) {
@@ -77,19 +80,8 @@ public class AddInvoicePage extends BasePage {
         driver.findElement(By.cssSelector("input[name=submit]")).click();
     }
 
-    public AddInvoicePage confirmAddInvoicePage() {
+    public AddAdminInvoicePage confirmAddInvoicePage() {
         assertThat(getTitle(), containsString("Add/Edit invoice"));
-        return this;
-    }
-
-    public AddInvoicePage submitInvalid(InvoiceForm invoice) {
-        fillFormWith(invoice);
-        return this;
-    }
-
-    public AddInvoicePage checkErrorMessage(String errorMessage) {
-        WebElement form = driver.findElement(By.cssSelector("form"));
-        assertThat(form.getText(), containsString(errorMessage));
         return this;
     }
 }
