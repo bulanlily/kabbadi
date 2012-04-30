@@ -11,8 +11,8 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.junit.internal.matchers.StringContains.containsString;
 
-public class ViewSingleInvoiceDetailPage extends BasePage {
-    public ViewSingleInvoiceDetailPage(WebDriver driver) {
+public class ViewInvoiceDetailsPage extends BasePage {
+    public ViewInvoiceDetailsPage(WebDriver driver) {
         super(driver);
         assertThat(driver.getTitle(), equalTo("View an Invoice | Kabbadi"));
     }

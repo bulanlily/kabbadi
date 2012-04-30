@@ -18,7 +18,7 @@ public class ListFinanceInvoicesPage extends BasePage{
         assertThat(driver.getTitle(), equalTo("List Invoices | Kabbadi"));
     }
 
-    public ListFinanceInvoicesPage viewInList(InvoiceForm invoiceForm) {
+    public ListFinanceInvoicesPage viewInvoiceInListPage(InvoiceForm invoiceForm) {
         Map<String, String> fields = invoiceForm.getFields();
         WebElement tableRow = driver.findElement(By.id("finance_invoice_" + fields.get("invoiceNumber")));
 
@@ -28,9 +28,9 @@ public class ListFinanceInvoicesPage extends BasePage{
         return this;
     }
 
-    public ViewSingleInvoiceDetailPage viewFirstInvoiceDetails() {
+    public ViewInvoiceDetailsPage viewFirstInvoiceDetails() {
         driver.findElement(By.linkText("VIEW")).click();
-        return new ViewSingleInvoiceDetailPage(driver);
+        return new ViewInvoiceDetailsPage(driver);
     }
 
     public ListISInvoicesPage goToListISInvoicesPage() {

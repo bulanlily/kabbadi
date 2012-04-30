@@ -1,7 +1,6 @@
 package kabbadi.controller;
 
 import kabbadi.domain.Asset;
-import kabbadi.domain.Invoice;
 import kabbadi.service.AssetService;
 import kabbadi.service.InvoiceService;
 import kabbadi.spring.util.NullSafeDatePropertyEditor;
@@ -47,5 +46,13 @@ public class AssetController {
         asset.setInvoice(invoiceService.get(invoiceId));
         assetService.saveOrUpdate(asset);
         return new ModelAndView(new RedirectView("/invoice/list#is", true));
+    }
+    
+    @RequestMapping(value="/asset/{assetId}/edit", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable("invoiceId")Integer invoiceId, @PathVariable("assetId")Integer assetId){
+        ModelAndView modelAndView = new ModelAndView("/asset/create");
+        Asset asset = assetService.get(assetId);
+        modelAndView.addObject("asset", asset);
+        return modelAndView;
     }
 }

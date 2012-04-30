@@ -6,7 +6,6 @@ import kabbadi.domain.Invoice;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import java.util.Date;
 import java.util.Map;
@@ -22,6 +21,16 @@ public class AddAdminInvoicePage extends BasePage {
         super(driver);
         assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
         invoice = new InvoiceTestBuilder().build();
+    }
+
+    public ListAdminInvoicesPage submit(InvoiceForm invoiceForm) {
+        fillFormWith(invoiceForm);
+        return new ListAdminInvoicesPage(driver);
+    }
+
+    public AddAdminInvoicePage submitInvalid(InvoiceForm invoiceForm) {
+        fillFormWith(invoiceForm);
+        return this;
     }
 
     public AddAdminInvoicePage invalidBlankInvoiceNumber() {
@@ -58,15 +67,9 @@ public class AddAdminInvoicePage extends BasePage {
         return DateFormatUtils.format(date, "dd/MM/yyyy");
     }
 
-
     public AddAdminInvoicePage fillFieldWith(String fieldName, String fieldValue) {
         driver.findElement(By.cssSelector("input[name=" + fieldName + "]")).sendKeys(fieldValue);
         return this;
-    }
-
-    public ListAdminInvoicesPage submit(InvoiceForm invoiceForm) {
-        fillFormWith(invoiceForm);
-        return new ListAdminInvoicesPage(driver);
     }
 
     private void fillFormWith(InvoiceForm invoiceForm) {
@@ -81,11 +84,5 @@ public class AddAdminInvoicePage extends BasePage {
         assertThat(getTitle(), containsString("Add/Edit invoice"));
         return this;
     }
-
-    public AddAdminInvoicePage submitInvalid(InvoiceForm invoice) {
-        fillFormWith(invoice);
-        return this;
-    }
-
 }
 

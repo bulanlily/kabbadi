@@ -58,7 +58,6 @@
                 <span class="icon-bar"></span>
             </a>
             <a class="brand" href="<@spring.url '/'/>">Kabbadi</a>
-
         </div>
     </div>
 </div>
@@ -76,7 +75,8 @@
 <div class="row">
     <div class="span3">
         <label for="invoiceNumber">Invoice number *</label>
-        <input name="invoiceNumber" required="true" value="${invoice.invoiceNumber!}"/>
+        <input name="invoiceNumber" value="${invoice.invoiceNumber!}"/>
+        <div class='error_div' id='newInvoiceForm_invoiceNumber_errorloc'></div>
     </div>
     <div class="span3">
         <label for="purchaseOrderNumber">Purchase Order Number</label>
@@ -328,6 +328,7 @@
 </form>
 <script type="text/javascript">
     var frmValidator = new Validator("newInvoiceForm");
+    frmValidator.addValidation("invoiceNumber", "req", "Please enter the invoice number");
     frmValidator.addValidation("foreignValue.amount","numeric","Please enter a number");
     frmValidator.addValidation("amountSTPIApproval","numeric","Please enter a number");
     frmValidator.addValidation("assessableValueInINR","numeric","Please enter a number");

@@ -62,8 +62,13 @@ public class Invoice implements Comparable<Invoice> {
     private String costCentre;
     private Date dateOfInvoice;
     private String supplierNameAndAddress;
+
     private BigDecimal openingPurchaseValueAsOnApril01;
+
+    @Column(name = "additionsDuringTheYear", nullable = true, columnDefinition = "decimal default 0")
     private BigDecimal additionsDuringTheYear;
+
+    @Column(name = "deletionsDuringTheYear", nullable = true, columnDefinition = "decimal default 0")
     private BigDecimal deletionsDuringTheYear;
     private Integer quantity;
     private String identificationNumber;
