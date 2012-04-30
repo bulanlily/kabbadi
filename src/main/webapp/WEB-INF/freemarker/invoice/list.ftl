@@ -148,7 +148,7 @@
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
             <#list invoices as invoice>
-                <tr>
+                <tr id="is_invoice_${invoice.invoiceNumber}">
                     <td colspan="7" style="font-weight:bold;">${invoice.invoiceNumber}</td>
                     <td>
                         <span class="btn btn-info btn-mini">

@@ -7,6 +7,28 @@ import org.junit.Test;
 public class AdminInvoicesTest extends BaseTest {
 
     @Test
+    public void should_fail_to_add_invoice_with_invalid_data() {
+        launchKabbadi()
+                .loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .invalidBlankInvoiceNumber()
+                .confirmAddInvoicePage();
+    }
+
+    @Test
+    public void should_able_to_add_admin_invoice_and_view_its_details() {
+        String invoiceNumber = "101010Invoice";
+        InvoiceForm invoice = validInvoiceWithSpecifMoneyValue(invoiceNumber, "100.10");
+
+        launchKabbadi()
+                .loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .submit(invoice)
+                .selectViewDetailsPageForInvoice(invoiceNumber)
+                .confirmAdminInvoiceData(invoice);
+    }
+
+    @Test
     public void should_be_able_to_edit_existing_invoice() {
         String newPurchaseOrder = "PO#" + System.currentTimeMillis();
         String newInvoiceNumber = "IN#" + System.currentTimeMillis();
@@ -58,25 +80,4 @@ public class AdminInvoicesTest extends BaseTest {
         return invoiceForm;
     }
 
-    @Test
-    public void should_fail_to_add_invoice_with_invalid_data() {
-        launchKabbadi()
-                .loginWithValidCredentials()
-                .goToAdminAddInvoicePage()
-                .invalidBlankInvoiceNumber()
-                .confirmAddInvoicePage();
-    }
-
-    @Test
-    public void should_open_expected_invoice_details_page() {
-        String invoiceNumber = "101010Invoice";
-        InvoiceForm invoice = validInvoiceWithSpecifMoneyValue(invoiceNumber, "100.10");
-
-        launchKabbadi()
-                .loginWithValidCredentials()
-                .goToAdminAddInvoicePage()
-                .submit(invoice)
-                .selectViewDetailsPageForInvoice(invoiceNumber)
-                .confirmAdminInvoiceData(invoice);
-    }
 }

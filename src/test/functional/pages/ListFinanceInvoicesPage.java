@@ -32,4 +32,9 @@ public class ListFinanceInvoicesPage extends BasePage{
         driver.findElement(By.linkText("VIEW")).click();
         return new ViewSingleInvoiceDetailPage(driver);
     }
+
+    public ListISInvoicesPage goToListISInvoicesPage() {
+        driver.findElement(By.linkText("IS")).click();
+        return new ListISInvoicesPage(driver);
+    }
 }
