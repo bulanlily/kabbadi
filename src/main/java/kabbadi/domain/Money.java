@@ -44,7 +44,6 @@ public class Money {
         return new Money(currency, amount.subtract(variable.getAmount()));
     }
 
-    // TODO : Needs a closer look at BigDecimal
     public Money divideBy(Money variable) {
         return new Money(currency, amount.divide(variable.getAmount()));
     }

@@ -5,3 +5,14 @@ body {
 .btn > a{
     color:#ffffff;
 }
+
+table th,
+table td {
+    overflow: hidden;
+    word-wrap: break-word;
+    max-width: 200px;
+}
+
+.description {
+    max-width: 245px;
+}

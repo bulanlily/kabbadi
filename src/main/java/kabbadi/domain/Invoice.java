@@ -9,13 +9,13 @@ import org.hibernate.annotations.FetchMode;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Access(AccessType.FIELD)
 @Getter
 @Setter
-public class Invoice implements Comparable<Invoice> {
+public class Invoice{
 
     public static final String INVOICE_NUMBER = "invoiceNumber";
 
@@ -79,35 +79,13 @@ public class Invoice implements Comparable<Invoice> {
 
     @OneToMany(
         cascade = {CascadeType.ALL},
-        fetch = FetchType.EAGER,
+        fetch = FetchType.LAZY,
         mappedBy = "invoice"
     )
     @Fetch(FetchMode.JOIN)
-    private Set<Asset> assets;
+    private List<Asset> assets;
 
     public Invoice() {
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Invoice invoice = (Invoice) o;
-
-        if (!invoice_id.equals(invoice.invoice_id)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        return invoice_id.hashCode();
-    }
-
-    @Override
-    public int compareTo(Invoice invoice) {
-        return this.bondNumber.compareTo(invoice.bondNumber);
     }
 
     public boolean valid() {
