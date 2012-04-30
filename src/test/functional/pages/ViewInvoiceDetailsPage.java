@@ -29,11 +29,11 @@ public class ViewInvoiceDetailsPage extends BasePage {
         driver.findElement(By.linkText(role)).click();
 
         WebElement table = driver.findElement(By.cssSelector("#"+ role.toLowerCase() + " table"));
-        Map<String, String> fields = invoice.getFields();
+        Map<String, Object> fields = invoice.getFields();
         String tableText = table.getText();
 
-        for (String value : fields.values()) {
-            assertThat(tableText, containsString(value));
+        for (Object value : fields.values()) {
+            assertThat(tableText, containsString(value+""));
         }
     }
 }

@@ -1,15 +1,18 @@
 package test;
 
-import forms.AdminInvoiceForm;
+import builder.InvoiceTestBuilder;
 import forms.InvoiceForm;
+import kabbadi.domain.Money;
 import org.junit.Test;
+
+import java.math.BigDecimal;
 
 public class AdminInvoicesTest extends BaseTest {
 
     @Test
     public void should_able_to_add_admin_invoice_and_view_its_details() {
         String invoiceNumber = "101010Invoice";
-        InvoiceForm invoice = validInvoiceWithSpecifMoneyValue(invoiceNumber, "100.10");
+        InvoiceForm invoice = new InvoiceTestBuilder().withCIFValueInINR(new Money("INR", new BigDecimal("101.10"))).buildAdmin();
 
         launchKabbadi()
                 .loginWithValidCredentials()
@@ -25,7 +28,7 @@ public class AdminInvoicesTest extends BaseTest {
         String newPurchaseOrder = "PO#" + System.currentTimeMillis();
         String newInvoiceNumber = "IN#" + System.currentTimeMillis();
 
-        InvoiceForm newInvoice = validInvoice("1234");
+        InvoiceForm newInvoice = new InvoiceTestBuilder().buildAdmin();
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
@@ -58,27 +61,7 @@ public class AdminInvoicesTest extends BaseTest {
     }
 
     private InvoiceForm validNonBondedInvoice(String invoiceNumber) {
-        InvoiceForm invoice = validInvoice(invoiceNumber);
-        invoice.fillBondNumber("");
-        return invoice;
-    }
-
-    private AdminInvoiceForm validInvoice(String invoiceNumber) {
-        AdminInvoiceForm invoice = new AdminInvoiceForm();
-        invoice.fillInvoiceNumberWith(invoiceNumber);
-        invoice.fillPurchaseOrderNumberWith("po123");
-        invoice.fillStpiApprovalNumberAndDateWith("stpi123");
-        invoice.fillBondNumberWith("bond123");
-        invoice.fillBondDateWith("01/02/2012");
-        invoice.fillAmountAsPerStpiApprovalWith("33.33");
-        invoice.fillLocationWith("IND");
-        return invoice;
-    }
-
-    private InvoiceForm validInvoiceWithSpecifMoneyValue(String invoiceNumber, String moneyValue) {
-        AdminInvoiceForm invoiceForm = validInvoice(invoiceNumber);
-        invoiceForm.fillCIFValueInINR(moneyValue);
-        return invoiceForm;
+        return new InvoiceTestBuilder().withBondNumber("").buildAdmin();
     }
 
 }

@@ -1,14 +1,13 @@
 package builder;
 
-import kabbadi.domain.Invoice;
+import forms.InvoiceForm;
 import kabbadi.domain.Money;
 
 import java.math.BigDecimal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 public class InvoiceTestBuilder {
-    public static final String DATE_FORMAT = "dd/MM/yyyy";
     private String invoiceNumber = "TestInvoiceNo";
     private String numberAndDate = "123123";
     private String descriptionOfGoods = "bill";
@@ -39,9 +38,11 @@ public class InvoiceTestBuilder {
     private double additionsDuringTheYear = 12222;
     private double deletionsDuringTheYear = 123445;
     private String dateOfCommissioning = "01/01/2012";
-    private Integer quantity = 25;
+    private String quantity = "25";
     private String costCentre = "skjj";
     private String identificationNumber = "1234";
+    private String STPIApprovalNumberAndDate = "STPI1234";
+
 
     public InvoiceTestBuilder withInvoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
@@ -193,7 +194,7 @@ public class InvoiceTestBuilder {
         return  this;
     }
 
-    public InvoiceTestBuilder withQuantity(Integer quantity) {
+    public InvoiceTestBuilder withQuantity(String quantity) {
         this.quantity = quantity;
         return  this;
     }
@@ -208,46 +209,60 @@ public class InvoiceTestBuilder {
         return  this;
     }
 
-    public Invoice build() {
-        Invoice invoice = new Invoice();
-        try {
-            invoice.setLocation(location);
-            invoice.setInvoiceNumber(invoiceNumber);
-            invoice.setPurchaseOrderNumber(purchaseOrderNumber);
-            invoice.setRemarks(remarks);
-            invoice.setStatus(status);
-            invoice.setDutyForgone(new BigDecimal(dutyForegone));
-            invoice.setRunningBalance(new BigDecimal(runningBalance));
-            invoice.setOutrightPurchase(new BigDecimal(outrightPurchase));
-            invoice.setLoanBasis(loanBasis);
-            invoice.setFreeOfCharge(new BigDecimal(freeOfCharge));
-            invoice.setCgApprovedInINR(new BigDecimal(CGApprovedInINR));
-            invoice.setTwentyFivePercentDF(new BigDecimal(twentyFivePercentDF));
-            invoice.setDutyExempt(new BigDecimal(dutyExempt));
-            invoice.setAssessableValueInINR(new BigDecimal(assessableValueInINR));
-            invoice.setBillOfEntryDate(new SimpleDateFormat(DATE_FORMAT).parse(billOfEntryDate));
-            invoice.setBillOfEntryNumber(billOfEntryNumber);
-            invoice.setBondDate(new SimpleDateFormat(DATE_FORMAT).parse(bondDate));
-            invoice.setDateOfArrival(new SimpleDateFormat(DATE_FORMAT).parse(dateOfArrival));
-            invoice.setBondNumber(bondNumber);
-            invoice.setCIFValueInINR(CIFValueInINR);
-            invoice.setAmountSTPIApproval(new BigDecimal(amountSTPIApproval));
-            invoice.setForeignValue(foreignValue);
-            invoice.setDescriptionOfGoods(descriptionOfGoods);
-            invoice.setSTPIApprovalNumberAndDate(numberAndDate);
-            invoice.setDateOfInvoice(new SimpleDateFormat(DATE_FORMAT).parse(dateOfInvoice));
-            invoice.setSupplierNameAndAddress(supplierNameAndAddress);
-            invoice.setOpeningPurchaseValueAsOnApril01(new BigDecimal(openingPurchaseValueAsOnApril01));
-            invoice.setAdditionsDuringTheYear(new BigDecimal(additionsDuringTheYear));
-            invoice.setDeletionsDuringTheYear(new BigDecimal(deletionsDuringTheYear));
-            invoice.setDateOfCommissioning(new SimpleDateFormat(DATE_FORMAT).parse(dateOfCommissioning));
-            invoice.setCostCentre(costCentre);
-            invoice.setQuantity(quantity);
-            invoice.setIdentificationNumber(identificationNumber);
-        } catch (ParseException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+    public InvoiceForm buildFinance() {
+        Map<String, Object> fields = new HashMap<String, Object>();
+        populateCommonFields(fields);
+        populateFinanceFields(fields);
+        return new InvoiceForm(fields);
+    }
 
-        return invoice;
+    public InvoiceForm buildAdmin() {
+        Map<String, Object> fields = new HashMap<String, Object>();
+        populateCommonFields(fields);
+        populateAdminFields(fields);
+        return new InvoiceForm(fields);
+    }
+
+    private void populateFinanceFields(Map<String, Object> fields) {
+        fields.put("dateOfInvoice", dateOfInvoice);
+        fields.put("dateOfCommissioning", dateOfCommissioning);
+        fields.put("supplierNameAndAddress", supplierNameAndAddress);
+        fields.put("openingPurchaseValueAsOnApril01", openingPurchaseValueAsOnApril01);
+        fields.put("additionsDuringTheYear", additionsDuringTheYear);
+        fields.put("deletionsDuringTheYear", deletionsDuringTheYear);
+        fields.put("costCentre", costCentre);
+        fields.put("quantity", quantity);
+        fields.put("identificationNumber", identificationNumber);
+    }
+
+    private void populateAdminFields(Map<String, Object> fields) {
+        fields.put("STPIApprovalNumberAndDate", STPIApprovalNumberAndDate);
+        fields.put("dateOfArrival", dateOfArrival);
+        fields.put("bondNumber", bondNumber);
+        fields.put("bondDate", bondDate);
+        fields.put("billOfEntryDate", billOfEntryDate);
+        fields.put("billOfEntryNumber", billOfEntryNumber);
+        fields.put("CIFValueInINR", CIFValueInINR);
+        fields.put("amountSTPIApproval", amountSTPIApproval);
+        fields.put("CGApprovedInINR", CGApprovedInINR);
+        fields.put("twentyFivePercentDF", twentyFivePercentDF);
+        fields.put("dutyExempt", dutyExempt);
+        fields.put("dutyForgone", dutyForegone);
+        fields.put("loanBasis", loanBasis);
+        fields.put("freeOfCharge", freeOfCharge);
+        fields.put("runningBalance", runningBalance);
+        fields.put("outrightPurchase", outrightPurchase);
+        fields.put("remarks", remarks);
+        fields.put("status", status);
+        fields.put("foreignValue", foreignValue);
+        fields.put("assessableValueInINR", assessableValueInINR);
+    }
+
+    private void populateCommonFields(Map<String, Object> fields) {
+        fields.put("invoiceNumber", invoiceNumber);
+        fields.put("purchaseOrderNumber", purchaseOrderNumber);
+        fields.put("location", location);
+        fields.put("descriptionOfGoods", descriptionOfGoods);
     }
 }
+
