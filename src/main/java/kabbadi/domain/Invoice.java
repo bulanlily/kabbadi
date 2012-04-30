@@ -88,6 +88,23 @@ public class Invoice{
     public Invoice() {
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Invoice invoice = (Invoice) o;
+
+        if (invoice_id != invoice.invoice_id) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return invoice_id != null ? invoice_id.hashCode() : 0;
+    }
+
     public boolean valid() {
         return invoiceNumber != null && !invoiceNumber.isEmpty();
     }
