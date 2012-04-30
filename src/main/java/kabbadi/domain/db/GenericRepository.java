@@ -1,5 +1,6 @@
 package kabbadi.domain.db;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
@@ -56,5 +57,9 @@ public class GenericRepository<T> {
     public T findBy(String propertyName, String value) {
         return (T) this.sessionFactory.getCurrentSession().createCriteria(type).add(
                 Restrictions.eq(propertyName, value)).uniqueResult();
+    }
+
+    public Criteria scoped() {
+        return sessionFactory.getCurrentSession().createCriteria(type);
     }
 }

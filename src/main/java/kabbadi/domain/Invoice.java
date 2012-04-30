@@ -7,6 +7,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
@@ -15,7 +16,7 @@ import java.util.Set;
 @Access(AccessType.FIELD)
 @Getter
 @Setter
-public class Invoice implements Comparable<Invoice> {
+public class Invoice implements Comparable<Invoice>, Serializable {
 
     public static final String INVOICE_NUMBER = "invoiceNumber";
 
@@ -90,14 +91,14 @@ public class Invoice implements Comparable<Invoice> {
 
         Invoice invoice = (Invoice) o;
 
-        if (!invoice_id.equals(invoice.invoice_id)) return false;
+        if (invoice_id != invoice.invoice_id) return false;
 
         return true;
     }
 
     @Override
     public int hashCode() {
-        return invoice_id.hashCode();
+        return invoice_id != null ? invoice_id.hashCode() : 0;
     }
 
     @Override
@@ -130,5 +131,10 @@ public class Invoice implements Comparable<Invoice> {
 
     public boolean isBonded() {
         return !StringUtils.isNullOrEmpty(bondNumber);
+    }
+
+    @Override
+    public String toString() {
+        return bondNumber;
     }
 }

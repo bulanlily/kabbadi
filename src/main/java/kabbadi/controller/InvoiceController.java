@@ -1,7 +1,9 @@
 package kabbadi.controller;
 
 import kabbadi.domain.Invoice;
+import kabbadi.domain.InvoiceUtils;
 import kabbadi.domain.Money;
+import kabbadi.domain.json.PreviousInvoiceRunningBalanceData;
 import kabbadi.service.InvoiceService;
 import kabbadi.spring.util.INRMoneyPropertyEditor;
 import kabbadi.spring.util.NullSafeDatePropertyEditor;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
+
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
@@ -67,6 +70,14 @@ public class InvoiceController {
         ModelAndView modelAndView = new ModelAndView("invoice/view");
         modelAndView.addObject("invoice", invoiceService.get(id));
         return modelAndView;
+    }
+
+    @RequestMapping(value = "/previousRunningBalance", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    PreviousInvoiceRunningBalanceData previousRunningBalance(@RequestParam("bondNumber") String currentBondNumber) {
+        String previousBondNumber = InvoiceUtils.getPreviousBondNumber(currentBondNumber);
+        return new PreviousInvoiceRunningBalanceData(invoiceService.findByPreviousBondNumber(previousBondNumber));
     }
 
 }
