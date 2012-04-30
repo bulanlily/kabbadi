@@ -26,7 +26,7 @@ public class FinanceAddInvoicePage extends BasePage{
 
     private Map<String,String> constructInputData() {
         InvoiceForm invoiceForm = new InvoiceForm();
-        invoiceForm.fillDateOfInvoice("18\\12\\2011");
+        invoiceForm.fillDateOfInvoice("18/12/2011");
         invoiceForm.fillPurchaseOrderNumberWith("1111111");
         invoiceForm.fillLocationWith("bangalore");
         invoiceForm.fillInvoiceNumberWith("111111");
@@ -34,7 +34,7 @@ public class FinanceAddInvoicePage extends BasePage{
         invoiceForm.fillOpeningPurchaseValueAsOnApril01("123445");
         invoiceForm.fillAdditionsDuringTheYear("12222");
         invoiceForm.fillDeletionsDuringTheYear("123445");
-        invoiceForm.fillDateOfCommissioning("18\\12\\2012");
+        invoiceForm.fillDateOfCommissioning("18/12/2012");
         invoiceForm.fillCostCentre("skjj");
         invoiceForm.fillQuantity("25");
         invoiceForm.fillIdentificationNumber("1234");

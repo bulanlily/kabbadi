@@ -12,6 +12,7 @@ import java.util.Date;
 @Setter
 public class Asset {
 
+    final static public String ASSET_NUMBER = "assetNumber";
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer asset_id;
@@ -29,5 +30,5 @@ public class Asset {
 
     @ManyToOne
     @JoinColumn(name="invoice_id")
-    private Invoice invoice_id;
+    private Invoice invoice;
 }

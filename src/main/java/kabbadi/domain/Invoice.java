@@ -75,7 +75,7 @@ public class Invoice implements Comparable<Invoice> {
     @OneToMany(
         cascade = {CascadeType.ALL},
         fetch = FetchType.EAGER,
-        mappedBy = "invoice_id"
+        mappedBy = "invoice"
     )
     @Fetch(FetchMode.JOIN)
     private Set<Asset> assets;
