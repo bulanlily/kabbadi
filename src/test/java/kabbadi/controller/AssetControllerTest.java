@@ -32,7 +32,7 @@ public class AssetControllerTest {
         int idOfSomeInvoice = 2;
         when(invoiceService.get(idOfSomeInvoice)).thenReturn(invoice);
         ModelAndView modelAndView = assetController.create(idOfSomeInvoice);
-        assertThat(modelAndView.getViewName(), equalTo("/asset/create"));
+        assertThat(modelAndView.getViewName(), equalTo("/asset/edit"));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class AssetControllerTest {
         int idOfSomeAsset = 3;
         when(assetService.get(idOfSomeAsset)).thenReturn(new Asset());
         ModelAndView modelAndView = assetController.edit(idOfSomeInvoice, idOfSomeAsset);
-        assertThat(modelAndView.getViewName(), equalTo("/asset/create"));
+        assertThat(modelAndView.getViewName(), equalTo("/asset/edit"));
     }
 
     @Test

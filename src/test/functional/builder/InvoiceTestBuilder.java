@@ -1,5 +1,6 @@
 package builder;
 
+import kabbadi.domain.ImportType;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.Money;
 
@@ -26,9 +27,7 @@ public class InvoiceTestBuilder {
     private double CGApprovedInINR = 123123;
     private double dutyForegone = 123123;
     private double runningBalance = 123123;
-    private double outrightPurchase = 123123;
-    private String loanBasis = "123123";
-    private double freeOfCharge = 123123;
+    private ImportType importType = ImportType.LOAN_BASIS;
     private String status = "bill";
     private String remarks = "bill";
     private String purchaseOrderNumber = "123123";
@@ -128,21 +127,6 @@ public class InvoiceTestBuilder {
         return this;
     }
 
-    public InvoiceTestBuilder withOutrightPurchase(double outrightPurchase) {
-        this.outrightPurchase = outrightPurchase;
-        return this;
-    }
-
-    public InvoiceTestBuilder withLoanBasis(String loanBasis) {
-        this.loanBasis = loanBasis;
-        return this;
-    }
-
-    public InvoiceTestBuilder withFreeOfCharge(double freeOfCharge) {
-        this.freeOfCharge = freeOfCharge;
-        return this;
-    }
-
     public InvoiceTestBuilder withStatus(String status) {
         this.status = status;
         return this;
@@ -218,9 +202,6 @@ public class InvoiceTestBuilder {
             invoice.setStatus(status);
             invoice.setDutyForgone(new BigDecimal(dutyForegone));
             invoice.setRunningBalance(new BigDecimal(runningBalance));
-            invoice.setOutrightPurchase(new BigDecimal(outrightPurchase));
-            invoice.setLoanBasis(loanBasis);
-            invoice.setFreeOfCharge(new BigDecimal(freeOfCharge));
             invoice.setCgApprovedInINR(new BigDecimal(CGApprovedInINR));
             invoice.setTwentyFivePercentDF(new BigDecimal(twentyFivePercentDF));
             invoice.setDutyExempt(new BigDecimal(dutyExempt));
@@ -243,6 +224,7 @@ public class InvoiceTestBuilder {
             invoice.setDateOfCommissioning(new SimpleDateFormat(DATE_FORMAT).parse(dateOfCommissioning));
             invoice.setCostCentre(costCentre);
             invoice.setQuantity(quantity);
+            invoice.setImportType(importType);
             invoice.setIdentificationNumber(identificationNumber);
         } catch (ParseException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

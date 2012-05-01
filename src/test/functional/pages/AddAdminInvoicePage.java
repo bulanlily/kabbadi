@@ -6,8 +6,10 @@ import kabbadi.domain.Invoice;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertThat;
@@ -51,9 +53,14 @@ public class AddAdminInvoicePage extends BasePage {
         driver.findElement(By.name("cgApprovedInINR")).sendKeys(String.valueOf(invoice.getCgApprovedInINR()));
         driver.findElement(By.name("dutyForgone")).sendKeys(String.valueOf(invoice.getDutyForgone()));
         driver.findElement(By.name("runningBalance")).sendKeys(String.valueOf(invoice.getRunningBalance()));
-        driver.findElement(By.name("outrightPurchase")).sendKeys(String.valueOf(invoice.getOutrightPurchase()));
-        driver.findElement(By.name("loanBasis")).sendKeys(String.valueOf(invoice.getLoanBasis()));
-        driver.findElement(By.name("freeOfCharge")).sendKeys(String.valueOf(invoice.getFreeOfCharge()));
+
+        List<WebElement> importTypeOptions = driver.findElement(By.name("importType")).findElements(By.tagName("option"));
+        for (WebElement importTypeOption : importTypeOptions) {
+            if(importTypeOption.getText().equals(invoice.getImportType().getDescription())) {
+                importTypeOption.click();
+            }
+        }
+
         driver.findElement(By.name("status")).sendKeys(invoice.getStatus());
         driver.findElement(By.name("remarks")).sendKeys(invoice.getRemarks());
         driver.findElement(By.name("location")).sendKeys(invoice.getLocation());
