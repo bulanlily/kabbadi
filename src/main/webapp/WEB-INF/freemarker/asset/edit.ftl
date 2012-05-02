@@ -3,7 +3,7 @@
 <#setting datetime_format="dd/MM/yyyy">
 <#setting number_format="computer">
 
-<@layout.template 'Add/Edit asset | Kabbadi' >
+<@layout.template 'Add/Edit asset' >
     <script type="text/javascript">
         $(function () {
         var redirectTo = $("#redirectToTab");
