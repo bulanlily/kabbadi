@@ -16,7 +16,7 @@ public class AdminInvoicesTest extends BaseTest {
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .submit(invoice)
+                .fillFormWithValidDetailsAndSubmit(invoice)
                 .viewInvoiceInListPage(invoice)
                 .viewInvoiceDetails(invoiceNumber)
                 .confirmAdminInvoiceData(invoice)
@@ -38,7 +38,7 @@ public class AdminInvoicesTest extends BaseTest {
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .submitInvalid(invalidInvoice)
+                .fillFormWithInvalidDetailsAndSubmit(invalidInvoice)
                 .confirmAddInvoicePage();
     }
 
@@ -47,7 +47,7 @@ public class AdminInvoicesTest extends BaseTest {
         InvoiceForm newInvoice = validNonBondedInvoice();
         launchKabbadi().loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .submit(newInvoice)
+                .fillFormWithValidDetailsAndSubmit(newInvoice)
                 .confirmInvoiceHasNotBeenAddedToAdminList(newInvoice);
     }
 
