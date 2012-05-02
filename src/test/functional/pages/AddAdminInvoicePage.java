@@ -25,7 +25,7 @@ public class AddAdminInvoicePage extends BasePage {
     public AddAdminInvoicePage invalidBlankInvoiceNumber() {
         Map<String, Object> fields = new InvoiceTestBuilder().withInvoiceNumber("").buildAdmin().getFields();
         for (Object key : fields.keySet())  {
-             driver.findElement(By.name(key+"")).sendKeys(fields.get(key)+"");
+             fillFieldWith(key+"",fields.get(key)+"");
         }
 
         driver.findElement(By.name("submit")).click();
@@ -33,17 +33,17 @@ public class AddAdminInvoicePage extends BasePage {
         return new AddAdminInvoicePage(driver);
     }
 
-    public AddAdminInvoicePage fillFieldWith(String fieldName, String fieldValue) {
-        driver.findElement(By.name(fieldName)).sendKeys(fieldValue);
-        return this;
-    }
-
     private void fillFormWith(InvoiceForm invoiceForm) {
         Map<String, Object> fields = invoiceForm.getFields();
         for (String fieldName : fields.keySet()) {
-            fillFieldWith(fieldName, fields.get(fieldName)+"");
+            fillFieldWith((String) fieldName, (String) (fields.get(fieldName)+""));
         }
         driver.findElement(By.cssSelector("input[name=submit]")).click();
+    }
+
+    public AddAdminInvoicePage fillFieldWith(String fieldName, String fieldValue) {
+        fillFields(fieldName, fieldValue);
+        return this;
     }
 
     public AddAdminInvoicePage confirmAddInvoicePage() {

@@ -2,7 +2,6 @@ package pages;
 
 import config.Configuration;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class BasePage {
@@ -24,5 +23,9 @@ public class BasePage {
 
     public String getTitle(){
         return  driver.getTitle();
+    }
+
+    void fillFields(String fieldName, String fieldValue) {
+        driver.findElement(By.name(fieldName)).sendKeys(fieldValue);
     }
 }

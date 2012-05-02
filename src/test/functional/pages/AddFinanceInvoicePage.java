@@ -35,9 +35,8 @@ public class AddFinanceInvoicePage extends BasePage {
         driver.findElement(By.cssSelector("input[name=submit]")).click();
     }
 
-
     public AddFinanceInvoicePage fillFieldWith(String fieldName, String fieldValue) {
-        driver.findElement(By.cssSelector("input[name=" + fieldName + "]")).sendKeys(fieldValue);
+        fillFields(fieldName, fieldValue);
         return this;
     }
 
