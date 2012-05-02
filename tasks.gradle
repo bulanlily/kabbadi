@@ -4,6 +4,7 @@ task copyConfiguration << {
     copy {
         from ".env/$environment"
         into "src/main/resources"
-        include "**/*"
+        include "application.properties"
     }
+
 }

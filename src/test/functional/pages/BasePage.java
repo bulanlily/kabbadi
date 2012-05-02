@@ -1,9 +1,11 @@
 package pages;
 
 import config.Configuration;
+import forms.InvoiceForm;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+
+import java.util.Map;
 
 public class BasePage {
     protected WebDriver driver;
@@ -24,5 +26,17 @@ public class BasePage {
 
     public String getTitle(){
         return  driver.getTitle();
+    }
+
+    protected void fillFields(String fieldName, String fieldValue) {
+        driver.findElement(By.name(fieldName)).sendKeys(fieldValue);
+    }
+
+    protected void fillFormWith(InvoiceForm invoiceForm) {
+        Map<String, Object> fields = invoiceForm.getFields();
+        for (String fieldName : fields.keySet()) {
+            fillFields(fieldName, (fields.get(fieldName) + ""));
+        }
+        driver.findElement(By.cssSelector("input[name=submit]")).click();
     }
 }

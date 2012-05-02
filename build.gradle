@@ -9,6 +9,10 @@ processResources.dependsOn copyConfiguration
 
 loadConfiguration()
 
+
+jettyRun.httpPort = 1337
+jettyStop.stopPort = 1337
+
 def loadConfiguration() {
     def environment = hasProperty('env') ? env : 'dev'
     set 'environment', environment
@@ -91,7 +95,6 @@ task functional(type: Test) {
     }
 
     doLast {
-        jettyStop.stopPort = 8080
         jettyStop.stopKey = "selenium"
         jettyStop.execute()
     }

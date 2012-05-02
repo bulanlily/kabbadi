@@ -10,7 +10,7 @@ import pages.ListISInvoicesPage;
 public class ISAssetsTest extends BaseTest {
 
     @Test
-    public void should_able_to_add_an_asset_and_view_its_details() {
+    public void should_be_able_to_add_an_asset_and_view_its_details() {
         String invoiceNumber = "invoice123";
         AssetForm asset = new AssetTestBuilder().buildAsset();
         addInvoice(invoiceNumber)
