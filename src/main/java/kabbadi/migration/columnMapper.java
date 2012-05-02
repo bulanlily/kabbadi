@@ -1,12 +1,41 @@
 package kabbadi.migration;
 
-import au.com.bytecode.opencsv.CSVReader;
-
-import java.io.File;
-import java.io.FileReader;
 import java.util.*;
 
 public class ColumnMapper {
+    final static private String[] validInvoiceHeaders = new String[] {
+            "invoiceNumber",
+            "dateOfInvoice",
+            "STPIApprovalNumberAndDate",
+            "descriptionOfGoods",
+            "currency",
+            "foreignCurrency",
+            "amountSTPIApproval",
+            "CIFValueInINR",
+            "bondNumber",
+            "bondDate",
+            "billOfEntryNumber",
+            "billOfEntryDate",
+            "assessableValueInINR",
+            "dutyExempt",
+            "twentyFivePercentDF",
+            "outrightPurchase",
+            "loanBasis",
+            "freeOfCharge",
+            "cgApprovedInINR",
+            "dutyForgone",
+            "runningBalance",
+            "dateOfInvoice",
+            "dateOfCommissioning",
+            "supplierNameAndAddress",
+            "groupOfAssets",
+            "quantity",
+            "location",
+            "identificationNumber",
+            "type",
+            "deletionsDuringTheYear",
+            "costCentre"
+    };
     final private String[] headers;
     final private Collection<String[]> entries;
 
@@ -16,13 +45,12 @@ public class ColumnMapper {
     }
 
 
-    public List<Map<String, String>> mapedList() throws Exception {
+    public List<Map<String, String>> mapedList(){
         ArrayList<Map<String, String >> mappedList = new ArrayList<Map<String, String>>();
         for(String[] entry :entries){
-            if (headers.length != entry.length)
-                throw new Exception("");
             HashMap<String, String> mappedEntry = new HashMap<String, String>();
             for(int index = 0; index < entry.length; index++){
+                if(Arrays.asList(validInvoiceHeaders).contains(headers[index]))
                 mappedEntry.put(headers[index], entry[index]);
             }
             mappedList.add(mappedEntry);

@@ -3,39 +3,7 @@ package kabbadi.migration;
 import java.util.*;
 
 public class InvoiceCreator {
-    final static private String[] combinedHeaders = new String[] {
-            "invoiceNumber",
-            "dateOfInvoice",
-            "STPIApprovalNumberAndDate",
-            "descriptionOfGoods",
-            "currency",
-            "foreignCurrency",
-            "amountSTPIApproval",
-            "CIFValueInINR",
-            "bondNumber",
-            "bondDate",
-            "billOfEntryNumber",
-            "billOfEntryDate",
-            "assessableValueInINR",
-            "dutyExempt",
-            "twentyFivePercentDF",
-            "outrightPurchase",
-            "loanBasis",
-            "freeOfCharge",
-            "cgApprovedInINR",
-            "dutyForgone",
-            "runningBalance",
-            "dateOfInvoice",
-            "dateOfCommissioning",
-            "supplierNameAndAddress",
-            "groupOfAssets",
-            "quantity",
-            "location",
-            "identificationNumber",
-            "type",
-            "deletionsDuringTheYear",
-            "costCentre"
-    };
+
     private Collection<Map<String,String>> adminEntries;
     private Collection<Map<String, String>> financeEntries;
 

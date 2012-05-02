@@ -3,9 +3,9 @@ package kabbadi.migration;
 import au.com.bytecode.opencsv.CSVReader;
 import org.apache.commons.lang.StringUtils;
 
+import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -37,7 +37,7 @@ public class DataMigrator {
     final static private String[] financeHeaders = new String[] {
             "",
             "dateOfInvoice",
-            "invoiceNo.",
+            "invoiceNumber",
             "dateOfCommissioning",
             "supplierNameAndAddress",
             "groupOfAssets",
@@ -86,7 +86,9 @@ public class DataMigrator {
         List<String> insertStatements =  new SQLGenerator(combinedEntries).createInsertStatements();
 
         FileWriter sqlOutput = new FileWriter("src/main/resources/import.sql");
-        sqlOutput.write(StringUtils.join(insertStatements, "\n"));
-
+        BufferedWriter sqlWriter = new BufferedWriter(sqlOutput);
+        sqlWriter.write(StringUtils.join(insertStatements, "\n"));
+        sqlWriter.close();
+        sqlOutput.close();
     }
 }
