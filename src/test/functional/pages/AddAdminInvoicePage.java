@@ -1,11 +1,7 @@
 package pages;
 
-import builder.InvoiceTestBuilder;
 import forms.InvoiceForm;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
-import java.util.Map;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
@@ -22,15 +18,9 @@ public class AddAdminInvoicePage extends BasePage {
         return new ListAdminInvoicesPage(driver);
     }
 
-    public AddAdminInvoicePage invalidBlankInvoiceNumber() {
-        Map<String, Object> fields = new InvoiceTestBuilder().withInvoiceNumber("").buildAdmin().getFields();
-        for (Object key : fields.keySet())  {
-            fillFields(key + "", fields.get(key) + "");
-        }
-
-        driver.findElement(By.name("submit")).click();
-
-        return new AddAdminInvoicePage(driver);
+    public AddAdminInvoicePage submitInvalid(InvoiceForm invoiceForm) {
+        fillFormWith(invoiceForm);
+        return this;
     }
 
     public AddAdminInvoicePage confirmAddInvoicePage() {
