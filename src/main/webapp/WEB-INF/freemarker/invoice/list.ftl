@@ -3,7 +3,7 @@
 <#setting datetime_format="dd/MM/yyyy">
 <#setting number_format="computer">
 
-<@layout.template 'List Invoices | Kabbadi' >
+<@layout.template 'List Invoices' >
 <div class="tabbable">
     <ul class="nav nav-tabs" id="tab" align="right">
         <li class="active"><a data-toggle="tab" href="#admin">Admin</a></li>
