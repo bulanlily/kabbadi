@@ -3,6 +3,9 @@ package kabbadi.service;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.db.GenericRepository;
 import lombok.NoArgsConstructor;
+import org.h2.util.StringUtils;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -39,5 +42,16 @@ public class InvoiceService {
     @Transactional(readOnly = true)
     public Invoice get(Integer id) {
         return invoiceRepository.get(id);
+    }
+
+    @Transactional
+    public Invoice findByPreviousBondNumber(String previousBondNumber) {
+        return (StringUtils.isNullOrEmpty(previousBondNumber))
+                ? null :
+                (Invoice) invoiceRepository.scoped()
+                        .add(Restrictions.like("bondNumber", previousBondNumber))
+                        .addOrder(Order.desc("bondNumber"))
+                        .setMaxResults(1)
+                        .uniqueResult();
     }
 }

@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
@@ -42,7 +43,7 @@ public class AssetRepositoryIntegrationTest extends IntegrationTest {
         Asset asset = new Asset();
         assetRepository.saveOrUpdate(asset);
         assertThat(assetRepository.list().size(), equalTo(2));
-        assertThat(asset.getAsset_id(), equalTo(2));
+        assertThat(asset.getAsset_id(), not(equalTo(1)));
     }
     
     private void executeSQL(String query){

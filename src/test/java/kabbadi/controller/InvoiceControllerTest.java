@@ -1,5 +1,6 @@
 package kabbadi.controller;
 
+import kabbadi.domain.ImportType;
 import kabbadi.domain.Invoice;
 import kabbadi.service.InvoiceService;
 import org.junit.Test;
@@ -24,5 +25,6 @@ public class InvoiceControllerTest {
 
         assertThat(modelAndView.getViewName(), is(equalTo("invoice/edit")));
         assertThat((Invoice) modelAndView.getModelMap().get("invoice"), is(equalTo(expectedInvoice)));
+        assertThat((ImportType[]) modelAndView.getModelMap().get("importTypes"), is(equalTo(ImportType.values())));
     }
 }

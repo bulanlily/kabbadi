@@ -1,7 +1,10 @@
 package kabbadi.controller;
 
+import kabbadi.domain.ImportType;
 import kabbadi.domain.Invoice;
+import kabbadi.domain.InvoiceUtils;
 import kabbadi.domain.Money;
+import kabbadi.domain.json.PreviousInvoiceRunningBalanceData;
 import kabbadi.service.InvoiceService;
 import kabbadi.spring.util.INRMoneyPropertyEditor;
 import kabbadi.spring.util.NullSafeDatePropertyEditor;
@@ -12,8 +15,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+
 import javax.servlet.http.HttpServletRequest;
-import java.util.*;
+import java.util.Date;
 
 @Controller
 @RequestMapping(value = "/invoice")
@@ -44,19 +48,18 @@ public class InvoiceController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView create() {
-        return new ModelAndView("invoice/edit", "invoice", new Invoice());
+        return editPage(new Invoice());
     }
 
     @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable("id") Integer id) {
-        return new ModelAndView("invoice/edit", "invoice", invoiceService.get(id));
+        return editPage(invoiceService.get(id));
     }
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         ModelAndView modelAndView = new ModelAndView("invoice/list");
-        Set<Invoice> invoiceSet = new HashSet<Invoice>(invoiceService.list());
-        modelAndView.addObject("invoices", invoiceSet);
+        modelAndView.addObject("invoices", invoiceService.list());
         return modelAndView;
     }
 
@@ -67,4 +70,16 @@ public class InvoiceController {
         return modelAndView;
     }
 
+    @RequestMapping(value = "/previousRunningBalance", method = RequestMethod.GET)
+    public
+    @ResponseBody
+    PreviousInvoiceRunningBalanceData previousRunningBalance(@RequestParam("bondNumber") String currentBondNumber) {
+        String previousBondNumber = InvoiceUtils.getPreviousBondNumber(currentBondNumber);
+        return new PreviousInvoiceRunningBalanceData(invoiceService.findByPreviousBondNumber(previousBondNumber));
+    }
+
+    private ModelAndView editPage(Invoice invoice) {
+        return new ModelAndView("invoice/edit", "invoice", invoice)
+                .addObject("importTypes", ImportType.values());
+    }
 }

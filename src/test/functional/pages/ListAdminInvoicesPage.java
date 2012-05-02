@@ -32,7 +32,7 @@ public class ListAdminInvoicesPage extends BasePage {
         return this;
     }
 
-    public AddInvoicePage goToAdminAddInvoicePage() {
+    public AddAdminInvoicePage goToAdminAddInvoicePage() {
         return addInvoiceOf("admin");
     }
 
@@ -47,9 +47,9 @@ public class ListAdminInvoicesPage extends BasePage {
         return this;
     }
 
-    public ViewSingleInvoiceDetailPage viewFirstInvoiceDetails() {
+    public ViewInvoiceDetailsPage viewFirstInvoiceDetails() {
         driver.findElement(By.linkText("VIEW")).click();
-        return new ViewSingleInvoiceDetailPage(driver);
+        return new ViewInvoiceDetailsPage(driver);
     }
 
     public ListFinanceInvoicesPage goToFinanceInvoiceListPage() {
@@ -61,21 +61,24 @@ public class ListAdminInvoicesPage extends BasePage {
         return confirmFirstInvoiceContainsValue(newInvoiceNumber);
     }
 
-    public AddInvoicePage goToFinanceAddInvoicePage() {
-        return addInvoiceOf("finance");
+    public AddFinanceInvoicePage goToAddFinancePage() {
+        driver.findElement(By.cssSelector("a[href='#finance']")).click();
+        driver.findElement(By.id("finance_add_invoice")).click();
+        assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
+        return new AddFinanceInvoicePage(driver);
     }
 
-    private AddInvoicePage addInvoiceOf(String role) {
+    private AddAdminInvoicePage addInvoiceOf(String role) {
         driver.findElement(By.cssSelector("a[href='#" + role + "']")).click();
         driver.findElement(By.id(role + "_add_invoice")).click();
         assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
-        return new AddInvoicePage(driver);
+        return new AddAdminInvoicePage(driver);
     }
 
-    public ViewSingleInvoiceDetailPage selectViewDetailsPageForInvoice(String invoiceNumber) {
+    public ViewInvoiceDetailsPage viewInvoiceDetails(String invoiceNumber) {
         WebElement id = driver.findElement(By.id("admin_invoice_" + invoiceNumber));
         id.findElement(By.linkText("VIEW")).click();
-        return new ViewSingleInvoiceDetailPage(driver);
+        return new ViewInvoiceDetailsPage(driver);
     }
 
     private ListAdminInvoicesPage confirmFirstInvoiceContainsValue(String fieldValue) {
@@ -99,6 +102,13 @@ public class ListAdminInvoicesPage extends BasePage {
                 assertThat(table.getText(), not(containsString(fieldValue)));
         }
 
+        return this;
+    }
+
+    public ListAdminInvoicesPage viewInvoiceInListPage(InvoiceForm invoice) {
+        Map<String, String> fields = invoice.getFields();
+        WebElement tableRow = driver.findElement(By.id("admin_invoice_" + fields.get("invoiceNumber")));
+        assertThat(tableRow.getText(), containsString(fields.get("invoiceNumber")));
         return this;
     }
 }

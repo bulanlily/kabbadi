@@ -2,6 +2,7 @@ apply plugin: 'java'
 apply plugin: 'jetty'
 apply plugin: 'war'
 apply plugin: 'idea'
+apply plugin: 'sonar'
 apply from: 'tasks.gradle'
 
 processResources.dependsOn copyConfiguration
@@ -69,7 +70,8 @@ dependencies {
             'org.springframework.security:spring-security-web:3.1.0.RELEASE',
             'org.projectlombok:lombok:0.11.0',
             'joda-time:joda-time:2.1',
-            'postgresql:postgresql:9.1-901.jdbc4'
+            'postgresql:postgresql:9.1-901.jdbc4',
+            'org.codehaus.jackson:jackson-mapper-asl:1.9.6'
 
     testCompile 'junit:junit:4.8.1',
             'org.springframework:spring-test:3.1.1.RELEASE',
@@ -100,4 +102,20 @@ task integration(type: Test) {
     testClassesDir = sourceSets.integration.output.classesDir
     classpath = sourceSets.integration.runtimeClasspath
 
+}
+
+sonar {
+    server {
+        url = "http://10.4.3.1:9000"
+    }
+    database {
+        url = "jdbc:derby://10.4.3.1:1527/sonar"
+        driverClassName = "org.apache.derby.jdbc.ClientDriver"
+        username = 'sonar'
+        password = 'sonar'
+    }
+    project {
+        sourceDirs += sourceSets.functional.allSource.srcDirs
+        sourceDirs += sourceSets.integration.allSource.srcDirs
+    }
 }

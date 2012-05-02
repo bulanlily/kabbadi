@@ -9,22 +9,33 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
-public class AddInvoicePage extends BasePage {
+public class AddAdminInvoicePage extends BasePage {
 
     private final Invoice invoice;
 
-    public AddInvoicePage(WebDriver driver) {
+    public AddAdminInvoicePage(WebDriver driver) {
         super(driver);
         assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
         invoice = new InvoiceTestBuilder().build();
     }
 
-    public AddInvoicePage invalidBlankInvoiceNumber() {
+    public ListAdminInvoicesPage submit(InvoiceForm invoiceForm) {
+        fillFormWith(invoiceForm);
+        return new ListAdminInvoicesPage(driver);
+    }
+
+    public AddAdminInvoicePage submitInvalid(InvoiceForm invoiceForm) {
+        fillFormWith(invoiceForm);
+        return this;
+    }
+
+    public AddAdminInvoicePage invalidBlankInvoiceNumber() {
         driver.findElement(By.name("purchaseOrderNumber")).sendKeys(invoice.getPurchaseOrderNumber());
         driver.findElement(By.name("STPIApprovalNumberAndDate")).sendKeys(invoice.getSTPIApprovalNumberAndDate());
         driver.findElement(By.name("descriptionOfGoods")).sendKeys(invoice.getDescriptionOfGoods());
@@ -42,31 +53,30 @@ public class AddInvoicePage extends BasePage {
         driver.findElement(By.name("cgApprovedInINR")).sendKeys(String.valueOf(invoice.getCgApprovedInINR()));
         driver.findElement(By.name("dutyForgone")).sendKeys(String.valueOf(invoice.getDutyForgone()));
         driver.findElement(By.name("runningBalance")).sendKeys(String.valueOf(invoice.getRunningBalance()));
-        driver.findElement(By.name("outrightPurchase")).sendKeys(String.valueOf(invoice.getOutrightPurchase()));
-        driver.findElement(By.name("loanBasis")).sendKeys(String.valueOf(invoice.getLoanBasis()));
-        driver.findElement(By.name("freeOfCharge")).sendKeys(String.valueOf(invoice.getFreeOfCharge()));
+
+        List<WebElement> importTypeOptions = driver.findElement(By.name("importType")).findElements(By.tagName("option"));
+        for (WebElement importTypeOption : importTypeOptions) {
+            if(importTypeOption.getText().equals(invoice.getImportType().getDescription())) {
+                importTypeOption.click();
+            }
+        }
+
         driver.findElement(By.name("status")).sendKeys(invoice.getStatus());
         driver.findElement(By.name("remarks")).sendKeys(invoice.getRemarks());
         driver.findElement(By.name("location")).sendKeys(invoice.getLocation());
 
         driver.findElement(By.name("submit")).click();
 
-        return new AddInvoicePage(driver);
+        return new AddAdminInvoicePage(driver);
     }
 
     private String format(Date date) {
         return DateFormatUtils.format(date, "dd/MM/yyyy");
     }
 
-
-    public AddInvoicePage fillFieldWith(String fieldName, String fieldValue) {
+    public AddAdminInvoicePage fillFieldWith(String fieldName, String fieldValue) {
         driver.findElement(By.cssSelector("input[name=" + fieldName + "]")).sendKeys(fieldValue);
         return this;
-    }
-
-    public ListAdminInvoicesPage submit(InvoiceForm invoiceForm) {
-        fillFormWith(invoiceForm);
-        return new ListAdminInvoicesPage(driver);
     }
 
     private void fillFormWith(InvoiceForm invoiceForm) {
@@ -77,19 +87,8 @@ public class AddInvoicePage extends BasePage {
         driver.findElement(By.cssSelector("input[name=submit]")).click();
     }
 
-    public AddInvoicePage confirmAddInvoicePage() {
+    public AddAdminInvoicePage confirmAddInvoicePage() {
         assertThat(getTitle(), containsString("Add/Edit invoice"));
-        return this;
-    }
-
-    public AddInvoicePage submitInvalid(InvoiceForm invoice) {
-        fillFormWith(invoice);
-        return this;
-    }
-
-    public AddInvoicePage checkErrorMessage(String errorMessage) {
-        WebElement form = driver.findElement(By.cssSelector("form"));
-        assertThat(form.getText(), containsString(errorMessage));
         return this;
     }
 }

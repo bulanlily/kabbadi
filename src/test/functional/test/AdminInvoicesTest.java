@@ -4,7 +4,21 @@ import forms.AdminInvoiceForm;
 import forms.InvoiceForm;
 import org.junit.Test;
 
-public class InvoiceTest extends BaseTest {
+public class AdminInvoicesTest extends BaseTest {
+
+    @Test
+    public void should_able_to_add_admin_invoice_and_view_its_details() {
+        String invoiceNumber = "101010Invoice";
+        InvoiceForm invoice = validInvoiceWithSpecifMoneyValue(invoiceNumber, "100.10");
+
+        launchKabbadi()
+                .loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .submit(invoice)
+                .viewInvoiceInListPage(invoice)
+                .viewInvoiceDetails(invoiceNumber)
+                .confirmAdminInvoiceData(invoice);
+    }
 
     @Test
     public void should_be_able_to_edit_existing_invoice() {
@@ -26,28 +40,21 @@ public class InvoiceTest extends BaseTest {
     }
 
     @Test
+    public void should_fail_to_add_invoice_with_invalid_data() {
+        launchKabbadi()
+                .loginWithValidCredentials()
+                .goToAdminAddInvoicePage()
+                .invalidBlankInvoiceNumber()
+                .confirmAddInvoicePage();
+    }
+
+    @Test
     public void should_not_list_non_bonded_invoices_in_the_admin_tab() {
         InvoiceForm newInvoice = validNonBondedInvoice("1111");
         launchKabbadi().loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
                 .submit(newInvoice)
                 .confirmInvoiceHasNotBeenAddedToAdminList(newInvoice);
-    }
-
-    @Test
-    public void should_validate_the_fields_before_submitting_the_form() {
-        InvoiceForm newInvoice = invoiceWithInvalidQuantity("1234");
-        launchKabbadi().loginWithValidCredentials()
-                .goToFinanceAddInvoicePage()
-                .submitInvalid(newInvoice)
-                .checkErrorMessage("Please enter a number");
-    }
-
-    private InvoiceForm invoiceWithInvalidQuantity(String invoiceNumber) {
-        InvoiceForm invoice = new InvoiceForm();
-        invoice.fillInvoiceNumberWith(invoiceNumber);
-        invoice.fillQuantity("bla");
-        return invoice;
     }
 
     private InvoiceForm validNonBondedInvoice(String invoiceNumber) {
@@ -74,25 +81,4 @@ public class InvoiceTest extends BaseTest {
         return invoiceForm;
     }
 
-    @Test
-    public void should_fail_to_add_invoice_with_invalid_data() {
-        launchKabbadi()
-                .loginWithValidCredentials()
-                .goToAdminAddInvoicePage()
-                .invalidBlankInvoiceNumber()
-                .confirmAddInvoicePage();
-    }
-
-    @Test
-    public void should_open_expected_invoice_details_page() {
-        String invoiceNumber = "101010Invoice";
-        InvoiceForm invoice = validInvoiceWithSpecifMoneyValue(invoiceNumber, "100.10");
-
-        launchKabbadi()
-                .loginWithValidCredentials()
-                .goToAdminAddInvoicePage()
-                .submit(invoice)
-                .selectViewDetailsPageForInvoice(invoiceNumber)
-                .confirmAdminInvoiceData(invoice);
-    }
 }
