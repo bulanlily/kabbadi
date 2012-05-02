@@ -1,15 +1,10 @@
-<#import "/spring.ftl" as spring/>
+<#import "/application.ftl" as layout />
 <#setting datetime_format="dd/MM/yyyy">
 <#setting number_format="###,###,##0.00">
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View an Invoice | Kabbadi</title>
-    <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
-    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
-    <link href="/kabbadi/static/css/kabbadi.css" rel="stylesheet">
+<#import "/spring.ftl" as spring />
+
+
+<@layout.template 'View an Invoice | Kabbadi'>
     <style type="text/css">
         body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -21,21 +16,7 @@
         width: 20%;
         }
     </style>
-    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
 
-</head>
-<body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="<@spring.url '/'/>">Kabbadi</a>
-
-        </div>
-    </div>
-</div>
-
-
-<div class="container" position="relative">
     <h1>Invoice # ${invoice.invoiceNumber}</h1>
     <br>
     <div class="tabbable">
@@ -272,7 +253,4 @@
             </div>
         </div>
     </div>
-
-</div>
-</body>
-</html>
+</@layout.template>
