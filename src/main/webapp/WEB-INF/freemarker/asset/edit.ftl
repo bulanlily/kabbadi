@@ -39,7 +39,7 @@
 
             <div class="span3">
                 <label for="modelName">Model Name</label>
-                <input name="modelNa me"  value="${asset.modelName!}"/>
+                <input name="modelName"  value="${asset.modelName!}"/>
             </div>
 
         </div>
