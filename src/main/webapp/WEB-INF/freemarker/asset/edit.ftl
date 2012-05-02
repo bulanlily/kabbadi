@@ -118,10 +118,6 @@
                 <input name="maintenanceExpiration" class="defaultDatepicker" type="date" value="${asset.maintenanceExpiration!}"/>
                 <div class='error_div' id='newAssetForm_maintenanceExpiration_errorloc'></div>
             </div>
-            <div class="span3">
-                <label for="registeredOffice">Registered Office</label>
-                <input  name="registeredOffice" value="${asset.registeredOffice!}"/>
-            </div>
         </div>
 
         <div class="row">

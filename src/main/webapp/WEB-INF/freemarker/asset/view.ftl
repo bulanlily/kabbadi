@@ -77,8 +77,8 @@
         </tr>
 
         <tr>
-            <td>Region</td>
-            <td>${asset.registeredOffice!}</td>
+            <td>Location</td>
+            <td>${asset.invoice.location!}</td>
 
         </tr>
 

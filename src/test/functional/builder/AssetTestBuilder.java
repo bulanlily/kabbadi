@@ -10,7 +10,6 @@ public class AssetTestBuilder {
     public AssetForm buildAsset() {
         return new AssetForm(new HashMap<String, Object>() {{
             put("modelName", "modelName1");
-            put("registeredOffice", "registeredOffice123");
             put("serialNumber", "serialNumber123");
             put("registeredTo", "registeredTo123");
             put("status", "status123");
