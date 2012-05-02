@@ -38,6 +38,20 @@
 
     </div>
 </div>
+<div class="row">
+    <div class="span3">
+        <label for="foreignValue.amount">Invoice Amount</label>
+        <input name="foreignValue.amount" value="${invoice.foreignValueDisplayAmount!}"/>
+
+        <div class='error_div' id='newInvoiceForm_foreignValue.amount_errorloc'></div>
+    </div>
+
+    <div class="span3">
+        <label for="currency">Currency</label>
+        <input name="foreignValue.currency" value="${invoice.foreignCurrency!}"/>
+    </div>
+
+</div>
 <br/>
 
 <div class="tabbable">
@@ -90,18 +104,6 @@
         </div>
     </div>
     <div class="row">
-        <div class="span3">
-            <label for="foreignValue.amount">Amount</label>
-            <input name="foreignValue.amount" value="${invoice.foreignValueDisplayAmount!}"/>
-
-            <div class='error_div' id='newInvoiceForm_foreignValue.amount_errorloc'></div>
-        </div>
-
-        <div class="span3">
-            <label for="currency">Currency</label>
-            <input name="foreignValue.currency" value="${invoice.foreignCurrency!}"/>
-        </div>
-
         <div class="span3">
             <label for="amountSTPIApproval">Amount STPI Approval</label>
             <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}"/>
