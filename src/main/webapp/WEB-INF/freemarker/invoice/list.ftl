@@ -1,33 +1,15 @@
-<#import "/spring.ftl" as spring/>
+<#import "/application.ftl" as layout />
+<#import "/spring.ftl" as spring />
 <#setting datetime_format="dd/MM/yyyy">
-<!DOCTYPE html>
-<html>
-<head>
+<#setting number_format="computer">
 
-<title>List Invoices | Kabbadi</title>
-    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
-    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="/kabbadi/static/css/kabbadi.css" rel="stylesheet">
-    <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
-</head>
-<body>
-<div class="tabable">
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="<@spring.url '/'/>">Kabbadi</a>
-
-        </div>
-    </div>
-</div>
-    <div class="container" position="relative">
+<@layout.template 'List Invoices | Kabbadi' >
+<div class="tabbable">
     <ul class="nav nav-tabs" id="tab" align="right">
-    <li class="active"><a data-toggle="tab" href="#admin">Admin</a></li>
-    <li class=""><a data-toggle="tab" href="#finance">Finance</a></li>
-    <li class=""><a data-toggle="tab" href="#is">IS</a></li>
-</ul>
+        <li class="active"><a data-toggle="tab" href="#admin">Admin</a></li>
+        <li class=""><a data-toggle="tab" href="#finance">Finance</a></li>
+        <li class=""><a data-toggle="tab" href="#is">IS</a></li>
+    </ul>
     <div id="myTabContent" class="tab-content">
         <div id="admin" class="tab-pane fade in active">
             <div class="page-header" align="right">
@@ -64,7 +46,7 @@
                             <td class="description">${invoice.descriptionOfGoods!}</td>
                             <td>
                                 <span class="btn btn-info btn-mini">
-                                    <a href="<@spring.url '/invoice/${invoice.invoice_id}/edit'/>">EDIT</a>
+                                    <a href="<@spring.url '/invoice/${invoice.invoice_id}/edit' />">EDIT</a>
                                 </span>
                                 <span class="btn btn-info btn-mini">
                                     <a href="<@spring.url '/invoice/${invoice.invoice_id}'/>">VIEW</a>
@@ -79,7 +61,7 @@
         <div id="finance" class="tab-pane fade">
 
         <div class="page-header" align="right">
-                        <a href="<@spring.url '/invoice/create#finance'/>" class="btn btn-inverse" id="finance_add_invoice">Add New</a>
+                        <a href="<@spring.url "/invoice/create#finance"/>" class="btn btn-inverse" id="finance_add_invoice">Add New</a>
                         <button href="#" class="btn btn-inverse">Generate Report</button>
                     </div>
 
@@ -111,16 +93,14 @@
                     <td>${invoice.billOfEntryNumber!}</td>
                     <td>${invoice.dateOfInvoice!}</td>
                     <td>${invoice.supplierNameAndAddress!}</td>
-                    <#setting number_format="###,###,##0.00">
                     <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
                     <td>${invoice.additionsDuringTheYear!}</td>
                     <td>${invoice.deletionsDuringTheYear!}</td>
                     <td>${invoice.gbOnDecember31()!}</td>
-                    <#setting number_format="computer">
                     <td>${invoice.location!}</td>
                         <td>
                             <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/edit#finance'/>">EDIT</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/edit#finance' />">EDIT</a>
                             </span>
                             <span class="btn btn-info btn-mini">
                                 <a href="<@spring.url '/invoice/${invoice.invoice_id}#finance'/>">VIEW</a>
@@ -175,7 +155,7 @@
                                 <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/${asset.assetNumber!}/edit'/>">EDIT</a>
                             </span>
                             <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/${asset.assetNumber!}'/>">VIEW</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/${asset.assetNumber}'/>">VIEW</a>
                             </span>
 
                     </td>
@@ -190,7 +170,4 @@
     </div>
 
 </div>
-</div>
-
-</body>
-</html>
+</@layout.template>

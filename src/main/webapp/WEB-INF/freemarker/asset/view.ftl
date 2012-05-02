@@ -1,40 +1,10 @@
-<#import "/spring.ftl" as spring/>
-<#setting datetime_format="dd/MM/yyyy">
-<!DOCTYPE html>
-<html>
-<head>
-    <title>View an Asset | Kabbadi</title>
-    <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
-    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
-    <link href="/kabbadi/static/css/kabbadi.css" rel="stylesheet">
-    <style type="text/css">
-        body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
-        .table th, .table td {
-        padding: 3px;
-        }
-        th.name {
-        width: 20%;
-        }
-    </style>
-    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
+<#import "/application.ftl" as layout />
+<#import "/spring.ftl" as spring />
+<#setting datetime_format="dd/MM/yyyy" />
+<#setting number_format="computer" />
 
-</head>
-<body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="<@spring.url '/'/>">Kabbadi</a>
+<@layout.template 'View an Asset | Kabbadi' >
 
-        </div>
-    </div>
-</div>
-
-
-<div class="container" position="relative">
 <h1>Asset # ${asset.assetNumber}</h1>
 <br>
 
@@ -77,8 +47,8 @@
         </tr>
 
         <tr>
-            <td>Region</td>
-            <td>${asset.registeredOffice!}</td>
+            <td>Location</td>
+            <td>${asset.invoice.location!}</td>
 
         </tr>
 
@@ -120,7 +90,4 @@
         </tbody>
     </table>
 </div>
-
-</div>
-</body>
-</html>
+</@layout.template>

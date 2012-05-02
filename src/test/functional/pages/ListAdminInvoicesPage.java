@@ -36,27 +36,6 @@ public class ListAdminInvoicesPage extends BasePage {
         return addInvoiceOf("admin");
     }
 
-    public ListAdminInvoicesPage confirmInvoiceHasBeenAddedToAdminList(InvoiceForm invoiceForm) {
-        Map<String, Object> fields = invoiceForm.getFields();
-        WebElement tableRow = driver.findElement(By.id("admin_invoice_" + fields.get("invoiceNumber")));
-
-        for (Object fieldValue : fields.values()) {
-            assertThat(tableRow.getText(), containsString(fieldValue+""));
-        }
-
-        return this;
-    }
-
-    public ViewInvoiceDetailsPage viewFirstInvoiceDetails() {
-        driver.findElement(By.linkText("VIEW")).click();
-        return new ViewInvoiceDetailsPage(driver);
-    }
-
-    public ListFinanceInvoicesPage goToFinanceInvoiceListPage() {
-        driver.findElement(By.linkText("Finance")).click();
-        return new ListFinanceInvoicesPage(driver);
-    }
-
     public ListAdminInvoicesPage confirmFirstInvoiceNumberIs(String newInvoiceNumber) {
         return confirmFirstInvoiceContainsValue(newInvoiceNumber);
     }
@@ -84,11 +63,6 @@ public class ListAdminInvoicesPage extends BasePage {
     private ListAdminInvoicesPage confirmFirstInvoiceContainsValue(String fieldValue) {
         String rowData = driver.findElement(By.id("invoices")).findElements(By.tagName("tr")).get(1).getText();
         assertThat(rowData, containsString(fieldValue));
-        return this;
-    }
-
-    public ListAdminInvoicesPage financeTabShouldBeActive() {
-        assertThat(driver.findElement(By.id("finance")).getAttribute("class"), containsString("active"));
         return this;
     }
 
