@@ -1,6 +1,6 @@
 package test;
 
-import forms.FinanceInvoiceForm;
+import builder.InvoiceTestBuilder;
 import forms.InvoiceForm;
 import org.junit.Test;
 
@@ -8,22 +8,15 @@ public class ISInvoicesTest extends BaseTest {
 
     @Test
     public void should_able_to_add_finance_invoice_and_view_its_details(){
+        InvoiceForm invoiceForm = new InvoiceTestBuilder().buildFinance();
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAddFinancePage()
-                .submit(validInvoice())
-                .viewInvoiceInListPage(validInvoice())
+                .submit(invoiceForm)
+                .viewInvoiceInListPage(invoiceForm)
                 .goToListISInvoicesPage()
-                .viewInList(validInvoice());
+                .viewInList(invoiceForm);
 
     }
 
-    private InvoiceForm validInvoice() {
-        FinanceInvoiceForm invoice = new FinanceInvoiceForm();
-        invoice.fillInvoiceNumberWith("invoice123");
-        invoice.fillPurchaseOrderNumberWith("po123");
-        invoice.fillLocationWith("IND");
-        invoice.fillQuantityWith("1");
-        return invoice;
-    }
 }
