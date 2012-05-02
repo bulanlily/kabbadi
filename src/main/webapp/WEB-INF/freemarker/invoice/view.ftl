@@ -4,7 +4,7 @@
 <#import "/spring.ftl" as spring />
 
 
-<@layout.template 'View an Invoice | Kabbadi'>
+<@layout.template 'View an Invoice'>
     <style type="text/css">
         body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */

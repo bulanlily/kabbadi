@@ -19,9 +19,10 @@ public class FinanceInvoicesTest extends BaseTest {
     }
 
     @Test
-    public void should_validate_the_fields_before_submitting_the_form() {
+    public void should_validate_fields_before_submitting_finance_form() {
         InvoiceForm newInvoice = new InvoiceTestBuilder().withQuantity("words").buildFinance();
-        launchKabbadi().loginWithValidCredentials()
+        launchKabbadi()
+                .loginWithValidCredentials()
                 .goToAddFinancePage()
                 .submitInvalid(newInvoice)
                 .checkErrorMessage("Please enter a number");
