@@ -4,6 +4,8 @@ apply plugin: 'war'
 apply plugin: 'idea'
 apply plugin: 'sonar'
 apply from: 'tasks.gradle'
+apply plugin: 'jasmineGradle'
+
 
 processResources.dependsOn copyConfiguration
 
@@ -20,6 +22,17 @@ def loadConfiguration() {
 
 repositories {
     mavenCentral()
+}
+
+
+buildscript {
+    repositories {
+        mavenCentral();
+    }
+
+    dependencies {
+        classpath "com.github.dzhaughnroth:jasmine-gradle-plugin:0.4"
+    }
 }
 
 sourceSets {
