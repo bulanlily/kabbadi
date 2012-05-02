@@ -16,7 +16,7 @@ import java.util.Date;
 
 
 @Controller
-@RequestMapping(value="/invoice/{invoiceId}")
+@RequestMapping(value="/invoice/{invoiceId}/asset")
 public class AssetController {
     private AssetService assetService;
     private InvoiceService invoiceService;
@@ -32,7 +32,7 @@ public class AssetController {
         binder.registerCustomEditor(Date.class, new NullSafeDatePropertyEditor());
     }
 
-    @RequestMapping(value="/asset/create", method = RequestMethod.GET)
+    @RequestMapping(value="/create", method = RequestMethod.GET)
     public ModelAndView create(@PathVariable("invoiceId")Integer invoiceId) {
         ModelAndView modelAndView = new ModelAndView("/asset/edit");
         Asset asset = new Asset();
@@ -41,7 +41,7 @@ public class AssetController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/asset/{assetId}/edit", method = RequestMethod.GET)
+    @RequestMapping(value="/{assetId}/edit", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable("invoiceId")Integer invoiceId, @PathVariable("assetId")Integer assetId){
         ModelAndView modelAndView = new ModelAndView("/asset/edit");
         Asset asset = assetService.get(assetId);
@@ -49,10 +49,18 @@ public class AssetController {
         return modelAndView;
     }
 
-    @RequestMapping(value="/asset/save", method = RequestMethod.POST)
+    @RequestMapping(value="/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute Asset asset, @PathVariable("invoiceId")Integer invoiceId) {
         asset.setInvoice(invoiceService.get(invoiceId));
         assetService.saveOrUpdate(asset);
         return new ModelAndView(new RedirectView("/invoice/list#is", true));
+    }
+
+    @RequestMapping(value="/{assetId}", method = RequestMethod.GET)
+    public ModelAndView view(@PathVariable("invoiceId")Integer invoiceId, @PathVariable("assetId")Integer assetId){
+        ModelAndView modelAndView = new ModelAndView("/asset/view");
+        Asset asset = assetService.get(assetId);
+        modelAndView.addObject("asset", asset);
+        return modelAndView;
     }
 }

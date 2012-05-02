@@ -10,7 +10,7 @@ import java.util.Map;
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
-public class AddFinanceInvoicePage extends BasePage{
+public class AddFinanceInvoicePage extends BasePage {
 
     protected AddFinanceInvoicePage(WebDriver driver) {
         super(driver);
@@ -30,7 +30,7 @@ public class AddFinanceInvoicePage extends BasePage{
     private void fillFormWith(InvoiceForm invoiceForm) {
         Map<String, Object> fields = invoiceForm.getFields();
         for (String fieldName : fields.keySet()) {
-            fillFieldWith(fieldName, fields.get(fieldName)+"");
+            fillFieldWith(fieldName, fields.get(fieldName) + "");
         }
         driver.findElement(By.cssSelector("input[name=submit]")).click();
     }
