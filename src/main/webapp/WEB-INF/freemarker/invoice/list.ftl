@@ -52,7 +52,7 @@
                 </tr>
                 </thead>
                 <tbody style="word-wrap:break-word, break-word: hyphenate">
-                <#list invoices as invoice>
+                <#list invoices?sort_by("bondNumber")?reverse as invoice>
                     <#if invoice.isBonded() >
                         <tr id="admin_invoice_${invoice.invoiceNumber}">
                             <td>${invoice.purchaseOrderNumber!}</td>

@@ -59,7 +59,7 @@ public class InvoiceController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         ModelAndView modelAndView = new ModelAndView("invoice/list");
-        modelAndView.addObject("invoices", invoiceService.listDescendingBondNumber());
+        modelAndView.addObject("invoices", invoiceService.list());
         return modelAndView;
     }
 
