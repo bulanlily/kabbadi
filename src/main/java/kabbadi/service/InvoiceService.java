@@ -68,7 +68,7 @@ public class InvoiceService {
     @Transactional
     public Invoice findByPreviousBondNumber(String previousBondNumber) {
         return (StringUtils.isNullOrEmpty(previousBondNumber))
-                ? new Invoice() :
+                ? null :
                 (Invoice) invoiceRepository.scoped()
                         .add(Restrictions.like("bondNumber", previousBondNumber))
                         .addOrder(Order.desc("bondNumber"))

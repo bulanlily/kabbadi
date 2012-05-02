@@ -9,7 +9,7 @@ public class PreviousInvoiceRunningBalanceData {
     private final Invoice invoice;
 
     public PreviousInvoiceRunningBalanceData(Invoice invoice) {
-        this.invoice = invoice;
+        this.invoice = invoice == null ? new Invoice() : invoice;
     }
 
     public BigDecimal getRunningBalance() {
