@@ -1,5 +1,4 @@
 <#import "/spring.ftl" as spring/>
-<#setting number_format="###,###,##0.00">
 <#setting datetime_format="dd/MM/yyyy">
 <!DOCTYPE html>
 <html>
@@ -112,10 +111,12 @@
                     <td>${invoice.billOfEntryNumber!}</td>
                     <td>${invoice.dateOfInvoice!}</td>
                     <td>${invoice.supplierNameAndAddress!}</td>
+                    <#setting number_format="###,###,##0.00">
                     <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
                     <td>${invoice.additionsDuringTheYear!}</td>
                     <td>${invoice.deletionsDuringTheYear!}</td>
                     <td>${invoice.gbOnDecember31()!}</td>
+                    <#setting number_format="computer">
                     <td>${invoice.location!}</td>
                         <td>
                             <span class="btn btn-info btn-mini">
