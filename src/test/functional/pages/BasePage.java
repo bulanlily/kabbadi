@@ -2,8 +2,11 @@ package pages;
 
 import config.Configuration;
 import forms.InvoiceForm;
+import org.h2.util.New;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.Map;
 
@@ -29,7 +32,11 @@ public class BasePage {
     }
 
     protected void fillFields(String fieldName, String fieldValue) {
-        driver.findElement(By.name(fieldName)).sendKeys(fieldValue);
+        WebElement field = driver.findElement(By.name(fieldName));
+        if (field.getTagName().contains("option"))
+            new Select(field).selectByVisibleText(fieldValue);
+        else
+            field.sendKeys(fieldValue);
     }
 
     protected void fillFormWith(InvoiceForm invoiceForm) {

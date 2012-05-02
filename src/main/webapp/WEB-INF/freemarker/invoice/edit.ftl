@@ -28,7 +28,11 @@
     </div>
     <div class="span3">
         <label for="location">Location</label>
-        <input name="location" value="${invoice.location!}"/>
+                <select name="location" value="${invoice.location!}">
+                   <option value="Bangalore">Bangalore</option>
+                   <option value="Pune">Pune</option>
+                   <option value="Chennai">Chennai</option>
+               </select>
     </div>
     <div class="span3">
         <label for="descriptionOfGoods">Description of Goods</label>
