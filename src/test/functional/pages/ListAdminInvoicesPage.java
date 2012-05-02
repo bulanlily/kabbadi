@@ -37,11 +37,11 @@ public class ListAdminInvoicesPage extends BasePage {
     }
 
     public ListAdminInvoicesPage confirmInvoiceHasBeenAddedToAdminList(InvoiceForm invoiceForm) {
-        Map<String, String> fields = invoiceForm.getFields();
+        Map<String, Object> fields = invoiceForm.getFields();
         WebElement tableRow = driver.findElement(By.id("admin_invoice_" + fields.get("invoiceNumber")));
 
-        for (String fieldValue : fields.values()) {
-            assertThat(tableRow.getText(), containsString(fieldValue));
+        for (Object fieldValue : fields.values()) {
+            assertThat(tableRow.getText(), containsString(fieldValue+""));
         }
 
         return this;
@@ -94,21 +94,21 @@ public class ListAdminInvoicesPage extends BasePage {
 
     public ListAdminInvoicesPage confirmInvoiceHasNotBeenAddedToAdminList(InvoiceForm invoiceForm) {
 
-        Map<String, String> fields = invoiceForm.getFields();
+        Map<String, Object> fields = invoiceForm.getFields();
         WebElement table = driver.findElement(By.cssSelector("#admin table"));
 
-        for (String fieldValue : fields.values()) {
+        for (Object fieldValue : fields.values()) {
             if (!fieldValue.equals(""))
-                assertThat(table.getText(), not(containsString(fieldValue)));
+                assertThat(table.getText(), not(containsString(fieldValue+"")));
         }
 
         return this;
     }
 
     public ListAdminInvoicesPage viewInvoiceInListPage(InvoiceForm invoice) {
-        Map<String, String> fields = invoice.getFields();
+        Map<String, Object> fields = invoice.getFields();
         WebElement tableRow = driver.findElement(By.id("admin_invoice_" + fields.get("invoiceNumber")));
-        assertThat(tableRow.getText(), containsString(fields.get("invoiceNumber")));
+        assertThat(tableRow.getText(), containsString(fields.get("invoiceNumber")+""));
         return this;
     }
 }

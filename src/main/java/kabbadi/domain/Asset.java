@@ -2,6 +2,7 @@ package kabbadi.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -17,20 +18,22 @@ public class Asset {
     @Id
     @GenericGenerator(name="auto-increment", strategy = "increment")
     @GeneratedValue(generator = "auto-increment")
-    private Integer asset_id;
+    private Integer assetNumber;
 
-    private String assetNumber;
     private String modelName;
     private String registeredOffice;
     private String serialNumber;
     private String registeredTo;
     private String status;
-    private Boolean isLeased;
-    private Date leasingExpiration;
     private Date maintenanceExpiration;
+    private Date leasingExpiration;
     private String leasingCompany;
 
     @ManyToOne
     @JoinColumn(name="invoice_id")
     private Invoice invoice;
+
+    public boolean isLeased() {
+        return !(StringUtils.isEmpty(leasingCompany) && leasingExpiration == null);
+    }
 }

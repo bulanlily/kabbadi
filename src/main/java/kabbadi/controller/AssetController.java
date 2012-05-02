@@ -1,7 +1,6 @@
 package kabbadi.controller;
 
 import kabbadi.domain.Asset;
-import kabbadi.domain.Invoice;
 import kabbadi.service.AssetService;
 import kabbadi.service.InvoiceService;
 import kabbadi.spring.util.NullSafeDatePropertyEditor;
@@ -17,7 +16,7 @@ import java.util.Date;
 
 
 @Controller
-@RequestMapping(value="/invoice/{invoiceId}")
+@RequestMapping(value="/invoice/{invoiceId}/asset")
 public class AssetController {
     private AssetService assetService;
     private InvoiceService invoiceService;
@@ -33,19 +32,35 @@ public class AssetController {
         binder.registerCustomEditor(Date.class, new NullSafeDatePropertyEditor());
     }
 
-    @RequestMapping(value="/asset/create", method = RequestMethod.GET)
+    @RequestMapping(value="/create", method = RequestMethod.GET)
     public ModelAndView create(@PathVariable("invoiceId")Integer invoiceId) {
-        ModelAndView modelAndView = new ModelAndView("/asset/create");
+        ModelAndView modelAndView = new ModelAndView("/asset/edit");
         Asset asset = new Asset();
         asset.setInvoice(invoiceService.get(invoiceId));
         modelAndView.addObject("asset", asset);
         return modelAndView;
     }
 
-    @RequestMapping(value="/asset/save", method = RequestMethod.POST)
+    @RequestMapping(value="/{assetId}/edit", method = RequestMethod.GET)
+    public ModelAndView edit(@PathVariable("invoiceId")Integer invoiceId, @PathVariable("assetId")Integer assetId){
+        ModelAndView modelAndView = new ModelAndView("/asset/edit");
+        Asset asset = assetService.get(assetId);
+        modelAndView.addObject("asset", asset);
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/save", method = RequestMethod.POST)
     public ModelAndView save(@ModelAttribute Asset asset, @PathVariable("invoiceId")Integer invoiceId) {
         asset.setInvoice(invoiceService.get(invoiceId));
         assetService.saveOrUpdate(asset);
         return new ModelAndView(new RedirectView("/invoice/list#is", true));
+    }
+
+    @RequestMapping(value="/{assetId}", method = RequestMethod.GET)
+    public ModelAndView view(@PathVariable("invoiceId")Integer invoiceId, @PathVariable("assetId")Integer assetId){
+        ModelAndView modelAndView = new ModelAndView("/asset/view");
+        Asset asset = assetService.get(assetId);
+        modelAndView.addObject("asset", asset);
+        return modelAndView;
     }
 }

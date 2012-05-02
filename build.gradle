@@ -70,7 +70,8 @@ dependencies {
             'org.springframework.security:spring-security-web:3.1.0.RELEASE',
             'org.projectlombok:lombok:0.11.0',
             'joda-time:joda-time:2.1',
-            'postgresql:postgresql:9.1-901.jdbc4'
+            'postgresql:postgresql:9.1-901.jdbc4',
+            'org.codehaus.jackson:jackson-mapper-asl:1.9.6'
 
     testCompile 'junit:junit:4.8.1',
             'org.springframework:spring-test:3.1.1.RELEASE',

@@ -1,5 +1,4 @@
 <#import "/spring.ftl" as spring/>
-<#setting number_format="computer">
 <#setting datetime_format="dd/MM/yyyy">
 <!DOCTYPE html>
 <html>
@@ -46,13 +45,13 @@
                     <th>Bond #</th>
                     <th>Bond Date</th>
                     <th>Location</th>
-                    <th>Description</th>
+                    <th class="description">Description</th>
                     <th style="min-width: 90px"></th>
 
                 </tr>
                 </thead>
                 <tbody style="word-wrap:break-word, break-word: hyphenate">
-                <#list invoices as invoice>
+                <#list invoices?sort_by("bondNumber")?reverse as invoice>
                     <#if invoice.isBonded() >
                         <tr id="admin_invoice_${invoice.invoiceNumber}">
                             <td>${invoice.purchaseOrderNumber!}</td>
@@ -62,10 +61,10 @@
                             <td>${invoice.bondNumber!}</td>
                             <td>${invoice.bondDate!}</td>
                             <td>${invoice.location!}</td>
-                            <td>${invoice.descriptionOfGoods!}</td>
+                            <td class="description">${invoice.descriptionOfGoods!}</td>
                             <td>
                                 <span class="btn btn-info btn-mini">
-                                    <a href="edit/${invoice.invoice_id}">EDIT</a>
+                                    <a href="<@spring.url '/invoice/${invoice.invoice_id}/edit'/>">EDIT</a>
                                 </span>
                                 <span class="btn btn-info btn-mini">
                                     <a href="<@spring.url '/invoice/${invoice.invoice_id}'/>">VIEW</a>
@@ -80,7 +79,7 @@
         <div id="finance" class="tab-pane fade">
 
         <div class="page-header" align="right">
-                        <a href="<@spring.url "/invoice/create#finance"/>" class="btn btn-inverse" id="finance_add_invoice">Add New</a>
+                        <a href="<@spring.url '/invoice/create#finance'/>" class="btn btn-inverse" id="finance_add_invoice">Add New</a>
                         <button href="#" class="btn btn-inverse">Generate Report</button>
                     </div>
 
@@ -112,14 +111,16 @@
                     <td>${invoice.billOfEntryNumber!}</td>
                     <td>${invoice.dateOfInvoice!}</td>
                     <td>${invoice.supplierNameAndAddress!}</td>
+                    <#setting number_format="###,###,##0.00">
                     <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
                     <td>${invoice.additionsDuringTheYear!}</td>
                     <td>${invoice.deletionsDuringTheYear!}</td>
                     <td>${invoice.gbOnDecember31()!}</td>
+                    <#setting number_format="computer">
                     <td>${invoice.location!}</td>
                         <td>
                             <span class="btn btn-info btn-mini">
-                                <a href="edit/${invoice.invoice_id}#finance">EDIT</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/edit#finance'/>">EDIT</a>
                             </span>
                             <span class="btn btn-info btn-mini">
                                 <a href="<@spring.url '/invoice/${invoice.invoice_id}#finance'/>">VIEW</a>
@@ -152,7 +153,7 @@
                     <td colspan="7" style="font-weight:bold;">${invoice.invoiceNumber}</td>
                     <td>
                         <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/create'/>">&nbsp;&nbsp; Add Assets &nbsp;</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/create'/>">Add Assets</a>
                         </span>
                     </td>
                 </tr>
@@ -162,7 +163,7 @@
                     <td>${asset.assetNumber!}</td>
                     <td>${invoice.location!}</td>
                     <td>${asset.status!}</td>
-                    <#if asset.isLeased!>
+                    <#if asset.leased!>
                         <td>Yes</td>
                     <#else>
                         <td>No</td>
@@ -171,10 +172,10 @@
                     <td>${asset.modelName!}</td>
                     <td>
                             <span class="btn btn-info btn-mini">
-                                <a href="/asset/edit/${asset.asset_id}">EDIT</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/${asset.assetNumber!}/edit'/>">EDIT</a>
                             </span>
                             <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/asset/${asset.asset_id}'/>">VIEW</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/${asset.assetNumber!}'/>">VIEW</a>
                             </span>
 
                     </td>

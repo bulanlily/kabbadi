@@ -19,12 +19,9 @@ public class ListFinanceInvoicesPage extends BasePage{
     }
 
     public ListFinanceInvoicesPage viewInvoiceInListPage(InvoiceForm invoiceForm) {
-        Map<String, String> fields = invoiceForm.getFields();
+        Map<String, Object> fields = invoiceForm.getFields();
         WebElement tableRow = driver.findElement(By.id("finance_invoice_" + fields.get("invoiceNumber")));
-
-        for (String fieldValue : fields.values()) {
-            assertThat(tableRow.getText(), containsString(fieldValue));
-        }
+        assertThat(tableRow.getText(), containsString(fields.get("invoiceNumber")+""));
         return this;
     }
 
