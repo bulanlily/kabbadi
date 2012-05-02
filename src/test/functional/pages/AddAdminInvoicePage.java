@@ -45,7 +45,7 @@ public class AddAdminInvoicePage extends BasePage {
     }
 
     public AddAdminInvoicePage fillFieldWith(String fieldName, String fieldValue) {
-        driver.findElement(By.cssSelector("input[name=" + fieldName + "]")).sendKeys(fieldValue);
+        driver.findElement(By.name(fieldName)).sendKeys(fieldValue);
         return this;
     }
 

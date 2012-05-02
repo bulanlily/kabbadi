@@ -10,9 +10,12 @@ import java.math.BigDecimal;
 public class AdminInvoicesTest extends BaseTest {
 
     @Test
-    public void should_able_to_add_admin_invoice_and_view_its_details() {
+    public void should_be_able_to_add_admin_invoice_and_view_its_details() {
         String invoiceNumber = "101010Invoice";
-        InvoiceForm invoice = new InvoiceTestBuilder().withCIFValueInINR(new Money("INR", new BigDecimal("101.10"))).buildAdmin();
+        InvoiceForm invoice = new InvoiceTestBuilder()
+                .withCIFValueInINR(new Money("INR", new BigDecimal("101.10")))
+                .withInvoiceNumber(invoiceNumber)
+                .buildAdmin();
 
         launchKabbadi()
                 .loginWithValidCredentials()
@@ -33,7 +36,7 @@ public class AdminInvoicesTest extends BaseTest {
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
                 .submit(newInvoice)
-                .confirmInvoiceHasBeenAddedToAdminList(newInvoice)
+                .viewInvoiceInListPage(newInvoice)
                 .editFirstInvoice()
                 .changePurchaseOrderNumberTo(newPurchaseOrder)
                 .changeInvoiceNumberTo(newInvoiceNumber)

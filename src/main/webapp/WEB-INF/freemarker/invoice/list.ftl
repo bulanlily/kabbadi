@@ -1,5 +1,5 @@
 <#import "/spring.ftl" as spring/>
-<#setting number_format="computer">
+<#setting number_format="###,###,##0.00">
 <#setting datetime_format="dd/MM/yyyy">
 <!DOCTYPE html>
 <html>
