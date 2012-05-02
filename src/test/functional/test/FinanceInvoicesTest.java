@@ -7,7 +7,7 @@ import org.junit.Test;
 public class FinanceInvoicesTest extends BaseTest {
 
     @Test
-    public void should_able_to_add_finance_invoice_and_view_its_details(){
+    public void should_be_able_to_add_finance_invoice_and_view_its_details(){
         InvoiceForm invoice = new InvoiceTestBuilder().buildFinance();
         launchKabbadi()
                 .loginWithValidCredentials()
