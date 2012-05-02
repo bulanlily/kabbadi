@@ -7,7 +7,7 @@ import org.junit.Test;
 public class FinanceInvoicesTest extends BaseTest {
 
     @Test
-    public void should_able_to_add_finance_invoice_and_view_its_details(){
+    public void should_be_able_to_add_finance_invoice_and_view_its_details(){
         InvoiceForm invoice = new InvoiceTestBuilder().buildFinance();
         launchKabbadi()
                 .loginWithValidCredentials()
@@ -19,9 +19,10 @@ public class FinanceInvoicesTest extends BaseTest {
     }
 
     @Test
-    public void should_validate_the_fields_before_submitting_the_form() {
+    public void should_validate_fields_before_submitting_finance_form() {
         InvoiceForm newInvoice = new InvoiceTestBuilder().withQuantity("words").buildFinance();
-        launchKabbadi().loginWithValidCredentials()
+        launchKabbadi()
+                .loginWithValidCredentials()
                 .goToAddFinancePage()
                 .submitInvalid(newInvoice)
                 .checkErrorMessage("Please enter a number");

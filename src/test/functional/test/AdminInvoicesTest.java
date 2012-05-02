@@ -31,10 +31,14 @@ public class AdminInvoicesTest extends BaseTest {
 
     @Test
     public void should_fail_to_add_invoice_with_invalid_data() {
+        InvoiceForm invalidInvoice = new InvoiceTestBuilder()
+                .withInvoiceNumber("")
+                .buildAdmin();
+
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAdminAddInvoicePage()
-                .invalidBlankInvoiceNumber()
+                .submitInvalid(invalidInvoice)
                 .confirmAddInvoicePage();
     }
 

@@ -3,7 +3,7 @@
 <#setting datetime_format="dd/MM/yyyy">
 <#setting number_format="computer">
 
-<@layout.template 'Add/Edit invoice | Kabbadi' >
+<@layout.template 'Add/Edit invoice' >
 <script src="/kabbadi/static/js/gen_validatorv4.js" type="text/javascript"></script>
 <script src="/kabbadi/static/js/invoice/edit.js" ></script>
 
