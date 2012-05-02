@@ -57,6 +57,12 @@ $(function () {
             frmValidator.EnableOnPageErrorDisplay();
             frmValidator.EnableMsgsTogether();
 
+            $("form").submit(function() {
+                if($(".error_div:visible").length > 0) {
+                    $("#form_errors_msg").show();
+                };
+            });
+
 });
 
 

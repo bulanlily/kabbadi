@@ -259,8 +259,13 @@
 <br/>
 
 <hr/>
-<input type="submit" name="submit" value="Submit invoice" class="btn btn-primary"/>
-<a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel"/></a>
+<span class="span3">
+    <input type="submit" name="submit" value="Submit invoice" class="btn btn-primary"/>
+    <a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel"/></a>
+</span>
+<span class="alert alert-error span4 hide" id="form_errors_msg">
+    <center>Submission failed. Check for invalid input messages.</center>
+</span>
 <br/>
 <br/>
 <hr/>
