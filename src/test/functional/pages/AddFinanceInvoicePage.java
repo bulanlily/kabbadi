@@ -4,10 +4,12 @@ import forms.InvoiceForm;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.Map;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
-
 public class AddFinanceInvoicePage extends BasePage {
 
     protected AddFinanceInvoicePage(WebDriver driver) {
@@ -22,6 +24,18 @@ public class AddFinanceInvoicePage extends BasePage {
 
     public AddFinanceInvoicePage submitInvalid(InvoiceForm invoiceForm) {
         fillFormWith(invoiceForm);
+        return this;
+    }
+
+    private AddFinanceInvoicePage selectFieldWith(String fieldName, String fieldValue) {
+        Select select = new Select(driver.findElement(By.name(fieldName)));
+        select.selectByVisibleText(fieldValue);
+        return this;
+    }
+
+
+    public AddFinanceInvoicePage fillFieldWith(String fieldName, String fieldValue) {
+        driver.findElement(By.cssSelector("input[name=" + fieldName + "]")).sendKeys(fieldValue);
         return this;
     }
 
