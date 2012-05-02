@@ -5,6 +5,7 @@ import kabbadi.controller.InvoiceController;
 import kabbadi.domain.Invoice;
 import domain.builder.InvoiceTestBuilder;
 import kabbadi.domain.db.GenericRepository;
+import kabbadi.domain.json.PreviousInvoiceRunningBalanceData;
 import kabbadi.service.InvoiceService;
 import org.hibernate.SessionFactory;
 import org.junit.Before;
@@ -67,12 +68,34 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
         assertThat(listView.getViewName(), equalTo("invoice/list"));
     }
 
+    @Test
+    public void should_get_the_previous_invoice_when_it_exist() {
+        Invoice invoice1 = new InvoiceTestBuilder()
+                .withInvoiceNumber("123")
+                .withBondNumber("15/14-15")
+                .withRunningBalance("123")
+                .build();
+
+        Invoice invoice2 = new InvoiceTestBuilder()
+                .withInvoiceNumber("124")
+                .withBondNumber("15/11-12")
+                .withRunningBalance("123")
+                .build();
+
+        controller.add(invoice1, "");
+        controller.add(invoice2, "");
+
+        assertThat(controller.previousRunningBalance("01/15-16"), equalTo(new PreviousInvoiceRunningBalanceData(invoice1)));
+        assertThat(controller.previousRunningBalance("16/11-12"), equalTo(new PreviousInvoiceRunningBalanceData(invoice2)));
+        assertThat(controller.previousRunningBalance("123"), equalTo(new PreviousInvoiceRunningBalanceData(new Invoice())));
+        assertThat(controller.previousRunningBalance("01/1-1"), equalTo(new PreviousInvoiceRunningBalanceData(null)));
+    }
+
     private InvoiceController buildInvoiceController(InvoiceService invoiceService) {
         return new InvoiceController(invoiceService);
     }
 
     private InvoiceService buildInvoiceService() {
         return new InvoiceService(new GenericRepository<Invoice>(sessionFactory, Invoice.class));
-
     }
 }

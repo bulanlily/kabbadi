@@ -1,5 +1,6 @@
 package builder;
 
+import kabbadi.domain.ImportType;
 import forms.InvoiceForm;
 import kabbadi.domain.Money;
 
@@ -8,6 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InvoiceTestBuilder {
+    public static final String DATE_FORMAT = "dd/MM/yyyy";
     private String invoiceNumber = "TestInvoiceNo";
     private String numberAndDate = "123123";
     private String descriptionOfGoods = "bill";
@@ -25,9 +27,7 @@ public class InvoiceTestBuilder {
     private double CGApprovedInINR = 123123;
     private double dutyForegone = 123123;
     private double runningBalance = 123123;
-    private double outrightPurchase = 123123;
-    private String loanBasis = "123123";
-    private double freeOfCharge = 123123;
+    private ImportType importType = ImportType.LOAN_BASIS;
     private String status = "bill";
     private String remarks = "bill";
     private String purchaseOrderNumber = "123123";
@@ -42,7 +42,6 @@ public class InvoiceTestBuilder {
     private String costCentre = "skjj";
     private String identificationNumber = "1234";
     private String STPIApprovalNumberAndDate = "STPI1234";
-
 
     public InvoiceTestBuilder withInvoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
@@ -126,21 +125,6 @@ public class InvoiceTestBuilder {
 
     public InvoiceTestBuilder withRunningBalance(double runningBalance) {
         this.runningBalance = runningBalance;
-        return this;
-    }
-
-    public InvoiceTestBuilder withOutrightPurchase(double outrightPurchase) {
-        this.outrightPurchase = outrightPurchase;
-        return this;
-    }
-
-    public InvoiceTestBuilder withLoanBasis(String loanBasis) {
-        this.loanBasis = loanBasis;
-        return this;
-    }
-
-    public InvoiceTestBuilder withFreeOfCharge(double freeOfCharge) {
-        this.freeOfCharge = freeOfCharge;
         return this;
     }
 
@@ -248,10 +232,8 @@ public class InvoiceTestBuilder {
         fields.put("twentyFivePercentDF", twentyFivePercentDF);
         fields.put("dutyExempt", dutyExempt);
         fields.put("dutyForgone", dutyForegone);
-        fields.put("loanBasis", loanBasis);
-        fields.put("freeOfCharge", freeOfCharge);
+        fields.put("importType", importType);
         fields.put("runningBalance", runningBalance);
-        fields.put("outrightPurchase", outrightPurchase);
         fields.put("remarks", remarks);
         fields.put("status", status);
         fields.put("foreignValue", foreignValue);
@@ -265,4 +247,3 @@ public class InvoiceTestBuilder {
         fields.put("descriptionOfGoods", descriptionOfGoods);
     }
 }
-

@@ -4,12 +4,11 @@
 <html>
 <head>
     <title>View an Invoice | Kabbadi</title>
-    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
-    <link href="/kabbadi/static/css/kabbadi.css" rel="stylesheet">
-    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
     <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
+    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/kabbadi/static/css/kabbadi.css" rel="stylesheet">
     <style type="text/css">
         body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -21,7 +20,7 @@
         width: 20%;
         }
     </style>
-
+    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
 
 </head>
 <body>
@@ -98,13 +97,15 @@
 
                     </tr>
                         <td>CIF Value (INR)</td>
-                        <td>${invoice.CIFDisplayAmountInINR!}</td>
-
+                            <td>${invoice.CIFDisplayAmountInINR!} </td>
+                    </tr>
+                    <tr>
+                        <td>Import Type</td>
+                        <td>  <#if invoice.importType??>${invoice.importType.description} </#if></td>
                     </tr>
                     <tr>
                         <td>Bond Number</td>
                         <td>${invoice.bondNumber!}</td>
-
                     </tr>
                     <tr>
                         <td>Bond Date</td>
@@ -114,12 +115,10 @@
                     <tr>
                         <td>Bill of Entry Number</td>
                         <td>${invoice.billOfEntryNumber!}</td>
-
                     </tr>
                     <tr>
                         <td>Bill of Entry Date</td>
                         <td>${invoice.billOfEntryDate!}</td>
-
                     </tr>
                     <tr>
                         <td>Assessable Value (INR)</td>
@@ -139,61 +138,37 @@
                     </tr>
 
                     <tr>
-                        <td>Outright Purchase (INR)</td>
-                        <td>${invoice.outrightPurchase!}</td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Loan Basis (INR)</td>
-                        <td>${invoice.loanBasis!}</td>
-
-                    </tr>
-
-                    <tr>
-                        <td>Free Of Charge (INR)</td>
-                        <td>${invoice.freeOfCharge!}</td>
-
-                    </tr>
-
-                    <tr>
                         <td>CG Approved (INR)</td>
                         <td>${invoice.cgApprovedInINR!}</td>
-
                     </tr>
 
                     <tr>
-                        <td>Duty Forgone (INR)</td>
+                        <td>Duty Foregone (INR)</td>
                         <td>${invoice.dutyForgone!}</td>
-
                     </tr>
 
 
                     <tr>
                         <td>Running Balance (INR)</td>
                         <td>${invoice.runningBalance!}</td>
-
                     </tr>
 
 
                     <tr>
                         <td>Location</td>
                         <td>${invoice.location!}</td>
-
                     </tr>
 
 
                     <tr>
                         <td>Status</td>
                         <td>${invoice.status!}</td>
-
                     </tr>
 
 
                     <tr>
                         <td>Remarks</td>
                         <td>${invoice.remarks!}</td>
-
                     </tr>
 
 
