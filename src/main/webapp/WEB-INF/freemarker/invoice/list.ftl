@@ -132,15 +132,15 @@
                 <tr id="is_invoice_${invoice.invoiceNumber}">
                     <td colspan="7" style="font-weight:bold;">${invoice.invoiceNumber}</td>
                     <td>
-                        <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/create'/>">Add Assets</a>
+                        <span class="btn btn-info btn-mini" style="width:67px">
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/create'/>" >Add Assets</a>
                         </span>
                     </td>
                 </tr>
                 <#list invoice.assets as asset>
                 <tr id="asset_${asset.assetNumber!}">
                     <td></td>
-                    <td>${asset.assetNumber!}</td>
+                    <td>${"${asset.assetNumber!}"?left_pad(4,'0')}</td>
                     <td>${invoice.location!}</td>
                     <td>${asset.status!}</td>
                     <#if asset.leased!>

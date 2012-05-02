@@ -22,7 +22,7 @@
         <tbody>
         <tr>
             <td>Asset No</td>
-            <td>${asset.assetNumber!}</td>
+            <td>${"${asset.assetNumber!}"?left_pad(4,'0')}</td>
 
         </tr>
         <tr>
