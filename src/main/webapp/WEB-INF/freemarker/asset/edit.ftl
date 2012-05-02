@@ -73,16 +73,17 @@
 
     <hr/>
     <form action="<@spring.url '/invoice/${asset.invoice.invoice_id!}/asset/save'/>" name="newAssetForm" id="newAssetForm" method="POST">
-        <input name="asset_id" type="hidden" value="${asset.asset_id!}"/>
+        <input name="assetNumber" type="hidden" value="${asset.assetNumber!}"/>
         <br/>
         <div class="row">
             <div class="span3">
-                <label for="assetNumber">Asset number *</label>
-                <input name="assetNumber" required="true" value="${asset.assetNumber!}"/>
-            </div>
-            <div class="span3">
                 <label for="serialNumber">Serial number</label>
                 <input name="serialNumber" value="${asset.serialNumber!}"/>
+            </div>
+
+            <div class="span3">
+                <label for="modelName">Model Name</label>
+                <input name="modelName"  value="${asset.modelName!}"/>
             </div>
 
         </div>
@@ -94,10 +95,6 @@
             <div class="span3">
                 <label for="status">Status</label>
                 <input name="status"  value="${asset.status!}"/>
-            </div>
-            <div class="span3">
-                <label for="modelName">Model Name</label>
-                <input name="modelName"  value="${asset.modelName!}"/>
             </div>
         </div>
 
@@ -111,9 +108,7 @@
                 <label for="leasingExpiration">Leasing Expiration</label>
                 <input  name="leasingExpiration" class="defaultDatepicker" type="date" value="${asset.leasingExpiration!}"/>
                 <div class='error_div' id='newAssetForm_leasingExpiration_errorloc'></div>
-
             </div>
-
 
         </div>
 

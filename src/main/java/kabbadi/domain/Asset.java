@@ -18,9 +18,8 @@ public class Asset {
     @Id
     @GenericGenerator(name="auto-increment", strategy = "increment")
     @GeneratedValue(generator = "auto-increment")
-    private Integer asset_id;
+    private Integer assetNumber;
 
-    private String assetNumber;
     private String modelName;
     private String registeredOffice;
     private String serialNumber;
