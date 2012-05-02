@@ -3,7 +3,7 @@
 <#setting datetime_format="dd/MM/yyyy" />
 <#setting number_format="computer" />
 
-<@layout.template 'View an Asset | Kabbadi' >
+<@layout.template 'View an Asset' >
 
 <h1>Asset # ${asset.assetNumber}</h1>
 <br>

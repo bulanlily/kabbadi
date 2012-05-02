@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>${title}</title>
+        <title>${title} | Kabbadi</title>
         <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet"/>
         <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
         <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
