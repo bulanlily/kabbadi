@@ -1,4 +1,3 @@
 #!/bin/sh
-gradle build
-gradle integration
-gradle functional
+# ಠ_ಠ
+gradle build integration jasmineRun functional

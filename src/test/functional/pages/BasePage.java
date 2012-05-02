@@ -1,9 +1,14 @@
 package pages;
 
 import config.Configuration;
+import forms.InvoiceForm;
+import org.h2.util.New;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+
+import java.util.Map;
 
 public class BasePage {
     protected WebDriver driver;
@@ -24,5 +29,21 @@ public class BasePage {
 
     public String getTitle(){
         return  driver.getTitle();
+    }
+
+    protected void fillFields(String fieldName, String fieldValue) {
+        WebElement field = driver.findElement(By.name(fieldName));
+        if (field.getTagName().contains("option"))
+            new Select(field).selectByVisibleText(fieldValue);
+        else
+            field.sendKeys(fieldValue);
+    }
+
+    protected void fillFormWith(InvoiceForm invoiceForm) {
+        Map<String, Object> fields = invoiceForm.getFields();
+        for (String fieldName : fields.keySet()) {
+            fillFields(fieldName, (fields.get(fieldName) + ""));
+        }
+        driver.findElement(By.cssSelector("input[name=submit]")).click();
     }
 }

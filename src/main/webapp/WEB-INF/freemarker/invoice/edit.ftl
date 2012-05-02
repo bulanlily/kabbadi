@@ -1,52 +1,13 @@
-<#import "/spring.ftl" as spring/>
+<#import "/application.ftl" as layout />
+<#import "/spring.ftl" as spring />
 <#setting datetime_format="dd/MM/yyyy">
 <#setting number_format="computer">
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add/Edit invoice | Kabbadi</title>
-    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet"/>
-    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
-          type="text/css"/>
-    <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/gen_validatorv4.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/jquery.datePicker.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/jquery.ui.datepicker.validation.min.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-    <script src="/kabbadi/static/js/invoice/edit.js" ></script>
 
-    <style type="text/css">
-        body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
-
-        div.error_div{
-        color: red;
-        margin-bottom:5px;
-        }
-    </style>
-
-</head>
-<body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="<@spring.url '/'/>">Kabbadi</a>
-        </div>
-    </div>
-</div>
+<@layout.template 'Add/Edit invoice' >
+<script src="/kabbadi/static/js/gen_validatorv4.js" type="text/javascript"></script>
+<script src="/kabbadi/static/js/invoice/edit.js" ></script>
 
 
-<div class="container" position="relative">
 <h1>Add/Edit Invoice</h1>
 
 <p>* indicates mandatory fields</p>
@@ -67,7 +28,11 @@
     </div>
     <div class="span3">
         <label for="location">Location</label>
-        <input name="location" value="${invoice.location!}"/>
+                <select name="location" value="${invoice.location!}">
+                   <option value="Bangalore">Bangalore</option>
+                   <option value="Pune">Pune</option>
+                   <option value="Chennai">Chennai</option>
+               </select>
     </div>
     <div class="span3">
         <label for="descriptionOfGoods">Description of Goods</label>
@@ -76,6 +41,20 @@
         <input name="role" type="hidden" id="redirectToTab"/>
 
     </div>
+</div>
+<div class="row">
+    <div class="span3">
+        <label for="foreignValue.amount">Invoice Amount</label>
+        <input name="foreignValue.amount" value="${invoice.foreignValueDisplayAmount!}"/>
+
+        <div class='error_div' id='newInvoiceForm_foreignValue.amount_errorloc'></div>
+    </div>
+
+    <div class="span3">
+        <label for="currency">Currency</label>
+        <input name="foreignValue.currency" value="${invoice.foreignCurrency!}"/>
+    </div>
+
 </div>
 <br/>
 
@@ -129,18 +108,6 @@
         </div>
     </div>
     <div class="row">
-        <div class="span3">
-            <label for="foreignValue.amount">Amount</label>
-            <input name="foreignValue.amount" value="${invoice.foreignValueDisplayAmount!}"/>
-
-            <div class='error_div' id='newInvoiceForm_foreignValue.amount_errorloc'></div>
-        </div>
-
-        <div class="span3">
-            <label for="currency">Currency</label>
-            <input name="foreignValue.currency" value="${invoice.foreignCurrency!}"/>
-        </div>
-
         <div class="span3">
             <label for="amountSTPIApproval">Amount STPI Approval</label>
             <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}"/>
@@ -298,13 +265,16 @@
 <br/>
 
 <hr/>
-<input type="submit" name="submit" value="Submit invoice" class="btn btn-primary"/>
-<a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel"/></a>
+<span class="span3">
+    <input type="submit" name="submit" value="Submit invoice" class="btn btn-primary"/>
+    <a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel"/></a>
+</span>
+<span class="alert alert-error span4 hide" id="form_errors_msg">
+    <center>Submission failed. Check for invalid input messages.</center>
+</span>
 <br/>
 <br/>
 <hr/>
 
 </form>
-</div>
-</body>
-</html>
+</@layout.template>

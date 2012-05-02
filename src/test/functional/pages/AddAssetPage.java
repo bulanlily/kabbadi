@@ -20,12 +20,8 @@ public class AddAssetPage extends BasePage {
     private void fillFormWithAndSubmit(AssetForm assetForm) {
         Map<String, Object> fields = assetForm.getFields();
         for (String fieldName : fields.keySet()) {
-            fillFieldWith(fieldName, fields.get(fieldName) + "");
+            fillFields(fieldName, fields.get(fieldName) + "");
         }
         driver.findElement(By.cssSelector("input[name=submit]")).click();
-    }
-
-    public void fillFieldWith(String fieldName, String fieldValue) {
-        driver.findElement(By.cssSelector("input[name=" + fieldName + "]")).sendKeys(fieldValue);
     }
 }
