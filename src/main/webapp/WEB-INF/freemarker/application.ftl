@@ -21,7 +21,7 @@
             }
 
             div.error_div{
-            color: red;
+            color: #B94A48;
             margin-bottom:5px;
             }
         </style>

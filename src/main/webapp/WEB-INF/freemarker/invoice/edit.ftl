@@ -38,6 +38,20 @@
 
     </div>
 </div>
+<div class="row">
+    <div class="span3">
+        <label for="foreignValue.amount">Invoice Amount</label>
+        <input name="foreignValue.amount" value="${invoice.foreignValueDisplayAmount!}"/>
+
+        <div class='error_div' id='newInvoiceForm_foreignValue.amount_errorloc'></div>
+    </div>
+
+    <div class="span3">
+        <label for="currency">Currency</label>
+        <input name="foreignValue.currency" value="${invoice.foreignCurrency!}"/>
+    </div>
+
+</div>
 <br/>
 
 <div class="tabbable">
@@ -90,18 +104,6 @@
         </div>
     </div>
     <div class="row">
-        <div class="span3">
-            <label for="foreignValue.amount">Amount</label>
-            <input name="foreignValue.amount" value="${invoice.foreignValueDisplayAmount!}"/>
-
-            <div class='error_div' id='newInvoiceForm_foreignValue.amount_errorloc'></div>
-        </div>
-
-        <div class="span3">
-            <label for="currency">Currency</label>
-            <input name="foreignValue.currency" value="${invoice.foreignCurrency!}"/>
-        </div>
-
         <div class="span3">
             <label for="amountSTPIApproval">Amount STPI Approval</label>
             <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}"/>
@@ -259,8 +261,13 @@
 <br/>
 
 <hr/>
-<input type="submit" name="submit" value="Submit invoice" class="btn btn-primary"/>
-<a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel"/></a>
+<span class="span3">
+    <input type="submit" name="submit" value="Submit invoice" class="btn btn-primary"/>
+    <a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel"/></a>
+</span>
+<span class="alert alert-error span4 hide" id="form_errors_msg">
+    <center>Submission failed. Check for invalid input messages.</center>
+</span>
 <br/>
 <br/>
 <hr/>
