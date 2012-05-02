@@ -13,12 +13,12 @@ public class AddAdminInvoicePage extends BasePage {
         assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
     }
 
-    public ListAdminInvoicesPage submit(InvoiceForm invoiceForm) {
+    public ListAdminInvoicesPage fillFormWithValidDetailsAndSubmit(InvoiceForm invoiceForm) {
         fillFormWith(invoiceForm);
         return new ListAdminInvoicesPage(driver);
     }
 
-    public AddAdminInvoicePage submitInvalid(InvoiceForm invoiceForm) {
+    public AddAdminInvoicePage fillFormWithInvalidDetailsAndSubmit(InvoiceForm invoiceForm) {
         fillFormWith(invoiceForm);
         return this;
     }

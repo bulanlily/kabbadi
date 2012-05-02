@@ -1,0 +1,2 @@
+jasmineGradle.add( "../specRunner.html" );
+
