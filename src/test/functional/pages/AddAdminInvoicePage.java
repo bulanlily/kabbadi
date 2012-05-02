@@ -25,25 +25,12 @@ public class AddAdminInvoicePage extends BasePage {
     public AddAdminInvoicePage invalidBlankInvoiceNumber() {
         Map<String, Object> fields = new InvoiceTestBuilder().withInvoiceNumber("").buildAdmin().getFields();
         for (Object key : fields.keySet())  {
-             fillFieldWith(key+"",fields.get(key)+"");
+            fillFields(key + "", fields.get(key) + "");
         }
 
         driver.findElement(By.name("submit")).click();
 
         return new AddAdminInvoicePage(driver);
-    }
-
-    private void fillFormWith(InvoiceForm invoiceForm) {
-        Map<String, Object> fields = invoiceForm.getFields();
-        for (String fieldName : fields.keySet()) {
-            fillFieldWith((String) fieldName, (String) (fields.get(fieldName)+""));
-        }
-        driver.findElement(By.cssSelector("input[name=submit]")).click();
-    }
-
-    public AddAdminInvoicePage fillFieldWith(String fieldName, String fieldValue) {
-        fillFields(fieldName, fieldValue);
-        return this;
     }
 
     public AddAdminInvoicePage confirmAddInvoicePage() {

@@ -4,8 +4,6 @@ import forms.InvoiceForm;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import java.util.Map;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
@@ -37,18 +35,4 @@ public class EditInvoicePage extends BasePage {
         driver.findElement(By.name("invoiceNumber")).sendKeys(newInvoiceNumber);
         return this;
     }
-
-    private void fillFormWith(InvoiceForm invoiceForm) {
-        Map<String, Object> fields = invoiceForm.getFields();
-        for (String fieldName : fields.keySet()) {
-            fillFieldWith(fieldName, fields.get(fieldName)+"");
-        }
-        driver.findElement(By.cssSelector("input[name=submit]")).click();
-    }
-
-    public EditInvoicePage fillFieldWith(String fieldName, String fieldValue) {
-        driver.findElement(By.name(fieldName)).sendKeys(fieldValue);
-        return this;
-    }
-
 }
