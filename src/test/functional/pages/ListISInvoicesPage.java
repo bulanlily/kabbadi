@@ -1,6 +1,8 @@
 package pages;
 
+import forms.AssetForm;
 import forms.InvoiceForm;
+import kabbadi.domain.Invoice;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,10 +21,21 @@ public class ListISInvoicesPage extends BasePage {
     }
 
     public ListISInvoicesPage viewInList(InvoiceForm invoiceForm) {
-        Map<String, String> fields = invoiceForm.getFields();
+        Map<String, Object> fields = invoiceForm.getFields();
         WebElement tableRow = driver.findElement(By.id("is_invoice_" + fields.get("invoiceNumber")));
-        assertThat(tableRow.getText(), containsString(fields.get("invoiceNumber")));
+        assertThat(tableRow.getText(), containsString(fields.get("invoiceNumber") + ""));
         return this;
     }
 
+    public AddAssetPage addANewAsset(String invoiceNumber) {
+        WebElement tableRow = driver.findElement(By.id("is_invoice_" + invoiceNumber));
+        tableRow.findElement(By.linkText("Add Assets")).click();
+        return new AddAssetPage(driver);
+    }
+
+    public ViewAssetDetailsPage viewAssetDetailsPage(String invoiceNumber) {
+        WebElement tableRow = driver.findElement(By.cssSelector("tr#is_invoice_" + invoiceNumber + " + tr"));
+        tableRow.findElement(By.linkText("VIEW")).click();
+        return new ViewAssetDetailsPage(driver);
+    }
 }

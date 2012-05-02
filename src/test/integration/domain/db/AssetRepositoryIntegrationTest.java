@@ -21,29 +21,29 @@ public class AssetRepositoryIntegrationTest extends IntegrationTest {
     private GenericRepository<Asset> assetRepository;
 
     @Test
-    public void should_generate_id_for_new_asset_on_save() {
+    public void should_generate_asset_number_for_new_asset_on_save() {
         Asset asset = new Asset();
         assetRepository.saveOrUpdate(asset);
-        assertThat(asset.getAsset_id(), notNullValue());
+        assertThat(asset.getAssetNumber(), notNullValue());
     }
 
     @Test
-    public void should_retain_id_for_existing_asset_on_save() {
+    public void should_retain_asset_number_for_existing_asset_on_save() {
         Asset asset = new Asset();
         assetRepository.saveOrUpdate(asset);
-        Integer asset_id = asset.getAsset_id();
+        Integer assetNumber = asset.getAssetNumber();
         assetRepository.saveOrUpdate(asset);
-        assertThat(asset.getAsset_id(), equalTo(asset_id));
+        assertThat(asset.getAssetNumber(), equalTo(assetNumber));
     }
 
     @Test
-    public void should_not_generate_duplicate_ids(){
+    public void should_not_generate_duplicate_asset_numbers(){
         executeSQL("TRUNCATE asset");
-        executeSQL("INSERT INTO asset(asset_id) VALUES(1)");
+        executeSQL("INSERT INTO asset(assetNumber) VALUES(1)");
         Asset asset = new Asset();
         assetRepository.saveOrUpdate(asset);
         assertThat(assetRepository.list().size(), equalTo(2));
-        assertThat(asset.getAsset_id(), not(equalTo(1)));
+        assertThat(asset.getAssetNumber(), not(equalTo(1)));
     }
     
     private void executeSQL(String query){
