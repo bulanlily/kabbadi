@@ -19,9 +19,9 @@ public class ListISInvoicesPage extends BasePage {
     }
 
     public ListISInvoicesPage viewInList(InvoiceForm invoiceForm) {
-        Map<String, String> fields = invoiceForm.getFields();
+        Map<String, Object> fields = invoiceForm.getFields();
         WebElement tableRow = driver.findElement(By.id("is_invoice_" + fields.get("invoiceNumber")));
-        assertThat(tableRow.getText(), containsString(fields.get("invoiceNumber")));
+        assertThat(tableRow.getText(), containsString(fields.get("invoiceNumber")+""));
         return this;
     }
 

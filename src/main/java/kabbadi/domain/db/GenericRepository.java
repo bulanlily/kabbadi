@@ -3,7 +3,6 @@ package kabbadi.domain.db;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
@@ -37,14 +36,6 @@ public class GenericRepository<T> {
 
     public List<T> list() {
         return (List<T>) getSession().createCriteria(type).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-    }
-
-    public List<T> listAscending(String property) {
-        return (List<T>) getSession().createCriteria(type).addOrder(Order.asc(property)).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
-    }
-
-    public List<T> listDescending(String property) {
-        return (List<T>) getSession().createCriteria(type).addOrder(Order.desc(property)).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY).list();
     }
 
     public void update(T o) {

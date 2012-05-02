@@ -1,5 +1,4 @@
 <#import "/spring.ftl" as spring/>
-<#setting number_format="computer">
 <#setting datetime_format="dd/MM/yyyy">
 <!DOCTYPE html>
 <html>
@@ -52,7 +51,7 @@
                 </tr>
                 </thead>
                 <tbody style="word-wrap:break-word, break-word: hyphenate">
-                <#list invoices as invoice>
+                <#list invoices?sort_by("bondNumber")?reverse as invoice>
                     <#if invoice.isBonded() >
                         <tr id="admin_invoice_${invoice.invoiceNumber}">
                             <td>${invoice.purchaseOrderNumber!}</td>
@@ -112,10 +111,12 @@
                     <td>${invoice.billOfEntryNumber!}</td>
                     <td>${invoice.dateOfInvoice!}</td>
                     <td>${invoice.supplierNameAndAddress!}</td>
+                    <#setting number_format="###,###,##0.00">
                     <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
                     <td>${invoice.additionsDuringTheYear!}</td>
                     <td>${invoice.deletionsDuringTheYear!}</td>
                     <td>${invoice.gbOnDecember31()!}</td>
+                    <#setting number_format="computer">
                     <td>${invoice.location!}</td>
                         <td>
                             <span class="btn btn-info btn-mini">
@@ -171,10 +172,10 @@
                     <td>${asset.modelName!}</td>
                     <td>
                             <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/${asset.asset_id}/edit'/>">EDIT</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/${asset.assetNumber!}/edit'/>">EDIT</a>
                             </span>
                             <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/asset/${asset.asset_id}'/>">VIEW</a>
+                                <a href="<@spring.url '/asset/${asset.assetNumber}'/>">VIEW</a>
                             </span>
 
                     </td>

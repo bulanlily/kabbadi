@@ -88,6 +88,7 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
         assertThat(controller.previousRunningBalance("01/15-16"), equalTo(new PreviousInvoiceRunningBalanceData(invoice1)));
         assertThat(controller.previousRunningBalance("16/11-12"), equalTo(new PreviousInvoiceRunningBalanceData(invoice2)));
         assertThat(controller.previousRunningBalance("123"), equalTo(new PreviousInvoiceRunningBalanceData(new Invoice())));
+        assertThat(controller.previousRunningBalance("01/1-1"), equalTo(new PreviousInvoiceRunningBalanceData(null)));
     }
 
     private InvoiceController buildInvoiceController(InvoiceService invoiceService) {

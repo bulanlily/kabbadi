@@ -28,12 +28,13 @@ public class AddFinanceInvoicePage extends BasePage{
     }
 
     private void fillFormWith(InvoiceForm invoiceForm) {
-        Map<String, String> fields = invoiceForm.getFields();
+        Map<String, Object> fields = invoiceForm.getFields();
         for (String fieldName : fields.keySet()) {
-            fillFieldWith(fieldName, fields.get(fieldName));
+            fillFieldWith(fieldName, fields.get(fieldName)+"");
         }
         driver.findElement(By.cssSelector("input[name=submit]")).click();
     }
+
 
     public AddFinanceInvoicePage fillFieldWith(String fieldName, String fieldValue) {
         driver.findElement(By.cssSelector("input[name=" + fieldName + "]")).sendKeys(fieldValue);

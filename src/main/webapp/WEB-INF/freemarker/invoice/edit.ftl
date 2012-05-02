@@ -17,6 +17,8 @@
     <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
     <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    <script src="/kabbadi/static/js/invoice/edit.js" ></script>
+
     <style type="text/css">
         body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -27,23 +29,6 @@
         margin-bottom:5px;
         }
     </style>
-    <script type="text/javascript">
-        $(function () {
-        var redirectTo = $("#redirectToTab");
-        redirectTo.val((window.location.hash + "").replace("#", ""));
-
-        $('a[data-toggle="tab"]').on('shown', function (e) {
-        redirectTo.val($(e.target).attr("href").replace("#", ""));
-        });
-
-        $.datepicker.setDefaults({
-        dateFormat: 'dd/mm/yy'
-        });
-
-        $(".defaultDatepicker").datepicker( );
-
-        });
-    </script>
 
 </head>
 <body>
@@ -215,6 +200,12 @@
         <div class="span3">
             <label for="runningBalance">Running Balance</label>
             <input name="runningBalance" value="${invoice.runningBalance!}"/>
+            <p class="help-block hide" id="previous_matched_bond_number">
+                <strong>Previous Bond#:</strong>
+                <span id="previous_bond_number"></span>
+                <a href="#" id="remove_previous_bond_number"> x</a>
+                <span class="hide" id="previous_bond_value"></span>
+            </p>
         </div>
 
         <div class="span3">
@@ -315,30 +306,6 @@
 <hr/>
 
 </form>
-<script type="text/javascript">
-    var frmValidator = new Validator("newInvoiceForm");
-    frmValidator.addValidation("invoiceNumber", "req", "Please enter the invoice number");
-    frmValidator.addValidation("foreignValue.amount","numeric","Please enter a number");
-    frmValidator.addValidation("amountSTPIApproval","numeric","Please enter a number");
-    frmValidator.addValidation("assessableValueInINR","numeric","Please enter a number");
-    frmValidator.addValidation("CIFValueInINR","numeric","Please enter a number");
-    frmValidator.addValidation("cgApprovedInINR","numeric","Please enter a number");
-    frmValidator.addValidation("dutyExempt","numeric","Please enter a number");
-    frmValidator.addValidation("twentyFivePercentDF","numeric","Please enter a number");
-    frmValidator.addValidation("dutyForgone","numeric","Please enter a number");
-    frmValidator.addValidation("quantity","numeric","Please enter a number");
-    frmValidator.addValidation("openingPurchaseValueAsOnApril01","numeric","Please enter a number");
-    frmValidator.addValidation("additionsDuringTheYear","numeric","Please enter a number");
-    frmValidator.addValidation("deletionsDuringTheYear","numeric","Please enter a number");
-    frmValidator.addValidation("dateOfInvoice", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
-    frmValidator.addValidation("dateOfCommissioning", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid  date");
-    frmValidator.addValidation("bondDate", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
-    frmValidator.addValidation("billOfEntryDate", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
-    frmValidator.addValidation("dateOfArrival", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
-    frmValidator.EnableFocusOnError(true);
-    frmValidator.EnableOnPageErrorDisplay();
-    frmValidator.EnableMsgsTogether();
-</script>
 </div>
 </body>
 </html>
