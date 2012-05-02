@@ -64,7 +64,7 @@
                             <td class="description">${invoice.descriptionOfGoods!}</td>
                             <td>
                                 <span class="btn btn-info btn-mini">
-                                    <a href="edit/${invoice.invoice_id}">EDIT</a>
+                                    <a href="<@spring.url '/invoice/${invoice.invoice_id}/edit'/>">EDIT</a>
                                 </span>
                                 <span class="btn btn-info btn-mini">
                                     <a href="<@spring.url '/invoice/${invoice.invoice_id}'/>">VIEW</a>
@@ -79,7 +79,7 @@
         <div id="finance" class="tab-pane fade">
 
         <div class="page-header" align="right">
-                        <a href="<@spring.url "/invoice/create#finance"/>" class="btn btn-inverse" id="finance_add_invoice">Add New</a>
+                        <a href="<@spring.url '/invoice/create#finance'/>" class="btn btn-inverse" id="finance_add_invoice">Add New</a>
                         <button href="#" class="btn btn-inverse">Generate Report</button>
                     </div>
 
@@ -120,7 +120,7 @@
                     <td>${invoice.location!}</td>
                         <td>
                             <span class="btn btn-info btn-mini">
-                                <a href="edit/${invoice.invoice_id}#finance">EDIT</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/edit#finance'/>">EDIT</a>
                             </span>
                             <span class="btn btn-info btn-mini">
                                 <a href="<@spring.url '/invoice/${invoice.invoice_id}#finance'/>">VIEW</a>
@@ -153,7 +153,7 @@
                     <td colspan="7" style="font-weight:bold;">${invoice.invoiceNumber}</td>
                     <td>
                         <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/create'/>">&nbsp;&nbsp; Add Assets &nbsp;</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/create'/>">Add Assets</a>
                         </span>
                     </td>
                 </tr>
@@ -175,7 +175,7 @@
                                 <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/${asset.assetNumber!}/edit'/>">EDIT</a>
                             </span>
                             <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/asset/${asset.assetNumber}'/>">VIEW</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/${asset.assetNumber!}'/>">VIEW</a>
                             </span>
 
                     </td>

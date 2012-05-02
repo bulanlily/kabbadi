@@ -118,12 +118,14 @@
                 <input name="maintenanceExpiration" class="defaultDatepicker" type="date" value="${asset.maintenanceExpiration!}"/>
                 <div class='error_div' id='newAssetForm_maintenanceExpiration_errorloc'></div>
             </div>
+        </div>
+
+        <div class="row">
             <div class="span3">
                 <br/>
                 <input type="submit" name="submit" value="Submit" class="btn btn-primary"/>
                 <a href="<@spring.url '/invoice/list#is'/>"><input class="btn" type="button" value="Cancel"/></a>
             </div>
-
         </div>
 
         <br/>

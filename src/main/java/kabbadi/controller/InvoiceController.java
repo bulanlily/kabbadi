@@ -51,7 +51,7 @@ public class InvoiceController {
         return editPage(new Invoice());
     }
 
-    @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
     public ModelAndView edit(@PathVariable("id") Integer id) {
         return editPage(invoiceService.get(id));
     }
