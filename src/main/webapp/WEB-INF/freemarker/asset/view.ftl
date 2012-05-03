@@ -40,8 +40,6 @@
 
         </tr>
         <tr>
-
-        <tr>
             <td>Registered to</td>
             <td>${asset.registeredTo!}</td>
         </tr>
@@ -78,7 +76,7 @@
             <td>${asset.leasingExpiration!}</td>
         </tr>
         <tr>
-            <td>model name</td>
+            <td>Model Name</td>
             <td>${asset.modelName!}</td>
 
         </tr>

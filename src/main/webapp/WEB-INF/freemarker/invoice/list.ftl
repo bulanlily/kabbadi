@@ -4,6 +4,13 @@
 <#setting number_format="computer">
 
 <@layout.template 'List Invoices' >
+    <script type="text/javascript">
+        $(function () {
+            $('input#admin_search').quicksearch('#admin table tbody tr');
+            $('input#finance_search').quicksearch('#finance table tbody tr');
+            $('input#is_search').quicksearch('#is table tbody tr');
+        });
+    </script>
 <div class="tabbable">
     <ul class="nav nav-tabs" id="tab" align="right">
         <li class="active"><a data-toggle="tab" href="#admin">Admin</a></li>
@@ -12,6 +19,12 @@
     </ul>
     <div id="myTabContent" class="tab-content">
         <div id="admin" class="tab-pane fade in active">
+
+            <form action="#" class="span3" align="left">
+                    <input name="search" id="admin_search" type="text" placeholder="Search..."> <span
+                        style="display: none;" class="loading">Loading...</span>
+            </form>
+
             <div class="page-header" align="right">
                 <a href="<@spring.url "/invoice/create"/>" class="btn btn-inverse" id="admin_add_invoice">Add New</a>
                 <button href="#" class="btn btn-inverse" id="admin_generate_report">Generate Report</button>
@@ -60,6 +73,10 @@
         </div>
         <div id="finance" class="tab-pane fade">
 
+            <form action="#" class="span3" align="left">
+                <input name="search" id="finance_search" type="text" placeholder="Search..."> <span
+                    style="display: none;" class="loading">Loading...</span>
+            </form>
         <div class="page-header" align="right">
                         <a href="<@spring.url "/invoice/create#finance"/>" class="btn btn-inverse" id="finance_add_invoice">Add New</a>
                         <button href="#" class="btn btn-inverse">Generate Report</button>
@@ -114,6 +131,15 @@
         </table>
         </div>
         <div id="is" class="tab-pane fade">
+
+            <div class="row">
+                <form action="#" class="span3" align="left">
+                    <input name="search" id="is_search" type="text" placeholder="Search..."> <span
+                        style="display: none;" class="loading">Loading...</span>
+                </form>
+            </div>
+
+
          <table class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -139,7 +165,7 @@
                 </tr>
                 <#list invoice.assets as asset>
                 <tr id="asset_${asset.assetNumber!}">
-                    <td></td>
+                    <td>${invoice.invoiceNumber}</td>
                     <td>${"${asset.assetNumber!}"?left_pad(4,'0')}</td>
                     <td>${invoice.location!}</td>
                     <td>${asset.status!}</td>
