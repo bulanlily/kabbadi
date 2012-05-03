@@ -55,8 +55,14 @@ public class MigrationIntegrationTest extends IntegrationTest{
         List<String[]> financeListOfTestData = new ArrayList<String[]>();
         adminListOfTestData.add(adminTestData);
         financeListOfTestData.add(financeTestData);
-        List<Map<String, String>> adminMappedEntries = new ColumnMapper(adminHeaders, adminListOfTestData).mappedList();
-        List<Map<String, String>> financeMappedEntries = new ColumnMapper(financeHeaders, financeListOfTestData).mappedList();
+        List<Map<String, String>> adminMappedEntries = null;
+        List<Map<String, String>> financeMappedEntries = null;
+        try {
+            adminMappedEntries = new ColumnMapper(adminHeaders, adminListOfTestData).mappedList();
+            financeMappedEntries = new ColumnMapper(financeHeaders, financeListOfTestData).mappedList();
+        } catch (Exception e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
         List<Map<String, String>>combinedEntries = new InvoiceCreator(adminMappedEntries, financeMappedEntries).createJoinEntry();
         List<String> insertStatements =  new SQLGenerator(combinedEntries).createInsertStatements();
         sessionFactory.getCurrentSession().createSQLQuery("delete from asset; delete from invoice");

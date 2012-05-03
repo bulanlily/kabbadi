@@ -27,14 +27,14 @@ public class SQLGenerator {
         return insertQueries;
     }
 
-    private String createSingleInsertStatement(Integer invoiceNumber, String[] columns, String[] values) {
+    private String createSingleInsertStatement(Integer invoiceId, String[] columns, String[] values) {
         for (int i=0; i<values.length;i++) 
             if (!values[i].matches("((-|\\+)?[0-9]+(\\.[0-9]+)?)+"))
                 values[i] = "'"+values[i]+"'";
-        return String.format("INSERT INTO invoice (invoice_id, %s) VALUES (%d,%s);",
+        return String.format("INSERT INTO invoice (invoice_id, %s) VALUES (%d, %s);",
 
                 StringUtils.join(columns, ", "),
-                invoiceNumber,
+                invoiceId,
                 StringUtils.join(values, ", "));
     }
 }
