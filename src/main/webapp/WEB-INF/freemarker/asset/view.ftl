@@ -21,17 +21,17 @@
         </thead>
         <tbody>
         <tr>
-            <td>Asset No</td>
+            <td>Asset #</td>
             <td>${"${asset.assetNumber!}"?left_pad(4,'0')}</td>
 
         </tr>
         <tr>
-            <td>PO Number</td>
+            <td>PO #</td>
             <td>${asset.invoice.purchaseOrderNumber!}</td>
 
         </tr>
         <tr>
-            <td>Invoice Number</td>
+            <td>Invoice #</td>
             <td>${asset.invoice.invoiceNumber!}</td>
         </tr>
         <tr>
