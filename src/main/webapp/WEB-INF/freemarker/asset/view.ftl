@@ -21,8 +21,8 @@
         </thead>
         <tbody>
         <tr>
-            <td>Asset Number</td>
-            <td>${asset.assetNumber!}</td>
+            <td>Asset No</td>
+            <td>${"${asset.assetNumber!}"?left_pad(4,'0')}</td>
 
         </tr>
         <tr>

@@ -5,7 +5,6 @@ import forms.InvoiceForm;
 import org.apache.commons.lang.time.DateFormatUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.Date;
 import java.util.Map;
@@ -17,7 +16,7 @@ public class AddAdminInvoicePage extends BasePage {
 
     public AddAdminInvoicePage(WebDriver driver) {
         super(driver);
-        assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
+        assertThat(driver.getTitle(), containsString("Add/Edit Invoice"));
     }
 
     public ListAdminInvoicesPage fillFormWithValidDetailsAndSubmit(InvoiceForm invoiceForm) {
@@ -60,7 +59,7 @@ public class AddAdminInvoicePage extends BasePage {
     }
 
     public AddAdminInvoicePage confirmAddInvoicePage() {
-        assertThat(getTitle(), containsString("Add/Edit invoice"));
+        assertThat(getTitle(), containsString("Add/Edit Invoice"));
         return this;
     }
 }
