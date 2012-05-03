@@ -35,7 +35,6 @@ public class DataMigrator {
     };
 
     final static private String[] financeHeaders = new String[] {
-            "",
             "dateOfInvoice",
             "invoiceNumber",
             "dateOfCommissioning",
@@ -45,7 +44,6 @@ public class DataMigrator {
             "quantity",
             "location",
             "identificationNumber",
-            "type",
             "grossBlock",
             "deletion(2001-12)",
             "totalPurchaseValueOn31-Mar-11",

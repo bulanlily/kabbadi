@@ -1,9 +1,5 @@
 package kabbadi.migration;
 
-import au.com.bytecode.opencsv.CSVReader;
-
-import java.io.File;
-import java.io.FileReader;
 import java.util.*;
 
 public class ColumnMapper {
@@ -37,7 +33,6 @@ public class ColumnMapper {
             "quantity",
             "location",
             "identificationNumber",
-            "type",
             "deletionsDuringTheYear",
             "costCentre"
     };
@@ -55,7 +50,10 @@ public class ColumnMapper {
         ArrayList<Map<String, String >> mappedList = new ArrayList<Map<String, String>>();
         for(String[] entry :entries){
             if (headers.length != entry.length)
+            {
+                System.out.println(headers.length +","+entry.length);
                 throw new Exception("");
+            }
             HashMap<String, String> mappedEntry = new HashMap<String, String>();
             for(int index = 0; index < entry.length; index++){
                 if(Arrays.asList(validInvoiceHeaders).contains(headers[index]))
