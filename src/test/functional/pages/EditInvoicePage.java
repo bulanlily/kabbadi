@@ -11,7 +11,7 @@ public class EditInvoicePage extends BasePage {
 
     protected EditInvoicePage(WebDriver driver) {
         super(driver);
-        assertThat(driver.getTitle(), equalTo("Add/Edit invoice | Kabbadi"));
+        assertThat(driver.getTitle(), equalTo("Add/Edit Invoice | Kabbadi"));
     }
 
     public ListAdminInvoicesPage submit(InvoiceForm invoiceForm) {
