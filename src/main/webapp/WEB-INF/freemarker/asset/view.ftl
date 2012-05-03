@@ -78,7 +78,7 @@
             <td>${asset.leasingExpiration!}</td>
         </tr>
         <tr>
-            <td>model name</td>
+            <td>Model Name</td>
             <td>${asset.modelName!}</td>
 
         </tr>
