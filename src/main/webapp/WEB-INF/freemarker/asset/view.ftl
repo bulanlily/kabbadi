@@ -21,17 +21,17 @@
         </thead>
         <tbody>
         <tr>
-            <td>Asset #</td>
+            <td>Asset No</td>
             <td>${"${asset.assetNumber!}"?left_pad(4,'0')}</td>
 
         </tr>
         <tr>
-            <td>PO #</td>
+            <td>PO Number</td>
             <td>${asset.invoice.purchaseOrderNumber!}</td>
 
         </tr>
         <tr>
-            <td>Invoice #</td>
+            <td>Invoice Number</td>
             <td>${asset.invoice.invoiceNumber!}</td>
         </tr>
         <tr>
@@ -50,19 +50,18 @@
 
         </tr>
 
+
         <tr>
             <td>Status</td>
             <td>${asset.status!}</td>
+
         </tr>
-
-        <tr>
-            <td>Is Leased (Y/N)</td>
-            <#if asset.leased!>
-                <td>Yes</td>
-                <#else/>
-                    <td>No</td>
-
-            </#if>
+        <td>Is Leased (Y/N)</td>
+        <#if asset.leased!>
+            <td>Yes</td>
+            <#else>
+                <td>No</td>
+        </#if>
         </tr>
         <tr>
             <td>Lease Company</td>
