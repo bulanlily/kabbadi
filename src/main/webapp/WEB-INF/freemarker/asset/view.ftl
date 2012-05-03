@@ -50,11 +50,7 @@
 
         </tr>
 
-        <tr>
-            <td>Office Registered to</td>
-            <td>${asset.registeredTo!}</td>
 
-        </tr>
         <tr>
             <td>Status</td>
             <td>${asset.status!}</td>
