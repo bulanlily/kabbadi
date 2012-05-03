@@ -1,5 +1,6 @@
 package kabbadi.migration;
 
+import kabbadi.migration.ColumnMapper;
 import org.junit.Test;
 
 import java.util.ArrayList;
