@@ -43,14 +43,14 @@ public class ListAdminInvoicesPage extends BasePage {
     public AddFinanceInvoicePage goToAddFinancePage() {
         driver.findElement(By.cssSelector("a[href='#finance']")).click();
         driver.findElement(By.id("finance_add_invoice")).click();
-        assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
+        assertThat(driver.getTitle(), containsString("Add/Edit Invoice"));
         return new AddFinanceInvoicePage(driver);
     }
 
     private AddAdminInvoicePage addInvoiceOf(String role) {
         driver.findElement(By.cssSelector("a[href='#" + role + "']")).click();
         driver.findElement(By.id(role + "_add_invoice")).click();
-        assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
+        assertThat(driver.getTitle(), containsString("Add/Edit Invoice"));
         return new AddAdminInvoicePage(driver);
     }
 
