@@ -40,8 +40,6 @@
 
         </tr>
         <tr>
-
-        <tr>
             <td>Registered to</td>
             <td>${asset.registeredTo!}</td>
         </tr>
