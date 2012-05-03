@@ -28,7 +28,7 @@ public class InvoiceTestBuilder {
     private String status = "status of order";
     private String remarks = "important remarks";
     private String purchaseOrderNumber = "PO#1234";
-    private String location = "Bangalore";
+    private String location = "Pune";
     private String dateOfInvoice = "04/01/2012";
     private String supplierNameAndAddress = "My supplier";
     private double openingPurchaseValueAsOnApril01 = 508.00;

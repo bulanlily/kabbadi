@@ -1,5 +1,6 @@
 package pages;
 
+import config.Configuration;
 import forms.InvoiceForm;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,8 +22,9 @@ public class ViewInvoiceDetailsPage extends BasePage {
         verifyInvoiceDataIsOnTable(invoiceForm, "Finance");
     }
 
-    public void confirmAdminInvoiceData(InvoiceForm invoice) {
+    public ViewInvoiceDetailsPage confirmAdminInvoiceData(InvoiceForm invoice) {
         verifyInvoiceDataIsOnTable(invoice, "Admin");
+        return this;
     }
 
     private void verifyInvoiceDataIsOnTable(InvoiceForm invoice, String role) {
@@ -35,5 +37,10 @@ public class ViewInvoiceDetailsPage extends BasePage {
         for (Object value : fields.values()) {
             assertThat(tableText, containsString(value+""));
         }
+    }
+
+    public ListAdminInvoicesPage returnToAdminListPage() {
+        driver.get(Configuration.KABBADI_URL);
+        return new ListAdminInvoicesPage(driver);
     }
 }

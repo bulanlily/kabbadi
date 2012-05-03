@@ -1,21 +1,9 @@
-<#import "/spring.ftl" as spring/>
+<#import "/application.ftl" as layout />
+<#import "/spring.ftl" as spring />
 <#setting datetime_format="dd/MM/yyyy">
 <#setting number_format="computer">
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Add/Edit invoice | Kabbadi</title>
-    <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet"/>
-    <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
-    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
-          type="text/css"/>
-    <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/gen_validatorv4.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/jquery.datePicker.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/jquery.ui.datepicker.validation.min.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
-    <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+<@layout.template 'Add/Edit asset' >
     <script type="text/javascript">
         $(function () {
         var redirectTo = $("#redirectToTab");
@@ -33,40 +21,8 @@
         });
 
     </script>
-    <style type="text/css">
-        body {
-        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
-        }
 
-        div.error_div{
-        color: red;
-        margin-bottom:5px;
-        }
-
-    </style>
-
-</head>
-<body>
-<div class="navbar navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-            <a class="brand" href="<@spring.url '/invoice/list'/>">Kabbadi</a>
-
-        </div>
-    </div>
-</div>
-
-
-
-
-<div class="container" position="relative">
-<h1>Add/Edit Asset of Invoice ${asset.invoice.invoiceNumber!}</h1>
+    <h1>Add/Edit Asset of Invoice ${asset.invoice.invoiceNumber!}</h1>
 
 <p>* indicates mandatory fields</p>
 <br/>
@@ -139,6 +95,4 @@
         frmValidator.EnableMsgsTogether();
 
     </script>
-</div>
-</body>
-</html>
+</@layout.template>
