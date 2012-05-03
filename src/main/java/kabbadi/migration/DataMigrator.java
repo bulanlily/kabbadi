@@ -85,7 +85,7 @@ public class DataMigrator {
         
         List<String> insertStatements =  new SQLGenerator(combinedEntries).createInsertStatements();
 
-        FileWriter sqlOutput = new FileWriter("src/main/resources/import.sql");
+        FileWriter sqlOutput = new FileWriter("src/main/resources/import_migrated_data.sql");
         BufferedWriter sqlWriter = new BufferedWriter(sqlOutput);
         sqlWriter.write(StringUtils.join(insertStatements, "\n"));
         sqlWriter.close();

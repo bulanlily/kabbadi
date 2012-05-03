@@ -22,17 +22,19 @@ public class SQLGenerator {
             for(int index = 0; index < keys.length; index++)
                 values[index] = entry.get(keys[index]);
            
-        insertQueries.add(createSingleInsertStatement(keys, values));    
+        insertQueries.add(createSingleInsertStatement(insertQueries.size(),keys, values));
         }
         return insertQueries;
     }
 
-    private String createSingleInsertStatement(String[] columns, String[] values) {
+    private String createSingleInsertStatement(Integer invoiceNumber, String[] columns, String[] values) {
         for (int i=0; i<values.length;i++) 
             if (!values[i].matches("((-|\\+)?[0-9]+(\\.[0-9]+)?)+"))
                 values[i] = "'"+values[i]+"'";
-        return String.format("INSERT INTO invoice (%s) VALUES (%s);",
+        return String.format("INSERT INTO invoice (invoice_id, %s) VALUES (%d,%s);",
+
                 StringUtils.join(columns, ", "),
+                invoiceNumber,
                 StringUtils.join(values, ", "));
     }
 }
