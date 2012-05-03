@@ -1,6 +1,5 @@
 package kabbadi.migration;
 
-import kabbadi.migration.ColumnMapper;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ public class ColumnMapperTest {
         ArrayList<String[]> entries = new ArrayList<String[]>();
         entries.add(new String[] {"1", "2"});
         entries.add(new String[] {"4", "5"});
-        List<Map<String, String>> result = new ColumnMapper(columns, entries).mapedList();
+        List<Map<String, String>> result = new ColumnMapper(columns, entries).mappedList();
         assertThat(result.get(0).get("invoiceNumber"), equalTo("1"));
         assertThat(result.get(1).get("dateOfInvoice"), equalTo("5"));
     }
@@ -31,7 +30,7 @@ public class ColumnMapperTest {
         ArrayList<String[]> entries = new ArrayList<String[]>();
         entries.add(new String[] {"1", "2", "3"});
         entries.add(new String[] {"4", "5", "6"});
-        List<Map<String, String>> result = new ColumnMapper(header, entries).mapedList();
+        List<Map<String, String>> result = new ColumnMapper(header, entries).mappedList();
         assertThat(result.get(0).get("dummyHeader"), equalTo(null));
         
     }

@@ -78,8 +78,8 @@ public class DataMigrator {
         List<String[]> adminEntries = csvAdminReader.readAll();
         List<String[]> financeEntries = csvFinanceReader.readAll();
         
-        List<Map<String, String>> adminMappedEntries = new ColumnMapper(adminHeaders, adminEntries).mapedList();
-        List<Map<String, String>> financeMappedEntries = new ColumnMapper(financeHeaders, financeEntries).mapedList();
+        List<Map<String, String>> adminMappedEntries = new ColumnMapper(adminHeaders, adminEntries).mappedList();
+        List<Map<String, String>> financeMappedEntries = new ColumnMapper(financeHeaders, financeEntries).mappedList();
         
         List<Map<String, String>>combinedEntries = new InvoiceCreator(adminMappedEntries, financeMappedEntries).createJoinEntry();
         

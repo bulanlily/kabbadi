@@ -1,6 +1,5 @@
 package migration;
 
-import au.com.bytecode.opencsv.CSVReader;
 import integration.IntegrationTest;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.db.GenericRepository;
@@ -8,18 +7,11 @@ import kabbadi.migration.ColumnMapper;
 import kabbadi.migration.InvoiceCreator;
 import kabbadi.migration.SQLGenerator;
 import kabbadi.service.InvoiceService;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
-import org.hibernate.Hibernate;
-import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.util.*;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -63,8 +55,8 @@ public class MigrationIntegrationTest extends IntegrationTest{
         List<String[]> financeListOfTestData = new ArrayList<String[]>();
         adminListOfTestData.add(adminTestData);
         financeListOfTestData.add(financeTestData);
-        List<Map<String, String>> adminMappedEntries = new ColumnMapper(adminHeaders, adminListOfTestData).mapedList();
-        List<Map<String, String>> financeMappedEntries = new ColumnMapper(financeHeaders, financeListOfTestData).mapedList();
+        List<Map<String, String>> adminMappedEntries = new ColumnMapper(adminHeaders, adminListOfTestData).mappedList();
+        List<Map<String, String>> financeMappedEntries = new ColumnMapper(financeHeaders, financeListOfTestData).mappedList();
         List<Map<String, String>>combinedEntries = new InvoiceCreator(adminMappedEntries, financeMappedEntries).createJoinEntry();
         List<String> insertStatements =  new SQLGenerator(combinedEntries).createInsertStatements();
         sessionFactory.getCurrentSession().createSQLQuery("delete from asset; delete from invoice");
