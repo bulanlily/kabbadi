@@ -21,8 +21,8 @@
         <div id="admin" class="tab-pane fade in active">
 
             <form action="#" class="span3" align="left">
-                    <input name="search" id="admin_search" type="text" placeholder="Search..."> <span
-                        style="display: none;" class="loading">Loading...</span>
+                <input name="search" id="admin_search" type="text" placeholder="Search...">
+                <span style="display: none;" class="loading">Loading...</span>
             </form>
 
             <div class="page-header" align="right">
@@ -74,8 +74,8 @@
         <div id="finance" class="tab-pane fade">
 
             <form action="#" class="span3" align="left">
-                <input name="search" id="finance_search" type="text" placeholder="Search..."> <span
-                    style="display: none;" class="loading">Loading...</span>
+                <input name="search" id="finance_search" type="text" placeholder="Search...">
+                <span style="display: none;" class="loading">Loading...</span>
             </form>
         <div class="page-header" align="right">
                         <a href="<@spring.url "/invoice/create#finance"/>" class="btn btn-inverse" id="finance_add_invoice">Add New</a>
@@ -134,8 +134,8 @@
 
             <div class="row">
                 <form action="#" class="span3" align="left">
-                    <input name="search" id="is_search" type="text" placeholder="Search..."> <span
-                        style="display: none;" class="loading">Loading...</span>
+                    <input name="search" id="is_search" type="text" placeholder="Search...">
+                    <span style="display: none;" class="loading">Loading...</span>
                 </form>
             </div>
 
@@ -158,15 +158,15 @@
                 <tr id="is_invoice_${invoice.invoiceNumber}">
                     <td colspan="7" style="font-weight:bold;">${invoice.invoiceNumber}</td>
                     <td>
-                        <span class="btn btn-info btn-mini">
-                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/create'/>">Add Assets</a>
+                        <span class="btn btn-info btn-mini" style="width:67px">
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/create'/>" >Add Assets</a>
                         </span>
                     </td>
                 </tr>
                 <#list invoice.assets as asset>
                 <tr id="asset_${asset.assetNumber!}">
                     <td>${invoice.invoiceNumber}</td>
-                    <td>${asset.assetNumber!}</td>
+                    <td>${"${asset.assetNumber!}"?left_pad(4,'0')}</td>
                     <td>${invoice.location!}</td>
                     <td>${asset.status!}</td>
                     <#if asset.leased!>

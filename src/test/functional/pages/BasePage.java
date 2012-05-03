@@ -2,7 +2,6 @@ package pages;
 
 import config.Configuration;
 import forms.InvoiceForm;
-import org.h2.util.New;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

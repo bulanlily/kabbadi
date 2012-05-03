@@ -21,7 +21,6 @@ public class Asset {
     private Integer assetNumber;
 
     private String modelName;
-    private String registeredOffice;
     private String serialNumber;
     private String registeredTo;
     private String status;
