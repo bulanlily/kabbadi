@@ -1,4 +1,4 @@
-<#import "/application.ftl" as layout />
+<#import "/application.ftl" as layout/>
 <#import "/spring.ftl" as spring />
 <#setting datetime_format="dd/MM/yyyy">
 <#setting number_format="computer">
@@ -24,12 +24,17 @@
         <input name="purchaseOrderNumber" value="${invoice.purchaseOrderNumber!}"/>
     </div>
     <div class="span3">
+<<<<<<< HEAD
+        <label for="locations">Location</label>
+        <@spring.formSingleSelect "invoice.location", locations, ""/>
+=======
         <label for="location">Location</label>
                 <select name="location" id="location" value="${invoice.location!}">
                    <option value="Bangalore">Bangalore</option>
                    <option value="Pune">Pune</option>
                    <option value="Chennai">Chennai</option>
                </select>
+>>>>>>> 67394bc2333b22475fc680f0591a9d5f3000d489
     </div>
     <div class="span3">
         <label for="descriptionOfGoods">Description of Goods</label>
