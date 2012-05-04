@@ -10,6 +10,7 @@ import java.util.List;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.MockitoAnnotations.Mock;
 import static org.mockito.MockitoAnnotations.initMocks;
 
@@ -45,6 +46,13 @@ public class InvoiceServiceTest {
         List<Invoice> invoiceList = invoiceService.list();
         verify(repository).list();
         assertThat(invoiceList, equalTo(repository.list()));
+    }
+
+    @Test
+    public void get_invoice_by_location(){
+        String location = "Banglore";
+        List<Invoice> invoiceList = invoiceService.findByLocation(location);
+        verify(repository).findAll("location",location);
     }
 
 }

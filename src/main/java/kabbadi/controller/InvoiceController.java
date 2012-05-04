@@ -13,11 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.RequestToViewNameTranslator;
 import org.springframework.web.servlet.view.RedirectView;
 
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/invoice")
@@ -58,16 +60,12 @@ public class InvoiceController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
-        ModelAndView modelAndView = new ModelAndView("invoice/list");
-        modelAndView.addObject("invoices", invoiceService.list());
-        return modelAndView;
+        return new ModelAndView("invoice/list").addObject("invoices", invoiceService.list());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView viewDetails(@PathVariable("id") Integer id) {
-        ModelAndView modelAndView = new ModelAndView("invoice/view");
-        modelAndView.addObject("invoice", invoiceService.get(id));
-        return modelAndView;
+        return new ModelAndView("invoice/view").addObject("invoice", invoiceService.get(id));
     }
 
     @RequestMapping(value = "/previousRunningBalance", method = RequestMethod.GET)
@@ -81,5 +79,11 @@ public class InvoiceController {
     private ModelAndView editPage(Invoice invoice) {
         return new ModelAndView("invoice/edit", "invoice", invoice)
                 .addObject("importTypes", ImportType.values());
+    }
+
+    @RequestMapping(value = "/report/admin", method = RequestMethod.GET)
+    public ModelAndView generateReport(@RequestParam("location") String location) {
+        List<Invoice> invoiceList = invoiceService.findByLocation(location);
+        return new ModelAndView("invoice/report/admin").addObject("invoiceList", invoiceList);
     }
 }
