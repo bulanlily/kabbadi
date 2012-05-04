@@ -56,12 +56,13 @@
             <td>${asset.status!}</td>
 
         </tr>
-        <td>Is Leased (Y/N)</td>
-        <#if asset.leased!>
-            <td>Yes</td>
-            <#else>
-                <td>No</td>
-        </#if>
+        <tr>
+            <td>Is Leased (Y/N)</td>
+            <#if asset.leased!>
+                <td>Yes</td>
+                <#else>
+                    <td>No</td>
+            </#if>
         </tr>
         <tr>
             <td>Lease Company</td>
