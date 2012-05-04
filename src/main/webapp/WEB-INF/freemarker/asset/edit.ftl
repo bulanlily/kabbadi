@@ -73,7 +73,6 @@
 </form>
 
 
-<script src="/kabbadi/static/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="/kabbadi/static/js/asset/edit.js" ></script>
 <script>kabbadi.asset.initialize();</script>
         </@layout.template>

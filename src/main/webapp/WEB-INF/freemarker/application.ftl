@@ -14,7 +14,8 @@
         <script src="/kabbadi/static/js/bootstrap-tab.js" type="text/javascript"></script>
         <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
         <script src="/kabbadi/static/js/quicksearch.js" type="text/javascript"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+        <script src="/kabbadi/static/js/jquery.validate.min.js" type="text/javascript"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
 
         <style type="text/css">
             body {

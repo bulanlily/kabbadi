@@ -4,9 +4,6 @@
 <#setting number_format="computer">
 
 <@layout.template 'Add/Edit Invoice' >
-<script src="/kabbadi/static/js/gen_validatorv4.js" type="text/javascript"></script>
-<script src="/kabbadi/static/js/invoice/edit.js" ></script>
-
 
 <h1>Add/Edit Invoice</h1>
 
@@ -277,4 +274,7 @@
 <hr/>
 
 </form>
+
+<script src="/kabbadi/static/js/invoice/edit.js" ></script>
+<script>kabbadi.invoice.edit.initialize();</script>
 </@layout.template>
