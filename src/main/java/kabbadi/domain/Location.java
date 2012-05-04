@@ -1,11 +1,13 @@
 package kabbadi.domain;
 
-/**
- * Created with IntelliJ IDEA.
- * User: artherg
- * Date: 04/05/12
- * Time: 11:52 AM
- * To change this template use File | Settings | File Templates.
- */
+import lombok.Getter;
+
+@Getter
 public enum Location {
+   BANGALORE("Bangalore"), CHENNAI("Chennai"), PUNE("Pune");
+    private String location;
+
+    Location(String location) {
+        this.location = location;
+    }
 }

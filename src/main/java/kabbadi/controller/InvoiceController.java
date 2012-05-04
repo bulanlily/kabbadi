@@ -1,9 +1,6 @@
 package kabbadi.controller;
 
-import kabbadi.domain.ImportType;
-import kabbadi.domain.Invoice;
-import kabbadi.domain.InvoiceUtils;
-import kabbadi.domain.Money;
+import kabbadi.domain.*;
 import kabbadi.domain.json.PreviousInvoiceRunningBalanceData;
 import kabbadi.service.InvoiceService;
 import kabbadi.spring.util.INRMoneyPropertyEditor;
@@ -78,7 +75,9 @@ public class InvoiceController {
 
     private ModelAndView editPage(Invoice invoice) {
         return new ModelAndView("invoice/edit", "invoice", invoice)
-                .addObject("importTypes", ImportType.values());
+                .addObject("importTypes", ImportType.values())
+                .addObject("locations", Location.values());
+
     }
 
     @RequestMapping(value = "/report/admin", method = RequestMethod.GET)

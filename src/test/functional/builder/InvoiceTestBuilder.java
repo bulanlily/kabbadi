@@ -2,6 +2,7 @@ package builder;
 
 import kabbadi.domain.ImportType;
 import forms.InvoiceForm;
+import kabbadi.domain.Location;
 import kabbadi.domain.Money;
 
 import java.math.BigDecimal;
@@ -28,7 +29,7 @@ public class InvoiceTestBuilder {
     private String status = "status of order";
     private String remarks = "important remarks";
     private String purchaseOrderNumber = "PO#1234";
-    private String location = "Pune";
+    private String location = Location.PUNE.toString();
     private String dateOfInvoice = "04/01/2012";
     private String supplierNameAndAddress = "My supplier";
     private double openingPurchaseValueAsOnApril01 = 508.00;
@@ -135,8 +136,8 @@ public class InvoiceTestBuilder {
         return this;
     }
 
-    public InvoiceTestBuilder withLocation(String location) {
-        this.location = location;
+    public InvoiceTestBuilder withLocation(Location location) {
+        this.location = location.toString();
         return this;
     }
 
