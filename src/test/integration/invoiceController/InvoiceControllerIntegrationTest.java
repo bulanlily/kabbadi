@@ -1,4 +1,4 @@
-package controller;
+package invoiceController;
 
 import integration.IntegrationTest;
 import kabbadi.controller.InvoiceController;

@@ -33,26 +33,29 @@ $(function () {
         }
         });
         $("input[name='amountSTPIApproval'],input[name='cgApprovedInINR']").blur(calculateCurrentRunningBalance);
-
         var frmValidator = new Validator("newInvoiceForm");
             frmValidator.addValidation("invoiceNumber", "req", "Please enter the invoice number");
-            frmValidator.addValidation("foreignValue.amount","numeric","Please enter a number");
-            frmValidator.addValidation("amountSTPIApproval","numeric","Please enter a number");
-            frmValidator.addValidation("assessableValueInINR","numeric","Please enter a number");
-            frmValidator.addValidation("CIFValueInINR","numeric","Please enter a number");
-            frmValidator.addValidation("cgApprovedInINR","numeric","Please enter a number");
-            frmValidator.addValidation("dutyExempt","numeric","Please enter a number");
-            frmValidator.addValidation("twentyFivePercentDF","numeric","Please enter a number");
-            frmValidator.addValidation("dutyForgone","numeric","Please enter a number");
-            frmValidator.addValidation("quantity","numeric","Please enter a number");
-            frmValidator.addValidation("openingPurchaseValueAsOnApril01","numeric","Please enter a number");
-            frmValidator.addValidation("additionsDuringTheYear","numeric","Please enter a number");
-            frmValidator.addValidation("deletionsDuringTheYear","numeric","Please enter a number");
-            frmValidator.addValidation("dateOfInvoice", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
-            frmValidator.addValidation("dateOfCommissioning", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid  date");
-            frmValidator.addValidation("bondDate", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
-            frmValidator.addValidation("billOfEntryDate", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
-            frmValidator.addValidation("dateOfArrival", "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
+            var numericFields = ["foreignValue.amount",
+                                 "amountSTPIApproval",
+                                 "assessableValueInINR",
+                                 "CIFValueInINR",
+                                 "cgApprovedInINR",
+                                 "dutyExempt",
+                                 "twentyFivePercentDF",
+                                 "dutyForgone",
+                                 "quantity",
+                                 "openingPurchaseValueAsOnApril01",
+                                 "additionsDuringTheYear",
+                                 "deletionsDuringTheYear"];
+            var dateFields = ["dateOfInvoice",
+                              "dateOfCommissioning",
+                              "bondDate",
+                              "billOfEntryDate",
+                              "dateOfArrival"];
+            for (var i = 0; i<numericFields.length; i++)
+                frmValidator.addValidation(numericFields[i],"numeric","Please enter a number");
+            for (var i = 0; i<dateFields.length; i++)
+                frmValidator.addValidation(dateFields[i], "regexp=[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}", "Please enter a valid date");
             frmValidator.EnableFocusOnError(true);
             frmValidator.EnableOnPageErrorDisplay();
             frmValidator.EnableMsgsTogether();
