@@ -25,7 +25,7 @@
     </div>
     <div class="span3">
         <label for="location">Location</label>
-                <select name="location" value="${invoice.location!}">
+                <select name="location" id="location" value="${invoice.location!}">
                    <option value="Bangalore">Bangalore</option>
                    <option value="Pune">Pune</option>
                    <option value="Chennai">Chennai</option>
@@ -84,7 +84,7 @@
         </div>
         <div class="span3">
             <label for="bondDate">Bond Date (dd/mm/yyyy)</label>
-            <input name="bondDate" class="defaultDatepicker" type="date" value="${invoice.bondDate!}"/>
+            <input name="bondDate" class="defaultDatepicker"  value="${invoice.bondDate!}"/>
 
             <div class='error_div' id='newInvoiceForm_bondDate_errorloc'></div>
         </div>
@@ -97,7 +97,7 @@
 
         <div class="span3">
             <label for="billOfEntryDate">Bill of Entry Date (dd/mm/yyyy)</label>
-            <input name="billOfEntryDate" class="defaultDatepicker" type="date"
+            <input name="billOfEntryDate" class="defaultDatepicker" 
                    value="${invoice.billOfEntryDate!}"/>
 
             <div class='error_div' id='newInvoiceForm_billOfEntryDate_errorloc'></div>
@@ -276,5 +276,8 @@
 </form>
 
 <script src="/kabbadi/static/js/invoice/edit.js" ></script>
-<script>kabbadi.invoice.edit.initialize();</script>
+<script>
+    kabbadi.invoice.edit.initialize();
+    $("#location").val("${invoice.location!}");
+</script>
 </@layout.template>
