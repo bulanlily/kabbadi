@@ -9,6 +9,7 @@ import java.util.Map;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
 public class ListFinanceInvoicesPage extends BasePage{
@@ -33,5 +34,12 @@ public class ListFinanceInvoicesPage extends BasePage{
     public ListISInvoicesPage goToListISInvoicesPage() {
         driver.findElement(By.linkText("IS")).click();
         return new ListISInvoicesPage(driver);
+    }
+
+    public ListFinanceInvoicesPage searchForInvoiceInListPage(InvoiceForm invoice) {
+        String invoiceNumber = invoice.getFields().get("invoiceNumber").toString();
+        driver.findElement(By.id("finance_search")).sendKeys(invoiceNumber);
+        assertTrue("search did not display expected result", driver.findElement(By.id("finance_invoice_" + invoiceNumber)).isDisplayed());
+        return this;
     }
 }

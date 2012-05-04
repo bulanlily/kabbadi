@@ -6,15 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.Map;
-
 import static org.junit.Assert.assertThat;
 import static org.junit.matchers.JUnitMatchers.containsString;
 public class AddFinanceInvoicePage extends BasePage {
 
     protected AddFinanceInvoicePage(WebDriver driver) {
         super(driver);
-        assertThat(driver.getTitle(), containsString("Add/Edit invoice"));
+        assertThat(driver.getTitle(), containsString("Add/Edit Invoice"));
     }
 
     public ListFinanceInvoicesPage submit(InvoiceForm invoiceForm) {
