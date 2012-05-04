@@ -25,7 +25,7 @@ public class FinanceInvoicesTest extends BaseTest {
                 .loginWithValidCredentials()
                 .goToAddFinancePage()
                 .submitInvalid(newInvoice)
-                .checkErrorMessage("Please enter a number");
+                .checkErrorMessage("Please enter a valid number");
     }
 
 }

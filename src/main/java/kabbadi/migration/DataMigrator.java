@@ -16,7 +16,7 @@ public class DataMigrator {
             "STPIApprovalNumberAndDate",
             "descriptionOfGoods",
             "currency",
-            "foreignCurrency",
+            "foreignValue",
             "amountSTPIApproval",
             "CIFValueInINR",
             "bondNumber",

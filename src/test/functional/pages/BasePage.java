@@ -5,7 +5,6 @@ import forms.InvoiceForm;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.Map;
 
@@ -33,7 +32,7 @@ public class BasePage {
     protected void fillFields(String fieldName, String fieldValue) {
         WebElement field = driver.findElement(By.name(fieldName));
         if (field.getTagName().contains("option"))
-            new Select(field).selectByVisibleText(fieldValue);
+            driver.findElement(By.id(fieldName)).findElement(By.name(fieldValue)).submit();
         else
             field.sendKeys(fieldValue);
     }
