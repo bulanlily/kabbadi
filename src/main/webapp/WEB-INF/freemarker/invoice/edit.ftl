@@ -121,8 +121,12 @@
     </div>
     <div class="row">
         <div class="span3">
-            <label for="importTypes">Import Types</label>
-            <@spring.formSingleSelect "invoice.importType", importTypes, ""/>
+            <label for="importType">Import Types</label>
+            <select name="importType">
+                <#list importTypes as importType>
+                    <option value="${importType.toString()}" >${importType.getDescription()}</option>
+                </#list>
+            </select>
         </div>
         <div class="span3">
             <label for="CIFValueInINR">CIF Value In INR</label>
