@@ -7,18 +7,17 @@ import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.not;
-import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
 public class AssetRepositoryIntegrationTest extends IntegrationTest {
 
     @Autowired
     private SessionFactory sessionFactory;
-
     @Autowired
     private GenericRepository<Asset> assetRepository;
+
+
 
     @Test
     public void should_generate_asset_number_for_new_asset_on_save() {
@@ -45,7 +44,7 @@ public class AssetRepositoryIntegrationTest extends IntegrationTest {
         assertThat(assetRepository.list().size(), equalTo(2));
         assertThat(asset.getAssetNumber(), not(equalTo(1)));
     }
-    
+
     private void executeSQL(String query){
         sessionFactory.getCurrentSession().createSQLQuery(query).executeUpdate();
     }

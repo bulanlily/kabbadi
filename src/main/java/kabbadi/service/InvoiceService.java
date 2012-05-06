@@ -10,45 +10,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
 
 @Service
 @NoArgsConstructor
-public class InvoiceService {
-
-    private GenericRepository<Invoice> invoiceRepository;
+public class InvoiceService extends GenericService<Invoice>{
 
     @Autowired
-    public InvoiceService(@Qualifier("invoiceRepository") GenericRepository<Invoice> invoiceRepository) {
-        this.invoiceRepository = invoiceRepository;
-    }
-
-    @Transactional
-    public Invoice findBy(String invoiceNumber) {
-        return invoiceRepository.findBy(Invoice.INVOICE_NUMBER, invoiceNumber);
-    }
-
-    @Transactional
-    public void saveOrUpdate(Invoice invoice) {
-        invoiceRepository.saveOrUpdate(invoice);
-    }
-
-    @Transactional
-    public List<Invoice> list() {
-        return invoiceRepository.list();
-    }
-
-    @Transactional(readOnly = true)
-    public Invoice get(Integer id) {
-        return invoiceRepository.get(id);
+    public InvoiceService(@Qualifier("repository") GenericRepository<Invoice> invoiceRepository) {
+        super(invoiceRepository);
     }
 
     @Transactional
     public Invoice findByPreviousBondNumber(String previousBondNumber) {
         return (StringUtils.isNullOrEmpty(previousBondNumber))
                 ? null :
-                (Invoice) invoiceRepository.scoped()
+                (Invoice) repository.scoped()
                         .add(Restrictions.like("bondNumber", previousBondNumber))
                         .addOrder(Order.desc("bondNumber"))
                         .setMaxResults(1)
@@ -56,7 +33,12 @@ public class InvoiceService {
     }
 
     @Transactional
+    public Invoice findBy(String invoiceNumber) {
+        return repository.findBy(Invoice.INVOICE_NUMBER, invoiceNumber);
+    }
+
+    @Transactional
     public List<Invoice> findByLocation(String location){
-        return invoiceRepository.findAll("location", location);
+        return repository.findAll("location", location);
     }
 }
