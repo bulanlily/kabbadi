@@ -46,7 +46,7 @@ public class InvoiceService extends GenericService<Invoice>{
     }
 
     @Transactional
-    public List<Invoice> getNewInvoiceData(String fieldName, String flagName) {
-        return repository.findAllNotEqualTo(fieldName, flagName);
+    public List<Invoice> getInvoicesExcluding(String fieldName, String dataToExclude) {
+        return repository.findAllNotEqualTo(fieldName, dataToExclude);
     }
 }
