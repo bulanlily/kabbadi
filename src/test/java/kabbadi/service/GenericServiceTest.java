@@ -3,6 +3,7 @@ package kabbadi.service;
 import kabbadi.domain.Asset;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.db.GenericRepository;
+import kabbadi.domain.db.InvoiceRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.MockitoAnnotations;
@@ -18,7 +19,7 @@ public class GenericServiceTest {
     private InvoiceService invoiceService;
     private AssetService assetService;
     @MockitoAnnotations.Mock
-    private GenericRepository<Invoice> invoiceRepository;
+    private InvoiceRepository invoiceRepository;
     @MockitoAnnotations.Mock
     private GenericRepository<Asset> assetRepository;
 

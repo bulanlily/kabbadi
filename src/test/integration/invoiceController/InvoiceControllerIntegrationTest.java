@@ -1,11 +1,11 @@
 package invoiceController;
 
+import domain.builder.InvoiceTestBuilder;
 import integration.IntegrationTest;
 import kabbadi.controller.InvoiceController;
 import kabbadi.domain.Invoice;
-import domain.builder.InvoiceTestBuilder;
 import kabbadi.domain.Location;
-import kabbadi.domain.db.GenericRepository;
+import kabbadi.domain.db.InvoiceRepository;
 import kabbadi.domain.json.PreviousInvoiceRunningBalanceData;
 import kabbadi.service.InvoiceService;
 import org.hibernate.SessionFactory;
@@ -16,9 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.assertThat;
 
 public class InvoiceControllerIntegrationTest extends IntegrationTest {
@@ -26,6 +24,8 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
     @Autowired
     private SessionFactory sessionFactory;
     private InvoiceController controller;
+    @Autowired
+    private InvoiceRepository invoiceRepository;
     private InvoiceService invoiceService;
 
     @Before
@@ -86,28 +86,41 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
                 .withInvoiceNumber("123")
                 .withBondNumber("15/14-15")
                 .withRunningBalance("123")
+                .withLocation(Location.BANGALORE)
                 .build();
 
         Invoice invoice2 = new InvoiceTestBuilder()
+                .withInvoiceNumber("123")
+                .withBondNumber("15/14-15")
+                .withRunningBalance("123")
+                .withLocation(Location.CHENNAI)
+                .build();
+
+        Invoice invoice3 = new InvoiceTestBuilder()
                 .withInvoiceNumber("124")
                 .withBondNumber("15/11-12")
                 .withRunningBalance("123")
+                .withLocation(Location.BANGALORE)
                 .build();
 
         controller.add(invoice1, "");
         controller.add(invoice2, "");
 
-        assertThat(controller.previousRunningBalance("01/15-16"), equalTo(new PreviousInvoiceRunningBalanceData(invoice1)));
-        assertThat(controller.previousRunningBalance("16/11-12"), equalTo(new PreviousInvoiceRunningBalanceData(invoice2)));
-        assertThat(controller.previousRunningBalance("123"), equalTo(new PreviousInvoiceRunningBalanceData(new Invoice())));
-        assertThat(controller.previousRunningBalance("01/1-1"), equalTo(new PreviousInvoiceRunningBalanceData(null)));
+        assertThat(controller.previousRunningBalance("01/15-16", Location.BANGALORE), equalTo(new PreviousInvoiceRunningBalanceData(invoice1)));
+        assertThat(controller.previousRunningBalance("01/15-16", Location.CHENNAI), equalTo(new PreviousInvoiceRunningBalanceData(invoice2)));
+
+        assertThat(controller.previousRunningBalance("16/11-12", Location.BANGALORE), equalTo(new PreviousInvoiceRunningBalanceData(invoice3)));
+
+        assertThat(controller.previousRunningBalance("123", Location.PUNE), equalTo(new PreviousInvoiceRunningBalanceData(new Invoice())));
+        assertThat(controller.previousRunningBalance("01/1-1", Location.PUNE), equalTo(new PreviousInvoiceRunningBalanceData(null)));
     }
+
 
     private InvoiceController buildInvoiceController(InvoiceService invoiceService) {
         return new InvoiceController(invoiceService);
     }
 
     private InvoiceService buildInvoiceService() {
-        return new InvoiceService(new GenericRepository<Invoice>(sessionFactory, Invoice.class));
+        return new InvoiceService(invoiceRepository);
     }
 }

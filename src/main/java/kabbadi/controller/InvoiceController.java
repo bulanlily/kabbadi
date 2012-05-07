@@ -6,6 +6,7 @@ import kabbadi.service.InvoiceService;
 import kabbadi.spring.util.INRMoneyPropertyEditor;
 import kabbadi.spring.util.NullSafeDatePropertyEditor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestDataBinder;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class InvoiceController {
     private final InvoiceService invoiceService;
 
     @Autowired
-    public InvoiceController(InvoiceService invoiceService) {
+    public InvoiceController(@Qualifier("invoiceService") InvoiceService invoiceService) {
         this.invoiceService = invoiceService;
     }
 
@@ -66,9 +67,11 @@ public class InvoiceController {
     @RequestMapping(value = "/previousRunningBalance", method = RequestMethod.GET)
     public
     @ResponseBody
-    PreviousInvoiceRunningBalanceData previousRunningBalance(@RequestParam("bondNumber") String currentBondNumber) {
+    PreviousInvoiceRunningBalanceData previousRunningBalance(
+            @RequestParam("bondNumber") String currentBondNumber,
+            @RequestParam("location") Location location) {
         String previousBondNumber = InvoiceUtils.getPreviousBondNumber(currentBondNumber);
-        return new PreviousInvoiceRunningBalanceData(invoiceService.findByPreviousBondNumber(previousBondNumber));
+        return new PreviousInvoiceRunningBalanceData(invoiceService.findByPreviousBondNumber(previousBondNumber, location));
     }
 
     @RequestMapping(value = "/report/admin", method = RequestMethod.GET)
