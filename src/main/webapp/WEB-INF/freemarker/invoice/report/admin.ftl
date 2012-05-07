@@ -22,7 +22,7 @@
             <th>Accesable Value in INR</th>
             <th>Duty Exempt</th>
             <th>25% DF</th>
-            <th>Outright P</th>
+            <th>Outright Purchase</th>
             <th>Loan Basis</th>
             <th>Free of Charge</th>
             <th>CG Approved in INR</th>
