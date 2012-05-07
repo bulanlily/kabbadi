@@ -55,7 +55,9 @@ public class InvoiceController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
-        return new ModelAndView("invoice/list").addObject("invoices", invoiceService.list());
+        return new ModelAndView("invoice/list")
+                .addObject("invoices", invoiceService.list())
+                .addObject("locations",Location.values());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -77,7 +79,7 @@ public class InvoiceController {
            List<Invoice> invoiceList = invoiceService.findByLocation(loc);
         return new ModelAndView("invoice/report/admin")
                 .addObject("invoiceList", invoiceList)
-                .addObject("location",loc);
+                .addObject("locations",Location.values());
     }
 
     private ModelAndView editPage(Invoice invoice) {
