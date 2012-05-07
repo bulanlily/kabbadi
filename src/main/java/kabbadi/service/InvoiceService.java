@@ -36,4 +36,9 @@ public class InvoiceService extends GenericService<Invoice> {
     public List<Invoice> findByLocation(Location location) {
         return repository.findAll("location", location);
     }
+
+    @Transactional
+    public List<Invoice> getInvoicesExcluding(String fieldName, String dataToExclude) {
+        return repository.findAllNotEqualTo(fieldName, dataToExclude);
+    }
 }

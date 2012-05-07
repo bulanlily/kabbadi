@@ -3,6 +3,9 @@
 <#setting datetime_format="dd/MM/yyyy">
 <#setting number_format="computer">
 <@layout.template 'View an Invoice'>
+
+    <div class="container">
+
     <table id="invoices" class="table table-bordered table-striped">
         <thead>
         <tr>
@@ -53,4 +56,9 @@
         </#list>
         </tbody>
     </table>
+    </div>
+
+    <script>
+        $("#location").val("${invoice.location!}");
+    </script>
 </@layout.template>

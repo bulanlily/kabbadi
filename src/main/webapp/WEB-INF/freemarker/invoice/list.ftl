@@ -1,10 +1,14 @@
 <#import "/application.ftl" as layout />
+<#import "/invoice/utils.ftl" as utils />
 <#import "/spring.ftl" as spring />
 <#setting datetime_format="dd/MM/yyyy">
 <#setting number_format="computer">
 
 <@layout.template 'List Invoices' >
+
+
     <script type="text/javascript">
+
         $(function () {
             $('input#admin_search').quicksearch('#admin table tbody tr');
             $('input#finance_search').quicksearch('#finance table tbody tr');
@@ -19,16 +23,7 @@
     </ul>
     <div id="myTabContent" class="tab-content">
         <div id="admin" class="tab-pane fade in active">
-
-            <form action="#" class="span3" align="left">
-                <input name="search" id="admin_search" type="text" placeholder="Search...">
-                <span style="display: none;" class="loading">Loading...</span>
-            </form>
-
-            <div class="page-header" align="right">
-                <a href="<@spring.url "/invoice/create"/>" class="btn btn-inverse" id="admin_add_invoice">Add New</a>
-                <button href="#" class="btn btn-inverse" id="admin_generate_report">Generate Report</button>
-            </div>
+    <@utils.template 'admin'/>
 
             <table id="invoices" class="table table-bordered table-striped">
                 <thead>
@@ -73,16 +68,10 @@
         </div>
         <div id="finance" class="tab-pane fade">
 
-            <form action="#" class="span3" align="left">
-                <input name="search" id="finance_search" type="text" placeholder="Search...">
-                <span style="display: none;" class="loading">Loading...</span>
-            </form>
-        <div class="page-header" align="right">
-                        <a href="<@spring.url "/invoice/create#finance"/>" class="btn btn-inverse" id="finance_add_invoice">Add New</a>
-                        <button href="#" class="btn btn-inverse">Generate Report</button>
-                    </div>
+            <@utils.template 'finance'/>
 
-        <table class="table table-bordered table-striped">
+
+            <table class="table table-bordered table-striped">
             <thead>
                 <tr>
 
@@ -155,6 +144,7 @@
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
             <#list invoices as invoice>
+            <#if invoice.groupOfAssets == "Computer Equipments">
                 <tr id="is_invoice_${invoice.invoiceNumber}">
                     <td colspan="7" style="font-weight:bold;">${invoice.invoiceNumber}</td>
                     <td>
@@ -187,6 +177,7 @@
                     </td>
                 </tr>
                 </#list>
+             </#if>
             </#list>
 
 

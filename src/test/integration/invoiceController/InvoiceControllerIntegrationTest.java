@@ -53,7 +53,6 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
         Location location = Location.valueOf("BANGALORE");
         ModelAndView modelAndView = controller.generateReport("BANGALORE");
         assertThat((List<Invoice>)modelAndView.getModel().get("invoiceList"), is(equalTo(invoiceService.findByLocation(location))));
-        assertThat((Location)modelAndView.getModel().get("location"), is(equalTo(location)));
     }
 
     private Invoice invoiceWith(String invoiceNumber) {

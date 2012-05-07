@@ -56,7 +56,9 @@ public class InvoiceController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
-        return new ModelAndView("invoice/list").addObject("invoices", invoiceService.list());
+        return new ModelAndView("invoice/list")
+                .addObject("invoices", invoiceService.list())
+                .addObject("locations",Location.values());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
