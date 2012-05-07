@@ -10,4 +10,5 @@ public enum Location {
     Location(String location) {
         this.location = location;
     }
+
 }
