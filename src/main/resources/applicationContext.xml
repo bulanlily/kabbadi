@@ -63,6 +63,14 @@
         <constructor-arg ref="sessionFactory"/>
     </bean>
 
+    <bean id="invoiceService" class="kabbadi.service.InvoiceService">
+        <constructor-arg ref="invoiceRepository"/>
+    </bean>
+
+    <bean id="assetService" class="kabbadi.service.AssetService">
+        <constructor-arg ref="assetRepository"/>
+    </bean>
+
     <tx:annotation-driven/>
     <mvc:annotation-driven/>
 

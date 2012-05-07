@@ -15,19 +15,32 @@ public class InvoiceRepositoryIntegrationTest extends IntegrationTest {
 
     @Autowired
     private SessionFactory sessionFactory;
-
     @Autowired
     private GenericRepository<Invoice> invoiceRepository;
 
+
+
     @Test
     public void should_have_a_invoice() {
-        GenericRepository<Invoice> repository = new GenericRepository<Invoice>(sessionFactory, Invoice.class);
         String invoiceNumber = "invoice27";
         addToDatabase(invoiceNumber);
 
-        Invoice actualInvoice = repository.findBy(Invoice.INVOICE_NUMBER, invoiceNumber);
+        Invoice actualInvoice = invoiceRepository.findBy(Invoice.INVOICE_NUMBER, invoiceNumber);
 
         assertThat(actualInvoice.getInvoiceNumber(), equalTo(invoiceNumber));
+
+    }
+
+    @Test
+    public void should_get_an_invoice_list() {
+
+        int currentSize = invoiceRepository.list().size();
+
+        invoiceRepository.save(new Invoice());
+        invoiceRepository.save(new Invoice());
+        invoiceRepository.save(new Invoice());
+
+        assertThat(invoiceRepository.list().size(), equalTo(currentSize + 3));
 
     }
 
@@ -36,21 +49,6 @@ public class InvoiceRepositoryIntegrationTest extends IntegrationTest {
         Session currentSession = sessionFactory.getCurrentSession();
         String sql = "insert into Invoice (invoice_id, invoiceNumber, freeOfCharge, loanBasis) values (27, '" + invoiceNumber + "', 0, 0);";
         currentSession.createSQLQuery(sql).executeUpdate();
-
-    }
-
-    @Test
-    public void should_get_an_invoice_list() {
-
-        GenericRepository<Invoice> repository = new GenericRepository<Invoice>(sessionFactory, Invoice.class);
-        int currentSize = repository.list().size();
-
-        repository.save(new Invoice());
-        repository.save(new Invoice());
-        repository.save(new Invoice());
-
-        assertThat(repository.list().size(), equalTo(currentSize + 3));
-
 
     }
 }
