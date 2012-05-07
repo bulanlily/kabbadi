@@ -1,6 +1,3 @@
-delete from users;
-insert into users (id, name) values (1, 'bill');
-
 delete from invoice;
 INSERT INTO invoice (invoice_id, invoiceNumber, STPIApprovalNumberAndDate, descriptionOfGoods, currency, foreignValue, amountSTPIApproval, CIFValueInINR, bondNumber, bondDate, billOfEntryNumber, billOfEntryDate, assessableValueInINR, dutyExempt, twentyFivePercentDF, importType, cgApprovedInINR, dutyForgone, runningBalance, location) VALUES (100, '653010065', 'STIPB/Import/EXCISEDUTY/23112011/0043/31733  Dt.28-Nov-2011', 'Networking Accessories', 'USD', 6333.00, 6333.00, null, '26/11-12', null, null, null, null, null, null, null, null, null,null, 'BANGALORE');
 INSERT INTO invoice (invoice_id, invoiceNumber, STPIApprovalNumberAndDate, descriptionOfGoods, currency, foreignValue, amountSTPIApproval, CIFValueInINR, bondNumber, bondDate, billOfEntryNumber, billOfEntryDate, assessableValueInINR, dutyExempt, twentyFivePercentDF, importType, cgApprovedInINR, dutyForgone, runningBalance, location) VALUES (101, 'IV7128', 'STIPB/Import/EXCISEDUTY/23112011/0012/31279  Dt.28-Nov-2011', 'Networking Accessories', 'INR', 422078.17, 422078.17, 422078.22, '27/11-12', '04-Jan-12', 01, '04-Jan-12', 426299.00, null, null, 'LOAN_BASIS', null, 64087.00, 80450804.59, 'BANGALORE');
