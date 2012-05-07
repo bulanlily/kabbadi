@@ -79,7 +79,7 @@ public class InvoiceController {
            List<Invoice> invoiceList = invoiceService.findByLocation(loc);
         return new ModelAndView("invoice/report/admin")
                 .addObject("invoiceList", invoiceList)
-                .addObject("locations",Location.values());
+                .addObject("location",loc);
     }
 
     private ModelAndView editPage(Invoice invoice) {

@@ -144,6 +144,7 @@
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
             <#list invoices as invoice>
+            <#if invoice.groupOfAssets == "Computer Equipments">
                 <tr id="is_invoice_${invoice.invoiceNumber}">
                     <td colspan="7" style="font-weight:bold;">${invoice.invoiceNumber}</td>
                     <td>
@@ -176,6 +177,7 @@
                     </td>
                 </tr>
                 </#list>
+             </#if>
             </#list>
 
 

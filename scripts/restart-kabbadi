@@ -1,0 +1,10 @@
+#!/bin/bash
+
+kill -9 $(ps ax | grep jetty | grep 8080 | awk '{ print $1 }') 2> /dev/null
+nohup /usr/bin/java -Djetty.home=/opt/jetty -Djava.io.tmpdir=/tmp -Djetty.port=8080 -jar /opt/jetty/start.jar --pre=etc/jetty-logging.xml  > /dev/null 2>&1 &
+
+kill -9 $(ps ax | grep jetty | grep 8081 | awk '{ print $1 }') 2> /dev/null
+nohup /usr/bin/java -Djetty.home=/opt/jetty -Djava.io.tmpdir=/tmp -Djetty.port=8081 -jar /opt/jetty/start.jar --pre=etc/jetty-logging.xml  > /dev/null 2>&1 &
+
+echo 'Done'
+exit
