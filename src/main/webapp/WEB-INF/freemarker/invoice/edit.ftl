@@ -1,12 +1,9 @@
-<#import "/application.ftl" as layout />
+<#import "/application.ftl" as layout/>
 <#import "/spring.ftl" as spring />
 <#setting datetime_format="dd/MM/yyyy">
 <#setting number_format="computer">
 
 <@layout.template 'Add/Edit Invoice' >
-<script src="/kabbadi/static/js/gen_validatorv4.js" type="text/javascript"></script>
-<script src="/kabbadi/static/js/invoice/edit.js" ></script>
-
 
 <h1>Add/Edit Invoice</h1>
 
@@ -27,12 +24,10 @@
         <input name="purchaseOrderNumber" value="${invoice.purchaseOrderNumber!}"/>
     </div>
     <div class="span3">
-        <label for="location">Location</label>
-                <select name="location" value="${invoice.location!}">
-                   <option value="Bangalore">Bangalore</option>
-                   <option value="Pune">Pune</option>
-                   <option value="Chennai">Chennai</option>
-               </select>
+
+        <label for="locations">Location</label>
+        <@spring.formSingleSelect "invoice.location", locations, ""/>
+
     </div>
     <div class="span3">
         <label for="descriptionOfGoods">Description of Goods</label>
@@ -87,7 +82,7 @@
         </div>
         <div class="span3">
             <label for="bondDate">Bond Date (dd/mm/yyyy)</label>
-            <input name="bondDate" class="defaultDatepicker" type="date" value="${invoice.bondDate!}"/>
+            <input name="bondDate" class="defaultDatepicker"  value="${invoice.bondDate!}"/>
 
             <div class='error_div' id='newInvoiceForm_bondDate_errorloc'></div>
         </div>
@@ -100,7 +95,7 @@
 
         <div class="span3">
             <label for="billOfEntryDate">Bill of Entry Date (dd/mm/yyyy)</label>
-            <input name="billOfEntryDate" class="defaultDatepicker" type="date"
+            <input name="billOfEntryDate" class="defaultDatepicker" 
                    value="${invoice.billOfEntryDate!}"/>
 
             <div class='error_div' id='newInvoiceForm_billOfEntryDate_errorloc'></div>
@@ -124,8 +119,12 @@
     </div>
     <div class="row">
         <div class="span3">
-            <label for="importTypes">Import Types</label>
-            <@spring.formSingleSelect "invoice.importType", importTypes, ""/>
+            <label for="importType">Import Types</label>
+            <select name="importType">
+                <#list importTypes as importType>
+                    <option value="${importType.toString()}" >${importType.getDescription()}</option>
+                </#list>
+            </select>
         </div>
         <div class="span3">
             <label for="CIFValueInINR">CIF Value In INR</label>
@@ -267,7 +266,7 @@
 <hr/>
 <span class="span3">
     <input type="submit" name="submit" value="Submit invoice" class="btn btn-primary"/>
-    <a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel"/></a>
+    <a id="cancelButton" href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel" /></a>
 </span>
 <span class="alert alert-error span4 hide" id="form_errors_msg">
     <center>Submission failed. Check for invalid input messages.</center>
@@ -277,4 +276,10 @@
 <hr/>
 
 </form>
+
+<script src="/kabbadi/static/js/invoice/edit.js" ></script>
+<script>
+    kabbadi.invoice.edit.initialize();
+    $("#location").val("${invoice.location!}");
+</script>
 </@layout.template>

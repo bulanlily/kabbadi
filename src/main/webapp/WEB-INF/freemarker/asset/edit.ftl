@@ -49,7 +49,7 @@
     </div>
     <div class="span3">
         <label for="leasingExpiration">Leasing Expiration</label>
-        <input id="leasingExpiration" name="leasingExpiration" class="defaultDatepicker" type="date" value="${asset.leasingExpiration!}"/>
+        <input id="leasingExpiration" name="leasingExpiration" class="defaultDatepicker" value="${asset.leasingExpiration!}"/>
     </div>
 
 </div>
@@ -57,7 +57,7 @@
 <div class="row">
     <div class="span3">
         <label for="maintenanceExpiration">Maintenance Expiration</label>
-        <input name="maintenanceExpiration" class="defaultDatepicker" type="date" value="${asset.maintenanceExpiration!}"/>
+        <input name="maintenanceExpiration" class="defaultDatepicker" value="${asset.maintenanceExpiration!}"/>
     </div>
 </div>
 
@@ -73,7 +73,6 @@
 </form>
 
 
-<script src="/kabbadi/static/js/jquery.validate.min.js" type="text/javascript"></script>
 <script src="/kabbadi/static/js/asset/edit.js" ></script>
 <script>kabbadi.asset.initialize();</script>
         </@layout.template>

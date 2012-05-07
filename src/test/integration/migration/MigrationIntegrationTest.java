@@ -37,7 +37,7 @@ public class MigrationIntegrationTest extends IntegrationTest{
         String[] financeTestData = {
           "1234",
            "23",
-           "chennai",
+           "CHENNAI",
            "2345"
         };     
         String[] adminHeaders = {
@@ -71,14 +71,14 @@ public class MigrationIntegrationTest extends IntegrationTest{
         }
        Invoice invoice = invoiceRepository.get(0);
         String[] expectedValue = {
-          "1234", "2000", "goods", "23", "chennai"
+          "1234", "2000", "goods", "23", "CHENNAI"
         };
         String[] actualData = {
           invoice.getInvoiceNumber(),
           invoice.getBondNumber(),
           invoice.getDescriptionOfGoods(),
           invoice.getQuantity().toString(),
-          invoice.getLocation()
+          invoice.getLocation().toString()
         };
         assertThat(actualData, equalTo(expectedValue));
     }

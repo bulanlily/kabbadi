@@ -1,5 +1,6 @@
-var kabbadi = kabbadi || {};
+var kabbadi = window.kabbadi || {};
 kabbadi.asset = kabbadi.asset || {};
+window.kabbadi = kabbadi;
 
 (function($){
     kabbadi.asset = {
@@ -38,5 +39,3 @@ kabbadi.asset = kabbadi.asset || {};
     }
     }
 })(jQuery);
-
-window.kabbadi = kabbadi

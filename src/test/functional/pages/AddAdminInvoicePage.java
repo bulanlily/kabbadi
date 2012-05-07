@@ -44,20 +44,6 @@ public class AddAdminInvoicePage extends BasePage {
         return DateFormatUtils.format(date, "dd/MM/yyyy");
     }
 
-
-    public AddAdminInvoicePage fillFieldWith(String fieldName, String fieldValue) {
-        driver.findElement(By.name(fieldName)).sendKeys(fieldValue);
-        return this;
-    }
-
-    public void fillFormWith(InvoiceForm invoiceForm) {
-        Map<String, Object> fields = invoiceForm.getFields();
-        for (String fieldName : fields.keySet()) {
-            fillFieldWith(fieldName, fields.get(fieldName) + "");
-        }
-        driver.findElement(By.cssSelector("input[name=submit]")).click();
-    }
-
     public AddAdminInvoicePage confirmAddInvoicePage() {
         assertThat(getTitle(), containsString("Add/Edit Invoice"));
         return this;

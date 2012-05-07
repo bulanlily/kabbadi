@@ -1,6 +1,7 @@
 package domain.builder;
 
 import kabbadi.domain.Invoice;
+import kabbadi.domain.Location;
 import kabbadi.domain.Money;
 
 import java.math.BigDecimal;
@@ -106,7 +107,7 @@ public class InvoiceTestBuilder {
         return this;
     }
 
-    public InvoiceTestBuilder withLocation(String location) {
+    public InvoiceTestBuilder withLocation(Location location) {
         invoice.setLocation(location);
         return this;
     }

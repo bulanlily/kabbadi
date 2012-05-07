@@ -16,3 +16,7 @@ table td {
 .description {
     max-width: 245px;
 }
+
+label.error {
+    color: #ff0000;
+}
