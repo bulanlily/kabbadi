@@ -54,4 +54,9 @@ public class InvoiceService {
                         .setMaxResults(1)
                         .uniqueResult();
     }
+
+    @Transactional
+    public List<Invoice> findByLocation(String location){
+        return invoiceRepository.findAll("location", location);
+    }
 }

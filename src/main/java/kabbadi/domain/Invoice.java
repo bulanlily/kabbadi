@@ -60,7 +60,10 @@ public class Invoice{
     private String status;
     private String remarks;
     private String purchaseOrderNumber;
-    private String location;
+
+    @Enumerated(EnumType.STRING)
+    private Location location;
+
     private Date dateOfCommissioning;
     private String groupOfAssets;
     private String costCentre;
