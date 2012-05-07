@@ -22,6 +22,7 @@ public class Invoice{
     private String invoiceNumber;
 
     private String STPIApprovalNumberAndDate;
+    @Column(columnDefinition = "TEXT")
     private String descriptionOfGoods;
 
     @Embedded
@@ -31,7 +32,6 @@ public class Invoice{
     private Money foreignValue;
 
     private BigDecimal amountSTPIApproval;
-
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "currency", column = @Column(name = "CIFCurrency")),
