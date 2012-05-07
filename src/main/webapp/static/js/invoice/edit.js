@@ -51,6 +51,43 @@ kabbadi.invoice.edit = {
 
     },
 
+    fetchPreviousRunningBalance : function() {
+        var current_bond_number = $("input[name='bondNumber']").val();
+        if(current_bond_number.match(/\d+\/\d{2}-\d{2}/)) {
+            var location = $("#location").val();
+            $.getJSON("previousRunningBalance",
+            {
+                bondNumber : current_bond_number,
+                location   : location
+            },
+            function(previousInvoice) {
+                if(previousInvoice.bondNumber) {
+                     $("#previous_bond_number").html(previousInvoice.bondNumber);
+                     $("#previous_bond_value").html(+previousInvoice.runningBalance);
+                     kabbadi.invoice.edit.calculateCurrentRunningBalance();
+                     $("#previous_matched_bond_number").show();
+                }
+                else {
+                    kabbadi.invoice.edit.removePreviousInvoice();
+                }
+            });
+        }
+    },
+
+    removePreviousInvoice : function() {
+        $("#previous_matched_bond_number").hide();
+        $("#previous_bond_value").text(0);
+        kabbadi.invoice.edit.calculateCurrentRunningBalance();
+    },
+
+    calculateCurrentRunningBalance : function() {
+        var prevRunningBalance = +$("#previous_bond_value").text();
+        var amountSTPIApproval = +$("input[name='amountSTPIApproval']").val();
+        var cgApprovedInINR = +$("input[name='cgApprovedInINR']").val();
+
+        $("input[name='runningBalance']").val(prevRunningBalance - amountSTPIApproval + cgApprovedInINR);
+    },
+
     initialize : function() {
 
         $(function () {
@@ -65,44 +102,12 @@ kabbadi.invoice.edit = {
 
             $(".defaultDatepicker").datepicker( );
 
-            $("#remove_previous_bond_number").click(removePreviousInvoice);
+            $("#remove_previous_bond_number").click(kabbadi.invoice.edit.removePreviousInvoice);
 
-            $("input[name='bondNumber']").blur(function() {
-                var current_bond_number = $(this).val();
-                if(current_bond_number.match(/\d+\/\d{2}-\d{2}/)) {
-                    $.getJSON("previousRunningBalance",
-                    {bondNumber : current_bond_number},
-                    function(previousInvoice) {
-                        if(previousInvoice.bondNumber) {
-                             $("#previous_bond_number").html(previousInvoice.bondNumber);
-                             $("#previous_bond_value").html(+previousInvoice.runningBalance);
-                             calculateCurrentRunningBalance();
-                             $("#previous_matched_bond_number").show();
-                        }
-                        else {
-                            removePreviousInvoice();
-                        }
-                    });
-                }
-                });
-                $("input[name='amountSTPIApproval'],input[name='cgApprovedInINR']").blur(calculateCurrentRunningBalance);
-
+            $("input[name='bondNumber']").blur(kabbadi.invoice.edit.fetchPreviousRunningBalance);
+            $("#location").change(kabbadi.invoice.edit.fetchPreviousRunningBalance);
+            $("input[name='amountSTPIApproval'],input[name='cgApprovedInINR']").blur(kabbadi.invoice.edit.calculateCurrentRunningBalance);
         });
-
-
-        var removePreviousInvoice = function() {
-            $("#previous_matched_bond_number").hide();
-            $("#previous_bond_value").text(0);
-            calculateCurrentRunningBalance();
-        };
-
-        var calculateCurrentRunningBalance = function() {
-            var prevRunningBalance = +$("#previous_bond_value").text();
-            var amountSTPIApproval = +$("input[name='amountSTPIApproval']").val();
-            var cgApprovedInINR = +$("input[name='cgApprovedInINR']").val();
-
-            $("input[name='runningBalance']").val(prevRunningBalance - amountSTPIApproval + cgApprovedInINR);
-        };
 
     }
 }
