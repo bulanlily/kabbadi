@@ -60,7 +60,10 @@ public class GenericRepository<T> {
     }
 
     public List<T> findAllNotEqualTo(String field, Object param) {
-        return getSession().createCriteria(type).add(Restrictions.not(Restrictions.eq(field, param))).list();
+        return getSession().createCriteria(type)
+                .setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY)
+                .add(Restrictions.not(Restrictions.eq(field, param)))
+                .list();
     }
 
     public Criteria scoped() {
