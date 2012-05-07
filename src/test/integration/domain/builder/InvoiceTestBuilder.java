@@ -112,6 +112,14 @@ public class InvoiceTestBuilder {
         return this;
     }
 
+    public InvoiceTestBuilder withDateOfInvoice(String date) {
+        try {
+            invoice.setDateOfInvoice(new SimpleDateFormat(DATE_FORMAT).parse(date));
+        } catch (ParseException ignored) {
+        }
+        return this;
+    }
+
     public Invoice build() {
         return invoice;
     }

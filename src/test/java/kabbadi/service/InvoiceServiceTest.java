@@ -32,10 +32,18 @@ public class InvoiceServiceTest {
     }
 
     @Test
-    public void get_invoice_by_location(){
+    public void get_invoice_by_location() {
         Location location = Location.valueOf("BANGALORE");
         List<Invoice> invoiceList = invoiceService.findByLocation(location);
-        verify(repository).findAll("location",location);
+        verify(repository).findAll("location", location);
+    }
+
+    @Test
+    public void should_get_a_list_of_new_invoices() {
+
+        List<Invoice> invoiceList = invoiceService.getNewInvoiceData("invoiceNumber", "OldData");
+
+        verify(repository).findAllNotEqualTo("invoiceNumber", "OldData");
     }
 
 }

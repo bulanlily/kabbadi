@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -41,5 +43,10 @@ public class InvoiceService extends GenericService<Invoice>{
     @Transactional
     public List<Invoice> findByLocation(Location location){
         return repository.findAll("location", location);
+    }
+
+    @Transactional
+    public List<Invoice> getNewInvoiceData(String fieldName, String flagName) {
+        return repository.findAllNotEqualTo(fieldName, flagName);
     }
 }

@@ -13,7 +13,9 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 @Controller
@@ -55,7 +57,7 @@ public class InvoiceController {
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
-        return new ModelAndView("invoice/list").addObject("invoices", invoiceService.list());
+        return new ModelAndView("invoice/list").addObject("invoices", invoiceService.getNewInvoiceData("invoiceNumber", "OldData"));
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)

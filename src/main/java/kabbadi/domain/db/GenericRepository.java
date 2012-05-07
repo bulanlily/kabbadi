@@ -59,6 +59,10 @@ public class GenericRepository<T> {
                 Restrictions.eq(propertyName, value)).uniqueResult();
     }
 
+    public List<T> findAllNotEqualTo(String field, Object param) {
+        return getSession().createCriteria(type).add(Restrictions.not(Restrictions.eq(field, param))).list();
+    }
+
     public Criteria scoped() {
         return sessionFactory.getCurrentSession().createCriteria(type);
     }
