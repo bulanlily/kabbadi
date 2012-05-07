@@ -120,7 +120,7 @@
     <div class="row">
         <div class="span3">
             <label for="importType">Import Types</label>
-            <select name="importType">
+            <select name="importType" id="importType">
                 <#list importTypes as importType>
                     <option value="${importType.toString()}" >${importType.getDescription()}</option>
                 </#list>
@@ -282,5 +282,6 @@
     kabbadi.invoice.edit.initialize();
     $("#location").val("${invoice.location!}");
     $("#groupOfAssets").val("${invoice.groupOfAssets!}");
+    $("#importType").val("${invoice.importType!}");
 </script>
 </@layout.template>
