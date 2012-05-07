@@ -201,7 +201,7 @@
         </div>
         <div class="span3">
             <label for="groupOfAssets">Group of Assets</label>
-            <select name="groupOfAssets" value="${invoice.groupOfAssets!}">
+            <select name="groupOfAssets" value="${invoice.groupOfAssets!}" id="groupOfAssets">
                 <option value="Computer Equipments">Computer Equipments</option>
                 <option value="Furniture and Fixtures">Furniture and Fixtures</option>
                 <option value="Leasehold improvements">Leasehold improvements</option>
@@ -281,5 +281,6 @@
 <script>
     kabbadi.invoice.edit.initialize();
     $("#location").val("${invoice.location!}");
+    $("#groupOfAssets").val("${invoice.groupOfAssets!}");
 </script>
 </@layout.template>
