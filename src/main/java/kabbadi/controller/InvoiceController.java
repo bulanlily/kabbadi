@@ -73,8 +73,11 @@ public class InvoiceController {
 
     @RequestMapping(value = "/report/admin", method = RequestMethod.GET)
     public ModelAndView generateReport(@RequestParam("location") String location) {
-        List<Invoice> invoiceList = invoiceService.findByLocation(location);
-        return new ModelAndView("invoice/report/admin").addObject("invoiceList", invoiceList);
+        Location loc = Location.valueOf(location);
+           List<Invoice> invoiceList = invoiceService.findByLocation(loc);
+        return new ModelAndView("invoice/report/admin")
+                .addObject("invoiceList", invoiceList)
+                .addObject("location",loc);
     }
 
     private ModelAndView editPage(Invoice invoice) {

@@ -1,6 +1,7 @@
 package kabbadi.service;
 
 import kabbadi.domain.Invoice;
+import kabbadi.domain.Location;
 import kabbadi.domain.db.GenericRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -32,7 +33,7 @@ public class InvoiceServiceTest {
 
     @Test
     public void get_invoice_by_location(){
-        String location = "Banglore";
+        Location location = Location.valueOf("BANGALORE");
         List<Invoice> invoiceList = invoiceService.findByLocation(location);
         verify(repository).findAll("location",location);
     }

@@ -44,9 +44,9 @@ public class InvoiceControllerTest {
     @Test
     public void should_get_generate_report_page_given_location(){
         List<Invoice> invoiceList = mock(List.class);
-        when(invoiceService.findByLocation("Bangalore")).thenReturn(invoiceList);
-        ModelAndView modelAndView = invoiceController.generateReport("Bangalore");
+        when(invoiceService.findByLocation(Location.valueOf("BANGALORE"))).thenReturn(invoiceList);
+        ModelAndView modelAndView = invoiceController.generateReport("BANGALORE");
         assertThat(modelAndView.getViewName(),equalTo("invoice/report/admin"));
-        assertEquals(modelAndView.getModelMap().get("invoiceList"), (invoiceService.findByLocation("Bangalore")));
+        assertEquals(modelAndView.getModelMap().get("invoiceList"), (invoiceService.findByLocation(Location.valueOf("BANGALORE"))));
     }
 }

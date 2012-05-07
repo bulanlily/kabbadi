@@ -47,7 +47,7 @@ public class GenericRepository<T> {
     }
 
     public List<T> findAll(String field, Object param) {
-        return getSession().createCriteria(type).add(Restrictions.eq(field, param).ignoreCase()).list();
+        return getSession().createCriteria(type).add(Restrictions.eq(field, param)).list();
     }
 
     protected Session getSession() {

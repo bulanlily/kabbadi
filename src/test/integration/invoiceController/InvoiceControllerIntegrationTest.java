@@ -4,6 +4,7 @@ import integration.IntegrationTest;
 import kabbadi.controller.InvoiceController;
 import kabbadi.domain.Invoice;
 import domain.builder.InvoiceTestBuilder;
+import kabbadi.domain.Location;
 import kabbadi.domain.db.GenericRepository;
 import kabbadi.domain.json.PreviousInvoiceRunningBalanceData;
 import kabbadi.service.InvoiceService;
@@ -13,7 +14,10 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
 import static org.junit.Assert.assertThat;
 
@@ -42,6 +46,14 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
         String invoiceNumber = "";
         controller.add(invoiceWith(invoiceNumber), "admin");
         assertThat(invoiceService.findBy(invoiceNumber), nullValue());
+    }
+
+    @Test
+    public void should_generate_report_for_given_location(){
+        Location location = Location.valueOf("BANGALORE");
+        ModelAndView modelAndView = controller.generateReport("BANGALORE");
+        assertThat((List<Invoice>)modelAndView.getModel().get("invoiceList"), is(equalTo(invoiceService.findByLocation(location))));
+        assertThat((Location)modelAndView.getModel().get("location"), is(equalTo(location)));
     }
 
     private Invoice invoiceWith(String invoiceNumber) {

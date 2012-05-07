@@ -26,12 +26,10 @@ public class DataMigrator {
             "assessableValueInINR",
             "dutyExempt",
             "twentyFivePercentDF",
-            "outrightPurchase",
-            "loanBasis",
-            "freeOfCharge",
+            "importType",
             "cgApprovedInINR",
             "dutyForgone",
-            "runningBalance"
+            "location"
     };
 
     final static private String[] financeHeaders = new String[] {
@@ -66,8 +64,9 @@ public class DataMigrator {
             "costCentre"
     };
 
-    private static String adminCSV = "migration/KabbadiAdmin.csv";
+    private static String adminCSV = "migration/Admin To Import(bangalore final)CSV.csv";
     private static String financeCSV = "migration/KabbadiFinance.csv";
+
     
     public static void main(String[] argv) throws Exception {
         CSVReader csvAdminReader = new CSVReader(new FileReader(adminCSV));

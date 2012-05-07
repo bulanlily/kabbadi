@@ -1,6 +1,7 @@
 package kabbadi.service;
 
 import kabbadi.domain.Invoice;
+import kabbadi.domain.Location;
 import kabbadi.domain.db.GenericRepository;
 import lombok.NoArgsConstructor;
 import org.h2.util.StringUtils;
@@ -38,7 +39,7 @@ public class InvoiceService extends GenericService<Invoice>{
     }
 
     @Transactional
-    public List<Invoice> findByLocation(String location){
+    public List<Invoice> findByLocation(Location location){
         return repository.findAll("location", location);
     }
 }
