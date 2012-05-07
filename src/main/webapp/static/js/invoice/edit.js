@@ -31,7 +31,7 @@ $(function () {
                 }
             });
         }
-        });
+    });
         $("input[name='amountSTPIApproval'],input[name='cgApprovedInINR']").blur(calculateCurrentRunningBalance);
         var frmValidator = new Validator("newInvoiceForm");
             frmValidator.addValidation("invoiceNumber", "req", "Please enter the invoice number");
