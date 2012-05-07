@@ -24,17 +24,10 @@
         <input name="purchaseOrderNumber" value="${invoice.purchaseOrderNumber!}"/>
     </div>
     <div class="span3">
-<<<<<<< HEAD
+
         <label for="locations">Location</label>
         <@spring.formSingleSelect "invoice.location", locations, ""/>
-=======
-        <label for="location">Location</label>
-                <select name="location" id="location" value="${invoice.location!}">
-                   <option value="Bangalore">Bangalore</option>
-                   <option value="Pune">Pune</option>
-                   <option value="Chennai">Chennai</option>
-               </select>
->>>>>>> 67394bc2333b22475fc680f0591a9d5f3000d489
+
     </div>
     <div class="span3">
         <label for="descriptionOfGoods">Description of Goods</label>
@@ -273,7 +266,7 @@
 <hr/>
 <span class="span3">
     <input type="submit" name="submit" value="Submit invoice" class="btn btn-primary"/>
-    <a href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel"/></a>
+    <a id="cancelButton" href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel" /></a>
 </span>
 <span class="alert alert-error span4 hide" id="form_errors_msg">
     <center>Submission failed. Check for invalid input messages.</center>
