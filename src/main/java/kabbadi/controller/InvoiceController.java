@@ -72,7 +72,7 @@ public class InvoiceController {
     PreviousInvoiceRunningBalanceData previousRunningBalance(
             @RequestParam("bondNumber") String currentBondNumber,
             @RequestParam("location") Location location) {
-        String previousBondNumber = InvoiceUtils.getPreviousBondNumber(currentBondNumber);
+        String previousBondNumber = new PreviousBondNumberConverter(currentBondNumber).getPreviousBondNumber();
         return new PreviousInvoiceRunningBalanceData(invoiceService.findByPreviousBondNumber(previousBondNumber, location));
     }
 
