@@ -20,3 +20,20 @@ table td {
 label.error {
     color: #ff0000;
 }
+
+@media print {
+    .navbar,     #print-announce {
+        display : none;
+    }
+    .container {
+        width: 100%;
+        overflow: visible;
+    }
+    table {
+        font-size: 55%;
+    }
+    body, .container, table {
+        margin: 0;
+        padding: 0;
+    }
+}

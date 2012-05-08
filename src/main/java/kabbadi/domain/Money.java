@@ -35,7 +35,6 @@ public class Money {
         return new Money(currency, amount.multiply(variable.getAmount()));
     }
 
-
     public Money add(Money variable) {
         return new Money(currency, amount.add(variable.getAmount()));
     }

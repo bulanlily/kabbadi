@@ -6,6 +6,11 @@
 
     <div class="container">
 
+        <p id="print-announce">
+            <i>
+                <strong style="color: #08C;">Please use browser to print report</strong> <small>( Menu > File > Print )</small>
+            </i>
+        git ad</p>
     <table id="invoices" class="table table-bordered table-striped">
         <thead>
         <tr>
