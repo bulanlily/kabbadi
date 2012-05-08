@@ -1,10 +1,10 @@
 package domain;
 
+import domain.builder.InvoiceTestBuilder;
 import integration.IntegrationTest;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.Location;
 import kabbadi.domain.RunningBalanceUpdater;
-import kabbadi.domain.builder.InvoiceTestBuilder;
 import kabbadi.service.InvoiceService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +50,7 @@ public class RunningBalanceUpdaterTest extends IntegrationTest {
         return new InvoiceTestBuilder()
                 .withInvoiceNumber(invoiceNumber)
                 .withBondNumber(invoiceNumber)
-                .withRunningBalance(0)
+                .withRunningBalance("0")
                 .withAmountSTPIApproval(0)
                 .withAdditionsDuringTheYear(amount)
                 .withLocation(Location.BANGALORE)

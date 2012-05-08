@@ -128,4 +128,9 @@ public class InvoiceTestBuilder {
         invoice.setRunningBalance(new BigDecimal(value));
         return this;
     }
+
+    public InvoiceTestBuilder withAdditionsDuringTheYear(int amount) {
+        invoice.setAdditionsDuringTheYear(new BigDecimal(amount));
+        return this;
+    }
 }

@@ -7,7 +7,6 @@ import kabbadi.domain.db.InvoiceRepository;
 import lombok.NoArgsConstructor;
 import org.h2.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
