@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.h2.util.StringUtils;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -81,7 +82,8 @@ public class Invoice{
     private String identificationNumber;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GenericGenerator(name="auto-increment", strategy = "increment")
+    @GeneratedValue(generator = "auto-increment")
     private Integer invoice_id;
 
     @OneToMany(
@@ -137,5 +139,9 @@ public class Invoice{
 
     public boolean isBonded() {
         return !StringUtils.isNullOrEmpty(bondNumber);
+    }
+
+    public String getBondNumber() {
+        return (StringUtils.isNullOrEmpty(bondNumber))?"":bondNumber;
     }
 }

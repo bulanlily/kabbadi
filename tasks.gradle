@@ -5,6 +5,7 @@ task copyConfiguration << {
         from ".env/$environment"
         into "src/main/resources"
         include "application.properties"
+        include "import.sql"
     }
 
 }

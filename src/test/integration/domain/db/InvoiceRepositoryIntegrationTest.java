@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static junit.framework.Assert.assertTrue;
@@ -28,7 +29,9 @@ public class InvoiceRepositoryIntegrationTest extends IntegrationTest {
     @Test
     public void should_have_a_invoice() {
         String invoiceNumber = "invoice27";
-        addToDatabase(invoiceNumber);
+        Invoice invoice = new Invoice();
+        invoice.setInvoiceNumber(invoiceNumber);
+        invoiceRepository.save(invoice);
 
         Invoice actualInvoice = invoiceRepository.findBy(Invoice.INVOICE_NUMBER, invoiceNumber);
 
@@ -49,20 +52,12 @@ public class InvoiceRepositoryIntegrationTest extends IntegrationTest {
 
     }
 
-    private void addToDatabase(String invoiceNumber) {
-
-        Session currentSession = sessionFactory.getCurrentSession();
-        String sql = "insert into Invoice (invoice_id, invoiceNumber, freeOfCharge, loanBasis) values (27, '" + invoiceNumber + "', 0, 0);";
-        currentSession.createSQLQuery(sql).executeUpdate();
-
-    }
-
     @Test
     public void should_not_find_old_invoice_data() {
-        setupInvoicesWithInvoiceNumbers(Location.BANGALORE, "12345","OldData","OldData");
-        List<Invoice> invoiceList = invoiceRepository.findAllNotEqualTo("invoiceNumber", "OldData");
+        setupInvoicesWithInvoiceNumbers(Location.BANGALORE, "12345","old data","old data");
+        List<Invoice> invoiceList = invoiceRepository.findAllNotEqualTo("invoiceNumber", "old data");
         for (Invoice invoice : invoiceList) {
-            assertThat(invoice.getInvoiceNumber(), not(containsString("OldData")));
+            assertThat(invoice.getInvoiceNumber(), not(containsString("old data")));
        }
         assertThat(invoiceList.size(), equalTo(1));
 

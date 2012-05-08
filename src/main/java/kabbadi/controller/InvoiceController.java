@@ -1,6 +1,7 @@
 package kabbadi.controller;
 
 import kabbadi.domain.*;
+import kabbadi.domain.json.InvoiceNumberExistent;
 import kabbadi.domain.json.PreviousInvoiceRunningBalanceData;
 import kabbadi.service.InvoiceService;
 import kabbadi.spring.util.INRMoneyPropertyEditor;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -58,7 +60,7 @@ public class InvoiceController {
     public ModelAndView list() {
         return new ModelAndView("invoice/list")
                 .addObject("invoices", invoiceService.list())
-                .addObject("locations",Location.values());
+                .addObject("locations", Location.values());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -72,16 +74,17 @@ public class InvoiceController {
     PreviousInvoiceRunningBalanceData previousRunningBalance(
             @RequestParam("bondNumber") String currentBondNumber,
             @RequestParam("location") Location location) {
-        String previousBondNumber = InvoiceUtils.getPreviousBondNumber(currentBondNumber);
+        String previousBondNumber = new PreviousBondNumberConverter(currentBondNumber).getPreviousBondNumber();
         return new PreviousInvoiceRunningBalanceData(invoiceService.findByPreviousBondNumber(previousBondNumber, location));
     }
 
     @RequestMapping(value = "/report/admin", method = RequestMethod.GET)
     public ModelAndView generateReport(@RequestParam("location") String location) {
         Location loc = Location.valueOf(location);
-           List<Invoice> invoiceList = invoiceService.findByLocation(loc);
+        HashMap<String, List<Invoice>> oldAndNewInvoices = invoiceService.getOldAndNewData(loc);
         return new ModelAndView("invoice/report/admin")
-                .addObject("invoiceList", invoiceList)
+                .addObject("oldInvoiceList", oldAndNewInvoices.get("oldInvoices"))
+                .addObject("newInvoiceList", oldAndNewInvoices.get("newInvoices"))
                 .addObject("location",loc);
     }
 
@@ -90,5 +93,12 @@ public class InvoiceController {
                 .addObject("importTypes", ImportType.values())
                 .addObject("locations", Location.values());
 
+    }
+
+    @RequestMapping(value = "/checkInvoiceNumber", method = RequestMethod.GET)
+    @ResponseBody
+    public InvoiceNumberExistent checkInvoiceNumber(@RequestParam("invoiceNumber") String invoiceNumber) {
+        Invoice invoice = invoiceService.findBy(invoiceNumber);
+        return new InvoiceNumberExistent(invoice);
     }
 }

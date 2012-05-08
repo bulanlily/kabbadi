@@ -1,43 +1,27 @@
 package kabbadi.domain;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class InvoiceUtils {
 
-    public static final String ANYTHING = "%";
+    public static HashMap<String, List<Invoice>> separateOldAndNewData(List<Invoice> invoices) {
+        HashMap<String, List<Invoice>> oldAndNewInvoices = new HashMap<String, List<Invoice>>();
+        List<Invoice> oldInvoices = new ArrayList<Invoice>();
+        List<Invoice> newInvoices = new ArrayList<Invoice>();
+        String oldData = "old data";
 
-    public static String getPreviousBondNumber(String currentBondNumber) {
-
-        try {
-            String[] invoiceNumberAndYears = currentBondNumber.split("/");
-            Integer previousInvoiceNumber = parsePreviousNumber(invoiceNumberAndYears[0]);
-
-            String bondNumber = formatNumber(previousInvoiceNumber);
-            String financeYear = invoiceNumberAndYears[1];
-
-            if (isTheFirstInvoiceOfThisYear(previousInvoiceNumber)) {
-                String newFinanceYear = financeYear.split("-")[0];
-
-                int startingYear = parsePreviousNumber(newFinanceYear);
-                financeYear = formatNumber(startingYear) + "-" + newFinanceYear;
-
-                bondNumber = ANYTHING;
+        for(Invoice invoice: invoices){
+            if(invoice.getInvoiceNumber().equals(oldData)) {
+                oldInvoices.add(invoice);
+            } else {
+                newInvoices.add(invoice);
             }
-
-
-            return String.format("%s/%s", bondNumber, financeYear);
-        } catch (Exception ignored) {
-            return "";
         }
-    }
 
-    private static String formatNumber(Integer previousInvoiceNumber) {
-        return String.format("%02d", previousInvoiceNumber);
-    }
-
-    private static int parsePreviousNumber(String financeYears) {
-        return Integer.parseInt(financeYears) - 1;
-    }
-
-    private static boolean isTheFirstInvoiceOfThisYear(Integer previousInvoiceNumber) {
-        return previousInvoiceNumber <= 0;
+        oldAndNewInvoices.put("oldInvoices" , oldInvoices);
+        oldAndNewInvoices.put("newInvoices", newInvoices);
+        return  oldAndNewInvoices;
     }
 }

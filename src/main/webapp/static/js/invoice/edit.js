@@ -68,6 +68,33 @@ kabbadi.invoice.edit = {
 
     },
 
+    fetchInvoiceNumber : function() {
+        var showDuplicateInvoiceAlert = function() {
+            $("#invoiceNumber_error_alert").show();
+        }
+        var removeDuplicateInvoiceAlert = function() {
+            $("#invoiceNumber_error_alert").hide();
+        }
+
+        $("input[name='invoiceNumber']").blur(function() {
+            var $this = $(this);
+            $.getJSON("checkInvoiceNumber",
+            {
+                invoiceNumber : $this.val(),
+            },
+            function(invoice) {
+               if(invoice.exists) {
+                   showDuplicateInvoiceAlert();
+               }
+               else {
+                   removeDuplicateInvoiceAlert();
+               }
+            });
+
+        });
+
+    },
+
     fetchPreviousRunningBalance : function() {
         var current_bond_number = $("input[name='bondNumber']").val();
         if(current_bond_number.match(/\d+\/\d{2}-\d{2}/)) {
@@ -111,7 +138,7 @@ kabbadi.invoice.edit = {
         $(function () {
             kabbadi.invoice.edit.routeResponse($("#redirectToTab"),$("#cancelButton"), $('a[data-toggle="tab"]'));
             kabbadi.invoice.edit.editValidator();
-            kabbadi.invoice.edit.previousInvoiceNumber = $("input[name='invoiceNumber']").val();
+            kabbadi.invoice.edit.fetchInvoiceNumber();
 
             $.datepicker.setDefaults({
                 dateFormat: 'dd/mm/yy'

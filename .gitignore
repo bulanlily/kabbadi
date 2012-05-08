@@ -14,5 +14,6 @@ out/
 Functional Test/reports/
 .gradle
 build/
+src/main/resources/import.sql
 src/main/resources/application.properties
 .gradletasknamecache

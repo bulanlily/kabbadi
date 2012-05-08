@@ -1,9 +1,10 @@
 package kabbadi.migration;
 
 import java.util.*;
+import java.util.zip.DataFormatException;
 
 public class ColumnMapper {
-    final static private String[] validInvoiceHeaders = new String[] {
+    final static private String[] validInvoiceHeaders = new String[]{
             "invoice_id",
             "invoiceNumber",
             "dateOfInvoice",
@@ -46,19 +47,14 @@ public class ColumnMapper {
 
 
     public List<Map<String, String>> mappedList() throws Exception {
-        ArrayList<Map<String, String >> mappedList = new ArrayList<Map<String, String>>();
-        for(String[] entry :entries){
-
+        ArrayList<Map<String, String>> mappedList = new ArrayList<Map<String, String>>();
+        for (String[] entry : entries) {
             if (headers.length != entry.length)
-            {
-                System.out.println(headers.length +","+entry.length);
-                throw new Exception("");
-            }
+                throw new DataFormatException("Headers and entries are of different length");
             HashMap<String, String> mappedEntry = new HashMap<String, String>();
-            for(int index = 0; index < entry.length; index++){
-                if(Arrays.asList(validInvoiceHeaders).contains(headers[index]))
-                mappedEntry.put(headers[index], entry[index]);
-            }
+            for (int index = 0; index < entry.length; index++)
+                if (Arrays.asList(validInvoiceHeaders).contains(headers[index]))
+                    mappedEntry.put(headers[index], entry[index]);
             mappedList.add(mappedEntry);
         }
         return mappedList;
