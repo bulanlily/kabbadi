@@ -53,18 +53,9 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="invoiceRepository" class="kabbadi.domain.db.InvoiceRepository">
-        <constructor-arg value="kabbadi.domain.Invoice"/>
-        <constructor-arg ref="sessionFactory"/>
-    </bean>
-
     <bean id="assetRepository" class="kabbadi.domain.db.GenericRepository">
         <constructor-arg value="kabbadi.domain.Asset"/>
         <constructor-arg ref="sessionFactory"/>
-    </bean>
-
-    <bean id="invoiceService" class="kabbadi.service.InvoiceService">
-        <constructor-arg ref="invoiceRepository"/>
     </bean>
 
     <bean id="assetService" class="kabbadi.service.AssetService">

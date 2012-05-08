@@ -17,14 +17,14 @@ import java.util.List;
 public class InvoiceService extends GenericService<Invoice> {
 
     @Autowired
-    public InvoiceService(@Qualifier("invoiceRepository") InvoiceRepository invoiceRepository) {
+    public InvoiceService(InvoiceRepository invoiceRepository) {
         super(invoiceRepository);
     }
 
     @Transactional
     public Invoice findByPreviousBondNumber(String previousBondNumber, Location location) {
         return (StringUtils.isNullOrEmpty(previousBondNumber))
-                ? null : ((InvoiceRepository) repository).findInvoiceByPreviousInvoiceNumberAndLocation(previousBondNumber, location);
+                ? null : ((InvoiceRepository) repository).findInvoiceByPreviousBondNumberAndLocation(previousBondNumber, location);
     }
 
     @Transactional

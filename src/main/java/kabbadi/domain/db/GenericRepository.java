@@ -66,7 +66,9 @@ public class GenericRepository<T> {
                 .list();
     }
 
-    public Criteria scoped() {
+    protected Criteria scoped() {
         return sessionFactory.getCurrentSession().createCriteria(type);
     }
+
+
 }

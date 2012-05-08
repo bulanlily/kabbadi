@@ -4,9 +4,11 @@
 <#setting number_format="computer">
 <@layout.template 'View an Invoice'>
 
+
+
     <div class="container">
 
-    <table id="invoices" class="table table-bordered table-striped">
+    <table id="invoices" class="table table-bordered table-striped printMe">
         <thead>
         <tr>
             <th>STPI Approval #/Date</th>
@@ -19,7 +21,7 @@
             <th>Bond Date</th>
             <th>BOE Number</th>
             <th>BOE Date</th>
-            <th>Accesable Value in INR</th>
+            <th>Assessable Value in INR</th>
             <th>Duty Exempt</th>
             <th>25% DF</th>
             <th>Outright Purchase</th>
@@ -50,7 +52,7 @@
                     <td>${invoice.loanBasis!}</td>
                     <td>${invoice.freeOfCharge!}</td>
                     <td>${invoice.cgApprovedInINR!}</td>
-                    <td>${invoice.dutyForgone!}</td>
+                    <td>${invoice.dutyForegone!}</td>
                     <td>${invoice.runningBalance!}</td>
                 </tr>
         </#list>
@@ -58,7 +60,4 @@
     </table>
     </div>
 
-    <script>
-        $("#location").val("${invoice.location!}");
-    </script>
 </@layout.template>
