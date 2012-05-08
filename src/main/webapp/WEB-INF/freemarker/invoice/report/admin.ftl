@@ -40,7 +40,9 @@
                 <#include "reportData.ftl" />
         </#list>
         <#list newInvoiceList?sort_by("bondNumber") as invoice>
-                <#include "reportData.ftl" />
+               <#if invoice.bondNumber != ''>
+                   <#include "reportData.ftl" />
+               </#if>
         </#list>
         </tbody>
     </table>
