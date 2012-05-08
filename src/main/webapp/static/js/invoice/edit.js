@@ -53,6 +53,16 @@ kabbadi.invoice.edit = {
             },
             invalidHandler : function() {
                 $("#form_errors_msg").show();
+            },
+            submitHandler : function(form) {
+              var currentInvoiceNumber = $("input[name='invoiceNumber']").val();
+              if(kabbadi.invoice.edit.previousInvoiceNumber != currentInvoiceNumber){
+                $('#myModal').modal('show');
+                $("#submit-modal").click(function(e) {form.submit(); });
+              }
+              else {
+                  form.submit();
+              }
             }
         });
 
@@ -95,25 +105,23 @@ kabbadi.invoice.edit = {
         $("input[name='runningBalance']").val(prevRunningBalance - amountSTPIApproval + cgApprovedInINR);
     },
 
+
     initialize : function() {
 
         $(function () {
-
             kabbadi.invoice.edit.routeResponse($("#redirectToTab"),$("#cancelButton"), $('a[data-toggle="tab"]'));
             kabbadi.invoice.edit.editValidator();
-
+            kabbadi.invoice.edit.previousInvoiceNumber = $("input[name='invoiceNumber']").val();
 
             $.datepicker.setDefaults({
                 dateFormat: 'dd/mm/yy'
             });
-
             $(".defaultDatepicker").datepicker( );
-
             $("#remove_previous_bond_number").click(kabbadi.invoice.edit.removePreviousInvoice);
-
             $("input[name='bondNumber']").blur(kabbadi.invoice.edit.fetchPreviousRunningBalance);
             $("#location").change(kabbadi.invoice.edit.fetchPreviousRunningBalance);
             $("input[name='amountSTPIApproval'],input[name='cgApprovedInINR']").blur(kabbadi.invoice.edit.calculateCurrentRunningBalance);
+
         });
 
     }

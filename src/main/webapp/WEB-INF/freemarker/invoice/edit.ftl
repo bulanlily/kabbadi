@@ -265,7 +265,18 @@
 
 <hr/>
 <span class="span3">
-    <input type="submit" name="submit" value="Submit invoice" class="btn btn-primary"/>
+    <div id="myModal" class="modal hide fade" style="display: none; ">
+        <div class="modal-body">
+            <h4>Did you enter the commercial invoice number(not proforma)?</h4>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">NO</a>
+            <a href="#" class="btn btn-primary" id="submit-modal">YES</a>
+        </div>
+    </div>
+
+    <input id="submitButton" type="submit" name="submitButton" value="Submit invoice" class="btn btn-primary"/>
+
     <a id="cancelButton" href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel" /></a>
 </span>
 <span class="alert alert-error span4 hide" id="form_errors_msg">
@@ -278,6 +289,7 @@
 </form>
 
 <script src="/kabbadi/static/js/invoice/edit.js" ></script>
+<script src="/kabbadi/static/js/bootstrap-modal.js" ></script>
 <script>
     kabbadi.invoice.edit.initialize();
     $("#location").val("${invoice.location!}");
