@@ -18,8 +18,9 @@ public class ViewInvoiceDetailsPage extends BasePage {
         assertThat(driver.getTitle(), equalTo("View an Invoice | Kabbadi"));
     }
 
-    public void confirmFinanceInvoiceData(InvoiceForm invoiceForm){
+    public ViewInvoiceDetailsPage confirmFinanceInvoiceData(InvoiceForm invoiceForm){
         verifyInvoiceDataIsOnTable(invoiceForm, "Finance");
+        return this;
     }
 
     public ViewInvoiceDetailsPage confirmAdminInvoiceData(InvoiceForm invoice) {

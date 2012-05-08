@@ -40,6 +40,8 @@ public class InvoiceTestBuilder {
     private String costCentre = "CostCenter";
     private String identificationNumber = "ID#1234";
     private String STPIApprovalNumberAndDate = "STPI#1234";
+    private String groupOfAssets = "Computer Equipments";
+
 
     public InvoiceTestBuilder withInvoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
@@ -186,6 +188,11 @@ public class InvoiceTestBuilder {
         return  this;
     }
 
+    public InvoiceTestBuilder withGroupOfAssets(String groupOfAssets) {
+        this.groupOfAssets = groupOfAssets;
+        return  this;
+    }
+
     public InvoiceForm buildFinance() {
         Map<String, Object> fields = new HashMap<String, Object>();
         populateCommonFields(fields);
@@ -210,6 +217,7 @@ public class InvoiceTestBuilder {
         fields.put("costCentre", costCentre);
         fields.put("quantity", quantity);
         fields.put("identificationNumber", identificationNumber);
+        fields.put("groupOfAssets", groupOfAssets);
     }
 
     private void populateAdminFields(Map<String, Object> fields) {

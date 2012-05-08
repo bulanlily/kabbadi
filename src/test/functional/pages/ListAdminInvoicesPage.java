@@ -2,6 +2,7 @@ package pages;
 
 import forms.InvoiceForm;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -10,6 +11,7 @@ import java.util.Map;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
 public class ListAdminInvoicesPage extends BasePage {
@@ -84,5 +86,17 @@ public class ListAdminInvoicesPage extends BasePage {
         WebElement tableRow = driver.findElement(By.id("admin_invoice_" + fields.get("invoiceNumber")));
         assertThat(tableRow.getText(), containsString(fields.get("invoiceNumber")+""));
         return this;
+    }
+
+    public ListISInvoicesPage goToISViewPageAndConfirmInvoiceNotPresent(InvoiceForm invoice) {
+        String invoiceNumber = invoice.getFields().get("invoiceNumber").toString();
+        driver.findElement(By.linkText("IS")).click();
+        try {
+            driver.findElement(By.id("is_invoice_" + invoiceNumber));
+            fail("Link with text <" + invoiceNumber + "> is present");
+        } catch (NoSuchElementException ex) {
+            /* do nothing, link is not present, assert is passed */
+        }
+    return new ListISInvoicesPage(driver);
     }
 }
