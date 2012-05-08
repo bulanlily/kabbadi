@@ -15,7 +15,7 @@ public class InvoiceTestBuilder {
     private Money foreignValue = new Money("USD", new BigDecimal(1000));
     private double amountSTPIApproval = 500.00;
     private Money CIFValueInINR = new Money("INR", new BigDecimal(501));
-    private String bondNumber = "Bond#1234";
+    private String bondNumber = "12/23-45";
     private String bondDate = "01/01/2012";
     private String dateOfArrival = "02/01/2012";
     private String billOfEntryNumber = "Bill#1234";
@@ -40,6 +40,8 @@ public class InvoiceTestBuilder {
     private String costCentre = "CostCenter";
     private String identificationNumber = "ID#1234";
     private String STPIApprovalNumberAndDate = "STPI#1234";
+    private String groupOfAssets = "Computer Equipments";
+
 
     public InvoiceTestBuilder withInvoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
@@ -186,6 +188,11 @@ public class InvoiceTestBuilder {
         return  this;
     }
 
+    public InvoiceTestBuilder withGroupOfAssets(String groupOfAssets) {
+        this.groupOfAssets = groupOfAssets;
+        return  this;
+    }
+
     public InvoiceForm buildFinance() {
         Map<String, Object> fields = new HashMap<String, Object>();
         populateCommonFields(fields);
@@ -210,6 +217,7 @@ public class InvoiceTestBuilder {
         fields.put("costCentre", costCentre);
         fields.put("quantity", quantity);
         fields.put("identificationNumber", identificationNumber);
+        fields.put("groupOfAssets", groupOfAssets);
     }
 
     private void populateAdminFields(Map<String, Object> fields) {
