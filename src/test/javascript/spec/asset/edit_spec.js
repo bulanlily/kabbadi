@@ -29,22 +29,4 @@ describe("kabbadi.asset.editValidator",function(){
         $("#newAssetForm").submit();
         expect($("label.error")).toHaveText("");
     });
-//
-//    it("should allow Model Name to be selected from dropdown menu", function(){
-//       kabbadi.asset.editValidator();
-//       $("#modelList").val
-//        $("#newAssetForm").submit();
-//        expect($("label.error")).toHaveText("");
-//
-//
-//    });
-//
-//    it("should allow Model Name to be manually entered", function(){
-//          kabbadi.asset.editValidator();
-//          $("#modelName").val("mac book pro 15inch");
-//          $("#newAssetForm").submit();
-//          expect($("#modelName").val()).toEqual("mac book pro 15inch");
-//       });
-
-
 });
