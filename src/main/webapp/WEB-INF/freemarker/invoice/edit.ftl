@@ -78,7 +78,7 @@
     <div class="row">
         <div class="span3">
             <label for="bondNumber">Bond Number</label>
-            <input name="bondNumber" value="${invoice.bondNumber!}"/>
+            <input name="bondNumber" value="${invoice.bondNumber!}" placeholder="##/yy-yy"/>
         </div>
         <div class="span3">
             <label for="bondDate">Bond Date (dd/mm/yyyy)</label>

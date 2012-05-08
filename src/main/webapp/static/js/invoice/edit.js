@@ -22,8 +22,15 @@ kabbadi.invoice.edit = {
            return this.optional(element) || (/[0-3][0-9]\/[0-1][0-9]\/[0-9]{4}$/).test(value);
         }, "Please enter a valid date");
 
+        $.validator.addMethod("customBondNumber", function(value,element){
+           return this.optional(element) || (/[0-9]{2}\/[0-9]{2}-[0-9]{2}$/).test(value);
+        }, "eg. 41/11-12");
+
+
+
         $('#newInvoiceForm').validate({
             rules : {
+                bondNumber : { customBondNumber : true },
                 dateOfInvoice : { customDate : true },
                 dateOfCommissioning : { customDate : true },
                 bondDate : { customDate : true },
