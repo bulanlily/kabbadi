@@ -2,7 +2,7 @@ package kabbadi.service;
 
 import kabbadi.domain.Invoice;
 import kabbadi.domain.Location;
-import kabbadi.domain.db.GenericRepository;
+import kabbadi.domain.db.InvoiceRepository;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ public class InvoiceServiceTest {
 
     private InvoiceService invoiceService;
     @Mock
-    private GenericRepository<Invoice> repository;
+    private InvoiceRepository repository;
 
     @Before
     public void init() {

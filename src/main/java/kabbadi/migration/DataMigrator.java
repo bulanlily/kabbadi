@@ -29,7 +29,8 @@ public class DataMigrator {
             "importType",
             "cgApprovedInINR",
             "dutyForgone",
-            "location"
+            "location",
+            "runningBalance"
     };
 
     final static private String[] financeHeaders = new String[] {
@@ -40,33 +41,40 @@ public class DataMigrator {
             "groupOfAssets",
             "assetWiseBreakup",
             "quantity",
-            "location",
-            "identificationNumber",
+            "location","identificationNumber",
+            "Type",
             "grossBlock",
-            "deletion(2001-12)",
-            "totalPurchaseValueOn31-Mar-11",
-            "rateOfDepreciation",
-            "april-11",
-            "may-11",
-            "june-11",
-            "july-11",
-            "august-11",
-            "september-11",
-            "october-11",
-            "november-11",
-            "december-11",
-            "january-12",
-            "february-12",
-            "march-12",
+            "openingPurchaseValueAsOnApril01,2011",
+            "additionsDuringTheYear",
             "deletionsDuringTheYear",
-            "totalDepreciation31-Mar-2012",
-            "netBlock",
-            "costCentre"
+            "totalPurchaseValueAsOnDecember31,2011",
+            "openingBalanceAsOnApril01,2011",
+            "rateOfDepreciation",
+            "noOfDays",
+            "depn-TillMar12",
+            "deletions-TillMar12",
+            "totalDepreciationAsOnMarch31,2012",
+            "closingNetBlock",
+            "openingNetBlock",
+            "costCentre",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+            "January",
+            "February",
+            "March",
+            "Total"
     };
 
-    private static String adminCSV = "migration/Admin To Import(bangalore final)CSV.csv";
-    private static String financeCSV = "migration/KabbadiFinance.csv";
-
+    private static String
+            adminCSV = "migration/All For Upload.csv";
+    private static String financeCSV = "migration/financial datars.csv";
     
     public static void main(String[] argv) throws Exception {
         CSVReader csvAdminReader = new CSVReader(new FileReader(adminCSV));
@@ -84,6 +92,7 @@ public class DataMigrator {
 
         FileWriter sqlOutput = new FileWriter("src/main/resources/import_migrated_data.sql");
         BufferedWriter sqlWriter = new BufferedWriter(sqlOutput);
+        sqlWriter.write("set datestyle to European;\n");
         sqlWriter.write(StringUtils.join(insertStatements, "\n"));
         sqlWriter.close();
         sqlOutput.close();

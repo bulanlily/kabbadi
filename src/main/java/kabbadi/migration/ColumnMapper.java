@@ -31,7 +31,9 @@ public class ColumnMapper {
             "location",
             "identificationNumber",
             "deletionsDuringTheYear",
-            "costCentre"
+            "costCentre",
+            "runningBalance",
+            "additionsDuringTheYear"
     };
 
     final private String[] headers;
@@ -46,6 +48,7 @@ public class ColumnMapper {
     public List<Map<String, String>> mappedList() throws Exception {
         ArrayList<Map<String, String >> mappedList = new ArrayList<Map<String, String>>();
         for(String[] entry :entries){
+
             if (headers.length != entry.length)
             {
                 System.out.println(headers.length +","+entry.length);

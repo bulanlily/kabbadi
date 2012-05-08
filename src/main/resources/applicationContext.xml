@@ -53,7 +53,7 @@
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 
-    <bean id="invoiceRepository" class="kabbadi.domain.db.GenericRepository">
+    <bean id="invoiceRepository" class="kabbadi.domain.db.InvoiceRepository">
         <constructor-arg value="kabbadi.domain.Invoice"/>
         <constructor-arg ref="sessionFactory"/>
     </bean>
