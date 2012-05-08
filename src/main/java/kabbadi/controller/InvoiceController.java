@@ -1,6 +1,7 @@
 package kabbadi.controller;
 
 import kabbadi.domain.*;
+import kabbadi.domain.json.InvoiceNumberExistent;
 import kabbadi.domain.json.PreviousInvoiceRunningBalanceData;
 import kabbadi.service.InvoiceService;
 import kabbadi.spring.util.INRMoneyPropertyEditor;
@@ -58,7 +59,7 @@ public class InvoiceController {
     public ModelAndView list() {
         return new ModelAndView("invoice/list")
                 .addObject("invoices", invoiceService.list())
-                .addObject("locations",Location.values());
+                .addObject("locations", Location.values());
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -79,10 +80,10 @@ public class InvoiceController {
     @RequestMapping(value = "/report/admin", method = RequestMethod.GET)
     public ModelAndView generateReport(@RequestParam("location") String location) {
         Location loc = Location.valueOf(location);
-           List<Invoice> invoiceList = invoiceService.findByLocation(loc);
+        List<Invoice> invoiceList = invoiceService.findByLocation(loc);
         return new ModelAndView("invoice/report/admin")
                 .addObject("invoiceList", invoiceList)
-                .addObject("location",loc);
+                .addObject("location", loc);
     }
 
     private ModelAndView editPage(Invoice invoice) {
@@ -90,5 +91,12 @@ public class InvoiceController {
                 .addObject("importTypes", ImportType.values())
                 .addObject("locations", Location.values());
 
+    }
+
+    @RequestMapping(value = "/checkInvoiceNumber", method = RequestMethod.GET)
+    @ResponseBody
+    public InvoiceNumberExistent checkInvoiceNumber(@RequestParam("invoiceNumber") String invoiceNumber) {
+        Invoice invoice = invoiceService.findBy(invoiceNumber);
+        return new InvoiceNumberExistent(invoice);
     }
 }

@@ -17,7 +17,11 @@
     <div class="span3">
         <label for="invoiceNumber">Invoice number *</label>
         <input name="invoiceNumber" value="${invoice.invoiceNumber!}"/>
-        <div class='error_div' id='newInvoiceForm_invoiceNumber_errorloc'></div>
+        <div class='error_div hide' style="color:#F89406" id='invoiceNumber_error_alert'>
+            <p>This invoice number is a duplicate.</p>
+            <p>Pressing submit will create a second <br />
+                entry for this invoice number.</p>
+        </div>
     </div>
     <div class="span3">
         <label for="purchaseOrderNumber">Purchase Order Number</label>

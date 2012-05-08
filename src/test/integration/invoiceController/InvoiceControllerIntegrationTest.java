@@ -6,6 +6,7 @@ import kabbadi.controller.InvoiceController;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.Location;
 import kabbadi.domain.db.InvoiceRepository;
+import kabbadi.domain.json.InvoiceNumberExistent;
 import kabbadi.domain.json.PreviousInvoiceRunningBalanceData;
 import kabbadi.service.InvoiceService;
 import org.hibernate.SessionFactory;
@@ -49,10 +50,10 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
     }
 
     @Test
-    public void should_generate_report_for_given_location(){
+    public void should_generate_report_for_given_location() {
         Location location = Location.valueOf("BANGALORE");
         ModelAndView modelAndView = controller.generateReport("BANGALORE");
-        assertThat((List<Invoice>)modelAndView.getModel().get("invoiceList"), is(equalTo(invoiceService.findByLocation(location))));
+        assertThat((List<Invoice>) modelAndView.getModel().get("invoiceList"), is(equalTo(invoiceService.findByLocation(location))));
     }
 
     private Invoice invoiceWith(String invoiceNumber) {
@@ -112,6 +113,20 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
 
         assertThat(controller.previousRunningBalance("123", Location.PUNE), equalTo(new PreviousInvoiceRunningBalanceData(new Invoice())));
         assertThat(controller.previousRunningBalance("01/1-1", Location.PUNE), equalTo(new PreviousInvoiceRunningBalanceData(null)));
+    }
+
+    @Test
+    public void should_advise_about_existing_invoices() {
+        String invoiceNumber = "invoiceBeta";
+        Invoice invoice = new InvoiceTestBuilder()
+                .withInvoiceNumber(invoiceNumber)
+                .build();
+
+        controller.add(invoice, "");
+
+        assertThat(controller.checkInvoiceNumber(invoiceNumber), equalTo(new InvoiceNumberExistent(invoice)));
+
+        assertThat(controller.checkInvoiceNumber("none"), equalTo(new InvoiceNumberExistent(null)));
     }
 
 

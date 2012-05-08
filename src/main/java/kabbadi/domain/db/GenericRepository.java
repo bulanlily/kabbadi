@@ -56,7 +56,7 @@ public class GenericRepository<T> {
 
     public T findBy(String propertyName, String value) {
         return (T) this.sessionFactory.getCurrentSession().createCriteria(type).add(
-                Restrictions.eq(propertyName, value)).uniqueResult();
+                Restrictions.eq(propertyName, value)).setMaxResults(1).uniqueResult();
     }
 
     public List<T> findAllNotEqualTo(String field, Object param) {
