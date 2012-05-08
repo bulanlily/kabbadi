@@ -4,8 +4,8 @@ require("../spec_helper.js")
 describe("kabbadi.asset.editValidator",function(){
 
     beforeEach(function() {
-        setFixtures('<form id="newAssetForm" name="newAssetForm"> <input id="leasingExpiration"  class="defaultDatepicker" name="leasingExpiration" /> <div class="error_div"  class="defaultDatepicker" id="newAssetForm_leasingExpiration_errorloc"></div> <input id="maintenanceExpiration" name="maintenanceExpiration" /> <div class="error_div" id="newAssetForm_maintenanceExpiration_errorloc"></div> </form>');
-    });
+           setFixtures('<form id="newAssetForm" name="newAssetForm"> <input id="leasingExpiration"  class="defaultDatepicker" name="leasingExpiration" /> <div class="error_div"  class="defaultDatepicker" id="newAssetForm_leasingExpiration_errorloc"></div> <input id="maintenanceExpiration" name="maintenanceExpiration" /> <input id="modelName" name="modelName" /> <select name="modelList" id="modelList"/><div class="error_div" id="newAssetForm_maintenanceExpiration_errorloc"></div> </form>');
+       });
 
 
     it("fails when the date is not in the correct format",function(){
@@ -29,5 +29,22 @@ describe("kabbadi.asset.editValidator",function(){
         $("#newAssetForm").submit();
         expect($("label.error")).toHaveText("");
     });
+//
+//    it("should allow Model Name to be selected from dropdown menu", function(){
+//       kabbadi.asset.editValidator();
+//       $("#modelList").val
+//        $("#newAssetForm").submit();
+//        expect($("label.error")).toHaveText("");
+//
+//
+//    });
+//
+//    it("should allow Model Name to be manually entered", function(){
+//          kabbadi.asset.editValidator();
+//          $("#modelName").val("mac book pro 15inch");
+//          $("#newAssetForm").submit();
+//          expect($("#modelName").val()).toEqual("mac book pro 15inch");
+//       });
+
 
 });
