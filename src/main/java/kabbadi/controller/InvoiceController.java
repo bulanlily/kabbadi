@@ -16,6 +16,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -80,9 +81,10 @@ public class InvoiceController {
     @RequestMapping(value = "/report/admin", method = RequestMethod.GET)
     public ModelAndView generateReport(@RequestParam("location") String location) {
         Location loc = Location.valueOf(location);
-        List<Invoice> invoiceList = invoiceService.findByLocation(loc);
+        HashMap<String, List<Invoice>> oldAndNewInvoices = invoiceService.getOldAndNewData(loc);
         return new ModelAndView("invoice/report/admin")
-                .addObject("invoiceList", invoiceList)
+                .addObject("oldInvoiceList", oldAndNewInvoices.get("oldInvoices"))
+                .addObject("newInvoiceList", oldAndNewInvoices.get("newInvoices"))
                 .addObject("location",loc);
     }
 

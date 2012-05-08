@@ -29,7 +29,6 @@ public class InvoiceRepository extends GenericRepository<Invoice> {
                 .uniqueResult();
     }
 
-    public List<Invoice> findAllMatchingInvoiceNumberAndLocation(String oldData, Location bangalore) {
-        return null;
-    }
+
+
 }

@@ -6,8 +6,12 @@ import kabbadi.domain.db.InvoiceRepository;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
+import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.Mock;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -41,9 +45,18 @@ public class InvoiceServiceTest {
     @Test
     public void should_get_a_list_of_new_invoices() {
 
-        List<Invoice> invoiceList = invoiceService.getInvoicesExcluding("invoiceNumber", "OldData");
+        List<Invoice> invoiceList = invoiceService.getInvoicesExcluding("invoiceNumber", "old data");
 
-        verify(repository).findAllNotEqualTo("invoiceNumber", "OldData");
+        verify(repository).findAllNotEqualTo("invoiceNumber", "old data");
+    }
+
+    @Test
+    public void should_separate_old_and_new_data() {
+        Location city = Location.BANGALORE;
+        HashMap<String, List<Invoice>> oldAndNewData = invoiceService.getOldAndNewData(city);
+
+        verify(repository).findAll("location", city);
+        assertThat(oldAndNewData.size(), equalTo(2));
     }
 
 }

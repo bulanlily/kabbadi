@@ -15,6 +15,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -53,7 +54,7 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
     public void should_generate_report_for_given_location() {
         Location location = Location.valueOf("BANGALORE");
         ModelAndView modelAndView = controller.generateReport("BANGALORE");
-        assertThat((List<Invoice>) modelAndView.getModel().get("invoiceList"), is(equalTo(invoiceService.findByLocation(location))));
+        assertThat((List<Invoice>) modelAndView.getModel().get("newInvoiceList"), is(equalTo(invoiceService.getOldAndNewData(location).get("newInvoices"))));
     }
 
     private Invoice invoiceWith(String invoiceNumber) {
@@ -129,7 +130,15 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
         assertThat(controller.checkInvoiceNumber("none"), equalTo(new InvoiceNumberExistent(null)));
     }
 
+    @Test
+    public void should_get_old_and_new_data() {
+        HashMap<String, List<Invoice>> oldAndNewData = invoiceService.getOldAndNewData(Location.BANGALORE);
 
+        assertThat(oldAndNewData.size(), equalTo(2));
+        assertThat(oldAndNewData.get("newInvoices").get(0).getInvoiceNumber(), not("old data"));
+        assertThat(oldAndNewData.get("oldInvoices").get(0).getInvoiceNumber(), equalTo("old data"));
+    }
+    
     private InvoiceController buildInvoiceController(InvoiceService invoiceService) {
         return new InvoiceController(invoiceService);
     }

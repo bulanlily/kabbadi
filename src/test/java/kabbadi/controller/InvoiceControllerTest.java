@@ -47,6 +47,6 @@ public class InvoiceControllerTest {
         when(invoiceService.findByLocation(Location.valueOf("BANGALORE"))).thenReturn(invoiceList);
         ModelAndView modelAndView = invoiceController.generateReport("BANGALORE");
         assertThat(modelAndView.getViewName(),equalTo("invoice/report/admin"));
-        assertEquals(modelAndView.getModelMap().get("invoiceList"), (invoiceService.findByLocation(Location.valueOf("BANGALORE"))));
+        assertEquals(modelAndView.getModelMap().get("newInvoiceList"), (invoiceService.getOldAndNewData(Location.valueOf("BANGALORE")).get("newInvoices")));
     }
 }

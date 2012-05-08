@@ -1,6 +1,7 @@
 package kabbadi.service;
 
 import kabbadi.domain.Invoice;
+import kabbadi.domain.InvoiceUtils;
 import kabbadi.domain.Location;
 import kabbadi.domain.db.InvoiceRepository;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -40,5 +42,11 @@ public class InvoiceService extends GenericService<Invoice> {
     @Transactional
     public List<Invoice> getInvoicesExcluding(String fieldName, String dataToExclude) {
         return repository.findAllNotEqualTo(fieldName, dataToExclude);
+    }
+
+    @Transactional
+    public HashMap<String, List<Invoice>> getOldAndNewData(Location city) {
+        List<Invoice> invoices = repository.findAll("location", city);
+        return InvoiceUtils.separateOldAndNewData(invoices);
     }
 }
