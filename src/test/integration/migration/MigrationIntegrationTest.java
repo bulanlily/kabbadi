@@ -65,7 +65,7 @@ public class MigrationIntegrationTest extends IntegrationTest{
         }
         List<Map<String, String>>combinedEntries = new InvoiceCreator(adminMappedEntries, financeMappedEntries).createJoinEntry();
         List<String> insertStatements =  new SQLGenerator(combinedEntries).createInsertStatements();
-        sessionFactory.getCurrentSession().createSQLQuery("delete from asset; delete from invoice");
+        sessionFactory.getCurrentSession().createSQLQuery("delete from asset; delete from invoice;").executeUpdate();
         for(String insertStatement: insertStatements){
             sessionFactory.getCurrentSession().createSQLQuery(insertStatement).executeUpdate();
         }
