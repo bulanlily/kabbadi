@@ -8,14 +8,16 @@ public class FinanceInvoicesTest extends BaseTest {
 
     @Test
     public void should_be_able_to_add_finance_invoice_search_for_it_and_view_its_details(){
-        InvoiceForm invoice = new InvoiceTestBuilder().buildFinance();
+        InvoiceForm invoice = new InvoiceTestBuilder().withGroupOfAssets("Office Equipments").buildFinance();
         launchKabbadi()
                 .loginWithValidCredentials()
                 .goToAddFinancePage()
                 .submit(invoice)
                 .searchForInvoiceInListPage(invoice)
                 .viewFirstInvoiceDetails()
-                .confirmFinanceInvoiceData(invoice);
+                .confirmFinanceInvoiceData(invoice)
+                .returnToAdminListPage()
+                .goToISViewPageAndConfirmInvoiceNotPresent(invoice);
     }
 
     @Test
