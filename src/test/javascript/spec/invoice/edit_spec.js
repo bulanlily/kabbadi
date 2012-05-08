@@ -31,7 +31,7 @@ describe("redirecting to the right tabs",function(){
 })
 
 describe("validations", function() {
-    it("should show a error message for all the tabs when it is invalid", function() {
+    it("should show an error message for all the tabs when it is invalid", function() {
         setFixtures("<form id='newInvoiceForm' ><input name='invoiceNumber' /> <div style='display:none' id='form_errors_msg'></div></form>")
 
         kabbadi.invoice.edit.editValidator();
@@ -40,3 +40,4 @@ describe("validations", function() {
         expect($("#form_errors_msg")).toBeVisible();
     })
 })
+

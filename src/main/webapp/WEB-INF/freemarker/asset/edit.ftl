@@ -23,17 +23,18 @@
         <label for="serialNumber">Serial number</label>
         <input name="serialNumber" value="${asset.serialNumber!}"/>
     </div>
-
     <div class="span3">
-        <label for="modelName">Model Name</label>
-        <input name="modelName"  value="${asset.modelName!}"/>
+        <label for="registeredTo">Registered to</label>
+        <input name="registeredTo" value="${asset.registeredTo!}"/>
     </div>
+
 
 </div>
 <div class="row">
     <div class="span3">
-        <label for="registeredTo">Registered to</label>
-        <input name="registeredTo" value="${asset.registeredTo!}"/>
+        <label for="modelName">Model Name</label>
+        <input name="modelName" type="text" class="typeahead" value="${asset.modelName!}">
+
     </div>
     <div class="span3">
         <label for="status">Status</label>
@@ -41,7 +42,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" style="position:relative;">
 
     <div class="span3">
         <label for="leasingCompany">Leasing Company</label>
@@ -72,7 +73,13 @@
 <br/>
 </form>
 
+<script type="text/javascript">
+
+</script>
+
 
 <script src="/kabbadi/static/js/asset/edit.js" ></script>
+<script src="/kabbadi/static/js/bootstrap-typeahead.js" ></script>
+
 <script>kabbadi.asset.initialize();</script>
         </@layout.template>

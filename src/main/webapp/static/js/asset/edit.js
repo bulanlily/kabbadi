@@ -16,11 +16,14 @@ window.kabbadi = kabbadi;
                 maintenanceExpiration : { customDate : true }
             }
         });
+
+
     },
 
     initialize : function() {
         $(function() {
             kabbadi.asset.editValidator();
+            kabbadi.asset.selectModel();
 
             var redirectTo = $("#redirectToTab");
             redirectTo.val((window.location.hash + "").replace("#", ""));
@@ -36,6 +39,18 @@ window.kabbadi = kabbadi;
             $(".defaultDatepicker").datepicker();
 
         });
+    },
+    selectModel : function(){
+               $('.typeahead').typeahead({
+                   source: [
+                       "MacBook Pro 15inch",
+                       "MacBook Air 13inch",
+                       "Dell E6520",
+                       "Dell E6420",
+                       "Dell E6320",
+                       "Dell E6220"
+                   ]
+               });
     }
-    }
+ }
 })(jQuery);
