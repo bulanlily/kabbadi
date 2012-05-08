@@ -83,21 +83,21 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
     public void should_get_the_previous_invoice_when_it_exist() {
         Invoice invoice1 = new InvoiceTestBuilder()
                 .withInvoiceNumber("123")
-                .withBondNumber("15/14-15")
+                .withBondNumber("15/20-21")
                 .withRunningBalance("123")
                 .withLocation(Location.BANGALORE)
                 .build();
 
         Invoice invoice2 = new InvoiceTestBuilder()
                 .withInvoiceNumber("123")
-                .withBondNumber("15/14-15")
+                .withBondNumber("15/20-21")
                 .withRunningBalance("123")
                 .withLocation(Location.CHENNAI)
                 .build();
 
         Invoice invoice3 = new InvoiceTestBuilder()
                 .withInvoiceNumber("124")
-                .withBondNumber("15/11-12")
+                .withBondNumber("15/30-31")
                 .withRunningBalance("123")
                 .withLocation(Location.BANGALORE)
                 .build();
@@ -105,10 +105,10 @@ public class InvoiceControllerIntegrationTest extends IntegrationTest {
         controller.add(invoice1, "");
         controller.add(invoice2, "");
 
-        assertThat(controller.previousRunningBalance("01/15-16", Location.BANGALORE), equalTo(new PreviousInvoiceRunningBalanceData(invoice1)));
-        assertThat(controller.previousRunningBalance("01/15-16", Location.CHENNAI), equalTo(new PreviousInvoiceRunningBalanceData(invoice2)));
+        assertThat(controller.previousRunningBalance("01/21-22", Location.BANGALORE), equalTo(new PreviousInvoiceRunningBalanceData(invoice1)));
+        assertThat(controller.previousRunningBalance("01/21-22", Location.CHENNAI), equalTo(new PreviousInvoiceRunningBalanceData(invoice2)));
 
-        assertThat(controller.previousRunningBalance("16/11-12", Location.BANGALORE), equalTo(new PreviousInvoiceRunningBalanceData(invoice3)));
+        assertThat(controller.previousRunningBalance("16/30-31", Location.BANGALORE), equalTo(new PreviousInvoiceRunningBalanceData(invoice3)));
 
         assertThat(controller.previousRunningBalance("123", Location.PUNE), equalTo(new PreviousInvoiceRunningBalanceData(new Invoice())));
         assertThat(controller.previousRunningBalance("01/1-1", Location.PUNE), equalTo(new PreviousInvoiceRunningBalanceData(null)));

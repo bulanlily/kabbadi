@@ -28,7 +28,9 @@ public class InvoiceRepositoryIntegrationTest extends IntegrationTest {
     @Test
     public void should_have_a_invoice() {
         String invoiceNumber = "invoice27";
-        addToDatabase(invoiceNumber);
+        Invoice invoice = new Invoice();
+        invoice.setInvoiceNumber(invoiceNumber);
+        invoiceRepository.save(invoice);
 
         Invoice actualInvoice = invoiceRepository.findBy(Invoice.INVOICE_NUMBER, invoiceNumber);
 
@@ -46,14 +48,6 @@ public class InvoiceRepositoryIntegrationTest extends IntegrationTest {
         invoiceRepository.save(new Invoice());
 
         assertThat(invoiceRepository.list().size(), equalTo(currentSize + 3));
-
-    }
-
-    private void addToDatabase(String invoiceNumber) {
-
-        Session currentSession = sessionFactory.getCurrentSession();
-        String sql = "insert into Invoice (invoice_id, invoiceNumber, freeOfCharge, loanBasis) values (27, '" + invoiceNumber + "', 0, 0);";
-        currentSession.createSQLQuery(sql).executeUpdate();
 
     }
 

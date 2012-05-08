@@ -61,7 +61,7 @@ public class MigrationIntegrationTest extends IntegrationTest{
             adminMappedEntries = new ColumnMapper(adminHeaders, adminListOfTestData).mappedList();
             financeMappedEntries = new ColumnMapper(financeHeaders, financeListOfTestData).mappedList();
         } catch (Exception e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
         List<Map<String, String>>combinedEntries = new InvoiceCreator(adminMappedEntries, financeMappedEntries).createJoinEntry();
         List<String> insertStatements =  new SQLGenerator(combinedEntries).createInsertStatements();
