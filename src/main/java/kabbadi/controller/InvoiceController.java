@@ -59,7 +59,7 @@ public class InvoiceController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView list() {
         return new ModelAndView("invoice/list")
-                .addObject("invoices", invoiceService.list())
+                .addObject("invoices", invoiceService.getInvoicesExcluding("invoiceNumber", "old data"))
                 .addObject("locations", Location.values());
     }
 
