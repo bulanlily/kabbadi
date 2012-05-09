@@ -138,7 +138,7 @@
 
                     <tr>
                         <td>Location</td>
-                        <td>${invoice.location!}</td>
+                        <td>${invoice.location.getLocation()!}</td>
                     </tr>
 
 

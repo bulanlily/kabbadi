@@ -17,7 +17,7 @@
             <ul class="dropdown-menu">
                 <#list locations as location>
                     <li>
-                        <a href="<@spring.url '/invoice/report/admin?location=${location}'/>">${location}</a>
+                        <a href="<@spring.url '/invoice/report/admin?location=${location}'/>">${location.getLocation()}</a>
                     </li>
                 </#list>
             </ul>
