@@ -9,11 +9,6 @@
 <#if asset.assetNumber??>
 <h2>Asset Number: ${"${asset.assetNumber!}"?left_pad(4,'0')}</h2>
         </#if>
-
-
-<p>* indicates mandatory fields</p>
-<br/>
-
 <hr/>
 <form action="<@spring.url '/invoice/${asset.invoice.invoice_id!}/asset/save'/>" name="newAssetForm" id="newAssetForm" method="POST">
 <input name="assetNumber" type="hidden" value="${asset.assetNumber!}"/>
