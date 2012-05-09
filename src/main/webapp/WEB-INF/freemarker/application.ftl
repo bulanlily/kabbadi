@@ -5,7 +5,7 @@
         <title>${title} | Kabbadi</title>
         <link href="/kabbadi/static/css/bootstrap.css" rel="stylesheet"/>
         <link href="/kabbadi/static/css/bootstrap-responsive.css" rel="stylesheet">
-        <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
+        <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet"
               type="text/css"/>
         <link href="/kabbadi/static/css/kabbadi.css" rel="stylesheet" />
         <script src="/kabbadi/static/js/jquery.js" type="text/javascript"></script>
@@ -15,7 +15,7 @@
         <script src="/kabbadi/static/js/custom-tabs.js" type="text/javascript"></script>
         <script src="/kabbadi/static/js/quicksearch.js" type="text/javascript"></script>
         <script src="/kabbadi/static/js/jquery.validate.min.js" type="text/javascript"></script>
-        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
 
         <style type="text/css">
             body {
