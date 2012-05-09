@@ -295,7 +295,7 @@
 <script src="/kabbadi/static/js/invoice/edit.js" ></script>
 <script src="/kabbadi/static/js/bootstrap-modal.js" ></script>
 <script>
-    kabbadi.invoice.edit.initialize();
+    kabbadi.invoice.edit.initialize("<@spring.url '' />");
     $("#location").val("${invoice.location!}");
     $("#groupOfAssets").val("${invoice.groupOfAssets!}");
     $("#importType").val("${invoice.importType!}");
