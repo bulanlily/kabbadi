@@ -29,6 +29,10 @@ buildscript {
     }
 }
 
+war {
+    baseName = 'root'
+}
+
 sourceSets {
     functional {
 

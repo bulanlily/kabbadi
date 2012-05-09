@@ -8,7 +8,7 @@ else
 fi
 
 /opt/gradle-1.0-rc-1/bin/gradle -P env=$ENV war
-scp ./build/libs/kabbadi.war twu@$HOST:/opt/jetty/webapps
+scp ./build/libs/root.war twu@$HOST:/opt/jetty/webapps
 if [ "$1" == "prod" ]; then
 	ssh twu@$HOST "~/restart-kabbadi"
 else
