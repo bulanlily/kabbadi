@@ -5,7 +5,7 @@
 
 <@layout.template 'Add/Edit asset' >
 
-<h1>Add/Edit Asset of Invoice ${asset.invoice.invoiceNumber!}</h1>
+<h1>Add/Edit Asset of Invoice # ${asset.invoice.invoiceNumber!}</h1>
 <#if asset.assetNumber??>
 <h2>Asset Number: ${"${asset.assetNumber!}"?left_pad(4,'0')}</h2>
         </#if>
