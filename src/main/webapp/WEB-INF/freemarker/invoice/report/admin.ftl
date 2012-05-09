@@ -101,8 +101,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>${sumAssessable()!}</td>
             <td></td>
+            <td>${sumAssessable()!}</td>
             <td></td>
             <td>${sumOP()}</td>
             <td>${sumLB()}</td>
