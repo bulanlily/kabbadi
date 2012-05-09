@@ -159,7 +159,7 @@
                 </tr>
                 <#list invoice.assets as asset>
                 <tr id="asset_${asset.assetNumber!}">
-                    <td>${invoice.invoiceNumber}</td>
+                    <td style="padding-left:.75cm;">${invoice.invoiceNumber}</td>
                     <td>${"${asset.assetNumber!}"?left_pad(4,'0')}</td>
                     <td>${invoice.location.getLocation()!}</td>
                     <td>${asset.status!}</td>
