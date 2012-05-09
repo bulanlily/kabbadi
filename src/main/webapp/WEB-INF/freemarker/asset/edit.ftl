@@ -20,11 +20,11 @@
 <br/>
 <div class="row">
     <div class="span3">
-        <label for="serialNumber">Serial number</label>
+        <label for="serialNumber">Serial Number</label>
         <input name="serialNumber" value="${asset.serialNumber!}"/>
     </div>
     <div class="span3">
-        <label for="registeredTo">Registered to</label>
+        <label for="registeredTo">Registered To</label>
         <input name="registeredTo" value="${asset.registeredTo!}"/>
     </div>
 
