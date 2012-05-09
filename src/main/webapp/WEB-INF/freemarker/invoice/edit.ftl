@@ -135,6 +135,7 @@
                 </#list>
             </select>
         </div>
+        <div class="span3">
             <label for="CIFValueInINR">CIF Value In INR</label>
             <input name="CIFValueInINR" value="${invoice.CIFDisplayAmountInINR!}"/>
         </div>
