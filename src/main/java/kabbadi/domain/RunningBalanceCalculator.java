@@ -34,6 +34,9 @@ public class RunningBalanceCalculator {
     }
 
     public Invoice injectInto(Invoice invoice) {
+        if(invoice == null)
+            return null;
+
         invoice.setRunningBalanceCalculator(this);
         return invoice;
     }
