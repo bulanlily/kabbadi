@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.List;
 
 import static junit.framework.Assert.assertEquals;
 import static org.hamcrest.CoreMatchers.*;
@@ -61,6 +62,8 @@ public class RunningBalanceCalculatorTest extends IntegrationTest {
         new RunningBalanceCalculator(invoiceService).injectInto(invoice);
 
         assertThat(invoice.getRunningBalanceCalculator(), is(not(nullValue())));
+
+        new RunningBalanceCalculator(invoiceService).injectInto((Invoice) null);
     }
 
 
@@ -70,6 +73,8 @@ public class RunningBalanceCalculatorTest extends IntegrationTest {
         new RunningBalanceCalculator(invoiceService).injectInto(Arrays.asList(invoice));
 
         assertThat(invoice.getRunningBalanceCalculator(), is(not(nullValue())));
+
+        new RunningBalanceCalculator(invoiceService).injectInto((List<Invoice>) null);
     }
 
     private Invoice invoiceWith(String invoiceNumber, int amount) {

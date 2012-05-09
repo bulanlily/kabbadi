@@ -13,7 +13,7 @@ public class PreviousInvoiceRunningBalanceData {
     }
 
     public BigDecimal getRunningBalance() {
-        return invoice.getRunningBalance();
+        return invoice.runningBalance();
     }
 
     public String getBondNumber() {
