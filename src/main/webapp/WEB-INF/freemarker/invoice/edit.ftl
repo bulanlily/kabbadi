@@ -173,7 +173,7 @@
     <div class="row">
         <div class="span3">
             <label for="runningBalance">Running Balance</label>
-            <input name="runningBalance" value="${invoice.getRunningBalance()!}"/>
+            <input name="runningBalance" id="runningBalance" value="${invoice.getRunningBalance()!}" disabled="disabled" title="This field is automatically calculated"/>
             <p class="help-block hide" id="previous_matched_bond_number">
                 <strong>Previous Bond#:</strong>
                 <span id="previous_bond_number"></span>

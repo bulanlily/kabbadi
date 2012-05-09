@@ -76,7 +76,8 @@ public class InvoiceController {
             @RequestParam("bondNumber") String currentBondNumber,
             @RequestParam("location") Location location) {
         String previousBondNumber = new PreviousBondNumberConverter(currentBondNumber).getPreviousBondNumber();
-        return new PreviousInvoiceRunningBalanceData(invoiceService.findByPreviousBondNumber(previousBondNumber, location));
+        RunningBalanceCalculator calculator = new RunningBalanceCalculator(invoiceService);
+        return new PreviousInvoiceRunningBalanceData(calculator.injectInto(invoiceService.findByPreviousBondNumber(previousBondNumber, location)));
     }
 
     @RequestMapping(value = "/report/admin", method = RequestMethod.GET)
@@ -92,7 +93,7 @@ public class InvoiceController {
     }
 
     private ModelAndView editPage(Invoice invoice) {
-        return new ModelAndView("invoice/edit", "invoice", invoice)
+        return new ModelAndView("invoice/edit", "invoice", new RunningBalanceCalculator(invoiceService).injectInto(invoice))
                 .addObject("importTypes", ImportType.values())
                 .addObject("locations", Location.values());
 
