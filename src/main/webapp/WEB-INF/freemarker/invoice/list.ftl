@@ -125,8 +125,7 @@
         </table>
         </div>
         <div id="is" class="tab-pane fade">
-
-            <div class="row">
+            <div class="page-header"  style="height:42px">
                 <form action="#" class="span3" align="left">
                     <input name="search" id="is_search" type="text" placeholder="Search...">
                     <span style="display: none;" class="loading">Loading...</span>
