@@ -4,7 +4,7 @@ import domain.builder.InvoiceTestBuilder;
 import integration.IntegrationTest;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.Location;
-import kabbadi.domain.RunningBalanceUpdater;
+import kabbadi.domain.RunningBalanceCalculator;
 import kabbadi.service.InvoiceService;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,20 +29,26 @@ public class RunningBalanceUpdaterTest extends IntegrationTest {
         Invoice newInvoice = invoiceWith("14/98-99", 123);
         invoiceService.saveOrUpdate(newInvoice);
 
-        new RunningBalanceUpdater(invoiceService).updateSince(newInvoice);
-        assertEquals(new BigDecimal(369), newInvoice.getRunningBalance());
+        BigDecimal value = new RunningBalanceCalculator(invoiceService).calculateStartingFrom(newInvoice);
+        assertEquals(new BigDecimal(492), value);
+
+        oldInvoice.setAdditionsDuringTheYear(null);
+        invoiceService.saveOrUpdate(oldInvoice);
+
+        BigDecimal value1 = new RunningBalanceCalculator(invoiceService).calculateStartingFrom(newInvoice);
+        assertEquals(new BigDecimal(492 - 123), value1);
 
         oldInvoice.setAdditionsDuringTheYear(new BigDecimal(0));
         invoiceService.saveOrUpdate(oldInvoice);
 
-        new RunningBalanceUpdater(invoiceService).updateSince(newInvoice);
-        assertEquals(new BigDecimal(369 - 123), newInvoice.getRunningBalance());
+        BigDecimal value2 = new RunningBalanceCalculator(invoiceService).calculateStartingFrom(newInvoice);
+        assertEquals(new BigDecimal(492 - 123), value2);
 
         oldInvoice.setAmountSTPIApproval(new BigDecimal(1000));
         invoiceService.saveOrUpdate(oldInvoice);
 
-        new RunningBalanceUpdater(invoiceService).updateSince(newInvoice);
-        assertEquals(new BigDecimal(369 - 123 - 1000), newInvoice.getRunningBalance());
+        BigDecimal value3 = new RunningBalanceCalculator(invoiceService).calculateStartingFrom(newInvoice);
+        assertEquals(new BigDecimal(492 - 123 - 1000), value3);
 
     }
 
@@ -50,8 +56,6 @@ public class RunningBalanceUpdaterTest extends IntegrationTest {
         return new InvoiceTestBuilder()
                 .withInvoiceNumber(invoiceNumber)
                 .withBondNumber(invoiceNumber)
-                .withRunningBalance("0")
-                .withAmountSTPIApproval(0)
                 .withAdditionsDuringTheYear(amount)
                 .withLocation(Location.BANGALORE)
                 .build();

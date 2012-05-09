@@ -16,7 +16,7 @@ import java.util.List;
 @Access(AccessType.FIELD)
 @Getter
 @Setter
-public class Invoice{
+public class Invoice {
 
     public static final String INVOICE_NUMBER = "invoiceNumber";
 
@@ -82,14 +82,14 @@ public class Invoice{
     private String identificationNumber;
 
     @Id
-    @GenericGenerator(name="auto-increment", strategy = "increment")
+    @GenericGenerator(name = "auto-increment", strategy = "increment")
     @GeneratedValue(generator = "auto-increment")
     private Integer invoice_id;
 
     @OneToMany(
-        cascade = {CascadeType.ALL},
-        fetch = FetchType.LAZY,
-        mappedBy = "invoice"
+            cascade = {CascadeType.ALL},
+            fetch = FetchType.LAZY,
+            mappedBy = "invoice"
     )
     @Fetch(FetchMode.JOIN)
     private List<Asset> assets;
@@ -119,7 +119,7 @@ public class Invoice{
     }
 
     public BigDecimal gbOnDecember31() {
-        if(openingPurchaseValueAsOnApril01 == null || additionsDuringTheYear == null || deletionsDuringTheYear == null)
+        if (openingPurchaseValueAsOnApril01 == null || additionsDuringTheYear == null || deletionsDuringTheYear == null)
             return null;
 
         return openingPurchaseValueAsOnApril01.add(additionsDuringTheYear).subtract(deletionsDuringTheYear);
@@ -142,6 +142,14 @@ public class Invoice{
     }
 
     public String getBondNumber() {
-        return (StringUtils.isNullOrEmpty(bondNumber))?"":bondNumber;
+        return (StringUtils.isNullOrEmpty(bondNumber)) ? "" : bondNumber;
+    }
+
+    public BigDecimal getAmountSTPIApproval() {
+        return amountSTPIApproval == null ? new BigDecimal(0) : amountSTPIApproval;
+    }
+
+    public BigDecimal getAdditionsDuringTheYear() {
+        return additionsDuringTheYear == null ? new BigDecimal(0) : additionsDuringTheYear;
     }
 }
