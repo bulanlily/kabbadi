@@ -284,9 +284,10 @@
         </div>
     </div>
 
+    <a id="cancelButton" href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel" /></a>
+
     <input id="submitButton" type="submit" name="submitButton" value="Submit invoice" class="btn btn-primary"/>
 
-    <a id="cancelButton" href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel" /></a>
 </span>
 <span class="alert alert-error span4 hide" id="form_errors_msg">
     <center>Submission failed. Check for invalid input messages.</center>
