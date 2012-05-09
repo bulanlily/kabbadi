@@ -16,12 +16,12 @@ public class AddFinanceInvoicePage extends BasePage {
     }
 
     public ListFinanceInvoicesPage submit(InvoiceForm invoiceForm) {
-        fillFormWith(invoiceForm);
+        fillFormWithValidDetails(invoiceForm);
         return new ListFinanceInvoicesPage(driver);
     }
 
     public AddFinanceInvoicePage submitInvalid(InvoiceForm invoiceForm) {
-        fillFormWith(invoiceForm);
+        fillFormWithInValidDetails(invoiceForm);
         return this;
     }
 

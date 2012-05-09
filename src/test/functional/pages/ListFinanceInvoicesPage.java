@@ -8,7 +8,8 @@ import org.openqa.selenium.WebElement;
 import java.util.Map;
 
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.matchers.JUnitMatchers.containsString;
 
 public class ListFinanceInvoicesPage extends BasePage{

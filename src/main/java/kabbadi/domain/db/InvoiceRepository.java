@@ -2,14 +2,11 @@ package kabbadi.domain.db;
 
 import kabbadi.domain.Invoice;
 import kabbadi.domain.Location;
-import lombok.NoArgsConstructor;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 

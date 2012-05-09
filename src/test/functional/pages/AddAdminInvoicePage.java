@@ -20,12 +20,12 @@ public class AddAdminInvoicePage extends BasePage {
     }
 
     public ListAdminInvoicesPage fillFormWithValidDetailsAndSubmit(InvoiceForm invoiceForm) {
-        fillFormWith(invoiceForm);
+        fillFormWithValidDetails(invoiceForm);
         return new ListAdminInvoicesPage(driver);
     }
 
     public AddAdminInvoicePage fillFormWithInvalidDetailsAndSubmit(InvoiceForm invoiceForm) {
-        fillFormWith(invoiceForm);
+        fillFormWithInValidDetails(invoiceForm);
         return this;
     }
 
@@ -35,7 +35,7 @@ public class AddAdminInvoicePage extends BasePage {
             driver.findElement(By.name(key + "")).sendKeys(fields.get(key) + "");
         }
 
-        driver.findElement(By.name("submit")).click();
+        driver.findElement(By.name("submitButton")).click();
 
         return new AddAdminInvoicePage(driver);
     }

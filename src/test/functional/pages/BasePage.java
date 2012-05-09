@@ -38,11 +38,19 @@ public class BasePage {
             field.sendKeys(fieldValue);
     }
 
-    protected void fillFormWith(InvoiceForm invoiceForm) {
+    protected void fillFormWithValidDetails(InvoiceForm invoiceForm) {
         Map<String, Object> fields = invoiceForm.getFields();
         for (String fieldName : fields.keySet()) {
             fillFields(fieldName, (fields.get(fieldName) + ""));
         }
-        driver.findElement(By.cssSelector("input[name=submit]")).click();
+        driver.findElement(By.cssSelector("input[name=submitButton]")).click();
+        driver.findElement(By.id("submit-modal")).click();
+    }
+    protected void fillFormWithInValidDetails(InvoiceForm invoiceForm) {
+        Map<String, Object> fields = invoiceForm.getFields();
+        for (String fieldName : fields.keySet()) {
+            fillFields(fieldName, (fields.get(fieldName) + ""));
+        }
+        driver.findElement(By.cssSelector("input[name=submitButton]")).click();
     }
 }

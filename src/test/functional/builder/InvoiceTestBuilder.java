@@ -1,7 +1,7 @@
 package builder;
 
-import kabbadi.domain.ImportType;
 import forms.InvoiceForm;
+import kabbadi.domain.ImportType;
 import kabbadi.domain.Location;
 import kabbadi.domain.Money;
 

@@ -5,15 +5,12 @@ import integration.IntegrationTest;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.Location;
 import kabbadi.domain.db.InvoiceRepository;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.HashMap;
 import java.util.List;
 
-import static junit.framework.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;

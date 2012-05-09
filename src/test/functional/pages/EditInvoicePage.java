@@ -15,7 +15,7 @@ public class EditInvoicePage extends BasePage {
     }
 
     public ListAdminInvoicesPage submit(InvoiceForm invoiceForm) {
-        fillFormWith(invoiceForm);
+        fillFormWithValidDetails(invoiceForm);
         return new ListAdminInvoicesPage(driver);
     }
 
@@ -26,7 +26,8 @@ public class EditInvoicePage extends BasePage {
     }
 
     public ListAdminInvoicesPage submitInvoice() {
-        driver.findElement(By.name("submit")).click();
+        driver.findElement(By.name("submitButton")).click();
+        driver.findElement(By.id("submit-modal")).click();
         return new ListAdminInvoicesPage(driver);
     }
 

@@ -128,4 +128,14 @@ public class InvoiceTestBuilder {
         }
         return this;
     }
+
+    public InvoiceTestBuilder withRunningBalance(double value) {
+        invoice.setRunningBalance(new BigDecimal(value));
+        return this;
+    }
+
+    public InvoiceTestBuilder withAdditionsDuringTheYear(double i) {
+        invoice.setAdditionsDuringTheYear(new BigDecimal(i));
+        return this;
+    }
 }
