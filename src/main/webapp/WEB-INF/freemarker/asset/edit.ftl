@@ -58,7 +58,7 @@
 </div>
 
 <div class="row">
-    <div class="span3">
+    <div class="span6">
         <br/>
         <a href="<@spring.url '/invoice/list#is'/>"><input class="btn" type="button" value="Cancel"/></a>
         <input type="submit" name="submit" value="Submit" class="btn btn-primary"/>
