@@ -29,7 +29,7 @@ public class RunningBalanceCalculator {
     private BigDecimal runningBalanceCalculation(Invoice currentInvoice) {
         return calculatePreviousBalance(currentInvoice.getBondNumber(), currentInvoice.getLocation())
                 .subtract(currentInvoice.getAmountSTPIApproval())
-                .add(currentInvoice.getAdditionsDuringTheYear());
+                .add(currentInvoice.getCgApprovedInINR());
     }
 
 }

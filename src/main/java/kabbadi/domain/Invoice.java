@@ -149,7 +149,7 @@ public class Invoice {
         return amountSTPIApproval == null ? new BigDecimal(0) : amountSTPIApproval;
     }
 
-    public BigDecimal getAdditionsDuringTheYear() {
-        return additionsDuringTheYear == null ? new BigDecimal(0) : additionsDuringTheYear;
+    public BigDecimal getCgApprovedInINR() {
+        return cgApprovedInINR == null ? new BigDecimal(0) : cgApprovedInINR;
     }
 }

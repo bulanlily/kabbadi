@@ -65,7 +65,10 @@ public class InvoiceController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView viewDetails(@PathVariable("id") Integer id) {
-        return new ModelAndView("invoice/view").addObject("invoice", invoiceService.get(id));
+        Invoice invoice = invoiceService.get(id);
+        return new ModelAndView("invoice/view")
+                .addObject("invoice", invoice)
+                .addObject("runningBalance", new RunningBalanceCalculator(invoiceService).calculateStartingFrom(invoice));
     }
 
     @RequestMapping(value = "/previousRunningBalance", method = RequestMethod.GET)
@@ -85,7 +88,7 @@ public class InvoiceController {
         return new ModelAndView("invoice/report/admin")
                 .addObject("oldInvoiceList", oldAndNewInvoices.get("oldInvoices"))
                 .addObject("newInvoiceList", oldAndNewInvoices.get("newInvoices"))
-                .addObject("location",loc);
+                .addObject("location", loc);
     }
 
     private ModelAndView editPage(Invoice invoice) {

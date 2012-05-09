@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 
 import static junit.framework.Assert.assertEquals;
 
-public class RunningBalanceUpdaterTest extends IntegrationTest {
+public class RunningBalanceCalculatorTest extends IntegrationTest {
 
     @Autowired
     InvoiceService invoiceService;
@@ -32,13 +32,13 @@ public class RunningBalanceUpdaterTest extends IntegrationTest {
         BigDecimal value = new RunningBalanceCalculator(invoiceService).calculateStartingFrom(newInvoice);
         assertEquals(new BigDecimal(492), value);
 
-        oldInvoice.setAdditionsDuringTheYear(null);
+        oldInvoice.setCgApprovedInINR(null);
         invoiceService.saveOrUpdate(oldInvoice);
 
         BigDecimal value1 = new RunningBalanceCalculator(invoiceService).calculateStartingFrom(newInvoice);
         assertEquals(new BigDecimal(492 - 123), value1);
 
-        oldInvoice.setAdditionsDuringTheYear(new BigDecimal(0));
+        oldInvoice.setCgApprovedInINR(new BigDecimal(0));
         invoiceService.saveOrUpdate(oldInvoice);
 
         BigDecimal value2 = new RunningBalanceCalculator(invoiceService).calculateStartingFrom(newInvoice);
@@ -56,7 +56,7 @@ public class RunningBalanceUpdaterTest extends IntegrationTest {
         return new InvoiceTestBuilder()
                 .withInvoiceNumber(invoiceNumber)
                 .withBondNumber(invoiceNumber)
-                .withAdditionsDuringTheYear(amount)
+                .withCGApprovedInINR(amount)
                 .withLocation(Location.BANGALORE)
                 .build();
     }
