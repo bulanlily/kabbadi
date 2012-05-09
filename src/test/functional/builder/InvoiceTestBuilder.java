@@ -29,7 +29,7 @@ public class InvoiceTestBuilder {
     private String status = "status of order";
     private String remarks = "important remarks";
     private String purchaseOrderNumber = "PO#1234";
-    private String location = Location.PUNE.toString();
+    private String location = Location.PUNE.getLocation();
     private String dateOfInvoice = "04/01/2012";
     private String supplierNameAndAddress = "My supplier";
     private double openingPurchaseValueAsOnApril01 = 508.00;

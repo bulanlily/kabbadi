@@ -30,7 +30,12 @@
     <div class="span3">
 
         <label for="locations">Location</label>
-        <@spring.formSingleSelect "invoice.location", locations, ""/>
+        <!--<@spring.formSingleSelect "invoice.location", locations, ""/>-->
+        <select name="location" id="location">
+            <#list locations as location>
+                <option value="${location.toString()}" >${location.getLocation()}</option>
+            </#list>
+        </select>
 
     </div>
     <div class="span3">
@@ -130,7 +135,6 @@
                 </#list>
             </select>
         </div>
-        <div class="span3">
             <label for="CIFValueInINR">CIF Value In INR</label>
             <input name="CIFValueInINR" value="${invoice.CIFDisplayAmountInINR!}"/>
         </div>

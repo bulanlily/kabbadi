@@ -50,7 +50,12 @@
                             <td>${invoice.amountSTPIApproval!}</td>
                             <td>${invoice.bondNumber!}</td>
                             <td>${invoice.bondDate!}</td>
-                            <td>${invoice.location!}</td>
+                            <td>
+                                <#if invoice.location??>
+                                    ${invoice.location.getLocation()!}
+                                </#if>
+
+                            </td>
                             <td class="description">${invoice.descriptionOfGoods!}</td>
                             <td>
                                 <span class="btn btn-info btn-mini">
