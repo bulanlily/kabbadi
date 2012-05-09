@@ -3,6 +3,7 @@ package kabbadi.domain;
 import kabbadi.service.InvoiceService;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public class RunningBalanceCalculator {
     private final InvoiceService invoiceService;
@@ -32,4 +33,19 @@ public class RunningBalanceCalculator {
                 .add(currentInvoice.getCgApprovedInINR());
     }
 
+    public Invoice injectInto(Invoice invoice) {
+        invoice.setRunningBalanceCalculator(this);
+        return invoice;
+    }
+
+    public List<Invoice> injectInto(List<Invoice> invoices) {
+        if(invoices == null)
+            return null;
+
+        for (Invoice invoice : invoices) {
+            injectInto(invoice);
+        }
+
+        return invoices;
+    }
 }

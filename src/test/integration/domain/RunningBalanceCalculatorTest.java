@@ -10,8 +10,11 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 import static junit.framework.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.*;
+import static org.junit.Assert.assertThat;
 
 public class RunningBalanceCalculatorTest extends IntegrationTest {
 
@@ -19,7 +22,7 @@ public class RunningBalanceCalculatorTest extends IntegrationTest {
     InvoiceService invoiceService;
 
     @Test
-    public void test_updates_old() {
+    public void should_calculate_the_running_balance() {
         Invoice oldInvoice = invoiceWith("11/98-99", 123);
         invoiceService.saveOrUpdate(oldInvoice);
 
@@ -50,6 +53,23 @@ public class RunningBalanceCalculatorTest extends IntegrationTest {
         BigDecimal value3 = new RunningBalanceCalculator(invoiceService).calculateStartingFrom(newInvoice);
         assertEquals(new BigDecimal(492 - 123 - 1000), value3);
 
+    }
+
+    @Test
+    public void should_inject_itself_on_a_invoice() {
+        Invoice invoice = new Invoice();
+        new RunningBalanceCalculator(invoiceService).injectInto(invoice);
+
+        assertThat(invoice.getRunningBalanceCalculator(), is(not(nullValue())));
+    }
+
+
+    @Test
+    public void should_inject_itself_on_a_invoice_list() {
+        Invoice invoice = new Invoice();
+        new RunningBalanceCalculator(invoiceService).injectInto(Arrays.asList(invoice));
+
+        assertThat(invoice.getRunningBalanceCalculator(), is(not(nullValue())));
     }
 
     private Invoice invoiceWith(String invoiceNumber, int amount) {

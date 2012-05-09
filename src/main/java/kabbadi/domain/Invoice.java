@@ -94,6 +94,9 @@ public class Invoice {
     @Fetch(FetchMode.JOIN)
     private List<Asset> assets;
 
+    @Transient
+    private RunningBalanceCalculator runningBalanceCalculator;
+
     public Invoice() {
     }
 
@@ -151,5 +154,12 @@ public class Invoice {
 
     public BigDecimal getCgApprovedInINR() {
         return cgApprovedInINR == null ? new BigDecimal(0) : cgApprovedInINR;
+    }
+
+    public BigDecimal runningBalance() {
+        if (runningBalanceCalculator == null)
+            throw new IllegalStateException("Set the running balance calculator before calling running balance");
+
+        return runningBalanceCalculator.calculateStartingFrom(this);
     }
 }
