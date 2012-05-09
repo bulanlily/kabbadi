@@ -36,6 +36,119 @@
         </tr>
         </thead>
         <tbody style="word-wrap:break-word, break-word: hyphenate">
+
+        <#function sumCIF>
+            <#local sumNum = 0>
+                <#list oldInvoiceList as invoice>
+                    <#if invoice.CIFDisplayAmountInINR != ''>
+                        <#local sumNum= sumNum + invoice.CIFDisplayAmountInINR?number>
+                    </#if>
+                </#list>
+                <#list newInvoiceList as invoice>
+                    <#if invoice.CIFDisplayAmountInINR != ''>
+                        <#local sumNum= sumNum + invoice.CIFDisplayAmountInINR?number>
+                    </#if>
+                </#list>
+                <#return sumNum>
+        </#function>
+
+
+        <#function sumAssessable>
+            <#local sumNum = 0>
+                <#list oldInvoiceList as invoice>
+
+                    <#if (invoice.assessableValueInINR??)>
+                        <#local sumNum= sumNum + invoice.assessableValueInINR>
+                    </#if>
+                </#list>
+                <#list newInvoiceList as invoice>
+                    <#if (invoice.assessableValueInINR?? )>
+                        <#local sumNum= sumNum + invoice.assessableValueInINR>
+                    </#if>
+                </#list>
+                <#return sumNum>
+        </#function>
+
+        <#function sumOP>
+            <#local sumNum = 0>
+                <#list oldInvoiceList as invoice>
+
+                    <#if (invoice.outrightPurchase??)>
+                        <#local sumNum= sumNum + invoice.outrightPurchase>
+                    </#if>
+                </#list>
+                <#list newInvoiceList as invoice>
+                    <#if (invoice.outrightPurchase?? )>
+                        <#local sumNum= sumNum + invoice.outrightPurchase>
+                    </#if>
+                </#list>
+                <#return sumNum>
+        </#function>
+
+        <#function sumLB>
+            <#local sumNum = 0>
+                <#list oldInvoiceList as invoice>
+
+                    <#if (invoice.loanBasis??)>
+                        <#local sumNum= sumNum + invoice.loanBasis>
+                    </#if>
+                </#list>
+                <#list newInvoiceList as invoice>
+                    <#if (invoice.loanBasis?? )>
+                        <#local sumNum= sumNum + invoice.loanBasis>
+                    </#if>
+                </#list>
+                <#return sumNum>
+        </#function>
+
+        <#function sumFC>
+            <#local sumNum = 0>
+                <#list oldInvoiceList as invoice>
+
+                    <#if (invoice.freeOfCharge??)>
+                        <#local sumNum= sumNum + invoice.freeOfCharge>
+                    </#if>
+                </#list>
+                <#list newInvoiceList as invoice>
+                    <#if (invoice.freeOfCharge?? )>
+                        <#local sumNum= sumNum + invoice.freeOfCharge>
+                    </#if>
+                </#list>
+                <#return sumNum>
+        </#function>
+
+        <#function sumCG>
+            <#local sumNum = 0>
+                <#list oldInvoiceList as invoice>
+
+                    <#if (invoice.cgApprovedInINR??)>
+                        <#local sumNum= sumNum + invoice.cgApprovedInINR>
+                    </#if>
+                </#list>
+                <#list newInvoiceList as invoice>
+                    <#if (invoice.cgApprovedInINR?? )>
+                        <#local sumNum= sumNum + invoice.cgApprovedInINR>
+                    </#if>
+                </#list>
+                <#return sumNum>
+        </#function>
+
+        <#function sumDF>
+            <#local sumNum = 0>
+                <#list oldInvoiceList as invoice>
+
+                    <#if (invoice.dutyForegone??)>
+                        <#local sumNum= sumNum + invoice.dutyForegone>
+                    </#if>
+                </#list>
+                <#list newInvoiceList as invoice>
+                    <#if (invoice.dutyForegone?? )>
+                        <#local sumNum= sumNum + invoice.dutyForegone>
+                    </#if>
+                </#list>
+                <#return sumNum>
+        </#function>
+
         <#list oldInvoiceList as invoice>
                 <#include "reportData.ftl" />
         </#list>
@@ -44,6 +157,25 @@
                    <#include "reportData.ftl" />
                </#if>
         </#list>
+        <td>TOTAL</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>${sumCIF()!}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>${sumAssessable()!}</td>
+        <td></td>
+        <td></td>
+        <td>${sumOP()}</td>
+        <td>${sumLB()}</td>
+        <td>${sumFC()}</td>
+        <td>${sumCG()}</td>
+        <td>${sumDF()}</td>
+        <td></td>
         </tbody>
     </table>
     </div>
