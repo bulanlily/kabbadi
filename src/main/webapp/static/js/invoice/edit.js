@@ -5,7 +5,7 @@ window.kabbadi = kabbadi;
 kabbadi.invoice.edit = {
     routeResponse : function(redirectTo, cancelButton, tab) {
         var originalCancelURL = cancelButton.attr("href");
-        var incomingTab = (window.location.hash + "");
+        var incomingTab = ($("a", tab.parent(".active")).attr("href") + "");
 
         redirectTo.val(incomingTab.replace("#", ""));
         cancelButton.attr("href", originalCancelURL + incomingTab);
