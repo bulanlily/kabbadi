@@ -1,0 +1,7 @@
+#!/bin/sh
+dbname="kabbadi"
+username="sa"
+psql $dbname $username << EOF
+create table Invoice (invoice_id int4 not null, CIFValueInINR numeric(19, 2), CIFCurrency varchar(255), STPIApprovalNumberAndDate varchar(255), additionsDuringTheYear decimal default 0, amountSTPIApproval numeric(19, 2), assessableValueInINR numeric(19, 2), billOfEntryDate timestamp, billOfEntryNumber varchar(255), bondDate timestamp, bondNumber varchar(255), cgApprovedInINR numeric(19, 2), costCentre varchar(255), dateOfArrival timestamp, dateOfCommissioning timestamp, dateOfInvoice timestamp, deletionsDuringTheYear decimal default 0, descriptionOfGoods TEXT, dutyExempt numeric(19, 2), dutyForgone numeric(19, 2), foreignValue numeric(19, 2), currency varchar(255), freeOfCharge numeric(19, 2), groupOfAssets varchar(255), identificationNumber varchar(255), importType varchar(255), invoiceNumber varchar(255), loanBasis varchar(255), location varchar(255), openingPurchaseValueAsOnApril01 numeric(19, 2), outrightPurchase numeric(19, 2), purchaseOrderNumber varchar(255), quantity int4, remarks varchar(255), runningBalance numeric(19, 2), status varchar(255), supplierNameAndAddress varchar(255), twentyFivePercentDF numeric(19, 2), primary key (invoice_id));
+create table Asset (assetNumber int4 not null, leasingCompany varchar(255), leasingExpiration timestamp, maintenanceExpiration timestamp, modelName varchar(255), registeredTo varchar(255), serialNumber varchar(255), status varchar(255), invoice_id int4, primary key (assetNumber));
+EOF
