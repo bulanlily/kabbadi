@@ -26,14 +26,19 @@ label.error {
         display : none;
     }
     .container {
-        width: 100%;
+        width: 80%;
         overflow: visible;
     }
     table {
-        font-size: 55%;
+        font-size: 60%;
+        page-break-inside:auto;
     }
     body, .container, table {
         margin: 0;
         padding: 0;
+    }
+    tr {
+        page-break-inside:avoid;
+        page-break-after:auto;
     }
 }
