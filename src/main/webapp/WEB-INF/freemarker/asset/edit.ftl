@@ -9,22 +9,17 @@
 <#if asset.assetNumber??>
 <h2>Asset Number: ${"${asset.assetNumber!}"?left_pad(4,'0')}</h2>
         </#if>
-
-
-<p>* indicates mandatory fields</p>
-<br/>
-
 <hr/>
 <form action="<@spring.url '/invoice/${asset.invoice.invoice_id!}/asset/save'/>" name="newAssetForm" id="newAssetForm" method="POST">
 <input name="assetNumber" type="hidden" value="${asset.assetNumber!}"/>
 <br/>
 <div class="row">
     <div class="span3">
-        <label for="serialNumber">Serial number</label>
+        <label for="serialNumber">Serial Number</label>
         <input name="serialNumber" value="${asset.serialNumber!}"/>
     </div>
     <div class="span3">
-        <label for="registeredTo">Registered to</label>
+        <label for="registeredTo">Registered To</label>
         <input name="registeredTo" value="${asset.registeredTo!}"/>
     </div>
 
