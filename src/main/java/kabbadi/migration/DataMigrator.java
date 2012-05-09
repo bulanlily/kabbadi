@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.List;
 import java.util.Map;
+import java.util.zip.DataFormatException;
 
 public class DataMigrator {
 
@@ -30,7 +31,9 @@ public class DataMigrator {
             "cgApprovedInINR",
             "dutyForgone",
             "location",
-            "runningBalance"
+            "runningBalance",
+            "status",
+            "remarks"
     };
 
     final static private String[] financeHeaders = new String[] {
@@ -82,10 +85,10 @@ public class DataMigrator {
         
         List<String[]> adminEntries = csvAdminReader.readAll();
         List<String[]> financeEntries = csvFinanceReader.readAll();
-        
+
         List<Map<String, String>> adminMappedEntries = new ColumnMapper(adminHeaders, adminEntries).mappedList();
         List<Map<String, String>> financeMappedEntries = new ColumnMapper(financeHeaders, financeEntries).mappedList();
-        
+
         List<Map<String, String>>combinedEntries = new InvoiceCreator(adminMappedEntries, financeMappedEntries).createJoinEntry();
         
         List<String> insertStatements =  new SQLGenerator(combinedEntries).createInsertStatements();
