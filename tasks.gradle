@@ -6,6 +6,7 @@ task copyConfiguration << {
         into "src/main/resources"
         include "application.properties"
         include "import.sql"
+        include "hibernate.cfg.xml"
     }
 
 }

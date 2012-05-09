@@ -132,13 +132,13 @@
 
                     <tr>
                         <td>Running Balance (INR)</td>
-                        <td>${invoice.runningBalance!}</td>
+                        <td>${invoice.runningBalance()!}</td>
                     </tr>
 
 
                     <tr>
                         <td>Location</td>
-                        <td>${invoice.location!}</td>
+                        <td>${invoice.location.getLocation()!}</td>
                     </tr>
 
 
@@ -209,7 +209,7 @@
 
                     <tr>
                         <td>Location</td>
-                        <td>${invoice.location!}</td>
+                        <td>${invoice.location.getLocation()!}</td>
 
                     </tr>
 

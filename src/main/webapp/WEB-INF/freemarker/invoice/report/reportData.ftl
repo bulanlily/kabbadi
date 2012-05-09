@@ -1,6 +1,7 @@
 <tr id="admin_invoice_${invoice.invoiceNumber}">
-    <td>${invoice.STPIApprovalNumberAndDate!}</td>
-    <td class="description">${invoice.descriptionOfGoods!}</td>
+    <td>${i}</td>
+    <td style="line-height:11px">${invoice.STPIApprovalNumberAndDate!}</td>
+    <td class="description" style="line-height:11px">${invoice.descriptionOfGoods!}</td>
     <td>${invoice.foreignCurrency!}</td>
     <td>${invoice.foreignValueDisplayAmount!}</td>
     <td>${invoice.amountSTPIApproval!}</td>
@@ -17,5 +18,5 @@
     <td>${invoice.freeOfCharge!}</td>
     <td>${invoice.cgApprovedInINR!}</td>
     <td>${invoice.dutyForegone!}</td>
-    <td>${invoice.runningBalance!}</td>
+    <td>${invoice.runningBalance()!}</td>
 </tr>

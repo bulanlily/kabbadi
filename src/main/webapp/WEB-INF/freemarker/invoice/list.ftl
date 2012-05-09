@@ -50,7 +50,12 @@
                             <td>${invoice.amountSTPIApproval!}</td>
                             <td>${invoice.bondNumber!}</td>
                             <td>${invoice.bondDate!}</td>
-                            <td>${invoice.location!}</td>
+                            <td>
+                                <#if invoice.location??>
+                                    ${invoice.location.getLocation()!}
+                                </#if>
+
+                            </td>
                             <td class="description">${invoice.descriptionOfGoods!}</td>
                             <td>
                                 <span class="btn btn-info btn-mini">
@@ -103,7 +108,7 @@
                     <td>${invoice.additionsDuringTheYear!}</td>
                     <td>${invoice.deletionsDuringTheYear!}</td>
                     <td>${invoice.gbOnDecember31()!}</td>
-                    <td>${invoice.location!}</td>
+                    <td>${invoice.location.getLocation()!}</td>
                         <td>
                             <span class="btn btn-info btn-mini">
                                 <a href="<@spring.url '/invoice/${invoice.invoice_id}/edit#finance' />">EDIT</a>
@@ -120,8 +125,7 @@
         </table>
         </div>
         <div id="is" class="tab-pane fade">
-
-            <div class="row">
+            <div class="page-header"  style="height:42px">"
                 <form action="#" class="span3" align="left">
                     <input name="search" id="is_search" type="text" placeholder="Search...">
                     <span style="display: none;" class="loading">Loading...</span>
@@ -157,7 +161,7 @@
                 <tr id="asset_${asset.assetNumber!}">
                     <td>${invoice.invoiceNumber}</td>
                     <td>${"${asset.assetNumber!}"?left_pad(4,'0')}</td>
-                    <td>${invoice.location!}</td>
+                    <td>${invoice.location.getLocation()!}</td>
                     <td>${asset.status!}</td>
                     <#if asset.leased!>
                         <td>Yes</td>

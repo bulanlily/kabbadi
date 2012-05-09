@@ -9,6 +9,7 @@
         <div class="btn-group">
             <a href="<@spring.url "/invoice/create#${role}"/>" class="btn btn-inverse" id="${role}_add_invoice">Add New</a>
         </div>
+        <#if role == "admin">
         <div class="btn-group">
             <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#">
                 Generate Report
@@ -17,11 +18,12 @@
             <ul class="dropdown-menu">
                 <#list locations as location>
                     <li>
-                        <a href="<@spring.url '/invoice/report/admin?location=${location}'/>">${location}</a>
+                        <a href="<@spring.url '/invoice/report/admin?location=${location}'/>">${location.getLocation()}</a>
                     </li>
                 </#list>
             </ul>
         </div>
+        </#if>
     </div>
 
 </div>
