@@ -5,7 +5,7 @@ if [ "$1" == "prod" ]; then
   REMOTENAME="root.war"
 else
   ENV="qa"
-  HOST="10.4.3.1"
+  HOST="10.4.4.129"
   REMOTENAME=""
 fi
 
