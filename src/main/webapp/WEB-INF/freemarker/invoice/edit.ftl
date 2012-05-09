@@ -15,7 +15,7 @@
 
 <div class="row">
     <div class="span3">
-        <label for="invoiceNumber">Invoice number *</label>
+        <label for="invoiceNumber">Invoice Number *</label>
         <input name="invoiceNumber" value="${invoice.invoiceNumber!}"/>
         <div class='error_div hide' style="color:#F89406" id='invoiceNumber_error_alert'>
             <p>This invoice number is a duplicate.</p>
@@ -199,7 +199,7 @@
         </div>
         <div class="span3">
 
-            <label for="supplierNameAndAddress">Supplier name and address</label>
+            <label for="supplierNameAndAddress">Supplier Name and Address</label>
             <input name="supplierNameAndAddress" value="${invoice.supplierNameAndAddress!}"/>
 
         </div>
@@ -237,13 +237,13 @@
         </div>
 
         <div class="span3">
-            <label for="additionsDuringTheYear">Additions during the year</label>
+            <label for="additionsDuringTheYear">Additions During the Year</label>
             <input name="additionsDuringTheYear" value="${invoice.additionsDuringTheYear!}"/>
 
             <div class='error_div' id='newInvoiceForm_additionsDuringTheYear_errorloc'></div>
         </div>
         <div class="span3">
-            <label for="deletionsDuringTheYear">Deletions during the year</label>
+            <label for="deletionsDuringTheYear">Deletions During the Year</label>
             <input name="deletionsDuringTheYear" value="${invoice.deletionsDuringTheYear!}"/>
 
             <div class='error_div' id='newInvoiceForm_deletionsDuringTheYear_errorloc'></div>
@@ -271,7 +271,7 @@
 <span class="span3">
     <div id="myModal" class="modal hide fade" style="display: none; ">
         <div class="modal-body">
-            <h4>Did you enter the commercial invoice number(not proforma)?</h4>
+            <h4>Did you enter the commercial invoice number (not proforma)?</h4>
         </div>
         <div class="modal-footer">
             <a href="#" class="btn" data-dismiss="modal">NO</a>
@@ -295,7 +295,7 @@
 <script src="/kabbadi/static/js/invoice/edit.js" ></script>
 <script src="/kabbadi/static/js/bootstrap-modal.js" ></script>
 <script>
-    kabbadi.invoice.edit.initialize();
+    kabbadi.invoice.edit.initialize("<@spring.url '' />");
     $("#location").val("${invoice.location!}");
     $("#groupOfAssets").val("${invoice.groupOfAssets!}");
     $("#importType").val("${invoice.importType!}");

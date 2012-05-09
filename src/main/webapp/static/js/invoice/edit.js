@@ -68,9 +68,11 @@ kabbadi.invoice.edit = {
 
     },
 
-    fetchInvoiceNumber : function() {
+    fetchInvoiceNumber : function(baseUrl) {
         var showDuplicateInvoiceAlert = function() {
+
             $("#invoiceNumber_error_alert").show();
+
         }
         var removeDuplicateInvoiceAlert = function() {
             $("#invoiceNumber_error_alert").hide();
@@ -78,13 +80,16 @@ kabbadi.invoice.edit = {
 
         $("input[name='invoiceNumber']").blur(function() {
             var $this = $(this);
-            $.getJSON("checkInvoiceNumber",
+            $.getJSON(baseUrl + "/invoice/checkInvoiceNumber",
             {
                 invoiceNumber : $this.val(),
             },
             function(invoice) {
                if(invoice.exists) {
-                   showDuplicateInvoiceAlert();
+                     var currentInvoiceNumber = $("input[name='invoiceNumber']").val();
+                     if(kabbadi.invoice.edit.previousInvoiceNumber != currentInvoiceNumber){
+                       showDuplicateInvoiceAlert();
+                   }
                }
                else {
                    removeDuplicateInvoiceAlert();
@@ -133,12 +138,13 @@ kabbadi.invoice.edit = {
     },
 
 
-    initialize : function() {
+    initialize : function(baseUrl) {
 
         $(function () {
             kabbadi.invoice.edit.routeResponse($("#redirectToTab"),$("#cancelButton"), $('a[data-toggle="tab"]'));
             kabbadi.invoice.edit.editValidator();
-            kabbadi.invoice.edit.fetchInvoiceNumber();
+            kabbadi.invoice.edit.fetchInvoiceNumber(baseUrl);
+            kabbadi.invoice.edit.previousInvoiceNumber = $("input[name='invoiceNumber']").val();
 
             $.datepicker.setDefaults({
                 dateFormat: 'dd/mm/yy'
