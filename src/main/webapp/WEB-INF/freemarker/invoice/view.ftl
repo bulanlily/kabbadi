@@ -132,7 +132,7 @@
 
                     <tr>
                         <td>Running Balance (INR)</td>
-                        <td>${invoice.runningBalance!}</td>
+                        <td>${invoice.runningBalance()!}</td>
                     </tr>
 
 

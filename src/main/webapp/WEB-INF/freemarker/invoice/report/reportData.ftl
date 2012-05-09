@@ -18,5 +18,5 @@
     <td>${invoice.freeOfCharge!}</td>
     <td>${invoice.cgApprovedInINR!}</td>
     <td>${invoice.dutyForegone!}</td>
-    <td>${invoice.runningBalance!}</td>
+    <td>${invoice.runningBalance()!}</td>
 </tr>
