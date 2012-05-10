@@ -220,11 +220,6 @@
 
                     </tr>
                     <tr>
-                        <td>Type</td>
-                        <td>${invoice.type!}</td>
-
-                    </tr>
-                    <tr>
                         <td>GB as on April 01. 2011</td>
                         <td>${invoice.openingPurchaseValueAsOnApril01!}</td>
 

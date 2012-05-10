@@ -153,7 +153,7 @@
                     <td colspan="7" style="font-weight:bold;">${invoice.invoiceNumber}</td>
                     <td>
                         <span class="btn btn-info btn-mini" style="width:67px">
-                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/create'/>" >Add Assets</a>
+                                <a href="<@spring.url '/invoice/${invoice.invoice_id}/asset/create'/>" >Add Asset</a>
                         </span>
                     </td>
                 </tr>
