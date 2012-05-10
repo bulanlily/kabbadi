@@ -46,7 +46,7 @@
 
         <tr>
             <td>Location</td>
-            <td>${asset.invoice.location!}</td>
+            <td>${asset.invoice.location.getLocation()!}</td>
 
         </tr>
 

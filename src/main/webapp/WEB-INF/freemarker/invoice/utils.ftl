@@ -9,6 +9,7 @@
         <div class="btn-group">
             <a href="<@spring.url "/invoice/create#${role}"/>" class="btn btn-inverse" id="${role}_add_invoice">Add New</a>
         </div>
+        <#if role == "admin">
         <div class="btn-group">
             <a class="btn dropdown-toggle btn-inverse" data-toggle="dropdown" href="#">
                 Generate Report
@@ -22,6 +23,7 @@
                 </#list>
             </ul>
         </div>
+        </#if>
     </div>
 
 </div>

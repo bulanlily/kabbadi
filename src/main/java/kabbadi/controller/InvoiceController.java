@@ -65,7 +65,8 @@ public class InvoiceController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ModelAndView viewDetails(@PathVariable("id") Integer id) {
-        return new ModelAndView("invoice/view").addObject("invoice", invoiceService.get(id));
+        Invoice invoice = new RunningBalanceCalculator(invoiceService).injectInto(invoiceService.get(id));
+        return new ModelAndView("invoice/view").addObject("invoice", invoice);
     }
 
     @RequestMapping(value = "/previousRunningBalance", method = RequestMethod.GET)
@@ -75,21 +76,24 @@ public class InvoiceController {
             @RequestParam("bondNumber") String currentBondNumber,
             @RequestParam("location") Location location) {
         String previousBondNumber = new PreviousBondNumberConverter(currentBondNumber).getPreviousBondNumber();
-        return new PreviousInvoiceRunningBalanceData(invoiceService.findByPreviousBondNumber(previousBondNumber, location));
+        RunningBalanceCalculator calculator = new RunningBalanceCalculator(invoiceService);
+        return new PreviousInvoiceRunningBalanceData(calculator.injectInto(invoiceService.findByPreviousBondNumber(previousBondNumber, location)));
     }
 
     @RequestMapping(value = "/report/admin", method = RequestMethod.GET)
     public ModelAndView generateReport(@RequestParam("location") String location) {
         Location loc = Location.valueOf(location);
+        RunningBalanceCalculator calculator = new RunningBalanceCalculator(invoiceService);
+
         HashMap<String, List<Invoice>> oldAndNewInvoices = invoiceService.getOldAndNewData(loc);
         return new ModelAndView("invoice/report/admin")
-                .addObject("oldInvoiceList", oldAndNewInvoices.get("oldInvoices"))
-                .addObject("newInvoiceList", oldAndNewInvoices.get("newInvoices"))
-                .addObject("location",loc);
+                .addObject("oldInvoiceList", calculator.injectInto(oldAndNewInvoices.get("oldInvoices")))
+                .addObject("newInvoiceList", calculator.injectInto(oldAndNewInvoices.get("newInvoices")))
+                .addObject("location", loc);
     }
 
     private ModelAndView editPage(Invoice invoice) {
-        return new ModelAndView("invoice/edit", "invoice", invoice)
+        return new ModelAndView("invoice/edit", "invoice", new RunningBalanceCalculator(invoiceService).injectInto(invoice))
                 .addObject("importTypes", ImportType.values())
                 .addObject("locations", Location.values());
 

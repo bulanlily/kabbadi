@@ -5,7 +5,7 @@ window.kabbadi = kabbadi;
 kabbadi.invoice.edit = {
     routeResponse : function(redirectTo, cancelButton, tab) {
         var originalCancelURL = cancelButton.attr("href");
-        var incomingTab = (window.location.hash + "");
+        var incomingTab = ($("a", tab.parent(".active")).attr("href") + "");
 
         redirectTo.val(incomingTab.replace("#", ""));
         cancelButton.attr("href", originalCancelURL + incomingTab);
@@ -69,36 +69,36 @@ kabbadi.invoice.edit = {
     },
 
     fetchInvoiceNumber : function(baseUrl) {
-        var showDuplicateInvoiceAlert = function() {
+            var showDuplicateInvoiceAlert = function() {
 
-            $("#invoiceNumber_error_alert").show();
+                $("#invoiceNumber_error_alert").show();
 
-        }
-        var removeDuplicateInvoiceAlert = function() {
-            $("#invoiceNumber_error_alert").hide();
-        }
+            }
+            var removeDuplicateInvoiceAlert = function() {
+                $("#invoiceNumber_error_alert").hide();
+            }
 
-        $("input[name='invoiceNumber']").blur(function() {
-            var $this = $(this);
-            $.getJSON(baseUrl + "/invoice/checkInvoiceNumber",
-            {
-                invoiceNumber : $this.val(),
-            },
-            function(invoice) {
-               if(invoice.exists) {
-                     var currentInvoiceNumber = $("input[name='invoiceNumber']").val();
-                     if(kabbadi.invoice.edit.previousInvoiceNumber != currentInvoiceNumber){
-                       showDuplicateInvoiceAlert();
+            $("input[name='invoiceNumber']").blur(function() {
+                var $this = $(this);
+                $.getJSON(baseUrl + "/invoice/checkInvoiceNumber",
+                {
+                    invoiceNumber : $this.val(),
+                },
+                function(invoice) {
+                   if(invoice.exists) {
+                         var currentInvoiceNumber = $("input[name='invoiceNumber']").val();
+                         if(kabbadi.invoice.edit.previousInvoiceNumber != currentInvoiceNumber){
+                           showDuplicateInvoiceAlert();
+                       }
                    }
-               }
-               else {
-                   removeDuplicateInvoiceAlert();
-               }
+                   else {
+                       removeDuplicateInvoiceAlert();
+                   }
+                });
+
             });
 
-        });
-
-    },
+        },
 
     fetchPreviousRunningBalance : function() {
         var current_bond_number = $("input[name='bondNumber']").val();
@@ -134,7 +134,7 @@ kabbadi.invoice.edit = {
         var amountSTPIApproval = +$("input[name='amountSTPIApproval']").val();
         var cgApprovedInINR = +$("input[name='cgApprovedInINR']").val();
 
-        $("input[name='runningBalance']").val(prevRunningBalance - amountSTPIApproval + cgApprovedInINR);
+        $("#runningBalance").val(prevRunningBalance - amountSTPIApproval + cgApprovedInINR);
     },
 
 

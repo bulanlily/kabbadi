@@ -5,7 +5,7 @@
 
 <@layout.template 'Add/Edit asset' >
 
-<h1>Add/Edit Asset of Invoice ${asset.invoice.invoiceNumber!}</h1>
+<h1>Add/Edit Asset of Invoice # ${asset.invoice.invoiceNumber!}</h1>
 <#if asset.assetNumber??>
 <h2>Asset Number: ${"${asset.assetNumber!}"?left_pad(4,'0')}</h2>
         </#if>
@@ -58,10 +58,10 @@
 </div>
 
 <div class="row">
-    <div class="span3">
+    <div class="span6">
         <br/>
-        <input type="submit" name="submit" value="Submit" class="btn btn-primary"/>
         <a href="<@spring.url '/invoice/list#is'/>"><input class="btn" type="button" value="Cancel"/></a>
+        <input type="submit" name="submit" value="Submit" class="btn btn-primary"/>
     </div>
 </div>
 
