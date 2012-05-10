@@ -162,4 +162,26 @@ public class Invoice {
 
         return runningBalanceCalculator.calculateStartingFrom(this);
     }
+
+    public BigDecimal getLoanBasis(){
+        if(this.importType == ImportType.LOAN_BASIS){
+            return CIFValueInINR == null?new BigDecimal(0):this.CIFValueInINR.getAmount();
+        }
+        return  new BigDecimal(0);
+    }
+
+    public BigDecimal getOutrightPurchase(){
+        if(this.importType == ImportType.OUTRIGHT_PURCHASE){
+            return CIFValueInINR == null?new BigDecimal(0):this.CIFValueInINR.getAmount();
+        }
+        return  new BigDecimal(0);
+    }
+
+    public BigDecimal getFreeOfCharge(){
+        if(this.importType == ImportType.FREE_OF_CHARGE){
+            return CIFValueInINR == null?new BigDecimal(0):this.CIFValueInINR.getAmount();
+        }
+        return  new BigDecimal(0);
+    }
+
 }

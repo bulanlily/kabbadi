@@ -134,7 +134,7 @@ kabbadi.invoice.edit = {
         var CIFValueInINR = +$("input[name='CIFValueInINR']").val();
         var cgApprovedInINR = +$("input[name='cgApprovedInINR']").val();
 
-        $("#runningBalance").val(prevRunningBalance - CIFValueInINR + cgApprovedInINR);
+        $("#runningBalance").val(prevRunningBalance + CIFValueInINR - cgApprovedInINR);
     },
 
 

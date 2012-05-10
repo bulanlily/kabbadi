@@ -49,7 +49,7 @@
         <p id="print-announce">
             <i>
                 <strong style="color: #08C;">Please use browser to print report</strong>
-                <small>( Menu > File > Print -> choose landscape)</small>
+                <small>( Menu > File > Print )</small>
             </i>
         </p>
         <table id="invoices" class="table table-bordered table-striped">
@@ -81,20 +81,19 @@
 
 
             <#assign i = 0>
-            <#list oldInvoiceList as invoice>
+            <#list oldInvoiceList?sort_by("invoice_id") as invoice>
                 <#assign i = i+1>
                 <#include "reportData.ftl" />
 
             </#list>
-            <#list newInvoiceList as invoice>
+            <#list newInvoiceList?sort_by("bondNumber") as invoice>
                 <#if invoice.bondNumber != ''>
                     <#include "reportData.ftl" />
                 </#if>
             </#list>
-            <tr>
-            <td></td>
+                <tr>
+                <td></td>
             <td>TOTAL</td>
-            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -104,8 +103,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td>${sumAssessable()!}</td>
             <td></td>
+            <td>${sumAssessable()!}</td>
             <td></td>
             <td>${sumOP()}</td>
             <td>${sumLB()}</td>
@@ -113,7 +112,6 @@
             <td>${sumCG()}</td>
             <td>${sumDF()}</td>
             <td></td>
-            </tr>
             </tbody>
         </table>
     </div>

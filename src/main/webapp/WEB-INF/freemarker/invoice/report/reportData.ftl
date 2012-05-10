@@ -14,8 +14,8 @@
     <td>${invoice.dutyExempt!}</td>
     <td></td>
     <td>${invoice.outrightPurchase!}</td>
-    <td>${invoice.loanBasis!}</td>
-    <td>${invoice.freeOfCharge!}</td>
+    <td>${invoice.getLoanBasis()!}</td>
+    <td>${invoice.getFreeOfCharge()!}</td>
     <td>${invoice.cgApprovedInINR!}</td>
     <td>${invoice.dutyForegone!}</td>
     <td>${invoice.runningBalance()!}</td>

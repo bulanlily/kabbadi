@@ -32,8 +32,8 @@ public class RunningBalanceCalculator {
         if (currentInvoice.getInvoiceNumber().equals("old data"))
             return currentInvoice.getRunningBalance();
         return calculatePreviousBalance(currentInvoice.getBondNumber(), currentInvoice.getLocation())
-                .subtract(currentInvoice.getCIFValueInINR() == null ? new BigDecimal(0) : currentInvoice.getCIFValueInINR().getAmount())
-                .add(currentInvoice.getCgApprovedInINR());
+                .add(currentInvoice.getCIFValueInINR() == null ? new BigDecimal(0) : currentInvoice.getCIFValueInINR().getAmount())
+                .subtract(currentInvoice.getCgApprovedInINR());
     }
 
     public Invoice injectInto(Invoice invoice) {
