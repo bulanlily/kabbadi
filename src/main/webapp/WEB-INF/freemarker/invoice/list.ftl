@@ -95,7 +95,7 @@
                 </tr>
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
-            <#list invoices.sortByInvoiceDate() as invoice>
+            <#list invoices.sortByInvoiceDate()?reverse as invoice>
 
                 <tr id="finance_invoice_${invoice.invoiceNumber}">
                     <td>${invoice.purchaseOrderNumber!}</td>
