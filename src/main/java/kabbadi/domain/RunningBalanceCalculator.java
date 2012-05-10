@@ -28,9 +28,11 @@ public class RunningBalanceCalculator {
     }
 
     private BigDecimal runningBalanceCalculation(Invoice currentInvoice) {
+        if (currentInvoice.getInvoiceNumber().equals("old data"))
+            return currentInvoice.getRunningBalance();
         return calculatePreviousBalance(currentInvoice.getBondNumber(), currentInvoice.getLocation())
-                .subtract(currentInvoice.getAmountSTPIApproval())
-                .add(currentInvoice.getCgApprovedInINR());
+                .add(currentInvoice.getCIFValueInINR() == null ? new BigDecimal(0) : currentInvoice.getCIFValueInINR().getAmount())
+                .subtract(currentInvoice.getCgApprovedInINR());
     }
 
     public Invoice injectInto(Invoice invoice) {

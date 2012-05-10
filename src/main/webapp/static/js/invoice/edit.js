@@ -131,10 +131,10 @@ kabbadi.invoice.edit = {
 
     calculateCurrentRunningBalance : function() {
         var prevRunningBalance = +$("#previous_bond_value").text();
-        var amountSTPIApproval = +$("input[name='amountSTPIApproval']").val();
+        var CIFValueInINR = +$("input[name='CIFValueInINR']").val();
         var cgApprovedInINR = +$("input[name='cgApprovedInINR']").val();
 
-        $("#runningBalance").val(prevRunningBalance - amountSTPIApproval + cgApprovedInINR);
+        $("#runningBalance").val(prevRunningBalance + CIFValueInINR - cgApprovedInINR);
     },
 
 

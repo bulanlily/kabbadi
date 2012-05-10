@@ -86,11 +86,12 @@
                 <#include "reportData.ftl" />
 
             </#list>
-            <#list newInvoiceList?sort_by("bondNumber") as invoice>
+            <#list newInvoiceList as invoice>
                 <#if invoice.bondNumber != ''>
                     <#include "reportData.ftl" />
                 </#if>
             </#list>
+                <td></td>
             <td>TOTAL</td>
             <td></td>
             <td></td>
