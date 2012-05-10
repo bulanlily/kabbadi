@@ -141,6 +141,7 @@
                 </#list>
             </select>
         </div>
+        <div class="span3"
             <label for="CIFValueInINR">CIF Value In INR</label>
             <input name="CIFValueInINR" value="${invoice.CIFDisplayAmountInINR!}"/>
         </div>
@@ -178,7 +179,7 @@
     <div class="row">
         <div class="span3">
             <label for="runningBalance">Running Balance</label>
-            <input name="runningBalance" value="${invoice.runningBalance!}"/>
+            <input name="runningBalance" value="${invoice.runningBalance()!}"/>
             <p class="help-block hide" id="previous_matched_bond_number">
                 <strong>Previous Bond#:</strong>
                 <span id="previous_bond_number"></span>
