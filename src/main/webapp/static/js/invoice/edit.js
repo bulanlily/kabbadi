@@ -68,32 +68,37 @@ kabbadi.invoice.edit = {
 
     },
 
-    fetchInvoiceNumber : function() {
-        var showDuplicateInvoiceAlert = function() {
-            $("#invoiceNumber_error_alert").show();
-        }
-        var removeDuplicateInvoiceAlert = function() {
-            $("#invoiceNumber_error_alert").hide();
-        }
+    fetchInvoiceNumber : function(baseUrl) {
+            var showDuplicateInvoiceAlert = function() {
 
-        $("input[name='invoiceNumber']").blur(function() {
-            var $this = $(this);
-            $.getJSON("checkInvoiceNumber",
-            {
-                invoiceNumber : $this.val(),
-            },
-            function(invoice) {
-               if(invoice.exists) {
-                   showDuplicateInvoiceAlert();
-               }
-               else {
-                   removeDuplicateInvoiceAlert();
-               }
+                $("#invoiceNumber_error_alert").show();
+
+            }
+            var removeDuplicateInvoiceAlert = function() {
+                $("#invoiceNumber_error_alert").hide();
+            }
+
+            $("input[name='invoiceNumber']").blur(function() {
+                var $this = $(this);
+                $.getJSON(baseUrl + "/invoice/checkInvoiceNumber",
+                {
+                    invoiceNumber : $this.val(),
+                },
+                function(invoice) {
+                   if(invoice.exists) {
+                         var currentInvoiceNumber = $("input[name='invoiceNumber']").val();
+                         if(kabbadi.invoice.edit.previousInvoiceNumber != currentInvoiceNumber){
+                           showDuplicateInvoiceAlert();
+                       }
+                   }
+                   else {
+                       removeDuplicateInvoiceAlert();
+                   }
+                });
+
             });
 
-        });
-
-    },
+        },
 
     fetchPreviousRunningBalance : function() {
         var current_bond_number = $("input[name='bondNumber']").val();
@@ -133,12 +138,13 @@ kabbadi.invoice.edit = {
     },
 
 
-    initialize : function() {
+    initialize : function(baseUrl) {
 
         $(function () {
             kabbadi.invoice.edit.routeResponse($("#redirectToTab"),$("#cancelButton"), $('a[data-toggle="tab"]'));
             kabbadi.invoice.edit.editValidator();
-            kabbadi.invoice.edit.fetchInvoiceNumber();
+            kabbadi.invoice.edit.fetchInvoiceNumber(baseUrl);
+            kabbadi.invoice.edit.previousInvoiceNumber = $("input[name='invoiceNumber']").val();
 
             $.datepicker.setDefaults({
                 dateFormat: 'dd/mm/yy'
