@@ -49,7 +49,7 @@
         <p id="print-announce">
             <i>
                 <strong style="color: #08C;">Please use browser to print report</strong>
-                <small>( Menu > File > Print )</small>
+                <small>( Menu > File > Print -> choose landscape)</small>
             </i>
         </p>
         <table id="invoices" class="table table-bordered table-striped">
