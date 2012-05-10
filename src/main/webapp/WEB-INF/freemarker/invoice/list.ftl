@@ -41,7 +41,7 @@
                 </tr>
                 </thead>
                 <tbody style="word-wrap:break-word, break-word: hyphenate">
-                <#list invoices?sort_by("bondNumber")?reverse as invoice>
+                <#list invoices.sortByBondNumber() as invoice>
                     <#if invoice.isBonded() >
                         <tr id="admin_invoice_${invoice.invoiceNumber}">
                             <td>${invoice.purchaseOrderNumber!}</td>
@@ -95,7 +95,7 @@
                 </tr>
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
-            <#list invoices as invoice>
+            <#list invoices.sortByInvoiceDate()?reverse as invoice>
 
                 <tr id="finance_invoice_${invoice.invoiceNumber}">
                     <td>${invoice.purchaseOrderNumber!}</td>
@@ -147,7 +147,7 @@
             </tr>
             </thead>
             <tbody style="word-wrap:break-word, break-word: hyphenate">
-            <#list invoices as invoice>
+            <#list invoices.sortByBondNumber() as invoice>
             <#if invoice.groupOfAssets! == "Computer Equipments">
                 <tr id="is_invoice_${invoice.invoiceNumber}">
                     <td colspan="7" style="font-weight:bold;">${invoice.invoiceNumber}</td>
