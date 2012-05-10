@@ -28,7 +28,7 @@
 <div class="row">
     <div class="span3">
         <label for="modelName">Model Name</label>
-        <input name="modelName" type="text" class="typeahead" value="${asset.modelName!}">
+        <input name="modelName" type="text" class="typeahead" autocomplete="off" value="${asset.modelName!}">
 
     </div>
     <div class="span3">
