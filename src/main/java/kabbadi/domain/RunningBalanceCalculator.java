@@ -28,11 +28,12 @@ public class RunningBalanceCalculator {
     }
 
     private BigDecimal runningBalanceCalculation(Invoice currentInvoice) {
+        if (currentInvoice.getInvoiceNumber() == null) return null;
         if (currentInvoice.getInvoiceNumber().equals("old data"))
             return currentInvoice.getRunningBalance();
         return calculatePreviousBalance(currentInvoice.getBondNumber(), currentInvoice.getLocation())
-                .add(currentInvoice.getCIFValueInINR() == null ? new BigDecimal(0) : currentInvoice.getCIFValueInINR().getAmount())
-                .subtract(currentInvoice.getCgApprovedInINR());
+                .subtract(currentInvoice.getCIFValueInINR() == null ? new BigDecimal(0) : currentInvoice.getCIFValueInINR().getAmount())
+                .add(currentInvoice.getCgApprovedInINR());
     }
 
     public Invoice injectInto(Invoice invoice) {

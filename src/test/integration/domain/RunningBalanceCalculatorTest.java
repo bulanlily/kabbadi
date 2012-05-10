@@ -4,6 +4,7 @@ import domain.builder.InvoiceTestBuilder;
 import integration.IntegrationTest;
 import kabbadi.domain.Invoice;
 import kabbadi.domain.Location;
+import kabbadi.domain.Money;
 import kabbadi.domain.RunningBalanceCalculator;
 import kabbadi.service.InvoiceService;
 import org.junit.Test;
@@ -48,7 +49,7 @@ public class RunningBalanceCalculatorTest extends IntegrationTest {
         BigDecimal value2 = new RunningBalanceCalculator(invoiceService).calculateStartingFrom(newInvoice);
         assertEquals(new BigDecimal(492 - 123), value2);
 
-        oldInvoice.setAmountSTPIApproval(new BigDecimal(1000));
+        oldInvoice.setCIFValueInINR(new Money("INR", new BigDecimal(1000)));
         invoiceService.saveOrUpdate(oldInvoice);
 
         BigDecimal value3 = new RunningBalanceCalculator(invoiceService).calculateStartingFrom(newInvoice);
