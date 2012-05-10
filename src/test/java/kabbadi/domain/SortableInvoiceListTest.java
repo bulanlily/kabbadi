@@ -18,7 +18,7 @@ public class SortableInvoiceListTest {
 
         SortableInvoiceList sortableList = new SortableInvoiceList(invoices);
 
-        assertEquals(invoiceWithDate, sortableList.sortByInvoiceDate().get(0));
+        assertEquals(invoiceWithDate.getDateOfInvoice(), sortableList.sortByInvoiceDate().get(0).getDateOfInvoice());
 
     }
 
@@ -30,7 +30,7 @@ public class SortableInvoiceListTest {
 
         SortableInvoiceList sortableList = new SortableInvoiceList(invoices);
 
-        assertEquals(bondNumber, sortableList.sortByBondNumber().get(0));
+        assertEquals(bondNumber.getBondNumber(), sortableList.sortByBondNumber().get(0).getBondNumber());
 
     }
 
