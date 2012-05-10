@@ -8,8 +8,13 @@
 <h1>Add/Edit Invoice</h1>
 
 <p>* indicates mandatory fields</p>
-<br/>
+<div class="row">
+<span class="alert alert-error span4 hide" id="form_errors_msg">
+    <center>Submission failed. Check for invalid input messages.</center>
+</span>
 
+</div>
+<br/>
 <form action="<@spring.url '/invoice/save'/>" name="newInvoiceForm" id='newInvoiceForm' method="POST">
 <input name="invoice_id" type="hidden" value="${invoice.invoice_id!} "/>
 
@@ -289,9 +294,6 @@
 <a id="cancelButton" href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel" /></a>
 
 <input id="submitButton" type="submit" name="submitButton" value="Submit invoice" class="btn btn-primary"/>
-<span class="alert alert-error span4 hide" id="form_errors_msg">
-    <center>Submission failed. Check for invalid input messages.</center>
-</span>
 <br/>
 <br/>
 <hr/>
