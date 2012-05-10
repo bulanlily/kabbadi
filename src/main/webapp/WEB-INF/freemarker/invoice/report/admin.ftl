@@ -91,7 +91,10 @@
                     <#include "reportData.ftl" />
                 </#if>
             </#list>
+            <tr>
+
             <td>TOTAL</td>
+            <td></td>
             <td></td>
             <td></td>
             <td></td>
@@ -101,8 +104,8 @@
             <td></td>
             <td></td>
             <td></td>
-            <td></td>
             <td>${sumAssessable()!}</td>
+            <td></td>
             <td></td>
             <td>${sumOP()}</td>
             <td>${sumLB()}</td>
@@ -110,6 +113,7 @@
             <td>${sumCG()}</td>
             <td>${sumDF()}</td>
             <td></td>
+            </tr>
             </tbody>
         </table>
     </div>
