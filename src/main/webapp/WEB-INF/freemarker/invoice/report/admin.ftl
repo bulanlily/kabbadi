@@ -113,7 +113,6 @@
             <td>${sumCG()}</td>
             <td>${sumDF()}</td>
             <td></td>
-            </tr>
             </tbody>
         </table>
     </div>
