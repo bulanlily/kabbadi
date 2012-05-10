@@ -75,73 +75,74 @@
 </ul>
 
 <div class="tab-content">
-<div class="tab-pane active" id="admin">
-    <div class="row">
-        <div class="span3">
-            <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
-            <input name="STPIApprovalNumberAndDate" value="${invoice.STPIApprovalNumberAndDate!}"/>
-        </div>
+    <div class="tab-pane active" id="admin">
+        <div class="row">
+            <div class="span3">
+                <label for="STPIApprovalNumberAndDate">STPI Approval Number</label>
+                <input name="STPIApprovalNumberAndDate" value="${invoice.STPIApprovalNumberAndDate!}"/>
+            </div>
 
-        <div class="span3">
-            <label for="dateOfArrival">Date of Arrival (dd/mm/yyyy)</label>
-            <input name="dateOfArrival" class="defaultDatepicker" value="${invoice.dateOfArrival!}"/>
+            <div class="span3">
+                <label for="dateOfArrival">Date of Arrival (dd/mm/yyyy)</label>
+                <input name="dateOfArrival" class="defaultDatepicker" value="${invoice.dateOfArrival!}"/>
 
-            <div class='error_div' id='newInvoiceForm_dateOfArrival_errorloc'></div>
-        </div>
-
-    </div>
-    <div class="row">
-        <div class="span3">
-            <label for="bondNumber">Bond Number</label>
-            <input name="bondNumber" value="${invoice.bondNumber!}" placeholder="##/yy-yy"/>
-        </div>
-        <div class="span3">
-            <label for="bondDate">Bond Date (dd/mm/yyyy)</label>
-            <input name="bondDate" class="defaultDatepicker"  value="${invoice.bondDate!}"/>
-
-            <div class='error_div' id='newInvoiceForm_bondDate_errorloc'></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="span3">
-            <label for="billOfEntryNumber">Bill of Entry Number</label>
-            <input name="billOfEntryNumber" value="${invoice.billOfEntryNumber!}"/>
-        </div>
-
-        <div class="span3">
-            <label for="billOfEntryDate">Bill of Entry Date (dd/mm/yyyy)</label>
-            <input name="billOfEntryDate" class="defaultDatepicker" 
-                   value="${invoice.billOfEntryDate!}"/>
-
-            <div class='error_div' id='newInvoiceForm_billOfEntryDate_errorloc'></div>
+                <div class='error_div' id='newInvoiceForm_dateOfArrival_errorloc'></div>
+            </div>
 
         </div>
-    </div>
-    <div class="row">
-        <div class="span3">
-            <label for="amountSTPIApproval">Amount STPI Approval</label>
-            <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}"/>
+        <div class="row">
+            <div class="span3">
+                <label for="bondNumber">Bond Number</label>
+                <input name="bondNumber" value="${invoice.bondNumber!}" placeholder="##/yy-yy"/>
+            </div>
+            <div class="span3">
+                <label for="bondDate">Bond Date (dd/mm/yyyy)</label>
+                <input name="bondDate" class="defaultDatepicker"  value="${invoice.bondDate!}"/>
 
-            <div class='error_div' id='newInvoiceForm_amountSTPIApproval_errorloc'></div>
+                <div class='error_div' id='newInvoiceForm_bondDate_errorloc'></div>
+            </div>
         </div>
+        <div class="row">
+            <div class="span3">
+                <label for="billOfEntryNumber">Bill of Entry Number</label>
+                <input name="billOfEntryNumber" value="${invoice.billOfEntryNumber!}"/>
+            </div>
 
-        <div class="span3">
-            <label for="assessableValueInINR">Assessable Value In INR</label>
-            <input name="assessableValueInINR" value="${invoice.assessableValueInINR!}"/>
+            <div class="span3">
+                <label for="billOfEntryDate">Bill of Entry Date (dd/mm/yyyy)</label>
+                <input name="billOfEntryDate" class="defaultDatepicker"
+                       value="${invoice.billOfEntryDate!}"/>
 
-            <div class='error_div' id='newInvoiceForm_assessableValueInINR_errorloc'></div>
+                <div class='error_div' id='newInvoiceForm_billOfEntryDate_errorloc'></div>
+
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="span3">
-            <label for="importType">Import Types</label>
-            <select name="importType" id="importType">
-                <#list importTypes as importType>
-                    <option value="${importType.toString()}" >${importType.getDescription()}</option>
-                </#list>
-            </select>
+        <div class="row">
+            <div class="span3">
+                <label for="amountSTPIApproval">Amount STPI Approval</label>
+                <input name="amountSTPIApproval" value="${invoice.amountSTPIApproval!}"/>
+
+                <div class='error_div' id='newInvoiceForm_amountSTPIApproval_errorloc'></div>
+            </div>
+
+            <div class="span3">
+                <label for="assessableValueInINR">Assessable Value In INR</label>
+                <input name="assessableValueInINR" value="${invoice.assessableValueInINR!}"/>
+
+                <div class='error_div' id='newInvoiceForm_assessableValueInINR_errorloc'></div>
+            </div>
         </div>
-        <div class="span3"
+        <div class="row">
+            <div class="span3">
+                <label for="importType">Import Types</label>
+                <select name="importType" id="importType">
+                    <#list importTypes as importType>
+                        <option value="${importType.toString()}" >${importType.getDescription()}</option>
+                    </#list>
+                </select>
+            </div>
+            <div class="span3">
+
             <label for="CIFValueInINR">CIF Value In INR</label>
             <input name="CIFValueInINR" value="${invoice.CIFDisplayAmountInINR!}"/>
         </div>
@@ -293,9 +294,6 @@
     <input id="submitButton" type="submit" name="submitButton" value="Submit invoice" class="btn btn-primary"/>
 
     <a id="cancelButton" href="<@spring.url '/invoice/list'/>"><input class="btn" type="button" value="Cancel" /></a>
-</span>
-<span class="alert alert-error span4 hide" id="form_errors_msg">
-    <center>Submission failed. Check for invalid input messages.</center>
 </span>
 <br/>
 <br/>
