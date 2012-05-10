@@ -27,7 +27,7 @@ public class ListISInvoicesPage extends BasePage {
 
     public AddAssetPage addANewAsset(String invoiceNumber) {
         WebElement tableRow = driver.findElement(By.id("is_invoice_" + invoiceNumber));
-        tableRow.findElement(By.linkText("Add Assets")).click();
+        tableRow.findElement(By.linkText("Add Asset")).click();
         return new AddAssetPage(driver);
     }
 

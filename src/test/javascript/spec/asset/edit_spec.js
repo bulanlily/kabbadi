@@ -4,7 +4,7 @@ require("../spec_helper.js")
 describe("kabbadi.asset.editValidator",function(){
 
     beforeEach(function() {
-           setFixtures('<form id="newAssetForm" name="newAssetForm"> <input id="leasingExpiration"  class="defaultDatepicker" name="leasingExpiration" /> <div class="error_div"  class="defaultDatepicker" id="newAssetForm_leasingExpiration_errorloc"></div> <input id="maintenanceExpiration" name="maintenanceExpiration" /> <input id="modelName" name="modelName" /> <select name="modelList" id="modelList"/><div class="error_div" id="newAssetForm_maintenanceExpiration_errorloc"></div> </form>');
+           setFixtures('<form id="newAssetForm" name="newAssetForm"> <input id="leasingExpiration"  class="defaultDatepicker" name="leasingExpiration" /> <div class="error_div"  class="defaultDatepicker" id="newAssetForm_leasingExpiration_errorloc"></div> <input id="maintenanceExpiration" name="maintenanceExpiration" /> <input id="modelName" name="modelName" class="typeahead" /> <div class="error_div" id="newAssetForm_maintenanceExpiration_errorloc"></div> </form>');
        });
 
 
@@ -28,5 +28,13 @@ describe("kabbadi.asset.editValidator",function(){
         kabbadi.asset.editValidator();
         $("#newAssetForm").submit();
         expect($("label.error")).toHaveText("");
+    });
+
+    it("should show the selection options for Model Name with prepopulated values", function(){
+       kabbadi.asset.selectModel();
+       $("#modelName").val("De");
+       $("#modelName").keyup();
+       expect($(".typeahead.dropdown-menu")).toBeVisible();
+       expect($(".active").data("value")).toContain("Dell E6520");
     });
 });
